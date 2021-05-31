@@ -1,32 +1,74 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <div class="dashboard-container">
+      <OverlayModal v-show="loginToggle">
+        <LoginForm
+          :toggleLoginHandler="toggleLoginHandler"
+          :toggleRegisterHandler="toggleRegisterHandler"
+        />
+      </OverlayModal>
+      <OverlayModal v-show="registerToggle">
+        <RegisterForm
+          :toggleRegisterHandler="toggleRegisterHandler"
+          :toggleLoginHandler="toggleLoginHandler"
+        />
+      </OverlayModal>
+      <div class="dashboard-container__left">
+        <HeaderDashboard />
+        <ListMenu :activeTab="activeTab" />
+      </div>
+      <div class="dashboard-container__right">
+        <div class="login-button" @click="toggleLoginHandler">Login</div>
+        <router-view />
+        <Chat v-if="activeTab === 'Chat'" />
+        <LiveBid v-if="activeTab === 'LiveBid'" />
+      </div>
     </div>
-    <router-view/>
   </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import Chat from "./views/chat/index";
+import LiveBid from "./views/liveBid/index";
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+// import Loader from "../components/loader/index"
+import ListMenu from "./components/listMenu/index";
+import HeaderDashboard from "./components/headerDashboard/index";
+import OverlayModal from "./components/modal/index";
+import LoginForm from "./components/loginForm/index.vue";
+import RegisterForm from "./components/registerForm/index.vue";
+export default {
+  name: "App",
+  data() {
+    return {
+      activeTab: "Dashboard",
+      loginToggle: false,
+      registerToggle: false
+    };
+  },
+  methods: {
+    toggleRegisterHandler() {
+      this.registerToggle = !this.registerToggle;
+      this.loginToggle = false;
+    },
+    toggleLoginHandler() {
+      this.loginToggle = !this.loginToggle;
+      this.registerToggle = false;
     }
+  },
+  components: {
+    // Loader
+    ListMenu,
+    HeaderDashboard,
+    LoginForm,
+    OverlayModal,
+    RegisterForm,
+    Chat,
+    LiveBid
   }
-}
+};
+</script>
+
+<style lang="scss">
+@import "./styles.scss";
 </style>

@@ -1,0 +1,70 @@
+.login-container {
+  background: rgb(255, 255, 255);
+  width: 370px;
+  border-radius: 16px;
+  padding: 16px;
+  position: relative;
+
+  .register-copy {
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .link {
+    color: #3989b9;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .icon-close {
+    font-size: 20px;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    color: #f15c60;
+    cursor: pointer;
+  }
+
+  .title {
+    font-size: 24px;
+    font-weight: 500;
+    color: #426696;
+    text-align: center;
+    margin-top: 24px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    padding: 24px 16px;
+
+    label {
+      font-size: 16px;
+      color: #426696;
+      margin-bottom: 8px;
+    }
+
+    input {
+      height: 36px;
+      font-size: 16px;
+      border-radius: 16px;
+      border: 1px solid grey;
+      padding: 0 16px;
+      box-sizing: border-box;
+      margin-bottom: 16px;
+      outline: none;
+      color: #426696;
+    }
+
+    button {
+      height: 36px;
+      font-size: 16px;
+      color: white;
+      border-radius: 16px;
+      margin-top: 18px;
+      cursor: pointer;
+      background: #f15c60;
+      margin-top: 36px;
+    }
+  }
+}

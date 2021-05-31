@@ -1,0 +1,33 @@
+.user-info__container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 48px;
+  height: 184px;
+  justify-content: center;
+
+  .user-info__container-image {
+    margin-top: 16px;
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    border-radius: 50%;
+    margin-bottom: 8px;
+  }
+
+  img {
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  .user-info__container-role {
+    color: #9ea09b;
+  }
+
+  .user-info__container-name {
+    color: #426696;
+    font-weight: 600;
+    opacity: 0.8;
+    font-size: 24px;
+  }
+}

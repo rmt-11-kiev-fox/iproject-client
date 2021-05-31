@@ -1,0 +1,46 @@
+.input-bid-container {
+  z-index: 2;
+  display: flex;
+  width: 100%;
+
+  .item {
+    padding: 4px 16px;
+    border: 1px solid #426696;
+    border-radius: 16px;
+    margin-right: 8px;
+    cursor: pointer;
+    color: #426696;
+  }
+
+  .input-container {
+    position: relative;
+    flex: 2;
+    height: 35px;
+    .input-bid {
+      border: 1px solid #426696;
+      border-radius: 16px;
+      background: linear-gradient(
+        to right bottom,
+        rgba(255, 255, 255, 0.7),
+        rgba(255, 255, 255, 0.3)
+      );
+      width: 100%;
+      height: 100%;
+      outline: none;
+      padding-left: 32px;
+      font-size: 20px;
+      color: #426696;
+      box-sizing: border-box;
+      text-align: center;
+    }
+
+    .icon {
+      position: absolute;
+      font-size: 16px;
+      color: #426696;
+      opacity: 0.7;
+      top: 10px;
+      right: 8px;
+    }
+  }
+}

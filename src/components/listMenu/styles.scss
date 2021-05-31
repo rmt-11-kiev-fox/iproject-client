@@ -1,0 +1,19 @@
+.user-menu__container-item {
+  color: #426696;
+  font-size: 16px;
+  margin-bottom: 24px;
+
+  .icon {
+    margin-right: 32px;
+    font-size: 18px;
+  }
+}
+
+.active-tab {
+  background: linear-gradient(to right top, #65dfc9, #18ab8a) !important;
+  color: white !important;
+  border-radius: 16px;
+  padding: 8px 48px;
+  width: fit-content;
+  margin-left: -32px;
+}
