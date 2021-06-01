@@ -31,7 +31,9 @@ export default new Vuex.Store({
         .then(({ data }) => {
           Vue.swal({
             title: 'Welcome to Zoolorium, ' + data.username,
-            icon: 'success'
+            imageUrl: 'https://www.pngkey.com/png/full/908-9088530_lion-cartoon.png',
+            imageWidth: 100,
+            background: 'rgba(0, 175, 58, 0.733)'
           })
           localStorage.setItem('access_token', data.access_token)
           commit('SET_ISLOGIN', true)

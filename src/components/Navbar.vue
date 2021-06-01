@@ -23,6 +23,7 @@
         <a
           class="navbar-brand btn d-flex flex-row-reverse"
           v-if="isLogin"
+          @click.prevent="logout"
         >Leave the Zoo</a>
       </div>
     </div>
@@ -32,6 +33,13 @@
 <script>
 export default {
   name: 'Navbar',
+  methods: {
+    logout () {
+      localStorage.clear()
+      this.$store.commit('SET_ISLOGIN', false)
+      this.$router.push('/login')
+    }
+  },
   computed: {
     isLogin () {
       return this.$store.state.isLogin
