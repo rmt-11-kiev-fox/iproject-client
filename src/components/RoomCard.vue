@@ -34,7 +34,7 @@
                     <div>
                         <ul>
                             <!-- loop this again -->
-                            <RoomCardSongs v-for="i in 5" :key="i" />
+                            <RoomCardSong v-for="i in 5" :key="i" />
                         </ul>
                     </div>
                 </div>
@@ -53,7 +53,7 @@
 </template>
 
 <script>
-import RoomCardSongs from "../components/RoomCardSongs";
+import RoomCardSong from "../components/RoomCardSong";
 
 export default {
     name: "RoomCard",
@@ -64,7 +64,7 @@ export default {
         },
     },
     components: {
-        RoomCardSongs,
+        RoomCardSong,
     },
 };
 </script>
