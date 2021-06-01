@@ -20,7 +20,10 @@ export default new Vuex.Store({
         }
       })
         .then(({ data }) => {
-          console.log(data)
+          Vue.swal({
+            title: 'Welcome to Zoolorium, ' + data.username,
+            icon: 'success'
+          })
         })
         .catch((err) => {
           console.log(err)
