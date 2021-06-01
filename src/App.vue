@@ -11,6 +11,13 @@ export default {
   name: 'Apps',
   components: {
     Navbar
+  },
+  created () {
+    if (localStorage.access_token) {
+      this.$store.commit('SET_ISLOGIN', true)
+    } else {
+      this.$store.commit('SET_ISLOGIN', false)
+    }
   }
 }
 </script>
@@ -22,10 +29,15 @@ export default {
   font-family: 'ZCOOL KuaiLe', cursive;
   font-weight: bold;
 }
+
 body {
   background-image: url('./assets/56693.jpg');
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
+}
+
+.err-msg {
+  color: crimson;
 }
 </style>

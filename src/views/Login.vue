@@ -4,12 +4,13 @@
       <h1 class="text-center mb-4">Zoolorium Entrance</h1>
       <div class="login-cont container row">
         <div class="col-7 my-4">
-          <img class="img-fluid" src="../assets/login.jpg" alt="">
+          <img v-if="!errorLogin" class="img-fluid" src="../assets/login.jpg" alt="">
+          <img v-else class="img-fluid" src="../assets/loginerr.png" alt="">
         </div>
         <div class="col-4 my-4">
           <form>
             <div class="my-3">
-              <label class="form-label">Code Name or Email</label>
+              <label class="form-label">Username or Email</label>
               <input type="text" class="form-control" v-model="identity">
             </div>
             <div class="mb-3">
@@ -19,7 +20,7 @@
             <div class="mb-3">
               <router-link class="to-register" to="/register">Not a Member yet? Register Now!</router-link>
             </div>
-            <button type="submit" class="btn btn-success mb-4" @click.prevent="login">ENTER</button>
+            <button type="submit" class="btn btn-login mb-4" @click.prevent="login">ENTER THE ZOO</button>
           </form>
         </div>
       </div>
@@ -43,6 +44,14 @@ export default {
         password: this.password
       })
     }
+  },
+  computed: {
+    errorLogin () {
+      return this.$store.state.errorLogin
+    }
+  },
+  created () {
+    this.$store.commit('SET_ERRORLOGIN', false)
   }
 }
 </script>
@@ -54,5 +63,9 @@ export default {
 }
 .to-register {
   color: rgb(0, 53, 13);
+}
+.btn-login {
+  background-color: darkgreen;
+  color: aliceblue;
 }
 </style>
