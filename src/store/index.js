@@ -9,7 +9,9 @@ export default new Vuex.Store({
   state: {
     isLogin: '',
     errorLogin: false,
-    errorRegister: []
+    errorRegister: [],
+    isDark: false,
+    animals: []
   },
   mutations: {
     SET_ISLOGIN (state, payload) {
@@ -20,6 +22,12 @@ export default new Vuex.Store({
     },
     SET_ERROR_REGISTER (state, payload) {
       state.errorRegister = payload
+    },
+    SET_ISDARK (state, payload) {
+      state.isDark = payload
+    },
+    SET_ANIMALS (state, payload) {
+      state.animals = payload
     }
   },
   actions: {
@@ -69,7 +77,6 @@ export default new Vuex.Store({
           router.push('/login')
         })
         .catch((err) => {
-          console.log(err.response.data)
           if (err.response.data.message === 'Validation Error') {
             context.commit('SET_ERROR_REGISTER', err.response.data.errors)
             console.log(context.state.errorRegister)
@@ -79,6 +86,21 @@ export default new Vuex.Store({
               icon: 'error'
             })
           }
+        })
+    },
+    fetchAnimals (context) {
+      axios({
+        method: 'GET',
+        url: '/animals',
+        headers: { access_token: localStorage.access_token }
+      })
+        .then(({ data }) => {
+          console.log(data)
+          context.commit('SET_ANIMALS', data.animals)
+          console.log(context.state.animals)
+        })
+        .catch((err) => {
+          console.log(err.response.data)
         })
     }
   },

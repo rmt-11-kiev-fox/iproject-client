@@ -1,17 +1,22 @@
 <template>
-  <section class="container col-10 mt-4">
-      <div class="row">
-          <h1>Home</h1>
-      </div>
+  <section class="home col-12">
   </section>
 </template>
 
 <script>
 export default {
-  name: 'Home'
+  name: 'Home',
+  created () {
+    this.$store.dispatch('fetchAnimals')
+  }
 }
 </script>
 
 <style>
-
+.home {
+    background-image: url('../assets/dark.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
 </style>

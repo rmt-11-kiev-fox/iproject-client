@@ -12,6 +12,11 @@ export default {
   components: {
     Navbar
   },
+  computed: {
+    bgImg () {
+      return this.$store.state.bgImg
+    }
+  },
   created () {
     if (localStorage.access_token) {
       this.$store.commit('SET_ISLOGIN', true)

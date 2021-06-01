@@ -12,14 +12,17 @@
       <div class="col-4 ms-4">
         <form class="d-flex">
           <input
-          class="form-control ms-4 me-2"
+          class="form-control ms-4"
           type="search"
           placeholder="Search"
           v-if="isLogin"
         >
         </form>
       </div>
-      <div class="col-3">
+      <div class="col-2">
+        <h4 class="btn-dark text-center">Safari Night</h4>
+      </div>
+      <div class="col-2">
         <a
           class="navbar-brand btn-logout d-flex flex-row-reverse"
           v-if="isLogin"
@@ -60,5 +63,13 @@ nav {
   cursor: pointer;
   color: aliceblue;
   font-size: 25px;
+}
+.btn-dark {
+  background-image: url('https://i.pinimg.com/originals/6c/04/c6/6c04c6b013470efcb9474cf8e8f0456e.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  border-radius: 7%;
+  cursor: pointer;
 }
 </style>
