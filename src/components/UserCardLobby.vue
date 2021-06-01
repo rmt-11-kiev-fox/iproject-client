@@ -11,7 +11,7 @@
 
 <script>
 export default {
-    name: "LobbyUser",
+    name: "UserCardLobby",
 };
 </script>
 
