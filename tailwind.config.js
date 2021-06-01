@@ -10,6 +10,14 @@ module.exports = {
                     orange: "#f07b3f",
                     yellow: "#ffd460",
                 },
+                primary: {
+                    yellow: "#ab8b00",
+                    gray: "#68717e",
+                },
+            },
+            spacing: {
+                90: "20rem",
+                120: "30rem",
             },
         },
     },

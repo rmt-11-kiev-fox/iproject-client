@@ -1,5 +1,5 @@
 <template>
-    <li class="bg-gray-200 rounded-full mx-2 flex mt-2">
+    <li class="bg-white flex mt-1 border-b-2 pb-1">
         <img
             class="h-14 w-14 rounded-full"
             src="https://fra1.digitaloceanspaces.com/ntry2prod/event_images/245/desk_large/GinWigmore_logo_2.jpg?1358185202"

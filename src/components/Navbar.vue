@@ -1,10 +1,9 @@
 <template>
-    <div
-        class="grid grid-cols-3 bg-ch-peach h-16 max-h-16 rounded-full mx-3 mt-3"
-    >
+    <!-- class="grid grid-cols-3 bg-ch-peach h-16 max-h-16 rounded-full mx-3 mt-3" -->
+    <div class="grid grid-cols-3 bg-black h-24">
         <div class="self-center pl-5 h-16">
-            <div class="h-full flex items-center">
-                <span>What's up Dragon!</span>
+            <div class="h-full flex items-center text-white">
+                <span class="">What's up Dragon!</span>
                 <span
                     ><svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -22,8 +21,12 @@
                 ></span>
             </div>
         </div>
-        <div class="h-16 self-center flex items-center justify-self-center">
-            <img src="../assets/logo.png" class="h-3/4" alt="" />
+        <div class="h-24 self-center flex items-center justify-self-center">
+            <img
+                src="../assets/logo.png"
+                class="h-3/4 rounded-full object-cover"
+                alt=""
+            />
         </div>
     </div>
 </template>
