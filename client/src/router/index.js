@@ -24,6 +24,11 @@ const routes = [
     path: '/location',
     name: 'Location',
     component: Location
+  },
+  {
+    path: '/book',
+    name: 'Book',
+    component: Book
   }
 ]
 
