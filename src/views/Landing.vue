@@ -1,6 +1,6 @@
 <template>
 	<div class="landing-page">
-		<div class="row">
+		<div class="row d-flex h-100 align-items-center">
 			<div class="col-md-6 col-sm-12">
 				<div class="row d-flex h-100 justify-content-center align-items-center flex-column landing-info">
 					<img src="../assets/logo.png" alt="" />
@@ -52,7 +52,8 @@ export default {
 				})
 					.then((coordinates) => {
 						this.$store.dispatch("setLocation", coordinates);
-						localStorage.setItem("location", coordinates);
+						localStorage.setItem("lat", coordinates.lat);
+						localStorage.setItem("lng", coordinates.lng);
 					})
 					.catch((err) => {
 						console.log(err);
