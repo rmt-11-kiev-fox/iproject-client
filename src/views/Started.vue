@@ -60,7 +60,7 @@ export default {
 	},
 	created() {
 		if (this.$store.state.location.lat) {
-			// this.$store.dispatch("fetchSuggestions");
+			this.$store.dispatch("fetchSuggestions");
 		}
 	},
 };
