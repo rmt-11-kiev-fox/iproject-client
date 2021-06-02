@@ -46,17 +46,25 @@ export default {
 			};
 			this.infoOptions.content = `
 			<div class="mx-2 my-3">
-			<h5>${marker.Provinsi}</h5>
-			<dl>
-				<dt>Confirmed : </dt>
-					<dd>${marker.Confirmed} </dd>
-				<dt>Recovered : </dt>
-					<dd>${marker.Recovered} </dd>
-				<dt>Deaths : </dt>
-					<dd>${marker.Deaths} </dd>
-				<dt>Active cases : </dt>
-					<dd>${marker["Active cases"]}</dd>
-			</dl>
+				<h5 class="text-center">${marker.Provinsi}</h5>
+				<table class="table table-sm">
+					<thead>
+						<tr>
+							<th scope="col">Confirmed</th>
+							<th scope="col">Recovered</th>
+							<th scope="col">Deaths</th>
+							<th scope="col">Active Cases</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>${marker.Confirmed}</td>
+							<td>${marker.Recovered} </td>
+							<td>${marker.Deaths} </td>
+							<td>${marker["Active cases"]}</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 			`;
 			//check if its the same marker that was selected if yes toggle

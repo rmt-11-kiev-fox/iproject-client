@@ -66,10 +66,6 @@ export default {
 </script>
 
 <style scoped>
-@import url("https://fonts.googleapis.com/css2?family=Mate+SC&display=swap");
-#started {
-	font-family: "Mate SC", serif;
-}
 .svg {
 	width: 100%;
 }

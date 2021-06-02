@@ -6,7 +6,7 @@
 			<div class="col" v-if="$store.state.location.lat">
 				<div class="row">
 					<CovidMap />
-					<div class="slide four"></div>
+					<MorePlaces />
 				</div>
 			</div>
 		</div>
@@ -18,6 +18,7 @@
 import Landing from "@/views/Landing";
 import Started from "@/views/Started";
 import CovidMap from "@/views/CovidMap";
+import MorePlaces from "@/views/MorePlaces";
 
 export default {
 	name: "Home",
@@ -25,6 +26,7 @@ export default {
 		Landing,
 		Started,
 		CovidMap,
+		MorePlaces,
 	},
 	created() {
 		if (localStorage.location) {
@@ -35,16 +37,17 @@ export default {
 </script>
 
 <style>
+@import url("https://fonts.googleapis.com/css2?family=Mate+SC&display=swap");
+* {
+	font-family: "Mate SC", serif;
+}
+
 body.swal2-shown > [aria-hidden="true"] {
 	filter: blur(10px);
 }
 
 body > * {
 	transition: 0.1s filter linear;
-}
-.slide {
-	width: 100vw;
-	height: 100vh;
 }
 .wrapper {
 	display: flex;
@@ -60,9 +63,6 @@ body > * {
 
 .hasLocation {
 	width: 400vw;
-}
-.four {
-	background: #00dfdf;
 }
 .outer-wrapper {
 	width: 100vh;
