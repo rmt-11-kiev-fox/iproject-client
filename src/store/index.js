@@ -62,7 +62,7 @@ export default new Vuex.Store({
     },
     exchangeRate (context) {
       axios({
-        url: 'https://free.currconv.com/api/v7/convert?q=USD_IDR&compact=ultra&apiKey=a726a4419de313d1824b',
+        url: '/exchangeRate',
         method: 'GET'
       })
         .then(response => {

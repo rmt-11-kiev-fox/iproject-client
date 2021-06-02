@@ -23,7 +23,7 @@
                   <h6 v-else class="card-subtitle mb-2 fs-5" style="color: rgb(255, 133, 2);">Price: Not Available</h6>
                   <h6 v-if="product.price" class="card-subtitle mb-2">{{new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format((dollarToday*product.price).toFixed(2))}}</h6>
                   <h6 v-else class="card-subtitle mb-2 text-muted">Harga: Tidak Tersedia</h6>
-                  <p class="text-muted">Data Exchange Today: <br><i>$1 = {{new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(dollarToday)}} <br> From: free.currencyconverterapi.com</i></p>
+                  <p class="text-muted">Today's Exchange Rate: <br><i>$1 = {{new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(dollarToday)}} <br> From: free.currencyconverterapi.com</i></p>
                   <div class="d-flex" id="review-star">
                     <div v-if="product.countRating">
                       <div class="me-1">

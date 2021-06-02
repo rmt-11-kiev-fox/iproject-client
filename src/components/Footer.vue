@@ -5,12 +5,9 @@
       <div class="d-flex justify-content-evenly">
         <nav class=" mt-3">
           <div id="footer-link" class="d-flex flex-grow-1 justify-content-lg-evenly fs-5" >
-            <a v-if="isHome" class="nav-link active" aria-current="page" href="#">Home</a>
-            <a v-else @click="toHome" class="nav-link active" aria-current="page" href="#">Home</a>
-            <a v-if="isHome" class="nav-link active" aria-current="page" href="#about">About</a>
-            <a v-else @click="toHome" class="nav-link" href="#about">About</a>
-            <a v-if="isHome" class="nav-link active" aria-current="page" href="#search">Search</a>
-            <a v-else @click="toHome" class="nav-link" href="#search">Search</a>
+            <a @click="toHome" class="nav-link active" aria-current="page" href="#">Home</a>
+            <a @click="toHome" class="nav-link" href="#about">About</a>
+            <a @click="toHome" class="nav-link" href="#search">Search</a>
             <a @click="toContact"  class="nav-link" href="#">Contact</a>
           </div>
         </nav>
@@ -57,10 +54,14 @@ export default {
   },
   methods: {
     toHome () {
-      this.$router.push('/')
+      if (this.$router.currentRoute.name !== 'Home') {
+        this.$router.push('/')
+      }
     },
     toContact () {
-      this.$router.push('/contact')
+      if (this.$router.currentRoute.name !== 'Contact') {
+        this.$router.push('/contact')
+      }
     },
     subscriber () {
       this.subscriberEmail = ''

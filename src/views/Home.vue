@@ -11,9 +11,9 @@
             <h2 class="fs-1 pt-4" style="font-family: 'Righteous', cursive;">About</h2>
             <h3 class="fs-3 text" style="font-family: 'Righteous', cursive; color: grey;">What is GeeHive?</h3>
             <div class="d-flex mt-5 ms-5 me-5 ps-3 pe-3 ">
-              <img class="col-3" src="../../resources/search.jpg" alt="" />
-              <h4 class="text-start p-5 mt-3" style="color: black; font-family: Varela Round;">Using the word <i>BeeHive</i> as the reference, GeeHive <i>(Gift-Hive)</i> is an app to helps users find gift ideas or just great products for themself. Utilizing inputs from the user, the app will be displaying some products that are connected to the World Number 1 E-commerce.<br>
-              <h5 class="text-muted mt-2"><i>Disclaimer: All product data is from the <b>Amazon product listing in Q2 2020</b>. From the results given, we might found differences in the product's name, price, rating, or even availability.</i></h5>
+              <img class="col-3" src="../../resources/search2.jpg" alt="" />
+              <h4 class="text-start p-5 mt-3" style="color: black; font-family: Varela Round;">Using the word <i>BeeHive</i> as the reference, GeeHive <i>(Gift-Hive)</i> is an app to helps users find gift ideas or just great products for themself. Utilizing inputs from the user, the app will be displaying some products that are connected to the World Number 1 E-Commerce.<br>
+              <h5 class="text-muted mt-2"><i>Disclaimer: All product's data are from the <b>Amazon product listing in Q2 2020</b>. From the results given, we might found differences in the product's name, price, rating, or even availability.</i></h5>
               </h4>
             </div>
           </div>

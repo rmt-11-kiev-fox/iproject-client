@@ -11,17 +11,12 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav col-12 lh-base" style="font-family: 'Raleway', sans-serif;">
-                <!-- === HOME === -->
                 <li v-if="isHome" class="nav-item bg-warning col-3 text-center">
-                  <a v-if="isHome" class="nav-link active fs-4" aria-current="page" href="#">HOME</a>
-                  <a v-else @click="toHome" class="nav-link active fs-4" aria-current="page" href="#">HOME</a>
+                  <a @click="toHome" class="nav-link active fs-4" aria-current="page" href="#">HOME</a>
                 </li>
                 <li v-else class="nav-item bg-light col-3 text-center">
-                  <a v-if="isHome" class="nav-link active fs-4" aria-current="page" href="#">HOME</a>
-                  <a v-else @click="toHome" class="nav-link active fs-4" aria-current="page" href="#">HOME</a>
+                  <a @click="toHome" class="nav-link active fs-4" aria-current="page" href="#">HOME</a>
                 </li>
-                <!-- === HOME === -->
-                <!-- === ABOUT === -->
                 <li class="nav-item bg-light col-3 text-center">
                   <a v-if="isHome" class="nav-link active fs-4" aria-current="page" href="#about">ABOUT</a>
                   <a v-else @click="toHome" class="nav-link active fs-4" aria-current="page" href="#about">ABOUT</a>
@@ -30,7 +25,6 @@
                   <a v-if="isHome" class="nav-link active fs-4" aria-current="page" href="#search">SEARCH</a>
                   <a v-else @click="toHome" class="nav-link active fs-4" aria-current="page" href="#search">SEARCH</a>
                 </li>
-                <!-- === CONTACT === -->
                 <li v-if="isHome" class="nav-item bg-light col-3 text-center">
                   <a @click="toContact" class="nav-link active fs-4" aria-current="page" href="#">CONTACT</a>
                 </li>
@@ -60,10 +54,14 @@ export default {
   name: 'Navbar',
   methods: {
     toHome () {
-      this.$router.push('/')
+      if (this.$router.currentRoute.name !== 'Home') {
+        this.$router.push('/')
+      }
     },
     toContact () {
-      this.$router.push('/contact')
+      if (this.$router.currentRoute.name !== 'Contact') {
+        this.$router.push('/contact')
+      }
     }
   },
   computed: {

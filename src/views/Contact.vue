@@ -15,24 +15,24 @@
                     <input v-model="fullname" id="full-name" style="color: black; font-family: Varela Round;" type="text" class="form-control" placeholder="Full name" required>
                   </div>
                 </div>
-                <div class="mb-3 row">
+                <div class="mb-3 row pt-2">
                   <label for="email" class="col-sm-2 col-form-label" style="font-family: 'Righteous', cursive;">Your email</label>
                   <div class="col-sm-10">
                     <input v-model="email" id="email" style="color: black; font-family: Varela Round;" type="email" class="form-control" placeholder="Your email" required>
                   </div>
                 </div>
-                <div class="mb-3 row">
+                <div class="mb-3 row pt-2">
                   <label for="message" class="col-sm-2 col-form-label" style="font-family: 'Righteous', cursive;">Message</label>
                   <div class="col-sm-10">
-                    <textarea v-model="message" id="message" style="color: black; font-family: Varela Round;" class="form-control" rows="5" placeholder="Nice work!" required></textarea>
+                    <textarea v-model="message" id="message" style="color: black; font-family: Varela Round;" class="form-control" rows="6" placeholder="Nice work!" required></textarea>
                   </div>
                 </div>
-                <div class="d-grid">
+                <div class="d-grid pt-2">
                   <button type="submit" class="btn btn-warning" style="font-family: 'Righteous', cursive;">SUBMIT</button>
                 </div>
               </form>
             </div>
-            <img class="col-3" src="../../resources/map.jpg" alt="" style="width: 50%;"/>
+            <img class="col-3" src="../../resources/contact.jpg" alt="" style="width: 37%;"/>
           </div>
           <div class="d-flex justify-content-between mt-4 border-top border-dark border-3">
 
