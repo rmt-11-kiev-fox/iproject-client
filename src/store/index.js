@@ -8,7 +8,8 @@ export default new Vuex.Store({
   state: {
     favourites: [],
     countries: [],
-    favourite: null
+    favourite: null,
+    standings: []
   },
   mutations: {
     SET_countries (state, payload) {
@@ -18,7 +19,10 @@ export default new Vuex.Store({
       state.favourites = payload
     },
     SET_favourite (state, payload) {
-      state.facourite = payload
+      state.favourite = payload
+    },
+    SET_standings (state, payload) {
+      state.standings = payload
     }
   },
   actions: {
@@ -94,6 +98,24 @@ export default new Vuex.Store({
         },
         method: 'post',
         data: payload
+      })
+    },
+    getTeamByKey (content, teamKey) {
+      return axios({
+        url: '/teams/' + teamKey,
+        method: 'get',
+        headers: {
+          access_token: localStorage.getItem('access_token')
+        }
+      })
+    },
+    getStandings (content, leagueKey) {
+      return axios({
+        url: '/standings/' + leagueKey,
+        method: 'get',
+        headers: {
+          access_token: localStorage.getItem('access_token')
+        }
       })
     }
   },
