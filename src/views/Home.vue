@@ -15,6 +15,7 @@
 
 <script>
 import Chatbox from '../components/Chatbox'
+import Swal from 'sweetalert2'
 
 export default {
     name: 'Home',
@@ -27,14 +28,28 @@ export default {
         },
         receiveTimeLeft(time) {
             this.$store.commit('SET_TIME_LEFT', time)
+        },
+        correctAnswer(currentCorrectAnswer) {
+            // console.log('CORRECT ANSWER |', currentCorrectAnswer) // SWAL
+            Swal.fire({
+                title: 'Correct!',
+                text: `Correct answer: ${currentCorrectAnswer}`,
+                icon: 'success',
+                confirmButtonText: 'Nice'
+            })
+        },
+        wrongAnswer(currentCorrectAnswer) {
+            // console.log('WRONG ANSWER |', currentCorrectAnswer) // SWAL
+            Swal.fire({
+                title: 'Wrong!',
+                text: `Correct answer: ${currentCorrectAnswer}`,
+                icon: 'error',
+                confirmButtonText: 'Nice'
+            })
         }
-        // receiveServerStatus(status) {
-        //     // this.$store.commit('SET_SERVER_STATUS', status)
-        //     // this.$router.push('/')
-        // }
     },
     created() {
-        // this.$socket.emit('getServerStatus')
+        this.$socket.emit('getCurrentQuestion')
     }
 }
 </script>

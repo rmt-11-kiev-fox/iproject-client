@@ -41,18 +41,12 @@
             >
                 <div class="container h-100">
                     <div class="row h-100">
-                        <div class="col-6 btn btn-success">
-                            A. {{ question.answers[0] }}
-                        </div>
-                        <div class="col-6 btn btn-info">
-                            B. {{ question.answers[1] }}
-                        </div>
-                        <div class="col-6 btn btn-primary">
-                            C. {{ question.answers[2] }}
-                        </div>
-                        <div class="col-6 btn btn-secondary">
-                            D. {{ question.answers[3] }}
-                        </div>
+                        <AnswerButton
+                            v-for="(answer, i) in question.answers"
+                            :key="i"
+                            :answer="answer"
+                            @submitAnswer="submitAnswer"
+                        />
                     </div>
                 </div>
             </div>
@@ -61,8 +55,18 @@
 </template>
 
 <script>
+import AnswerButton from './AnswerButton'
+
 export default {
     name: 'ActivePage',
+    data() {
+        return {
+            submittedAnswer: false
+        }
+    },
+    components: {
+        AnswerButton
+    },
     computed: {
         question() {
             return this.$store.state.currentQuestion
@@ -73,6 +77,23 @@ export default {
         // isActiveServer() {
         //     // return this.$store.state.isActiveServer
         // }
+    },
+    watch: {
+        question() {
+            this.submittedAnswer = false
+            // console.log(this.submittedAnswer)
+        }
+    },
+    methods: {
+        submitAnswer(answer) {
+            // console.log('MASUK')
+            if (!this.submittedAnswer) {
+                // console.log(answer)
+                this.$socket.emit('submitAnswer', answer)
+            }
+            this.submittedAnswer = true
+            // console.log(this.submittedAnswer)
+        }
     }
 }
 </script>
