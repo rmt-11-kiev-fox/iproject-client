@@ -34,6 +34,7 @@ export default {
 		if (localStorage.location) {
 			this.$store.dispatch("setLocation", location);
 		}
+		this.$store.commit("SET_DIRECTION", false);
 	},
 };
 </script>

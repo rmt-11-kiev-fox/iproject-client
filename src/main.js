@@ -14,7 +14,7 @@ Vue.use(VueTilt);
 Vue.use(VueGoogleMaps, {
 	load: {
 		key: "AIzaSyBgpC1SC7h63uaj1352XOJLqxet94MCdlE",
-		libraries: "places,drawing,visualization",
+		libraries: "places",
 	},
 	installComponents: true,
 });
