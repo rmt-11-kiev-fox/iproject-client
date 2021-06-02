@@ -20,11 +20,13 @@
                     justify-content-center
                 "
             >
+                <div class="alert alert-warning">Time left: {{ timeLeft }}</div>
                 <div class="badge bg-dark">
                     Category: {{ question.category }}
                 </div>
                 <div class="alert alert-primary">Question:</div>
-                <div class="alert alert-info">{{ question.question }}</div>
+                <!-- <div class="alert alert-info"></div> -->
+                <div class="alert alert-info" v-html="question.question"></div>
             </div>
         </div>
         <div class="row h-50">
@@ -40,18 +42,12 @@
             >
                 <div class="container h-100">
                     <div class="row h-100">
-                        <div class="col-6 border">
-                            A. {{ question.answers[0] }}
-                        </div>
-                        <div class="col-6 border">
-                            B. {{ question.answers[1] }}
-                        </div>
-                        <div class="col-6 border">
-                            C. {{ question.answers[2] }}
-                        </div>
-                        <div class="col-6 border">
-                            D. {{ question.answers[3] }}
-                        </div>
+                        <AnswerButton
+                            v-for="(answer, i) in question.answers"
+                            :key="i"
+                            :answer="answer"
+                            @submitAnswer="submitAnswer"
+                        />
                     </div>
                 </div>
             </div>
@@ -60,13 +56,53 @@
 </template>
 
 <script>
+import AnswerButton from './AnswerButton'
+
 export default {
     name: 'ActivePage',
+    data() {
+        return {
+            submittedAnswer: false
+        }
+    },
+    components: {
+        AnswerButton
+    },
     computed: {
         question() {
             return this.$store.state.currentQuestion
+        },
+        timeLeft() {
+            return this.$store.state.timeLeft
+        }
+        // isActiveServer() {
+        //     // return this.$store.state.isActiveServer
+        // }
+    },
+    watch: {
+        question() {
+            this.submittedAnswer = false
+            // console.log(this.submittedAnswer)
+        }
+    },
+    methods: {
+        submitAnswer(answer) {
+            // console.log('MASUK')
+            if (!this.submittedAnswer) {
+                // console.log(answer)
+                const { currentUser, timeLeft } = this.$store.state
+                this.$socket.emit('submitAnswer', {
+                    currentUser,
+                    timeLeft,
+                    answer
+                })
+            }
+            this.submittedAnswer = true
+            // console.log(this.submittedAnswer)
         }
     }
+    // created() {
+    // }
 }
 </script>
 
