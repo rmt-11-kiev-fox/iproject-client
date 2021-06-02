@@ -1,7 +1,7 @@
 <template>
   <div>
     <navBar />
-   <div
+    <div
       id="carouselExampleCaptions"
       class="carousel slide"
       data-bs-ride="carousel"
@@ -78,12 +78,129 @@
       </button>
     </div>
     <div class="row" style="width: 100.65%">
-            <div class="col-12 bg-dark">
-                <div class="text-center py-4">
-                    <img src="../Picture/LOCATION.png" alt="" width="" height="90">
-                </div>
-            </div>
+      <div class="col-12 bg-dark">
+        <div class="text-center py-4">
+          <img src="../Picture/LOCATION.png" alt="" width="" height="90" />
         </div>
+      </div>
+    </div>
+    <div class="row" style="background-color: white">
+      <div class="container">
+        <div class="row my-5 mx-5">
+          <div class="col-4">
+            <div class="card shadow" style="width: 25rem; margin-left: 10rem">
+              <img class="card-img-top" src="../Picture/frontresto.jpg" alt="Card image cap" style="height: 270px" />
+              <div class="card-body">
+                <h5 class="card-title"><u>Pondok Indah</u></h5>
+                <p class="card-text" style="color: black">
+                  Jl. hahaha No.6 <br />
+                  Jakarta 11111
+                </p>
+                <h4
+                  style="
+                    color: black;
+                    padding-bottom: 1rem;
+                    font-weight: bold;
+                    font-size: 20px;
+                  "
+                >
+                  <u>Operational Hours</u>
+                </h4>
+                <p style="color: black">09.00 - 22.00 <br /></p>
+                <h4
+                  style="
+                    color: black;
+                    padding-bottom: 1rem;
+                    font-weight: bold;
+                    font-size: 20px;
+                  "
+                >
+                  <u>Contact</u>
+                </h4>
+                <p style="color: black">
+                  +628123456 <br />
+                  makan.pim@makanology.com
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="card shadow" style="width: 25rem; margin-left: 6rem">
+              <img class="card-img-top" src="../Picture/restofront2.jpg" alt="Card image cap" style="height: 270px" />
+              <div class="card-body">
+                <h5 class="card-title"><u>Senayan</u></h5>
+                <p class="card-text" style="color: black">
+                  Jl. hahaha No.6 <br />
+                  Jakarta 11111
+                </p>
+                <h4
+                  style="
+                    color: black;
+                    padding-bottom: 1rem;
+                    font-weight: bold;
+                    font-size: 20px;
+                  "
+                >
+                  <u>Operational Hours</u>
+                </h4>
+                <p style="color: black">09.00 - 22.00 <br /></p>
+                <h4
+                  style="
+                    color: black;
+                    padding-bottom: 1rem;
+                    font-weight: bold;
+                    font-size: 20px;
+                  "
+                >
+                  <u>Contact</u>
+                </h4>
+                <p style="color: black">
+                  +628123456 <br />
+                  makan.senayan@makanology.com
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="card shadow" style="width: 25rem; margin-left: 1rem">
+              <img class="card-img-top" src="../Picture/restofront3.jpg" alt="Card image cap" style="height: 270px" />
+              <div class="card-body">
+                <h5 class="card-title"><u>Menteng</u></h5>
+                <p class="card-text" style="color: black">
+                  Jl. hahaha No.6 <br />
+                  Jakarta 11111
+                </p>
+                <h4
+                  style="
+                    color: black;
+                    padding-bottom: 1rem;
+                    font-weight: bold;
+                    font-size: 20px;
+                  "
+                >
+                  <u>Operational Hours</u>
+                </h4>
+                <p style="color: black">09.00 - 22.00 <br /></p>
+                <h4
+                  style="
+                    color: black;
+                    padding-bottom: 1rem;
+                    font-weight: bold;
+                    font-size: 20px;
+                  "
+                >
+                  <u>Contact</u>
+                </h4>
+                <p style="color: black">
+                  +628123456 <br />
+                  makan.menteng@makanology.com
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <Footer style="width: 100.65%" />
   </div>
 </template>
