@@ -26,7 +26,7 @@
                   />
                 </div>
                 <div class="form-group my-3">
-                  <label for="exampleFormControlSelect1">People</label>
+                  <label for="exampleFormControlSelect1">Peoples</label>
                   <select class="form-control my-3" id="exampleFormControlSelect1" v-model="booking.people">
                     <option value="1">1</option>
                     <option value="2">2</option>
