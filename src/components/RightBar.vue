@@ -19,6 +19,12 @@ export default {
   },
   computed: {
     animals () {
+      return this.$store.getters.filteredByName({
+        keyword: this.$store.state.keyword,
+        data: this.typeFiltered
+      })
+    },
+    typeFiltered () {
       let type = ''
       if (this.$route.params.type) {
         type = this.$route.params.type

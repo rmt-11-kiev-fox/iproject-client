@@ -13,7 +13,9 @@ export default new Vuex.Store({
     isDark: false,
     animals: [],
     favorites: [],
-    types: []
+    types: [],
+    keyword: '',
+    favoriteAnimals: []
   },
   mutations: {
     SET_ISLOGIN (state, payload) {
@@ -36,6 +38,12 @@ export default new Vuex.Store({
     },
     SET_TYPES (state, payload) {
       state.types = payload
+    },
+    SET_KEYWORD (state, payload) {
+      state.keyword = payload
+    },
+    SET_FAVORITEANIMALS (state, payload) {
+      state.favoriteAnimals = payload
     }
   },
   actions: {
@@ -130,6 +138,7 @@ export default new Vuex.Store({
           const map = data.data.Animals.map((element) => {
             return element.name
           })
+          context.commit('SET_FAVORITEANIMALS', data.data.Animals)
           context.commit('SET_FAVORITES', map)
         })
         .catch((err) => {
@@ -180,14 +189,23 @@ export default new Vuex.Store({
   getters: {
     filteredAnimalByType: (state) => (payload) => {
       const temp = []
-      state.animals.forEach((element) => {
-        if (element.type.toLowerCase() === payload.toLowerCase()) {
-          temp.push(element)
-        } else if (payload === '') {
-          temp.push(element)
-        }
+      if (payload === 'favorites') {
+        return state.favoriteAnimals
+      } else {
+        state.animals.forEach((element) => {
+          if (element.type.toLowerCase() === payload.toLowerCase()) {
+            temp.push(element)
+          } else if (payload === '') {
+            temp.push(element)
+          }
+        })
+        return temp
+      }
+    },
+    filteredByName: () => (payload) => {
+      return payload.data.filter((element) => {
+        return element.name.toLowerCase().includes(payload.keyword.toLowerCase())
       })
-      return temp
     }
   }
 })

@@ -5,9 +5,23 @@
           <input
             class="form-control"
             type="search"
-            placeholder="Search"
+            placeholder="Animal Name"
+            v-model="keyword"
           >
         </form>
+      </div>
+      <div class="row my-4">
+          <router-link
+            :to="'/home/favorites'"
+            :class="{
+                type_opt: $route.params.type !== 'favorites',
+                type_choosed: $route.params.type === 'favorites'
+            }"
+            >
+                <h4>
+                    My Favorite Animals
+                </h4>
+        </router-link>
       </div>
       <div class="row my-4 w-75">
         <h4>Type:</h4>
@@ -41,6 +55,14 @@ export default {
   computed: {
     types () {
       return this.$store.state.types
+    },
+    keyword: {
+      get () {
+        return this.$store.state.keyword
+      },
+      set (value) {
+        this.$store.commit('SET_KEYWORD', value)
+      }
     }
   }
 }
