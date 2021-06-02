@@ -1,13 +1,13 @@
 <template>
   <div id="app">
     <div class="dashboard-container">
-      <OverlayModal v-show="loginToggle">
+      <OverlayModal v-if="loginToggle">
         <LoginForm
           :toggleLoginHandler="toggleLoginHandler"
           :toggleRegisterHandler="toggleRegisterHandler"
         />
       </OverlayModal>
-      <OverlayModal v-show="registerToggle">
+      <OverlayModal v-if="registerToggle">
         <RegisterForm
           :toggleRegisterHandler="toggleRegisterHandler"
           :toggleLoginHandler="toggleLoginHandler"
@@ -15,45 +15,55 @@
       </OverlayModal>
       <div class="dashboard-container__left">
         <HeaderDashboard />
-        <ListMenu :activeTab="activeTab" />
+        <ListMenu :activeTab="activeTab" v-if="isLogged" />
       </div>
       <div class="dashboard-container__right">
-        <div class="login-button" @click="toggleLoginHandler">Login</div>
         <router-view />
-        <Chat v-if="activeTab === 'Chat'" />
-        <LiveBid v-if="activeTab === 'LiveBid'" />
+      </div>
+      <div
+        class="overlay-menu"
+        v-if="!isLogged && !loginToggle && !registerToggle"
+      >
+        <div class="text">Login For Your Best Experience</div>
+        <div class="login-button" @click="toggleLoginHandler(true)">
+          Login
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import Chat from "./views/chat/index";
-import LiveBid from "./views/liveBid/index";
-
 // import Loader from "../components/loader/index"
-import ListMenu from "./components/listMenu/index";
-import HeaderDashboard from "./components/headerDashboard/index";
-import OverlayModal from "./components/modal/index";
-import LoginForm from "./components/loginForm/index.vue";
-import RegisterForm from "./components/registerForm/index.vue";
+import ListMenu from './components/listMenu/index'
+import HeaderDashboard from './components/headerListMenu/index'
+import OverlayModal from './components/modal/index'
+import LoginForm from './components/loginForm/index.vue'
+import RegisterForm from './components/registerForm/index.vue'
 export default {
-  name: "App",
+  name: 'App',
   data() {
     return {
-      activeTab: "Dashboard",
-      loginToggle: false,
-      registerToggle: false
-    };
+      activeTab: 'Dashboard'
+    }
   },
   methods: {
-    toggleRegisterHandler() {
-      this.registerToggle = !this.registerToggle;
-      this.loginToggle = false;
+    toggleRegisterHandler(val) {
+      this.$store.commit('REGISTER_MODAL_HANDLER', val)
     },
-    toggleLoginHandler() {
-      this.loginToggle = !this.loginToggle;
-      this.registerToggle = false;
+    toggleLoginHandler(val) {
+      this.$store.commit('LOGIN_MODAL_HANDLER', val)
+    }
+  },
+  computed: {
+    loginToggle() {
+      return this.$store.state.loginModal
+    },
+    registerToggle() {
+      return this.$store.state.registerModal
+    },
+    isLogged() {
+      return this.$store.state.isLogged
     }
   },
   components: {
@@ -62,13 +72,11 @@ export default {
     HeaderDashboard,
     LoginForm,
     OverlayModal,
-    RegisterForm,
-    Chat,
-    LiveBid
+    RegisterForm
   }
-};
+}
 </script>
 
 <style lang="scss">
-@import "./styles.scss";
+@import './styles.scss';
 </style>

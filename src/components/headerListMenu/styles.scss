@@ -13,13 +13,18 @@
     overflow: hidden;
     border-radius: 50%;
     margin-bottom: 8px;
+    background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSB88fZ8uVvkn3Y2p5USRp7Bi9zSiABvbFRBw&usqp=CAU');
+    background-size: cover;
+    background-position: center;
   }
 
   img {
-    height: 100%;
+    width: 100px;
+    height: 100px;
     object-fit: cover;
     object-position: center;
   }
+
   .user-info__container-role {
     color: #9ea09b;
   }

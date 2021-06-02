@@ -34,6 +34,18 @@
     margin-top: 12px;
   }
 
+  .price-container {
+    margin-right: 16px;
+    .price {
+      width: 100% !important;
+      margin-top: 8px;
+    }
+
+    .price::placeholder {
+      font-size: 12px;
+    }
+  }
+
   form {
     display: flex;
     flex-direction: column;
@@ -57,10 +69,12 @@
       color: #426696;
     }
 
-    .select-role {
+    .select {
       display: flex;
+      margin-bottom: 8px;
+      overflow: scroll;
 
-      .role {
+      .item {
         margin-right: 8px;
         padding: 4px 16px;
         border-radius: 16px;

@@ -1,4 +1,25 @@
 .dashboard-container__right-body {
   display: flex;
   flex-direction: column;
+  overflow: scroll;
+  height: 60vh;
+
+  .container-pagination {
+    margin-top: 50px;
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .pagination {
+    background: linear-gradient(
+      to left top,
+      rgba(255, 255, 255, 0.8),
+      rgba(255, 255, 255, 0.5)
+    );
+    box-shadow: 6px 10px 12px rgba(122, 122, 122, 0.212);
+    width: 100%;
+    border-radius: 24px;
+  }
 }

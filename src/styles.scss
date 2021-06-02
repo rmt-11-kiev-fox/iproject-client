@@ -1,7 +1,7 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 body {
@@ -13,8 +13,8 @@ body {
 }
 
 .dashboard-container {
-  width: 1200px;
-  height: 82vh;
+  width: 1100px;
+  height: 90vh;
   margin: 0 auto;
   border-radius: 32px;
   background: linear-gradient(
@@ -28,41 +28,64 @@ body {
   position: relative;
 }
 
+.overlay-menu {
+  background: rgba(0, 0, 0, 0.9);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  .text {
+    color: #17a589;
+    margin-bottom: 16px;
+  }
+
+  .login-button {
+    text-align: center;
+    padding: 6px 32px;
+    border-radius: 16px;
+    color: #17a589;
+    width: 50px;
+    border: 2px solid #17a589;
+    cursor: pointer;
+    // box-shadow: 2px 8px 8px rgba(122, 122, 122, 0.412);
+  }
+}
+
+.overlay-index {
+  background: rgba(0, 0, 0, 0.1);
+}
+
 .dashboard-container__left {
   background: linear-gradient(
     to right bottom,
     rgba(255, 255, 255, 0.7),
     rgba(255, 255, 255, 0.3)
   );
-  width: 33.333%;
+  width: 30%;
   height: 100%;
-  padding: 32px 16px;
+  padding: 32px 0px 32px 16px;
   border-radius: 32px;
+  position: relative;
+  box-sizing: border-box;
 
   .user-menu__container {
     display: flex;
     flex-direction: column;
-    padding-left: 100px;
+    padding-left: 25px;
   }
 }
 
-.login-button {
-  text-align: center;
-  background: white;
-  padding: 6px 32px;
-  border-radius: 16px;
-  color: #426696;
-  width: 50px;
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  box-shadow: 2px 8px 8px rgba(122, 122, 122, 0.412);
-}
-
 .dashboard-container__right {
-  width: 66.67%;
+  width: 70%;
   padding: 48px;
-  overflow: scroll;
+  // overflow: scroll;
 
   .floating-button {
     background: white;
@@ -86,7 +109,7 @@ body {
 .chat-container,
 .right-space-container {
   width: 100%;
-  height: 490px;
+  height: 75vh;
   background: white;
   justify-content: space-between;
   display: flex;
@@ -135,4 +158,44 @@ body {
       text-align: center;
     }
   }
+}
+
+//global css
+
+.flex {
+  display: flex;
+
+  .button-upload {
+    height: 50px;
+    width: 50px;
+    border-radius: 16px;
+    font-size: 28px;
+    font-weight: 500;
+    color: grey;
+    margin-bottom: 12px;
+    outline: none;
+
+    .icon {
+      font-size: 20px !important;
+    }
+  }
+
+  img {
+    height: 50px;
+    width: 50px;
+    border-radius: 16px;
+    margin-right: 16px;
+  }
+}
+
+.relative {
+  position: relative;
+}
+
+button {
+  outline: none;
+}
+
+.flex-between {
+  justify-content: space-between;
 }

@@ -1,4 +1,4 @@
-.register-container {
+.add-container {
   background: rgb(255, 255, 255);
   width: 370px;
   border-radius: 16px;
@@ -31,7 +31,25 @@
     font-weight: 500;
     color: #426696;
     text-align: center;
-    margin-top: 12px;
+    margin-top: 24px;
+  }
+
+  .price-container {
+    margin-right: 16px;
+    .price {
+      width: 100% !important;
+      margin-top: 8px;
+    }
+
+    .price::placeholder {
+      font-size: 12px;
+    }
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
   }
 
   form {
@@ -57,10 +75,12 @@
       color: #426696;
     }
 
-    .select-role {
+    .select {
       display: flex;
+      margin-bottom: 16px;
+      overflow: scroll;
 
-      .role {
+      .item {
         margin-right: 8px;
         padding: 4px 16px;
         border-radius: 16px;

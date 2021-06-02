@@ -1,18 +1,25 @@
 <template>
   <div class="product-container">
-    <img
-      src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/116a9bee-c815-4de5-b138-aaec1c34db3c/air-max-iii-shoe-nPcf7J.png"
-    />
+    <img :src="data.image" />
     <div class="item-container">
-      <div class="name">Nike X-Travo</div>
+      <div class="name">{{ data.name }}</div>
       <div class="info">
-        <div class="text">OB : 50.000</div>
-        <div class="text">BID : 20.000</div>
-        <div class="text">BIN : 30.000.000</div>
+        <div class="text">OB : {{ data.ob }}</div>
+        <div class="text">BID : {{ data.bid }}</div>
+        <div class="text">BIN : {{ data.bin }}</div>
       </div>
     </div>
     <div class="due-date-container">
-      <div class="text">END : 00.00.25</div>
+      <div class="text" v-if="timeFormatted">
+        <vue-countdown
+          :time="timeFormatted * 1000"
+          v-slot="{ hours, minutes, seconds }"
+          v-if="counting"
+          @end="onCountdownEnd"
+        >
+          Remaining：{{ hours }} : {{ minutes }} : {{ seconds }}
+        </vue-countdown>
+      </div>
     </div>
     <div class="icon-container">
       <i class="fas fa-info-circle icon"></i>
@@ -22,12 +29,39 @@
 </template>
 
 <script>
+import VueCountdown from '@chenfengyuan/vue-countdown'
+
 export default {
-    name:"product"
+  props: ['data'],
+  name: 'product',
+  components: {
+    VueCountdown
+  },
+  methods: {
+    onCountdownEnd() {
+      this.counting = false
+    }
+  },
+  data() {
+    return {
+      counting: true
+    }
+  },
+  computed: {
+    timeFormatted() {
+      const seconds = new Date()
+      const dataInSeconds = new Date(this.data.updatedAt)
+
+      if (this.data.dueDate - (seconds - dataInSeconds) / 1000 < 0) {
+        return false
+      } else {
+        return this.data.dueDate - (seconds - dataInSeconds) / 1000
+      }
+    }
+  }
 }
 </script>
 
-
 <style lang="scss">
-@import "./styles.scss";
+@import './styles.scss';
 </style>

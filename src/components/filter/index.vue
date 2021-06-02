@@ -32,19 +32,19 @@
 // import "vue-date-pick/dist/vueDatePick.css";
 
 export default {
-  props: ["filterToggleHandler"],
-  name: "Filter",
+  props: ['filterToggleHandler'],
+  name: 'FilterSearch',
   components: {
     // DatePick,
   },
   data() {
     return {
-      date: "2019-01-01",
-    };
-  },
-};
+      date: '2019-01-01'
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>
-@import "./styles.scss";
+@import './styles.scss';
 </style>
