@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Location from '../views/Location.vue'
+import Book from '../views/Book'
 
 Vue.use(VueRouter)
 
