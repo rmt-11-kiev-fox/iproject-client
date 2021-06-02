@@ -58,7 +58,15 @@ export default {
                     localStorage.setItem("email", data.email);
                     localStorage.setItem("imageUrl", data.imageUrl);
                     // make it reactive baby.
-                    this.$store.dispatch("checkLogin");
+
+                    let emailFormat = localStorage.email.split("@gmail.com");
+                    const payload = {
+                        email: emailFormat[0],
+                        imageUrl: localStorage.imageUrl,
+                    };
+                    this.$store.commit("SET_USER", payload);
+                    this.$socket.emit("onLogin", payload);
+                    this.$socket.emit("guestHandler", false);
                 })
                 .catch((err) => {
                     console.log(err, err.response, "ini di onsuccess");
