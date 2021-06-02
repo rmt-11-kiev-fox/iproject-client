@@ -50,10 +50,14 @@ export default {
         startTrivia() {
             this.$socket.emit('getNewQuestion')
             this.$socket.emit('startTrivia')
+            // this.$router.push('/')
             // this.$socket.emit('getNewQuestion')
             // this.$socket.emit('getServerStatus')
         }
     }
+    // sockets: {
+    //
+    // }
 }
 </script>
 

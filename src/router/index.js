@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import store from '../store'
 
 import Home from '../views/Home'
 import Login from '../views/Login'
-import ActivePage from '../components/ActivePage'
 
 Vue.use(VueRouter)
 
@@ -16,14 +16,26 @@ const routes = [
             {
                 path: '/',
                 name: 'ActivePage',
-                component: ActivePage
+                component: () => import('../components/ActivePage')
             },
             {
                 path: '/inactive',
                 name: 'InactivePage',
                 component: () => import('../components/InactivePage')
             }
-        ]
+        ],
+        beforeEnter(to, from, next) {
+            if (to.name === 'ActivePage' && !store.state.isActiveServer) {
+                next({ name: 'InactivePage' })
+            } else if (
+                to.name === 'InactivePage' &&
+                store.state.isActiveServer
+            ) {
+                next({ name: 'ActivePage' })
+            } else {
+                next()
+            }
+        }
     },
     {
         path: '/login',

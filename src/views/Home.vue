@@ -24,31 +24,49 @@ export default {
     },
     sockets: {
         receiveQuestion(question) {
+            // console.log('MASUK')
+            console.log(question)
             this.$store.commit('SET_CURRENT_QUESTION', question)
         },
         receiveTimeLeft(time) {
             this.$store.commit('SET_TIME_LEFT', time)
         },
-        correctAnswer(currentCorrectAnswer) {
+        correctAnswer() {
             // console.log('CORRECT ANSWER |', currentCorrectAnswer) // SWAL
             Swal.fire({
-                title: 'Correct!',
-                text: `Correct answer: ${currentCorrectAnswer}`,
+                title: 'Correct answer!',
+                text: 'You got 50 points',
                 icon: 'success',
                 confirmButtonText: 'Nice'
             })
         },
-        wrongAnswer(currentCorrectAnswer) {
+        wrongAnswer() {
             // console.log('WRONG ANSWER |', currentCorrectAnswer) // SWAL
             Swal.fire({
-                title: 'Wrong!',
-                text: `Correct answer: ${currentCorrectAnswer}`,
+                title: 'Wrong answer!',
+                text: 'You got -5 points',
                 icon: 'error',
-                confirmButtonText: 'Nice'
+                confirmButtonText: 'Oh no'
             })
+        },
+        receiveCorrectAnswer(correctAnswer) {
+            console.log('Correct answer:', correctAnswer)
+        },
+        receiveServerStatus(status) {
+            if (!status) {
+                this.$router.push('/inactive')
+            } else {
+                this.$store.commit('SET_SERVER_STATUS', status)
+                this.$router.push('/')
+            }
+        },
+        startTrivia() {
+            this.$router.push('/')
+            this.$socket.emit('getServerStatus')
         }
     },
     created() {
+        this.$socket.emit('getServerStatus')
         this.$socket.emit('getCurrentQuestion')
     }
 }

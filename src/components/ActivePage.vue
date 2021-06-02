@@ -25,7 +25,8 @@
                     Category: {{ question.category }}
                 </div>
                 <div class="alert alert-primary">Question:</div>
-                <div class="alert alert-info">{{ question.question }}</div>
+                <!-- <div class="alert alert-info"></div> -->
+                <div class="alert alert-info" v-html="question.question"></div>
             </div>
         </div>
         <div class="row h-50">
@@ -95,6 +96,8 @@ export default {
             // console.log(this.submittedAnswer)
         }
     }
+    // created() {
+    // }
 }
 </script>
 

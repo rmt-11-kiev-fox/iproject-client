@@ -9,14 +9,17 @@
                 d-flex
                 align-items-center
             "
+            v-html="`${letter}. ${answer}`"
             @click="submitAnswer"
         >
-            {{ letter }}. {{ answer }}
+            <!-- {{ letter }}. {{ answer }} -->
         </div>
     </div>
 </template>
 
 <script>
+import Swal from 'sweetalert2'
+
 export default {
     name: 'AnswerButton',
     props: ['answer'],
@@ -38,7 +41,16 @@ export default {
     },
     methods: {
         submitAnswer() {
-            this.$emit('submitAnswer', this.answer)
+            if (this.$store.state.timeLeft === 0) {
+                Swal.fire({
+                    title: "Time's up!",
+                    text: 'Maybe click faster next time :)',
+                    icon: 'warning',
+                    confirmButtonText: 'Too bad'
+                })
+            } else {
+                this.$emit('submitAnswer', this.answer)
+            }
         }
     }
 }
