@@ -1,9 +1,9 @@
 <template>
 	<a class="card-link" href="#" v-tilt @click.prevent="setPlace">
 		<article class="blog-card">
-			<img class="post-image" :src="image" />
+			<img class="post-image" :src="place.icon" />
 			<div class="article-details">
-				<h4 class="post-category"><img :src="place.icon" alt="" /> {{ place.types[0] }}</h4>
+				<h4 class="post-category">{{ place.types[0] }}</h4>
 				<h3 class="post-title">{{ place.name }}</h3>
 				<p class="post-description">{{ place.vicinity }}</p>
 				<StarRating :increment="0.1" :rating="place.rating" :max-rating="5" :read-only="true" :show-rating="false" :star-size="20" slot="rating" />

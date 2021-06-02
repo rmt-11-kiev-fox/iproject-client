@@ -90,6 +90,7 @@ export default new Vuex.Store({
 		],
 		covidMarker: [],
 		place: {},
+		seeDirection: false,
 	},
 	mutations: {
 		SET_LOC(state, payload) {
@@ -103,6 +104,9 @@ export default new Vuex.Store({
 		},
 		SET_PLACE(state, payload) {
 			state.place = payload;
+		},
+		SET_DIRECTION(state, payload) {
+			state.seeDirection = payload;
 		},
 	},
 	actions: {
