@@ -15,7 +15,8 @@ export default new Vuex.Store({
             answers: ['', '', '', '']
         },
         timeLeft: 10,
-        isActiveServer: false
+        isActiveServer: false,
+        currentLeaderboard: []
     },
     mutations: {
         PUSH_CHATS(state, chat) {
@@ -37,6 +38,9 @@ export default new Vuex.Store({
         },
         SET_SERVER_STATUS(state, status) {
             state.isActiveServer = status
+        },
+        SET_CURRENT_LEADERBOARD(state, leaderboard) {
+            state.currentLeaderboard = leaderboard
         }
     },
     actions: {
@@ -73,13 +77,28 @@ export default new Vuex.Store({
             return axios({
                 url: '/chats',
                 method: 'POST',
-                data: chat,
+                headers: {
+                    access_token: localStorage.access_token
+                },
+                data: chat
+            })
+                .then(() => {
+                    context.dispatch('fetchChats')
+                })
+                .catch((err) => {
+                    console.log(err)
+                })
+        },
+        fetchLeaderboard(context) {
+            return axios({
+                url: '/users',
+                method: 'GET',
                 headers: {
                     access_token: localStorage.access_token
                 }
             })
-                .then(() => {
-                    context.dispatch('fetchChats')
+                .then(({ data }) => {
+                    context.commit('SET_CURRENT_LEADERBOARD', data)
                 })
                 .catch((err) => {
                     console.log(err)

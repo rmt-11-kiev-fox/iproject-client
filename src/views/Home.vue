@@ -8,19 +8,22 @@
                 <router-view />
             </div>
             <!-- leaderboard -->
-            <div class="col-3"></div>
+            <Leaderboard />
         </div>
     </div>
 </template>
 
 <script>
 import Chatbox from '../components/Chatbox'
+import Leaderboard from '../components/Leaderboard'
+
 import Swal from 'sweetalert2'
 
 export default {
     name: 'Home',
     components: {
-        Chatbox
+        Chatbox,
+        Leaderboard
     },
     sockets: {
         receiveQuestion(question) {
