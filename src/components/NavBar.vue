@@ -29,6 +29,12 @@
               <a class="nav-link">Category</a>
             </router-link>
           </li>
+      
+            <li class="nav-item">
+            <router-link to="/checkout">
+              <a class="nav-link">Checkout Stripe</a>
+            </router-link>
+          </li>
 
           <li v-if="logged" class="nav-item dropdown">
             <a
@@ -46,7 +52,7 @@
               </router-link>
               <!-- <a class="dropdown-item" href="#">My Profile</a> -->
               <a class="dropdown-item" href="#">My Donation</a>
-              <a class="dropdown-item" href="#">Something else here</a>
+              <a class="dropdown-item" href="#">My Charity</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="#">Separated link</a>
             </div>

@@ -6,7 +6,10 @@ import Profile from '../views/Profile/Profile.vue'
 import EditProfile from '../views/Profile/EditProfile.vue'
 import ProfileData from '../views/Profile/ProfileData.vue'
 import CategoryData from '../views/Category/CategoryData.vue'
-import OrganizationByKeyword from '../views/OrganizationByKeyword'
+import OrganizationByKeyword from '../views/OrganizationByKeyword.vue'
+import Checkout from '../views/Checkout.vue'
+import CheckoutSuccess from '../views/CheckoutSuccess.vue'
+
 
 Vue.use(VueRouter)
 
@@ -16,6 +19,17 @@ const routes = [
     name: 'Home',
     component: Home,
     children: [
+
+      {
+        path: '/checkout',
+        name: 'Checkout',
+        component: Checkout
+      },
+      {
+        path: '/checkout/success',
+        name: 'CheckoutSuccess',
+        component: CheckoutSuccess
+      },
       {
         path: '/organization/keyword',
         name: 'OrganizationByKeyword',
@@ -67,15 +81,6 @@ const routes = [
       }
     ]
   },
-
-  {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
 ]
 
 const router = new VueRouter({
