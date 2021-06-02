@@ -1,10 +1,8 @@
 <template>
 	<div class="outer-wrapper">
-		<!-- <div class="wrapper hasLocation"> -->
 		<div class="wrapper" :class="$store.state.location.lat ? 'hasLocation' : 'noLocation'">
 			<Landing />
 			<Started />
-			<!-- <div class="col"> -->
 			<div class="col" v-if="$store.state.location.lat">
 				<div class="row">
 					<CovidMap />
@@ -24,6 +22,9 @@ import MorePlaces from "@/views/MorePlaces";
 
 export default {
 	name: "Home",
+	data() {
+		return {};
+	},
 	components: {
 		Landing,
 		Started,

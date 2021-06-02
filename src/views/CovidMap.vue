@@ -1,5 +1,5 @@
 <template>
-	<div class="covidmap d-flex flex-column justify-content-center align-items-center">
+	<div class="covidmap d-flex flex-column justify-content-center align-items-center" id="covidMap">
 		<h3>Stay Safe and Stay Healthy</h3>
 		<GmapMap :center="{ lat: $store.state.location.lat, lng: $store.state.location.lng }" :zoom="10" map-type-id="roadmap" class="gmap">
 			<GmapInfoWindow :options="infoOptions" :position="infoWindowPos" :opened="infoWinOpen" @closeclick="infoWinOpen = false" />
