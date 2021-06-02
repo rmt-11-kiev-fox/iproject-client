@@ -69,7 +69,6 @@ export default {
           method: "POST",
           data: this.input,
         });
-        console.log(header,"ini headeer ><>><><><><><><><><><><>");
         localStorage.setItem("access_token", header.data.access_token);
         Toast.fire({
           icon: "success",
