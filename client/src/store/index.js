@@ -8,7 +8,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     booking: {},
-    bookings: []
+    bookings: [],
+    bookTemp: {}
   },
   mutations: {
     SET_BOOKINGS (state, payload) {
@@ -16,6 +17,9 @@ export default new Vuex.Store({
     },
     ADD_BOOKING (state, payload) {
       state.booking = payload
+    },
+    SET_BOOKINGTEMP (state, payload) {
+      state.bookTemp = payload
     }
   },
   actions: {
@@ -42,7 +46,7 @@ export default new Vuex.Store({
         }
       })
         .then(result => {
-          console.log(result.data)
+          // console.log(result.data)
           commit('SET_BOOKINGS', result.data.bookings)
         })
         .catch(err => {
@@ -73,6 +77,24 @@ export default new Vuex.Store({
         .then(result => {
           commit('ADD_BOOKING', result.data)
           router.push('/')
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
+    editBooking ({ dispatch, commit }, payload) {
+      axios({
+        method: 'PUT',
+        url: `http://localhost:3000/bookings/${payload.id}`,
+        data: payload,
+        headers: {
+          access_token: localStorage.access_token
+        }
+      })
+        .then(result => {
+          console.log(result)
+          dispatch('fetchBookings')
+          router.push('/admin')
         })
         .catch(err => {
           console.log(err)

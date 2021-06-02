@@ -24,6 +24,7 @@
           <td>{{ booking.notes }}</td>
           <td>
               <a
+              @click="editBooking (booking)"
               href="#"
               class="btn mx-2"
               style="background-color: #b98853; color: snow"
@@ -63,6 +64,11 @@ export default {
     },
     deleteBooking (bookingId) {
       this.$store.dispatch('deleteBooking', bookingId)
+    },
+    editBooking (bookData) {
+      console.log(bookData)
+      router.push('/editBook')
+      this.$store.commit('SET_BOOKINGTEMP', bookData)
     }
   },
   computed: {
