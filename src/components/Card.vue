@@ -1,5 +1,5 @@
 <template>
-	<a class="card-link" href="#" v-tilt>
+	<a class="card-link" href="#" v-tilt @click.prevent="setPlace">
 		<article class="blog-card">
 			<img class="post-image" :src="image" />
 			<div class="article-details">
@@ -20,6 +20,12 @@ export default {
 	props: ["place"],
 	components: {
 		StarRating,
+	},
+	methods: {
+		setPlace() {
+			this.$store.commit("SET_PLACE", this.place);
+			this.$router.push("/detail").catch(() => {});
+		},
 	},
 };
 </script>

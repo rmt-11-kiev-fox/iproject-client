@@ -13,6 +13,7 @@
     "sweetalert2": "^11.0.16",
     "vue": "^2.6.11",
     "vue-browser-geolocation": "^1.8.0",
+    "vue-google-autocomplete": "^1.1.1",
     "vue-horizontal": "^0.8.10",
     "vue-router": "^3.2.0",
     "vue-star-rating": "^1.7.0",
