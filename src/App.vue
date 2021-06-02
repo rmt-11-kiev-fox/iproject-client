@@ -1,8 +1,10 @@
 <template>
 	<div id="app">
 		<fab :position="position" :bg-color="bgColor" :actions="fabActions" @login="login" @home="home" @map="map" @search="search" :start-opened="true"></fab>
-		<router-view />
-		<div id="CenterDIV">
+		<transition name="fade" mode="out-in">
+			<router-view />
+		</transition>
+		<div class="footer">
 			<HFooter></HFooter>
 		</div>
 	</div>
@@ -72,9 +74,32 @@ export default {
 <style scoped>
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 @import url("https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css");
-#CenterDIV {
+.footer {
 	position: fixed;
-	bottom: 0;
+	bottom: 5px;
+	right: -220px;
 	display: block;
+	opacity: 0.5;
+	height: 80px;
+	background: white;
+	border-radius: 30px;
+	transition: 0.3s;
+}
+
+.footer:hover {
+	opacity: 1;
+	right: 5px;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+	transition-duration: 0.3s;
+	transition-property: opacity;
+	transition-timing-function: ease;
+}
+
+.fade-enter,
+.fade-leave-active {
+	opacity: 0;
 }
 </style>

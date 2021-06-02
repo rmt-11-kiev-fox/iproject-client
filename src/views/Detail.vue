@@ -63,10 +63,10 @@ export default {
 	methods: {
 		seeDirection() {
 			if (this.$store.state.isAuthenticate || localStorage.getItem("manis_token")) {
-				// let origin = { lat: this.location.lat ? this.location.lat : "", lng: this.location.lng ? this.location.lng : "" };
-				// let destination = `place_id:${this.place.place_id}`;
-				// let url = `https://www.google.com/maps/embed/v1/directions?key=AIzaSyBgpC1SC7h63uaj1352XOJLqxet94MCdlE`;
-				// this.src = `${url}&origin=${origin}&destination=${destination}`;
+				let origin = { lat: this.location.lat ? this.location.lat : "", lng: this.location.lng ? this.location.lng : "" };
+				let destination = `place_id:${this.place.place_id}`;
+				let url = `https://www.google.com/maps/embed/v1/directions?key=AIzaSyBgpC1SC7h63uaj1352XOJLqxet94MCdlE`;
+				this.src = `${url}&origin=${origin}&destination=${destination}`;
 				this.$store.commit("SET_DIRECTION", true);
 			} else {
 				Swal.fire({
