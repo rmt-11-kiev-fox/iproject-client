@@ -15,6 +15,7 @@ export default new Vuex.Store({
     allProduct: [],
     detailProduct: {},
     count: 0,
+    auctionData: [],
     isLogged: localStorage.user_data_bidding
       ? JSON.parse(localStorage.user_data_bidding).accessToken
       : false,
@@ -77,6 +78,9 @@ export default new Vuex.Store({
     },
     GET_COUNT_DATA_PRODUCT(state, payload) {
       state.count = payload
+    },
+    AUCTION_DATA(state, payload) {
+      state.auctionData = payload
     }
   },
   actions: {
@@ -202,6 +206,41 @@ export default new Vuex.Store({
         })
         commit('GET_ALL_DATA_PRODUCT', getData.data.cards)
         commit('GET_COUNT_DATA_PRODUCT', getData.data.count)
+      } catch (error) {
+        console.log(error)
+      }
+    },
+    async postAuctionHandler({ dispatch }, payload) {
+      try {
+        try {
+          await instanceAxios({
+            url: '/auctions',
+            method: 'POST',
+            data: payload,
+            headers: {
+              access_token: JSON.parse(localStorage.user_data_bidding)
+                .accessToken
+            }
+          })
+
+          dispatch('getDetailProduct', { productId: payload.ProductId })
+          dispatch('getAuctionHandler', { ProductId: payload.ProductId })
+        } catch (error) {
+          console.log(error)
+        }
+      } catch (error) {}
+    },
+    async getAuctionHandler({ commit }, payload) {
+      try {
+        const getData = await instanceAxios({
+          url: `/auctions/${payload.ProductId}`,
+          method: 'GET',
+          headers: {
+            access_token: JSON.parse(localStorage.user_data_bidding).accessToken
+          }
+        })
+
+        commit('AUCTION_DATA', getData.data)
       } catch (error) {
         console.log(error)
       }

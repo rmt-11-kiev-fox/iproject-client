@@ -20,10 +20,11 @@
           Remaining：{{ hours }} : {{ minutes }} : {{ seconds }}
         </vue-countdown>
       </div>
+      <div class="text" v-if="!timeFormatted">End</div>
     </div>
     <div class="icon-container">
       <i class="fas fa-info-circle icon"></i>
-      <i class="fas fa-comment icon"></i>
+      <!-- <i class="fas fa-comment icon"></i> -->
     </div>
   </div>
 </template>
@@ -50,7 +51,7 @@ export default {
   computed: {
     timeFormatted() {
       const seconds = new Date()
-      const dataInSeconds = new Date(this.data.updatedAt)
+      const dataInSeconds = new Date(this.data.createdAt)
 
       if (this.data.dueDate - (seconds - dataInSeconds) / 1000 < 0) {
         return false

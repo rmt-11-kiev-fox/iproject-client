@@ -1,5 +1,7 @@
 <template>
   <div id="app">
+    <HFooter></HFooter>
+
     <div class="dashboard-container">
       <OverlayModal v-if="loginToggle">
         <LoginForm
@@ -34,12 +36,13 @@
 </template>
 
 <script>
-// import Loader from "../components/loader/index"
+// import Loader from '../components/loader/index'
 import ListMenu from './components/listMenu/index'
 import HeaderDashboard from './components/headerListMenu/index'
 import OverlayModal from './components/modal/index'
 import LoginForm from './components/loginForm/index.vue'
 import RegisterForm from './components/registerForm/index.vue'
+import HFooter from 'vue-hacktiv8-footer'
 export default {
   name: 'App',
   data() {
@@ -72,7 +75,8 @@ export default {
     HeaderDashboard,
     LoginForm,
     OverlayModal,
-    RegisterForm
+    RegisterForm,
+    HFooter
   }
 }
 </script>

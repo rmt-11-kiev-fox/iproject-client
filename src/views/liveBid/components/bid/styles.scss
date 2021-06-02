@@ -2,14 +2,46 @@
   z-index: 2;
   display: flex;
   width: 100%;
+  justify-content: center;
+  flex-direction: column;
 
   .item {
     padding: 4px 16px;
-    border: 1px solid #426696;
     border-radius: 16px;
     margin-right: 8px;
+  }
+
+  .add {
+    border: 2px solid #17a589;
+    color: #17a589;
     cursor: pointer;
-    color: #426696;
+  }
+
+  .minus {
+    border: 2px solid #fb143b;
+    color: #fb143b;
+    cursor: pointer;
+  }
+
+  .val {
+    background: #43b8a2;
+    margin: 0 16px;
+    color: white;
+    width: 270px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .button {
+    background: #f15c60;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    width: 50px;
+    cursor: pointer;
   }
 
   .input-container {

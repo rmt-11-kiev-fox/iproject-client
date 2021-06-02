@@ -6,10 +6,10 @@
     <transition-group name="flip-list" tag="div">
       <div
         class="floating-button child"
-        v-for="(item, idx) in standings"
-        :key="item.name"
+        v-for="(item, idx) in getAuctionData"
+        :key="item.id"
       >
-        {{ idx + 1 }}. {{ item.name }} [ {{ item.val }}]
+        {{ idx + 1 }}. {{ item.username }} [ Rp {{ item.price }}]
       </div>
     </transition-group>
   </div>
@@ -17,23 +17,22 @@
 
 <script>
 export default {
+  props: ['data'],
   name: 'Standings',
   data() {
-    return {
-      standings: [
-        { name: 'Kevin Anggara', val: 'Rp 250.000' },
-        { name: 'Joni wik', val: 'Rp 250.000' },
-        { name: 'Monica Sezoro', val: 'Rp 250.000' }
-      ]
-    }
+    return {}
   },
   methods: {
-    resuffle() {
-      this.standings = [
-        { name: 'Joni wik', val: 'Rp 250.000' },
-        { name: 'Kevin Anggara', val: 'Rp 250.000' },
-        { name: 'Monica Sezoro', val: 'Rp 250.000' }
-      ]
+    resuffle() {}
+  },
+  created() {
+    this.$store.dispatch('getAuctionHandler', {
+      ProductId: this.$route.params.id
+    })
+  },
+  computed: {
+    getAuctionData() {
+      return this.$store.state.auctionData
     }
   }
 }

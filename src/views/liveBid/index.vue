@@ -5,8 +5,8 @@
     </div>
     <div class="live-bid-container">
       <Product :data="getData" />
-      <Standing />
-      <Bid />
+      <Standing :data="getData" />
+      <Bid v-if="didMount" />
     </div>
   </div>
 </template>
@@ -23,10 +23,16 @@ export default {
     Standing,
     Bid
   },
-  created() {
-    this.$store.dispatch('getDetailProduct', {
+  data() {
+    return {
+      didMount: false
+    }
+  },
+  async created() {
+    await this.$store.dispatch('getDetailProduct', {
       productId: this.$route.params.id
     })
+    this.didMount = true
   },
   computed: {
     getData() {

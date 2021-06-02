@@ -21,7 +21,7 @@
       <!-- <div class="text">current price : $5000</div> -->
       <div class="title">{{ data.name }}</div>
       <div class="text">{{ data.category }}</div>
-      <div class="text highlight">Last Offer : Rp 500.000</div>
+      <div class="text highlight">Last Offer : Rp {{ data.currentBid }}</div>
 
       <!-- <div class="bar">
           <div class="percentage" />
@@ -59,7 +59,7 @@ export default {
   computed: {
     timeFormatted() {
       const seconds = new Date()
-      const dataInSeconds = new Date(this.data.updatedAt)
+      const dataInSeconds = new Date(this.data.createdAt)
       if (this.data.dueDate - (seconds - dataInSeconds) / 1000 < 0) {
         return 0
       } else {
