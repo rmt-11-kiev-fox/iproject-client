@@ -7,9 +7,17 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
+    path: '/home',
+    alias: '/',
     name: 'Home',
-    component: Home
+    component: Home,
+    children: [
+      {
+        name: 'AnimalFiltered',
+        path: '/home/:type',
+        component: Home
+      }
+    ]
   },
   {
     path: '/login',

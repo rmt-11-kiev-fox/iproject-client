@@ -19,7 +19,11 @@ export default {
   },
   computed: {
     animals () {
-      return this.$store.state.animals
+      let type = ''
+      if (this.$route.params.type) {
+        type = this.$route.params.type
+      }
+      return this.$store.getters.filteredAnimalByType(type)
     }
   }
 }

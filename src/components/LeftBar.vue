@@ -11,7 +11,26 @@
       </div>
       <div class="row my-4 w-75">
         <h4>Type:</h4>
-        <a v-for="(type, i) in types" :key="i" class="type-opt ms-4">{{ type }}</a>
+        <router-link
+            to="/home"
+            :class="{
+                type_opt: $route.params.type,
+                type_choosed: !$route.params.type
+            }"
+            class="ms-4"
+            >All
+        </router-link>
+        <router-link
+            :to="'/home/' + type"
+            v-for="(type, i) in types"
+            :key="i"
+            :class="{
+                type_opt: $route.params.type !== type,
+                type_choosed: $route.params.type === type
+            }"
+            class="ms-4"
+            >{{ type }}
+        </router-link>
       </div>
     </div>
 </template>
@@ -31,8 +50,12 @@ export default {
 .left-bar {
   background-color: rgba(134, 134, 134, 0.692);
 }
-.type-opt {
+.type_opt {
     cursor: pointer;
     color: aliceblue;
+}
+.type_choosed {
+    cursor: pointer;
+    color: rgb(7, 63, 0);
 }
 </style>

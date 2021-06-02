@@ -176,5 +176,18 @@ export default new Vuex.Store({
     }
   },
   modules: {
+  },
+  getters: {
+    filteredAnimalByType: (state) => (payload) => {
+      const temp = []
+      state.animals.forEach((element) => {
+        if (element.type.toLowerCase() === payload.toLowerCase()) {
+          temp.push(element)
+        } else if (payload === '') {
+          temp.push(element)
+        }
+      })
+      return temp
+    }
   }
 })
