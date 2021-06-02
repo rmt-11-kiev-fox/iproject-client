@@ -11,7 +11,8 @@ export default new Vuex.Store({
     upcomingMovies: [],
     detailMovie: [],
     similarMovies: [],
-    wishlist: []
+    wishlist: [],
+    movieNews: []
   },
   mutations: {
     SET_POPULAR_MOVIES(state, movies) {
@@ -31,9 +32,19 @@ export default new Vuex.Store({
     },
     SET_WISHLIST(state, wishlist) {
       state.wishlist = wishlist;
+    },
+    SET_NEWS_MOVIES(state, news) {
+      state.movieNews = news;
     }
   },
   actions: {
+    register(context, userData) {
+      return axios({
+        url: "/register",
+        method: "POST",
+        data: userData
+      });
+    },
     login(context, userData) {
       return axios({
         url: "login",
@@ -139,6 +150,19 @@ export default new Vuex.Store({
         })
         .catch(err => {
           console.log(err, "err in fetch wisthlist");
+        });
+    },
+    fetchMovieNews({ commit }) {
+      axios({
+        url: "/news/movies",
+        method: "GET"
+      })
+        .then(({ data }) => {
+          console.log(data.data.value, "fetch movie news data in store");
+          commit("SET_NEWS_MOVIES", data.data.value);
+        })
+        .catch(err => {
+          console.log(err, "err in fetch popular movies");
         });
     }
   },

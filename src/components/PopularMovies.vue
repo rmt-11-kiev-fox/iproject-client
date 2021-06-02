@@ -10,7 +10,7 @@
       </div>
       <div class="block-description">
         <h6 class="iq-title">
-          <a href="movie-details.html">{{ movies.title }}</a>
+          <a>{{ movies.title }}</a>
         </h6>
         <div class="movie-time d-flex align-items-center my-2">
           <div class="badge badge-secondary p-1 mr-2">

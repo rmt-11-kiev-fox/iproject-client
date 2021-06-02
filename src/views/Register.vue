@@ -11,8 +11,19 @@
           <div class="sign-user_card ">
             <div class="sign-in-page-data">
               <div class="sign-in-from w-100 m-auto">
-                <h3 class="mb-3 text-center">Sign in</h3>
-                <form @submit.prevent="login" class="mt-4">
+                <h3 class="mb-3 text-center">Sign Up</h3>
+                <form @submit.prevent="register" class="mt-4">
+                  <div class="form-group">
+                    <input
+                      type="text"
+                      class="form-control mb-0"
+                      id="exampleInputEmail1"
+                      placeholder="Enter UserName"
+                      autocomplete="off"
+                      required
+                      v-model="userName"
+                    />
+                  </div>
                   <div class="form-group">
                     <input
                       type="email"
@@ -36,16 +47,16 @@
                   </div>
 
                   <div class="sign-info">
-                    <button type="submit" class="btn btn-hover">Sign in</button>
+                    <button type="submit" class="btn btn-hover">Sign Up</button>
                   </div>
                 </form>
               </div>
             </div>
             <div class="mt-3">
               <div class="d-flex justify-content-center links">
-                Don't have an account?
-                <router-link to="/register" class="text-primary ml-2"
-                  >Sign Up</router-link
+                Already have an account?
+                <router-link to="/login" class="text-primary ml-2"
+                  >Sign In</router-link
                 >
               </div>
             </div>
@@ -61,22 +72,23 @@ export default {
   name: "Login",
   data() {
     return {
+      userName: "",
       email: "",
       password: ""
     };
   },
   methods: {
-    login() {
+    register() {
       const userData = {
+        userName: this.userName,
         email: this.email,
         password: this.password
       };
-      console.log(userData, "userdata");
+      //   console.log(userData, "userdata");
       this.$store
-        .dispatch("login", userData)
+        .dispatch("register", userData)
         .then(({ data }) => {
-          localStorage.setItem("access_token", data.access_token);
-          this.$router.push("/");
+          this.$router.push("/login");
         })
         .catch(err => {
           console.log(err, "login err");
@@ -85,9 +97,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-.sign-in-page {
-  background-color: black;
-}
-</style>

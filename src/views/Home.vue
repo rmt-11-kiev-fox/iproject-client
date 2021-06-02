@@ -154,7 +154,11 @@
             <div class="favorites-contens">
               <ul class="favorites-slider list-inline  row p-0 mb-0">
                 <!-- list start -->
-                <PopularMovies></PopularMovies>
+                <MovieNews
+                  v-for="(news, i) in movieNews"
+                  :key="i"
+                  :news="news"
+                ></MovieNews>
                 <!-- list end -->
               </ul>
             </div>
@@ -169,12 +173,14 @@
 <script>
 import Navbar from "../components/Navbar";
 import PopularMovies from "../components/PopularMovies";
+import MovieNews from "../components/MovieNews";
 
 export default {
   name: "Home",
   components: {
     Navbar,
-    PopularMovies
+    PopularMovies,
+    MovieNews
   },
   created() {
     this.$store.dispatch("fetchPopularMovies");
@@ -185,6 +191,9 @@ export default {
   computed: {
     popularMovies() {
       return this.$store.state.popularMovies;
+    },
+    movieNews() {
+      return this.$store.state.movieNews;
     }
   }
 };

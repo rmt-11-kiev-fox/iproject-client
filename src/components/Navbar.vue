@@ -25,12 +25,6 @@
               </a>
               <a class="navbar-brand">
                 <h5>Red Envelope</h5>
-                <!-- <img
-                  class="img-fluid logo"
-                  src="https://thumbs.dreamstime.com/b/red-envelope-5407416.jpg"
-                  alt="streamit"
-                  id="logo-image"
-                /> -->
               </a>
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <div class="menu-main-menu-container">
@@ -45,7 +39,7 @@
                       <a>My Wishlist</a>
                     </li>
                     <li class="menu-item">
-                      <a>Logout</a>
+                      <a @click="logout">Logout</a>
                     </li>
                   </ul>
                 </div>
@@ -74,54 +68,6 @@
                         alt="user"
                       />
                     </a>
-                    <div class="iq-sub-dropdown iq-user-dropdown">
-                      <div class="iq-card shadow-none m-0">
-                        <div class="iq-card-body p-0 pl-3 pr-3">
-                          <a class="iq-sub-card setting-dropdown">
-                            <div class="media align-items-center">
-                              <div class="right-icon">
-                                <i class="ri-file-user-line text-primary"></i>
-                              </div>
-                              <div class="media-body ml-3">
-                                <h6 class="my-0 ">Manage Profile</h6>
-                              </div>
-                            </div>
-                          </a>
-                          <a class="iq-sub-card setting-dropdown">
-                            <div class="media align-items-center">
-                              <div class="right-icon">
-                                <i class="ri-settings-4-line text-primary"></i>
-                              </div>
-                              <div class="media-body ml-3">
-                                <h6 class="my-0 ">Settings</h6>
-                              </div>
-                            </div>
-                          </a>
-                          <a class="iq-sub-card setting-dropdown">
-                            <div class="media align-items-center">
-                              <div class="right-icon">
-                                <i class="ri-settings-4-line text-primary"></i>
-                              </div>
-                              <div class="media-body ml-3">
-                                <h6 class="my-0 ">Pricing Plan</h6>
-                              </div>
-                            </div>
-                          </a>
-                          <a class="iq-sub-card setting-dropdown">
-                            <div class="media align-items-center">
-                              <div class="right-icon">
-                                <i
-                                  class="ri-logout-circle-line text-primary"
-                                ></i>
-                              </div>
-                              <div class="media-body ml-3">
-                                <h6 class="my-0 ">Logout</h6>
-                              </div>
-                            </div>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
                   </li>
                 </ul>
               </div>
@@ -135,7 +81,14 @@
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    logout() {
+      localStorage.clear();
+      this.$router.push("/login");
+    }
+  }
+};
 </script>
 
 <style scoped>
