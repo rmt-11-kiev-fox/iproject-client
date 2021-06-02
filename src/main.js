@@ -13,7 +13,7 @@ Vue.use(VueHorizontal);
 Vue.use(VueTilt);
 Vue.use(VueGoogleMaps, {
 	load: {
-		// key: "AIzaSyBgpC1SC7h63uaj1352XOJLqxet94MCdlE",
+		key: "AIzaSyBgpC1SC7h63uaj1352XOJLqxet94MCdlE",
 		libraries: "places,drawing,visualization",
 	},
 	installComponents: true,

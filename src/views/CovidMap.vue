@@ -85,7 +85,7 @@ export default {
 .covidmap {
 	width: 100vw;
 	height: 100vh;
-	background-image: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0)), url("../assets/bg-home.png");
+	background-image: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0), rgba(255, 255, 255, 1), rgba(255, 255, 255, 0), rgba(255, 255, 255, 1)), url("../assets/bg-home.png");
 	background-size: 100% 100%;
 	background-repeat: no-repeat;
 }
