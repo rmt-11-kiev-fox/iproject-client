@@ -20,11 +20,10 @@
                     justify-content-center
                 "
             >
-                <div class="badge bg-dark">
-                    Category: {{ question.category }}
-                </div>
+                <div class="alert alert-warning">Time left: {{ timeLeft }}</div>
+                <div class="badge bg-dark">Category: {{}}</div>
                 <div class="alert alert-primary">Question:</div>
-                <div class="alert alert-info">{{ question.question }}</div>
+                <div class="alert alert-info">{{}}</div>
             </div>
         </div>
         <div class="row h-50">
@@ -40,18 +39,10 @@
             >
                 <div class="container h-100">
                     <div class="row h-100">
-                        <div class="col-6 border">
-                            A. {{ question.answers[0] }}
-                        </div>
-                        <div class="col-6 border">
-                            B. {{ question.answers[1] }}
-                        </div>
-                        <div class="col-6 border">
-                            C. {{ question.answers[2] }}
-                        </div>
-                        <div class="col-6 border">
-                            D. {{ question.answers[3] }}
-                        </div>
+                        <div class="col-6 border">A. {{}}</div>
+                        <div class="col-6 border">B. {{}}</div>
+                        <div class="col-6 border">C. {{}}</div>
+                        <div class="col-6 border">D. {{}}</div>
                     </div>
                 </div>
             </div>
@@ -69,6 +60,9 @@ export default {
         // isActiveServer() {
         //     // return this.$store.state.isActiveServer
         // }
+        timeLeft() {
+            return this.$store.state.timeLeft
+        }
     },
     sockets: {
         // receiveQuestion(currentQuestion) {

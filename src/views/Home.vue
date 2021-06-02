@@ -29,6 +29,9 @@ export default {
         //     // this.$store.commit('SET_SERVER_STATUS', status)
         //     // this.$router.push('/')
         // }
+        receiveTimeLeft(time) {
+            this.$store.commit('SET_TIME_LEFT', time)
+        }
     },
     created() {
         // this.$socket.emit('getServerStatus')
