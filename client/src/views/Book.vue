@@ -12,10 +12,11 @@
           <div class="card mx-auto" style="width: 40rem">
             <div class="card-body shadow">
               <h5 class="card-title">BOOK FORM</h5>
-              <form>
+              <form @submit.prevent="addBooking">
                 <div class="form-group my-3">
                   <label for="exampleFormControlInput1">Email address</label>
                   <input
+                    v-model="booking.email"
                     type="email"
                     class="form-control my-3"
                     id="exampleFormControlInput1"
@@ -25,13 +26,14 @@
                 <div class="form-group my-3">
                   <label for="exampleFormControlInput1">Name</label>
                   <input
+                  v-model="booking.name"
                     class="form-control my-3"
                     id="exampleFormControlInput1"
                   />
                 </div>
                 <div class="form-group my-3">
                   <label for="exampleFormControlSelect1">People</label>
-                  <select class="form-control my-3" id="exampleFormControlSelect1">
+                  <select class="form-control my-3" id="exampleFormControlSelect1" v-model="booking.people">
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -45,6 +47,7 @@
                     >Notes</label
                   >
                   <textarea
+                    v-model="booking.notes"
                     class="form-control my-3"
                     id="exampleFormControlTextarea1"
                     rows="3"
@@ -70,6 +73,21 @@ export default {
   components: {
     navBar,
     Footer
+  },
+  data () {
+    return {
+      booking: {
+        name: '',
+        email: '',
+        people: '',
+        notes: ''
+      }
+    }
+  },
+  methods: {
+    addBooking () {
+      this.$store.dispatch('addBooking', this.booking)
+    }
   }
 }
 </script>

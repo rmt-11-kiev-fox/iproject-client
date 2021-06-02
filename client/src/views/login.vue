@@ -7,10 +7,11 @@
           <div class="card mx-auto px-3 py-5" style="width: 40rem; margin-top: 7rem; margin-bottom:11.45rem; padding-top: 2rem;">
             <div class="card-body">
               <h5 class="card-title text-center">MAKANOLOGY ADMIN LOGIN</h5>
-              <form>
+              <form @submit.prevent="login">
                 <div class="form-group my-3">
                   <label for="exampleFormControlInput1">Username</label>
                   <input
+                  v-model="admin.username"
                     class="form-control my-3"
                     id="exampleFormControlInput1"
                   />
@@ -18,6 +19,7 @@
                 <div class="form-group my-3">
                   <label for="exampleFormControlInput1">Password</label>
                   <input
+                  v-model="admin.password"
                     type="password"
                     class="form-control my-3"
                     id="exampleFormControlInput1"
@@ -34,7 +36,20 @@
 
 <script>
 export default {
-  name: 'AdminLogin'
+  name: 'AdminLogin',
+  data () {
+    return {
+      admin: {
+        username: '',
+        password: ''
+      }
+    }
+  },
+  methods: {
+    login () {
+      this.$store.dispatch('login', this.admin)
+    }
+  }
 }
 </script>
 

@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Book from '../views/Book'
 import Location from '../views/Location'
+import Admin from '../views/admin'
 
 Vue.use(VueRouter)
 
@@ -29,6 +30,11 @@ const routes = [
     path: '/book',
     name: 'Book',
     component: Book
+  },
+  {
+    path: '/admin',
+    name: 'Admin',
+    component: Admin
   },
   {
     path: '/login',
