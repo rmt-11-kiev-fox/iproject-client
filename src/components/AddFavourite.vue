@@ -53,7 +53,17 @@ export default {
   },
   methods: {
     createFavourite () {
-      console.log({ leagueKey: this.leagueKey, teamKey: this.teamKey, teamName: this.teamName })
+      const payload = { leagueKey: this.leagueKey, teamKey: this.teamKey, teamName: this.teamName }
+      // console.log(payload)
+      this.$store.dispatch('addToFavourite', payload)
+        .then(({ data }) => {
+          this.$store.dispatch('fetchFavourites')
+          this.$emit('hideFormFavourite')
+          console.log(data, 'created')
+        })
+        .catch((err) => {
+          console.log(err)
+        })
     }
   }
 }

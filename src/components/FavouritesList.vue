@@ -1,12 +1,18 @@
 <template>
   <li>
-      <a @click.prevent="favActive" href="#">club name</a>
+      <a @click.prevent="favActive(favourite)" href="#">{{favourite.teamName}}</a>
   </li>
 </template>
 
 <script>
 export default {
-  name: 'FavouritesList'
+  name: 'FavouritesList',
+  props: ['favourite'],
+  methods: {
+    favActive (favourite) {
+      console.log(favourite)
+    }
+  }
 }
 </script>
 

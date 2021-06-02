@@ -77,16 +77,22 @@ export default new Vuex.Store({
         })
     },
     fetchTeams (context, leagueKey) {
-      const testdata = {
-        leagueKey
-      }
-      console.log(leagueKey, testdata)
       return axios({
         url: `/teams/?leagueKey=${leagueKey}`,
         method: 'get',
         headers: {
           access_token: localStorage.getItem('access_token')
         }
+      })
+    },
+    addToFavourite (context, payload) {
+      return axios({
+        url: '/favourites',
+        headers: {
+          access_token: localStorage.getItem('access_token')
+        },
+        method: 'post',
+        data: payload
       })
     }
   },
