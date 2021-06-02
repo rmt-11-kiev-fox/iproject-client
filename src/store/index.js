@@ -11,7 +11,9 @@ export default new Vuex.Store({
     errorLogin: false,
     errorRegister: [],
     isDark: false,
-    animals: []
+    animals: [],
+    favorites: [],
+    types: []
   },
   mutations: {
     SET_ISLOGIN (state, payload) {
@@ -28,6 +30,12 @@ export default new Vuex.Store({
     },
     SET_ANIMALS (state, payload) {
       state.animals = payload
+    },
+    SET_FAVORITES (state, payload) {
+      state.favorites = payload
+    },
+    SET_TYPES (state, payload) {
+      state.types = payload
     }
   },
   actions: {
@@ -95,12 +103,75 @@ export default new Vuex.Store({
         headers: { access_token: localStorage.access_token }
       })
         .then(({ data }) => {
-          console.log(data)
           context.commit('SET_ANIMALS', data.animals)
-          console.log(context.state.animals)
+          let temp = []
+          data.animals.forEach((element) => {
+            if (!temp.includes(element.type)) {
+              temp.push(element.type)
+            }
+          })
+          temp = temp.sort()
+          context.commit('SET_TYPES', temp)
         })
         .catch((err) => {
-          console.log(err.response.data)
+          if (err.response.data.message === 'Please Login First') {
+            localStorage.clear()
+            router.push('/login')
+          }
+        })
+    },
+    fetchFavorite (context) {
+      axios({
+        method: 'GET',
+        url: '/favorites',
+        headers: { access_token: localStorage.access_token }
+      })
+        .then(({ data }) => {
+          const map = data.data.Animals.map((element) => {
+            return element.name
+          })
+          context.commit('SET_FAVORITES', map)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    },
+    addToFavorite (context, payload) {
+      axios({
+        method: 'POST',
+        url: `/favorites/${payload}`,
+        headers: { access_token: localStorage.access_token }
+      })
+        .then(({ data }) => {
+          context.dispatch('fetchAnimals')
+          context.dispatch('fetchFavorite')
+        })
+        .catch((err) => {
+          Vue.swal({
+            title: err.response.data.message,
+            imageUrl: 'https://www.pngkit.com/png/full/322-3220303_drawn-bunny-sad-crying-rabbit-cartoon.png',
+            imageWidth: 100,
+            background: 'rgba(0, 175, 58, 0.733)'
+          })
+        })
+    },
+    removeFromFavorite (context, payload) {
+      axios({
+        method: 'DELETE',
+        url: `/favorites/${payload}`,
+        headers: { access_token: localStorage.access_token }
+      })
+        .then(({ data }) => {
+          context.dispatch('fetchAnimals')
+          context.dispatch('fetchFavorite')
+        })
+        .catch((err) => {
+          Vue.swal({
+            title: err.response.data.message,
+            imageUrl: 'https://www.pngkit.com/png/full/322-3220303_drawn-bunny-sad-crying-rabbit-cartoon.png',
+            imageWidth: 100,
+            background: 'rgba(0, 175, 58, 0.733)'
+          })
         })
     }
   },

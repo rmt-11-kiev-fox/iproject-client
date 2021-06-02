@@ -2,15 +2,18 @@
   <div id="app">
     <Navbar></Navbar>
     <router-view/>
+    <HFooter class="fixed-bottom"></HFooter>
   </div>
 </template>
 
 <script>
 import Navbar from './components/Navbar'
+import HFooter from 'vue-hacktiv8-footer'
 export default {
   name: 'Apps',
   components: {
-    Navbar
+    Navbar,
+    HFooter
   },
   computed: {
     bgImg () {
