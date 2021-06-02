@@ -19,13 +19,6 @@ export default new Vuex.Store({
         SET_LOBBY_CHAT(state, payload) {
             state.lobbyChat.push(payload);
         },
-        // SOCKET_onlineUsers(state, payload) {
-        //     // console.log("masuk socket onlineusers", payload);
-        //     state.onlineUsers = payload;
-        // },
-        // SOCKET_guestsNumber(state, payload) {
-        //     state.guests = payload;
-        // },
         SOCKET_updateData(state, payload) {
             state.onlineUsers = payload.onlineUsers;
             state.guests = payload.guestsNumber;
@@ -42,6 +35,15 @@ export default new Vuex.Store({
                 url: "/login",
                 data: {
                     googleToken: payload.qc.id_token,
+                },
+            });
+        },
+        findSongs(context, payload) {
+            return axios({
+                method: "post",
+                url: "/search",
+                data: {
+                    searchDetails: payload,
                 },
             });
         },
@@ -62,4 +64,5 @@ export default new Vuex.Store({
         },
     },
     modules: {},
+    getters: {},
 });
