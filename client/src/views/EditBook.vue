@@ -1,11 +1,5 @@
 <template>
-  <div :style="
-          { backgroundImage: 'url(' + require('@/Picture/bookback.jpg') + ')' }
-        "
-        style="
-      background-size: 2000px;
-    ">
-    <navBar />
+  <div>
     <div class="container-fluid" >
       <div class="row" >
         <div class="col-12" style="margin-top: 11rem; margin-bottom: 5rem">
@@ -66,27 +60,24 @@
 </template>
 
 <script>
-import navBar from '../components/Navbar'
-import Footer from '../components/Footer'
 export default {
-  name: 'Book',
+  name: 'EditBook',
   components: {
-    navBar,
-    Footer
   },
   data () {
     return {
       booking: {
-        name: '',
-        email: '',
-        people: '',
-        notes: ''
+        id: this.$store.state.bookTemp.id,
+        name: this.$store.state.bookTemp.name,
+        email: this.$store.state.bookTemp.email,
+        people: this.$store.state.bookTemp.people,
+        notes: this.$store.state.bookTemp.notes
       }
     }
   },
   methods: {
     addBooking () {
-      this.$store.dispatch('addBooking', this.booking)
+      this.$store.dispatch('editBooking', this.booking)
     }
   }
 }
