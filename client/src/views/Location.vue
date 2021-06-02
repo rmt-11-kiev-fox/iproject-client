@@ -77,7 +77,8 @@
         <span class="visually-hidden">Next</span>
       </button>
     </div>
-    <div class="row" style="width: 100.65%">
+    <div class="container-fluid">
+        <div class="row" style="">
       <div class="col-12 bg-dark">
         <div class="text-center py-4">
           <img src="../Picture/LOCATION.png" alt="" width="" height="90" />
@@ -200,6 +201,7 @@
           </div>
         </div>
       </div>
+    </div>
     </div>
     <Footer style="width: 100.65%" />
   </div>
