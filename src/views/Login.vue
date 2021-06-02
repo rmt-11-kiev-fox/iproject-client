@@ -66,6 +66,7 @@ export default {
           console.log(data)
           localStorage.setItem('access_token', data.access_token)
           this.$store.dispatch('fetchCountries')
+          this.$store.dispatch('fetchFavourites')
           this.$router.push('/')
         })
         .catch((err) => {
@@ -82,6 +83,7 @@ export default {
           localStorage.setItem('access_token', data.access_token)
           localStorage.setItem('username', data.username)
           this.$store.dispatch('fetchCountries')
+          this.$store.dispatch('fetchFavourites')
           this.$router.push('/')
         })
         .catch(err => {
