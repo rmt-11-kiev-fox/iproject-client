@@ -35,7 +35,16 @@ const routes = [
   {
     path: '/admin',
     name: 'Admin',
-    component: Admin
+    component: Admin,
+    beforeEnter (to, from, next) {
+      if (!localStorage.access_token) {
+        next({
+          name: 'AdminLogin'
+        })
+      } else {
+        next()
+      }
+    }
   },
   {
     path: '/login',
@@ -43,12 +52,30 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/login.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/login.vue'),
+    beforeEnter (to, from, next) {
+      if (localStorage.access_token) {
+        next({
+          name: 'Admin'
+        })
+      } else {
+        next()
+      }
+    }
   },
   {
     path: '/editBook',
     name: 'EditBook',
-    component: EditBook
+    component: EditBook,
+    beforeEnter (to, from, next) {
+      if (!localStorage.access_token) {
+        next({
+          name: 'AdminLogin'
+        })
+      } else {
+        next()
+      }
+    }
   }
 ]
 
