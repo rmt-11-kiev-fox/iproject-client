@@ -10,6 +10,7 @@ export default new Vuex.Store({
         onlineUsers: [],
         guests: 0,
         lobbyChat: [],
+        rooms: [],
     },
     mutations: {
         SET_USER(state, payload) {
@@ -28,6 +29,7 @@ export default new Vuex.Store({
         SOCKET_updateData(state, payload) {
             state.onlineUsers = payload.onlineUsers;
             state.guests = payload.guestsNumber;
+            state.rooms = payload.rooms;
         },
         SOCKET_newLobbyMessage(state, payload) {
             state.lobbyChat.push(payload);
