@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Medicio Bootstrap Template - Index</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Medicio - v4.3.0
+  * Template URL: https://bootstrapmade.com/medicio-free-bootstrap-theme/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+    <!-- <div id="app"> -->
+
+        <!-- ======= NAVBAR ======= -->
+        <header id="header" class="fixed-top">
+          <div class="container d-flex align-items-center">
+
+            <a class="logo me-auto"><img src="@/assets/img/logo.png" alt=""></a>
+
+            <nav id="navbar" class="navbar order-last order-lg-0">
+              <ul>
+                <li><a class="nav-link scrollto">Home</a></li>
+                <li class="dropdown"><a href="#"><span>User</span> <i class="bi bi-chevron-down"></i></a>
+                  <ul>
+                    <li><a>Logout</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </nav>
+
+            <a class="appointment-btn scrollto"><span class="d-none d-md-inline">Are you a doctor?</span> Register now!</a>
+
+          </div>
+        </header>
+
+        <!-- hero section needs to wrap the route link in App.vue -->
+        <section id="hero">
+            <!-- Login -->
+            <div class="container mt-5">
+                <h2>Welcome to <span>Medicio</span></h2>
+                <p>Please log in with your account</p>
+                <form>
+                    <div class="col-md-6 form-group">
+                        <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="col-md-6 form-group mt-2">
+                        <input type="password" name="password" class="form-control" id="password" placeholder="Your password" required>
+                    </div>
+                    <a type="submit" class="btn-get-started scrollto mt-2">Login</a>
+                </form>
+            </div>
+
+            <!-- Register -->
+            <div class="container mt-5">
+                <h2>Register</h2>
+                <p>Register yourself with us to manage and diagnose patients</p>
+                <form>
+                    <div class="col-md-6 form-group">
+                        <input type="text" class="form-control" name="full_name" id="full_name" placeholder="Your Name" required>
+                    </div>
+                    <div class="col-md-6 form-group mt-2">
+                        <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="col-md-6 form-group mt-2">
+                        <input type="password" name="password" class="form-control" id="password" placeholder="Your password" required>
+                    </div>
+                    <a type="submit" class="btn-get-started scrollto mt-3">Register</a>
+                </form>
+            </div>
+
+            <!-- Home -->
+            <div class="container mt-5">
+                <h2>Patient List / Table</h2>
+                <p>Bootstrap vue table pagination</p>
+            </div>
+
+            <!-- Add Patients -->
+            <div class="container mt-5">
+                <h2>Add new patient</h2>
+                <p>Please fill out the patient data</p>
+                <form>
+                    <div class="row">
+                        <div class="col-6">
+                          <div class="form-group">
+                              <input type="text" class="form-control" name="first_name" id="first_name" placeholder="Patient's First name" required>
+                          </div>
+                          <div class="form-group mt-2">
+                              <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Patient's Last Name" required>
+                          </div>
+                          <div class="form-group mt-2">
+                              <select class="form-select" aria-label="Default select example">
+                                  <option selected disabled>Define the patient's gender</option>
+                                  <option value="male">Male</option>
+                                  <option value="female">Female</option>
+                              </select>
+                          </div>
+                          <div class="form-group mt-2">
+                              <input type="text" class="form-control" name="birth_year" id="birth_year" placeholder="Patient's Birth Year" required>
+                          </div>
+                      <a type="submit" class="btn-get-started scrollto mt-3">Submit</a>
+                      </div>
+                      <div class="col-5">
+                          <div class="form-group mb-2">
+                              <input type="text" class="form-control" name="first_name" id="first_name" placeholder="Specify the patient's symptoms" required>
+                          </div>
+                          <div class="form-group mb-2">
+                              <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Specify the patient's symptoms" required>
+                          </div>
+                          <div class="form-group mb-2">
+                              <input type="text" class="form-control" name="first_name" id="first_name" placeholder="Specify the patient's symptoms" required>
+                          </div>
+                          <div class="form-group mb-2">
+                              <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Specify the patient's symptoms" required>
+                          </div>
+                          <div class="form-group mb-2">
+                              <input type="text" class="form-control" name="first_name" id="first_name" placeholder="Specify the patient's symptoms" required>
+                          </div>
+                      </div>
+                      <div class="col-1">
+                        <button type="button" class="btn btn-info text-white">
+                          <i class="fas fa-plus"></i>
+                        </button><br>
+                        <button type="button" class="btn btn-info text-white mt-2">
+                          <i class="fas fa-plus"></i>
+                        </button><br>
+                        <button type="button" class="btn btn-info text-white mt-2">
+                          <i class="fas fa-plus"></i>
+                        </button><br>
+                        <button type="button" class="btn btn-info text-white mt-2">
+                          <i class="fas fa-plus"></i>
+                        </button><br>
+                        <button type="button" class="btn btn-info text-white mt-2">
+                          <i class="fas fa-plus"></i>
+                        </button>
+                      </div>
+                  </div>
+              </form>
+            </div>
+
+            <!-- Patients Detail -->
+            <div class="container mt-5">
+                <h2>Patient detail and diagnosis cards</h2>
+                <form>
+                  <div class="row">
+                      <div class="col-6">
+                        <div class="form-group mb-2">
+                          
+                            <input type="text" class="form-control" name="first_name" id="first_name" placeholder="Patient's First name" required>
+                        </div>
+                        <div class="form-group mb-2">
+                            <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Patient's Last Name" required>
+                        </div>
+                        <div class="form-group mb-2">
+                            <select class="form-select" aria-label="Default select example">
+                                <option selected disabled>Define the patient's gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select>
+                        </div>
+                        <div class="form-group mb-2">
+                            <input type="text" class="form-control" name="birth_year" id="birth_year" placeholder="Patient's Birth Year" required>
+                        </div>
+                    <a type="submit" class="btn-get-started scrollto mt-3">Submit</a>
+                    </div>
+                    <div class="col-5">
+                      <!-- DIAGNOSIS CARDS -->
+                        <div class="card mb-3">
+                            <div class="card-body">
+                              <h5 class="card-title">Disease Name</h5>
+                              <h6 class="card-subtitle mb-2 text-muted">Accuracy</h6>
+                              <p class="card-text">Disease Description (Profname)</p>
+                            </div>
+                        </div>
+
+                        <div class="card mb-3">
+                            <div class="card-body">
+                              <h5 class="card-title">Disease Name</h5>
+                              <h6 class="card-subtitle mb-2 text-muted">Accuracy</h6>
+                              <p class="card-text">Disease Description (Profname)</p>
+                            </div>
+                        </div>
+                      
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <h5 class="card-title">Disease Name</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Accuracy</h6>
+                                <p class="card-text">Disease Description (Profname)</p>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </form>
+            </div>
+        </section>
+    <!-- </div> -->
+
+    <!-- FontAwesome -->
+    <script src="https://kit.fontawesome.com/f440a49fd0.js" crossorigin="anonymous"></script>
+</body>
+
+</html>
