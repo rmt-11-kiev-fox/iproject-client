@@ -40,7 +40,4 @@ export default {
 </script>
 
 <style>
-.text-header {
-    @apply text-center font-semibold text-4xl mt-3 text-ch-peach;
-}
 </style>

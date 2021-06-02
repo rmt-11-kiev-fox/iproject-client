@@ -1,13 +1,16 @@
 <template>
-    <div>
+    <div class="flex flex-col max-h-screen h-screen overflow-hidden">
+        <Navbar />
         <router-view />
     </div>
 </template>
 
 <script>
+import Navbar from "./components/Navbar";
+
 export default {
     name: "App",
-    components: {},
+    components: { Navbar },
 };
 </script>
 
@@ -17,33 +20,33 @@ export default {
 }
 .slick-arrow.slick-prev,
 .slick-arrow.slick-next {
-    background-color: black;
     border-radius: 10px;
+    color: #ea5455;
 }
 
 .slick-arrow.slick-prev:hover {
-    background-color: gold;
     border-radius: 10px;
+    color: #ea5455;
 }
 .slick-arrow.slick-next:hover {
-    background-color: gold;
     border-radius: 10px;
+    color: #ea5455;
 }
 .slick-arrow.slick-next::after {
-    background-color: red;
     border-radius: 10px;
+    color: #ea5455;
 }
 .slick-arrow.slick-prev::after {
-    background-color: red;
     border-radius: 10px;
+    color: #ea5455;
 }
 .slick-arrow.slick-next::before {
-    background-color: black;
     border-radius: 10px;
+    color: #ea5455;
 }
 .slick-arrow.slick-prev::before {
-    background-color: black;
     border-radius: 10px;
+    color: #ea5455;
 }
 *::-webkit-scrollbar-thumb {
     background-color: #ea5455;
