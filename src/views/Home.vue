@@ -22,10 +22,16 @@ export default {
         Chatbox
     },
     sockets: {
-        receiveQuestion(question) {
-            // console.log(question)
-            this.$store.commit('SET_CURRENT_QUESTION', question)
-        }
+        // receiveQuestion(question) {
+        //     // this.$store.commit('SET_CURRENT_QUESTION', question)
+        // },
+        // receiveServerStatus(status) {
+        //     // this.$store.commit('SET_SERVER_STATUS', status)
+        //     // this.$router.push('/')
+        // }
+    },
+    created() {
+        // this.$socket.emit('getServerStatus')
     }
 }
 </script>

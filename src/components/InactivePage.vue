@@ -29,7 +29,7 @@
                 class="col-8 mx-auto d-flex flex-column justify-content-center"
             >
                 <button class="btn btn-primary" @click="startTrivia">
-                    wake him up!
+                    click to wake him up!
                 </button>
             </div>
         </div>
@@ -41,8 +41,8 @@ export default {
     name: 'InactivePage',
     methods: {
         startTrivia() {
-            this.$socket.emit('getQuestion')
-            this.$router.push('/')
+            // this.$socket.emit('getNewQuestion')
+            // this.$socket.emit('getServerStatus')
         }
     }
 }

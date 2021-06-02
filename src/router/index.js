@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 
 import Home from '../views/Home'
 import Login from '../views/Login'
+import ActivePage from '../components/ActivePage'
 
 Vue.use(VueRouter)
 
@@ -15,7 +16,7 @@ const routes = [
             {
                 path: '/',
                 name: 'ActivePage',
-                component: () => import('../components/ActivePage')
+                component: ActivePage
             },
             {
                 path: '/inactive',

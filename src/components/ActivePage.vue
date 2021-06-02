@@ -63,9 +63,21 @@
 export default {
     name: 'ActivePage',
     computed: {
-        question() {
-            return this.$store.state.currentQuestion
-        }
+        // question() {
+        //     // return this.$store.state.currentQuestion
+        // },
+        // isActiveServer() {
+        //     // return this.$store.state.isActiveServer
+        // }
+    },
+    sockets: {
+        // receiveQuestion(currentQuestion) {
+        //     // this.$store.commit('SET_CURRENT_QUESTION', currentQuestion)
+        // }
+    },
+    created() {
+        // if (!this.isActiveServer) return this.$router.push('/inactive')
+        // this.$socket.emit('getCurrentQuestion')
     }
 }
 </script>
