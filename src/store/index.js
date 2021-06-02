@@ -83,7 +83,6 @@ export default new Vuex.Store({
             access_token: localStorage.access_token
           }
         })
-        console.log(newProduct,"><><><><.");
         const donation = newProduct.data
         await dispatch('checkout', donation)
       } catch (err) {
@@ -102,8 +101,6 @@ export default new Vuex.Store({
           }
         })
         const success = stripe.redirectToCheckout({ sessionId: session.data.id })
-        console.info(success);
-
       } catch (err) {
         console.log(err);
       }
@@ -136,7 +133,7 @@ export default new Vuex.Store({
         })
         console.log(lineItems);
         const donation = {
-          charityName: product.data.name,
+          organizationName: product.data.name,
           donationAmount: lineItems.amount_total,
         }
         await dispatch('createDonation', donation)
@@ -147,7 +144,6 @@ export default new Vuex.Store({
     },
 
     async createDonation({ commit }, donation) {
-      console.log(donation,"<<><><><><><.");
       try {
         const createdonation = await instanceAxios({
           url: '/donation',
