@@ -50,7 +50,8 @@ export default {
 			})
 				.then((coordinates) => {
 					this.$store.dispatch("setLocation", coordinates);
-					localStorage.setItem("location", coordinates);
+					localStorage.setItem("lat", coordinates.lat);
+					localStorage.setItem("lng", coordinates.lng);
 				})
 				.catch((err) => {
 					console.log(err);

@@ -62,35 +62,22 @@ export default {
 	},
 	methods: {
 		seeDirection() {
-			if (this.$store.state.isAuthenticate || localStorage.access_token) {
-				let origin = { lat: this.location.lat ? this.location.lat : "", lng: this.location.lng ? this.location.lng : "" };
-				let destination = `place_id:${this.place.place_id}`;
-				let url = `https://www.google.com/maps/embed/v1/directions?key=AIzaSyBgpC1SC7h63uaj1352XOJLqxet94MCdlE`;
-				this.src = `${url}&origin=${origin}&destination=${destination}`;
+			if (this.$store.state.isAuthenticate || localStorage.getItem("manis_token")) {
+				// let origin = { lat: this.location.lat ? this.location.lat : "", lng: this.location.lng ? this.location.lng : "" };
+				// let destination = `place_id:${this.place.place_id}`;
+				// let url = `https://www.google.com/maps/embed/v1/directions?key=AIzaSyBgpC1SC7h63uaj1352XOJLqxet94MCdlE`;
+				// this.src = `${url}&origin=${origin}&destination=${destination}`;
 				this.$store.commit("SET_DIRECTION", true);
 			} else {
 				Swal.fire({
-					title: "Please Login First",
-					html: `<input type="email" id="login" class="swal2-input" placeholder="Username">
-  <input type="password" id="password" class="swal2-input" placeholder="Password">`,
-					confirmButtonText: "Sign in",
-					denyButtonText: `Or Register`,
-					focusConfirm: false,
-					preConfirm: () => {
-						const login = Swal.getPopup().querySelector("#login").value;
-						const password = Swal.getPopup().querySelector("#password").value;
-						if (!login || !password) {
-							Swal.showValidationMessage(`Please enter login and password`);
-						}
-						return { login: login, password: password };
-					},
+					title: "You need to login before you can use this feature",
+					icon: "warning",
+					showCancelButton: true,
+					confirmButtonText: `Login`,
 				}).then((result) => {
-					Swal.fire(
-						`
-    Login: ${result.value.login}
-    Password: ${result.value.password}
-  `.trim()
-					);
+					if (result.isConfirmed) {
+						this.$router.push("/login").catch(() => {});
+					}
 				});
 			}
 		},

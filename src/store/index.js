@@ -108,6 +108,9 @@ export default new Vuex.Store({
 		SET_DIRECTION(state, payload) {
 			state.seeDirection = payload;
 		},
+		SET_AUTH(state, payload) {
+			state.isAuthenticate = payload;
+		},
 	},
 	actions: {
 		setLocation({ commit, dispatch }, payload) {
@@ -140,6 +143,20 @@ export default new Vuex.Store({
 				.catch((err) => {
 					console.log(err.response.data.message);
 				});
+		},
+		login(context, payload) {
+			return axios({
+				method: "POST",
+				url: "login",
+				data: payload,
+			});
+		},
+		register(context, payload) {
+			return axios({
+				method: "POST",
+				url: "register",
+				data: payload,
+			});
 		},
 	},
 	modules: {},

@@ -31,10 +31,12 @@ export default {
 		MorePlaces,
 	},
 	created() {
-		if (localStorage.location) {
-			this.$store.dispatch("setLocation", location);
-		}
 		this.$store.commit("SET_DIRECTION", false);
+		if (localStorage.getItem("manis_token")) {
+			this.$store.commit("SET_AUTH", true);
+		} else {
+			this.$store.commit("SET_AUTH", false);
+		}
 	},
 };
 </script>
