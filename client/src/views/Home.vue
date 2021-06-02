@@ -1,8 +1,10 @@
 <template>
   <div
     id="home-page"
+    :style="
+          { backgroundImage: 'url(' + require('@/Picture/photo-1491960693564-421771d727d6.jpg') + ')' }
+        "
     style="
-      background-image: url(../Picture/photo-1491960693564-421771d727d6.jpg);
       background-size: 2000px;
     "
   >
@@ -239,6 +241,7 @@
         </div>
         <div class="col-6">
           <button
+            @click="goToMenu"
             type="button"
             class="btn btn-primary"
             id="learn-more"
@@ -458,12 +461,18 @@
 // @ is an alias to /src
 import navBar from '../components/Navbar'
 import Footer from '../components/Footer'
+import router from '../router/index'
 
 export default {
   name: 'Home',
   components: {
     navBar,
     Footer
+  },
+  methods: {
+    goToMenu () {
+      router.push('/menu')
+    }
   }
 }
 </script>
