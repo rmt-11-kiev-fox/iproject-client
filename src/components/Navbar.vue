@@ -23,20 +23,20 @@
                   ></span>
                 </div>
               </a>
-              <a class="navbar-brand">
+              <router-link to="/" class="navbar-brand">
                 <h5>Red Envelope</h5>
-              </a>
+              </router-link>
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <div class="menu-main-menu-container">
                   <ul id="top-menu" class="navbar-nav ml-auto">
                     <li class="menu-item">
-                      <a>Home</a>
+                      <router-link to="/">Home</router-link>
                     </li>
+
                     <li class="menu-item">
-                      <a>Movies</a>
-                    </li>
-                    <li class="menu-item">
-                      <a>My Wishlist</a>
+                      <router-link to="/movies/wishlist"
+                        >My Wishlist</router-link
+                      >
                     </li>
                     <li class="menu-item">
                       <a @click="logout">Logout</a>
