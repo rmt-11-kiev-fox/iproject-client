@@ -9,17 +9,28 @@ export default new Vuex.Store({
         user: {},
         onlineUsers: [],
         guests: 0,
+        lobbyChat: [],
     },
     mutations: {
         SET_USER(state, payload) {
             state.user = payload;
         },
-        SOCKET_onlineUsers(state, payload) {
-            // console.log("masuk socket onlineusers", payload);
-            state.onlineUsers = payload;
+        SET_LOBBY_CHAT(state, payload) {
+            state.lobbyChat.push(payload);
         },
-        SOCKET_guestsNumber(state, payload) {
-            state.guests = payload;
+        // SOCKET_onlineUsers(state, payload) {
+        //     // console.log("masuk socket onlineusers", payload);
+        //     state.onlineUsers = payload;
+        // },
+        // SOCKET_guestsNumber(state, payload) {
+        //     state.guests = payload;
+        // },
+        SOCKET_updateData(state, payload) {
+            state.onlineUsers = payload.onlineUsers;
+            state.guests = payload.guestsNumber;
+        },
+        SOCKET_newLobbyMessage(state, payload) {
+            state.lobbyChat.push(payload);
         },
     },
     actions: {
