@@ -1,7 +1,7 @@
 <template>
   <section class="container-fluid row mb-4">
     <div class="col-12">
-      <h1 class="text-center mt-4">Animal List</h1>
+      <h1 class="text-center mt-4">ZOOLORIUM COLLECTIONS</h1>
     </div>
     <Leftbar></Leftbar>
     <Rightbar></Rightbar>

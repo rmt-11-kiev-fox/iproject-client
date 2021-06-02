@@ -12,6 +12,8 @@
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
     "vue-audio-visual": "^2.2.2",
+    "vue-clock2": "^1.1.5",
+    "vue-digital-clock": "^2.0.0",
     "vue-hacktiv8-footer": "0.0.5",
     "vue-router": "^3.2.0",
     "vue-sound": "0.0.4",

@@ -1,66 +1,103 @@
 <template>
-    <div class="col-2" :class="{ left_bar: !isDark, left_bar_dark: isDark }">
-        <div class="row">
-            <form class="mt-4">
-                <input
-                    class="form-control"
-                    type="search"
-                    placeholder="Animal Name"
-                    v-model="keyword"
-                >
-            </form>
-        </div>
-        <div class="row my-4">
-            <router-link
-                :to="'/home/favorites'"
-                :class="{
-                    type_opt: $route.params.type !== 'favorites',
-                    type_choosed: $route.params.type === 'favorites'
-                }"
-                >
-                    <h4>
-                        My Favorite Animals
-                    </h4>
-            </router-link>
-        </div>
-        <div class="row my-4 w-75">
-            <h4 class="type_opt">Type:</h4>
-            <router-link
-                to="/home"
-                :class="{
-                    type_opt: $route.params.type,
-                    type_choosed: !$route.params.type
-                }"
-                class="ms-4"
-                >All
-            </router-link>
-            <router-link
-                :to="'/home/' + type"
-                v-for="(type, i) in types"
-                :key="i"
-                :class="{
-                    type_opt: $route.params.type !== type,
-                    type_choosed: $route.params.type === type
-                }"
-                class="ms-4"
-                >{{ type }}
-            </router-link>
-        </div>
-        <div class="row my-4">
-            <div class="btn-dark col-8 text-center ms-4" @click.prevent="toDark" v-if="!isDark">
-                <a class="type_opt">Safari Night</a>
-            </div>
-            <div class="btn-light col-8 text-center ms-4" @click.prevent="toLight" v-if="isDark">
-                <a class="type_opt">Daylight</a>
-            </div>
-        </div>
+  <div class="col-2 mb-4" :class="{ left_bar: !isDark, left_bar_dark: isDark }">
+    <div class="row mx-4 mt-4">
+      <clock :color="clockColor" v-if="!skippedTime"></clock>
+      <clock :color="clockColor" :time="skippedTime" v-else></clock>
     </div>
+    <div class="row">
+      <form class="my-4 col-6">
+        <input
+          class="form-control"
+          type="search"
+          placeholder="HH:MM"
+          v-model="skipUntil"
+          @keydown.enter.prevent="skipTime"
+        >
+      </form>
+      <button class="btn btn-success h-75 my-4 col-5" @click.prevent="skipTime">Skip Time</button>
+    </div>
+    <div class="row" :class="{ 'text-light': isDark }">
+      <button v-if="skippedTime" class="btn btn-success h-75 w-75 ms-3 mb-4 col-5" @click.prevent="backToNormal">Back to Normal Time</button>
+      <p>{{ err_time }}</p>
+    </div>
+    <div class="row" :class="{ 'text-light': isDark }">
+      <p>Notes:</p>
+      <p>- After 6 PM Nocturnal Animals Will Appear and Diurnal Animals Will Disappear</p>
+      <p>- After 6 AM Diurnal Animals Will Appear and Nocturnal Animals Will Disappear</p>
+      <p>- Some Animals Is Always Appear</p>
+    </div>
+    <div class="row">
+      <form class="mt-4">
+        <input
+          class="form-control"
+          type="search"
+          placeholder="Animal Name"
+          v-model="keyword"
+          @keydown.enter.prevent=""
+        >
+      </form>
+    </div>
+    <div class="row my-4">
+      <router-link
+        :to="'/home/favorites'"
+        :class="{
+          type_opt: $route.params.type !== 'favorites',
+          type_choosed: $route.params.type === 'favorites'
+        }"
+      >
+        <h4>
+          My Favorite Animals
+        </h4>
+      </router-link>
+    </div>
+    <div class="row my-4 w-75">
+      <h4 class="type_opt">Type:</h4>
+      <router-link
+        to="/home"
+        :class="{
+          type_opt: $route.params.type,
+          type_choosed: !$route.params.type
+        }"
+        class="ms-4"
+        >All
+      </router-link>
+      <router-link
+        :to="'/home/' + type"
+        v-for="(type, i) in types"
+        :key="i"
+        :class="{
+          type_opt: $route.params.type !== type,
+          type_choosed: $route.params.type === type
+        }"
+        class="ms-4"
+        >{{ type }}
+      </router-link>
+    </div>
+  </div>
 </template>
 
 <script>
+import clock from 'vue-clock2'
 export default {
   name: 'Leftbar',
+  components: {
+    clock
+  },
+  data () {
+    return {
+      skipUntil: '',
+      skippedTime: '',
+      err_time: ''
+    }
+  },
   computed: {
+    clockColor () {
+      if (!this.isDark) {
+        return 'black'
+      } else {
+        return 'white'
+      }
+    },
     isDark () {
       return this.$store.state.isDark
     },
@@ -77,12 +114,35 @@ export default {
     }
   },
   methods: {
-    toDark () {
-      this.$store.commit('SET_ISDARK', true)
+    backToNormal () {
+      this.skippedTime = ''
+      this.skipUntil = ''
+      const hour = new Date().getHours()
+      if (+hour >= 18 || +hour < 6) {
+        this.$store.commit('SET_ISDARK', true)
+      } else {
+        this.$store.commit('SET_ISDARK', false)
+      }
     },
-    toLight () {
-      this.$store.commit('SET_ISDARK', false)
+    skipTime () {
+      const isValid = /^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$/.test(this.skipUntil)
+      if (isValid) {
+        this.err_time = ''
+        const hour = this.skipUntil.slice(0, 2)
+        if (+hour >= 18 || +hour < 6) {
+          this.$store.commit('SET_ISDARK', true)
+        } else {
+          this.$store.commit('SET_ISDARK', false)
+        }
+        this.skippedTime = this.skipUntil
+      } else {
+        this.err_time = 'Wrong Time Format'
+      }
     }
+  },
+  created () {
+    this.skippedTime = ''
+    this.err_time = ''
   }
 }
 </script>
@@ -95,27 +155,11 @@ export default {
   background-color: rgba(0, 0, 0, 0.74);
 }
 .type_opt {
-    cursor: pointer;
-    color: aliceblue;
+  cursor: pointer;
+  color: aliceblue;
 }
 .type_choosed {
-    cursor: pointer;
-    color: rgb(107, 109, 0);
-}
-.btn-dark {
-  background-image: url('https://i.pinimg.com/originals/6c/04/c6/6c04c6b013470efcb9474cf8e8f0456e.jpg');
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-  border-radius: 7%;
   cursor: pointer;
-}
-.btn-light {
-  background-image: url('https://thumbs.dreamstime.com/b/blue-sky-clouds-sun-daylight-natural-background-199532547.jpg');
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-  border-radius: 7%;
-  cursor: pointer;
+  color: rgb(107, 109, 0);
 }
 </style>

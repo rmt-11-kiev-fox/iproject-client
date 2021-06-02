@@ -2,7 +2,7 @@
   <div id="app">
     <Navbar></Navbar>
     <router-view/>
-    <HFooter class="fixed-bottom"></HFooter>
+    <HFooter></HFooter>
   </div>
 </template>
 
@@ -25,6 +25,12 @@ export default {
       this.$store.commit('SET_ISLOGIN', true)
     } else {
       this.$store.commit('SET_ISLOGIN', false)
+    }
+    const currentTime = new Date().getHours()
+    if (currentTime >= 18 || currentTime < 6) {
+      this.$store.commit('SET_ISDARK', true)
+    } else {
+      this.$store.commit('SET_ISDARK', false)
     }
   }
 }
