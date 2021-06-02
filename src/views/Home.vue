@@ -31,20 +31,20 @@ export default {
         receiveTimeLeft(time) {
             this.$store.commit('SET_TIME_LEFT', time)
         },
-        correctAnswer() {
+        correctAnswer(payload) {
             // console.log('CORRECT ANSWER |', currentCorrectAnswer) // SWAL
             Swal.fire({
                 title: 'Correct answer!',
-                text: 'You got 50 points',
+                text: `You got ${payload.increment} points. Your points now: ${payload.newPoint}`,
                 icon: 'success',
                 confirmButtonText: 'Nice'
             })
         },
-        wrongAnswer() {
+        wrongAnswer(payload) {
             // console.log('WRONG ANSWER |', currentCorrectAnswer) // SWAL
             Swal.fire({
                 title: 'Wrong answer!',
-                text: 'You got -5 points',
+                text: `You got ${payload.decrement} points. Your points now: ${payload.newPoint}`,
                 icon: 'error',
                 confirmButtonText: 'Oh no'
             })

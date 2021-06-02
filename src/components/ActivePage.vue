@@ -90,7 +90,12 @@ export default {
             // console.log('MASUK')
             if (!this.submittedAnswer) {
                 // console.log(answer)
-                this.$socket.emit('submitAnswer', answer)
+                const { currentUser, timeLeft } = this.$store.state
+                this.$socket.emit('submitAnswer', {
+                    currentUser,
+                    timeLeft,
+                    answer
+                })
             }
             this.submittedAnswer = true
             // console.log(this.submittedAnswer)
