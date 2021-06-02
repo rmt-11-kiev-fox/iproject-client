@@ -19,7 +19,7 @@
                             <router-link class="nav-link" style="font-family: serif; font-style: oblique;" to="/menu">Menu</router-link>
                         </li>
                         <li class="nav-item mx-5 col-lg-3 col-md-6 col-sm-12">
-                            <a class="nav-link" href="#" style="font-family: serif; font-style: oblique;">Location</a>
+                            <router-link class="nav-link" href="#" style="font-family: serif; font-style: oblique;" to="/location">Location</router-link>
                         </li>
                         <li class="nav-item mx-5 col-lg-3">
                             <a class="nav-link" href="#" style="font-family: serif; font-style: oblique;">Book Now</a>
