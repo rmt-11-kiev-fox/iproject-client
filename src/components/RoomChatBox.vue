@@ -1,12 +1,14 @@
 <template>
     <div class="flex flex-col m-2">
-        <div class="mb-1 rounded-lg overflow-auto flex flex-col h-200 border-2">
-            <h1 class="sticky top-0 text-center font-light bg-white">
+        <div
+            class="mb-1 rounded-lg overflow-auto flex flex-col h-200 border-2 bg-white"
+        >
+            <h1 class="sticky top-0 text-center font-light border-b-2 mx-5">
                 Chat Room
             </h1>
             <!-- user Chat -->
             <!-- 2 div, 1 for self 1 for other users -->
-            <div class="user-others">
+            <div class="user-others min-w-min">
                 <img
                     class="h-12 w-12 rounded-full object-cover mr-4"
                     src="https://images.unsplash.com/photo-1611867967135-0faab97d1530?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1052&q=80"

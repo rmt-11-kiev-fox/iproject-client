@@ -1,5 +1,7 @@
 <template>
-    <div class="flex flex-col max-h-screen h-screen overflow-hidden">
+    <div
+        class="flex flex-col max-h-screen h-screen overflow-hidden justify-between"
+    >
         <!-- <Navbar /> -->
         <MainSection />
         <BottomSection />

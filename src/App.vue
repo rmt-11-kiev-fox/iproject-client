@@ -11,12 +11,16 @@ import Navbar from "./components/Navbar";
 export default {
     name: "App",
     components: { Navbar },
+    created() {
+        this.$store.dispatch("checkLogin");
+    },
 };
 </script>
 
 <style>
 .slick-dots button:before {
-    color: black !important; /* color of dots #ab8b00 */
+    color: #ea5455 !important; /* color of dots #ab8b00 */
+    border: 3px;
 }
 .slick-arrow.slick-prev,
 .slick-arrow.slick-next {

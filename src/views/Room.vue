@@ -27,7 +27,9 @@
                             class="bg-white h-200 rounded-lg overflow-auto flex flex-col border-2 px-2"
                         >
                             <div class="sticky top-0 bg-white">
-                                <h1 class="text-center font-light bg-white">
+                                <h1
+                                    class="text-center font-light border-b-2 mx-5 mb-1"
+                                >
                                     Queued Songs
                                 </h1>
                                 <form>
