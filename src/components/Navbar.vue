@@ -9,20 +9,7 @@
           LORIUM
         </router-link>
       </div>
-      <div class="col-4 ms-4">
-        <form class="d-flex">
-          <input
-          class="form-control ms-4"
-          type="search"
-          placeholder="Search"
-          v-if="isLogin"
-        >
-        </form>
-      </div>
-      <div class="col-2">
-        <h4 class="btn-dark text-center">Safari Night</h4>
-      </div>
-      <div class="col-2">
+      <div class="col-3">
         <a
           class="navbar-brand btn-logout d-flex flex-row-reverse"
           v-if="isLogin"
