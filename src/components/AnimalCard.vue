@@ -30,6 +30,10 @@
             </p>
             <a @click.prevent="openDesc" class="desc">See Details</a>
             <p class="card-text" v-if="desc_open">{{ animal.description }}</p>
+            <audio controls v-if="animal.sound && desc_open" style="width:200px;">
+              <source :src="sound" type="audio/wav">
+              Your browser does not support the audio element.
+            </audio>
         </div>
     </div>
 </template>
@@ -56,6 +60,20 @@ export default {
     },
     removeFromFavorite () {
       this.$store.dispatch('removeFromFavorite', this.animal.id)
+    },
+    playSound () {
+      const path = `/${this.animal.sound}`
+      const audio = new Audio(path)
+      var playPromise = audio.play()
+      if (playPromise !== undefined) {
+        playPromise.then(_ => {
+          audio.pause()
+          console.log('play')
+        })
+          .catch((err) => {
+            console.log(err)
+          })
+      }
     }
   },
   computed: {
@@ -67,6 +85,15 @@ export default {
         }
       })
       return flag
+    },
+    sound () {
+      let url = ''
+      if (this.$route.name !== 'Home') {
+        url = `../${this.animal.sound}`
+      } else {
+        url = `${this.animal.sound}`
+      }
+      return url
     }
   }
 }

@@ -39,10 +39,17 @@ export default {
   },
   methods: {
     login () {
-      this.$store.dispatch('login', {
-        identity: this.identity,
-        password: this.password
-      })
+      this.$store.dispatch('catpi')
+        .then(({ data }) => {
+          this.$store.commit('SET_CATGIF', data.message)
+          this.$store.dispatch('login', {
+            identity: this.identity,
+            password: this.password
+          })
+        })
+        .catch((err) => {
+          console.log(err)
+        })
     }
   },
   computed: {

@@ -17,7 +17,8 @@ export default new Vuex.Store({
     keyword: '',
     favoriteAnimals: [],
     nocturnals: [],
-    diurnals: []
+    diurnals: [],
+    catGif: ''
   },
   mutations: {
     SET_ISLOGIN (state, payload) {
@@ -52,10 +53,13 @@ export default new Vuex.Store({
     },
     SET_DIURNALS (state, payload) {
       state.diurnals = payload
+    },
+    SET_CATGIF (state, payload) {
+      state.catGif = payload
     }
   },
   actions: {
-    login ({ commit }, payload) {
+    login ({ commit, state }, payload) {
       axios({
         method: 'POST',
         url: '/login',
@@ -67,8 +71,7 @@ export default new Vuex.Store({
         .then(({ data }) => {
           Vue.swal({
             title: 'Welcome to Zoolorium, ' + data.username,
-            imageUrl: 'https://www.pngkey.com/png/full/908-9088530_lion-cartoon.png',
-            imageWidth: 100,
+            imageUrl: state.catGif,
             background: 'rgba(0, 175, 58, 0.733)'
           })
           localStorage.setItem('access_token', data.access_token)
@@ -199,6 +202,15 @@ export default new Vuex.Store({
             background: 'rgba(0, 175, 58, 0.733)'
           })
         })
+    },
+    catpi (context, payload) {
+      return axios({
+        method: 'POST',
+        url: '/catpi',
+        data: {
+          message: 'Welcome'
+        }
+      })
     }
   },
   modules: {

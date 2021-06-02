@@ -47,11 +47,11 @@
             </router-link>
         </div>
         <div class="row my-4">
-            <div class="btn-dark col-4 text-center ms-4" @click.prevent="toDark" v-if="!isDark">
+            <div class="btn-dark col-8 text-center ms-4" @click.prevent="toDark" v-if="!isDark">
                 <a class="type_opt">Safari Night</a>
             </div>
-            <div class="btn-light col-5 ms-4" @click.prevent="toLight" v-if="isDark">
-                <a class="type_opt col-12">Daylight</a>
+            <div class="btn-light col-8 text-center ms-4" @click.prevent="toLight" v-if="isDark">
+                <a class="type_opt">Daylight</a>
             </div>
         </div>
     </div>
@@ -111,10 +111,6 @@ export default {
   cursor: pointer;
 }
 .btn-light {
-  padding-left: 20px;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  padding-right: 40px;
   background-image: url('https://thumbs.dreamstime.com/b/blue-sky-clouds-sun-daylight-natural-background-199532547.jpg');
   background-repeat: no-repeat;
   background-attachment: fixed;
