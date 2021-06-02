@@ -267,6 +267,7 @@
       >
         <div class="col-6">
           <button
+          @click="goToLoc"
             type="button"
             class="btn btn-primary"
             id="learn-more"
@@ -472,6 +473,12 @@ export default {
   methods: {
     goToMenu () {
       router.push('/menu')
+    },
+    goToLoc () {
+      router.push('/location')
+    },
+    created () {
+      window.scrollTo(0, 0)
     }
   }
 }

@@ -6,7 +6,7 @@
       background-size: 2000px;
     ">
     <navBar />
-    <div class="container" >
+    <div class="container-fluid" >
       <div class="row" >
         <div class="col-12" style="margin-top: 11rem; margin-bottom: 5rem">
           <div class="card mx-auto" style="width: 40rem">
@@ -32,12 +32,12 @@
                 <div class="form-group my-3">
                   <label for="exampleFormControlSelect1">People</label>
                   <select class="form-control my-3" id="exampleFormControlSelect1">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                    <option>6</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
                   </select>
                 </div>
                 <div class="form-group my-3">

@@ -34,14 +34,15 @@
       <div class="carousel-inner">
         <div class="carousel-item active">
           <img
-            src="../Picture/slidechef.jpg"
+            src="../Picture/frontresto.jpg"
+            class="d-block w-100 mx-auto"
             style="width: auto; height: 810px; opacity: 0.3; object-fit: cover"
             alt="..."
           />
         </div>
         <div class="carousel-item">
           <img
-            src="../Picture/slideresto.jpg"
+            src="../Picture/restofront2.jpg"
             class="d-block w-100 mx-auto"
             style="width: 100%; height: 810px; opacity: 0.3; object-fit: cover"
             alt="..."
@@ -50,7 +51,7 @@
         </div>
         <div class="carousel-item">
           <img
-            src="../Picture/slideresto2.jpg"
+            src="../Picture/restofront3.jpg"
             class="d-block w-100 mx-auto"
             style="width: 100%; height: 810px; opacity: 0.3; object-fit: cover"
             alt="..."
@@ -212,7 +213,10 @@ import navBar from '../components/Navbar'
 import Footer from '../components/Footer.vue'
 export default {
   components: { Footer, navBar },
-  name: 'Location'
+  name: 'Location',
+  created () {
+    window.scrollTo(0, 0)
+  }
 }
 </script>
 
