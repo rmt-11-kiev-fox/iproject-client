@@ -11,16 +11,12 @@
     </div>
     <div class="list-container">
       <Card v-for="item in getDataHandler" :key="item.id" :data="item" />
-      <div class="pagination-container">
-        <Pagination />
-      </div>
     </div>
   </div>
 </template>
 
 <script>
 import Card from '@/components/cardV2/index'
-import Pagination from '@/components/pagination/index'
 import Overlay from '@/components/modal/index'
 import FormAdd from './components/createProduct/index'
 import FormEdit from './components/editProduct/index'
@@ -30,7 +26,6 @@ export default {
   components: {
     Card,
     Overlay,
-    Pagination,
     FormAdd,
     FormEdit
   },

@@ -6,6 +6,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    isLoading: false,
     loginModal: false,
     registerModal: false,
     productModal: false,
@@ -16,6 +17,8 @@ export default new Vuex.Store({
     detailProduct: {},
     count: 0,
     auctionData: [],
+    city: [],
+    ongkir: [],
     isLogged: localStorage.user_data_bidding
       ? JSON.parse(localStorage.user_data_bidding).accessToken
       : false,
@@ -30,6 +33,9 @@ export default new Vuex.Store({
       : ''
   },
   mutations: {
+    IS_LOADING(state, payload) {
+      state.isLoading = payload
+    },
     LOGIN_MODAL_HANDLER(state, payload) {
       state.loginModal = payload
       state.registerModal = false
@@ -81,6 +87,15 @@ export default new Vuex.Store({
     },
     AUCTION_DATA(state, payload) {
       state.auctionData = payload
+    },
+    SOCKET_sendMessage(state, payload) {
+      new Vue().$socket.emit('live-bidding', payload)
+    },
+    CITY_DATA(state, payload) {
+      state.city = payload
+    },
+    GET_ONGKIR_DATA(state, payload) {
+      state.ongkir = payload
     }
   },
   actions: {
@@ -101,6 +116,7 @@ export default new Vuex.Store({
           if (item.includes('Email')) errors.email = true
           if (item.includes('Password')) errors.password = true
           if (item.includes('Role')) errors.role = true
+          if (item.includes('Location')) errors.location = true
         })
 
         commit('REGISTER_ERROR_HANDLER', errors)
@@ -210,7 +226,7 @@ export default new Vuex.Store({
         console.log(error)
       }
     },
-    async postAuctionHandler({ dispatch }, payload) {
+    async postAuctionHandler({ dispatch, commit }, payload) {
       try {
         try {
           await instanceAxios({
@@ -225,6 +241,7 @@ export default new Vuex.Store({
 
           dispatch('getDetailProduct', { productId: payload.ProductId })
           dispatch('getAuctionHandler', { ProductId: payload.ProductId })
+          commit('SOCKET_sendMessage', { ProductId: payload.ProductId })
         } catch (error) {
           console.log(error)
         }
@@ -243,6 +260,36 @@ export default new Vuex.Store({
         commit('AUCTION_DATA', getData.data)
       } catch (error) {
         console.log(error)
+      }
+    },
+    SOCKET_liveBiddingMessage({ dispatch, state }, payload) {
+      if (state.detailProduct.id === payload.ProductId) {
+        dispatch('getAuctionHandler', { ProductId: payload.ProductId })
+      }
+    },
+    async getCityHandler({ commit }, payload) {
+      try {
+        const getData = await instanceAxios({
+          url: '/ongkir/city',
+          method: 'GET'
+        })
+
+        commit('CITY_DATA', getData.data)
+      } catch (error) {
+        console.log(error)
+      }
+    },
+    async getOngkirHandler({ commit }, payload) {
+      try {
+        const { data } = await instanceAxios({
+          url: `/ongkir/${payload.userId}?courier=${payload.courier}&destination=${payload.destination}`,
+          method: 'GET'
+        })
+        commit('IS_LOADING', false)
+        commit('GET_ONGKIR_DATA', data.costs)
+      } catch (error) {
+        console.log(error)
+        commit('IS_LOADING', false)
       }
     }
   },

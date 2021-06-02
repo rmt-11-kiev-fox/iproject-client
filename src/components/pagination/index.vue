@@ -1,5 +1,5 @@
 <template>
-  <div class="pagination">
+  <div class="pagination" v-if="getTotal > 8">
     <div
       class="previous button"
       @click="prevPagination"

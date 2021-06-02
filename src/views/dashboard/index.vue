@@ -29,7 +29,9 @@ export default {
     Pagination
   },
   created() {
-    this.$store.dispatch('getAllDataHandler', { page: this.page })
+    if (this.$store.state.isLogged) {
+      this.$store.dispatch('getAllDataHandler', { page: this.page })
+    }
   },
   computed: {
     getAllData() {

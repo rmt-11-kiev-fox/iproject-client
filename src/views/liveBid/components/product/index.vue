@@ -1,5 +1,10 @@
 <template>
   <div class="product-container">
+    <Modal
+      :ongkirToggle="ongkirToggle"
+      :ongkirHandler="ongkirHandler"
+      :data="data"
+    />
     <img :src="data.image" />
     <div class="item-container">
       <div class="name">{{ data.name }}</div>
@@ -10,7 +15,7 @@
       </div>
     </div>
     <div class="due-date-container">
-      <div class="text" v-if="timeFormatted">
+      <div class="text" v-if="timeFormatted && !timeToggle">
         <vue-countdown
           :time="timeFormatted * 1000"
           v-slot="{ hours, minutes, seconds }"
@@ -20,9 +25,9 @@
           Remaining：{{ hours }} : {{ minutes }} : {{ seconds }}
         </vue-countdown>
       </div>
-      <div class="text" v-if="!timeFormatted">End</div>
+      <div class="text" v-if="!timeFormatted || timeToggle">End</div>
     </div>
-    <div class="icon-container">
+    <div class="icon-container" @click="ongkirHandler">
       <i class="fas fa-info-circle icon"></i>
       <!-- <i class="fas fa-comment icon"></i> -->
     </div>
@@ -31,21 +36,28 @@
 
 <script>
 import VueCountdown from '@chenfengyuan/vue-countdown'
-
+import Modal from '../ongkir/index'
 export default {
   props: ['data'],
   name: 'product',
   components: {
-    VueCountdown
+    VueCountdown,
+    Modal
   },
   methods: {
     onCountdownEnd() {
       this.counting = false
+      this.timeToggle = true
+    },
+    ongkirHandler() {
+      this.ongkirToggle = !this.ongkirToggle
     }
   },
   data() {
     return {
-      counting: true
+      counting: true,
+      ongkirToggle: false,
+      timeToggle: false
     }
   },
   computed: {

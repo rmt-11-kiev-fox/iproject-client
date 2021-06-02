@@ -1,6 +1,6 @@
 <template>
   <div class="winner-container">
-    <div class="floating-button" @click="resuffle">
+    <div class="floating-button">
       <i class="fas fa-crown icon"></i>Standings
     </div>
     <transition-group name="flip-list" tag="div">
@@ -22,13 +22,13 @@ export default {
   data() {
     return {}
   },
-  methods: {
-    resuffle() {}
-  },
   created() {
     this.$store.dispatch('getAuctionHandler', {
       ProductId: this.$route.params.id
     })
+  },
+  destroyed() {
+    this.$store.commit('AUCTION_DATA', [])
   },
   computed: {
     getAuctionData() {

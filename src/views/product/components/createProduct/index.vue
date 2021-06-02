@@ -113,10 +113,10 @@
       <div class="select">
         <div
           class="item"
-          :class="dueDate === 10 && 'selected'"
-          @click="changeDueDateHandler(10)"
+          :class="dueDate === 30 && 'selected'"
+          @click="changeDueDateHandler(30)"
         >
-          10 Detik
+          30 Detik
         </div>
         <div
           class="item"
@@ -193,7 +193,7 @@ export default {
   },
   data() {
     return {
-      dueDate: 10,
+      dueDate: 30,
       binInput: '',
       bidInput: 10000,
       obInput: '',

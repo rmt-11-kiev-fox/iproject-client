@@ -4,7 +4,11 @@
       class="user-menu__container-item"
       v-for="item in arr"
       :key="item.title"
-      :class="item.value === $route.path && 'active-tab'"
+      :class="
+        ((item.value === '/' && $route.name === 'LiveBid') ||
+          item.value === $route.path) &&
+          'active-tab'
+      "
       @click="changeTabHandler(item.value)"
       v-show="item.status"
     >

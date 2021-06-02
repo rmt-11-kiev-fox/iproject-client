@@ -28,8 +28,20 @@
         v-model="passwordInput"
         :class="errorHandler.password && 'error-box'"
       />
-
       <div class="error" v-if="errorHandler.password">Password Required</div>
+
+      <label>Location</label>
+      <select v-model="locationInput">
+        <option
+          v-for="item in getCityHandler"
+          :key="item.id"
+          :value="item.city_id"
+        >
+          {{ item.type + ' ' + item.city_name }}</option
+        >
+      </select>
+      <div class="error" v-if="errorHandler.password">Location Required</div>
+
       <label>Add Image</label>
       <div class="flex">
         <img :src="imageInput" v-if="imageInput !== ''" />
@@ -91,7 +103,8 @@ export default {
         imageInput,
         emailInput,
         passwordInput,
-        usernameInput
+        usernameInput,
+        locationInput
       } = this
 
       const obj = {
@@ -99,7 +112,8 @@ export default {
         image: imageInput,
         email: emailInput,
         password: passwordInput,
-        username: usernameInput
+        username: usernameInput,
+        location: Number(locationInput)
       }
 
       this.$store.dispatch('registerHandler', obj)
@@ -132,7 +146,16 @@ export default {
   computed: {
     errorHandler() {
       return this.$store.state.registerErrorHandler
+    },
+    getCityHandler() {
+      return this.$store.state.city
     }
+  },
+  created() {
+    this.$store.dispatch('getCityHandler')
+  },
+  destroyed() {
+    this.$store.commit('CITY_DATA', [])
   }
 }
 </script>
