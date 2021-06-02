@@ -11,8 +11,23 @@ import Navbar from "./components/Navbar";
 export default {
     name: "App",
     components: { Navbar },
-    created() {
-        this.$store.dispatch("checkLogin");
+    sockets: {
+        connect() {
+            this.$store
+                .dispatch("checkLogin")
+                .then((payload) => {
+                    // console.log(payload, "ini di promise");
+                    this.$socket.emit("onLogin", payload);
+                })
+                .catch(() => {
+                    console.log("masuk guesthandler");
+                    this.$socket.emit("guestHandler", true);
+                });
+            this.$socket.emit("getData");
+        },
+        disconnect() {
+            console.log("socket is disconnected");
+        },
     },
 };
 </script>
@@ -20,7 +35,6 @@ export default {
 <style>
 .slick-dots button:before {
     color: #ea5455 !important; /* color of dots #ab8b00 */
-    border: 3px;
 }
 .slick-arrow.slick-prev,
 .slick-arrow.slick-next {

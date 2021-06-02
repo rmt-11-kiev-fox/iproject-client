@@ -3,8 +3,8 @@
         <!-- <div class="h-15 w-15 bg-green-500 rounded-full"></div> -->
         <img
             class="h-20 w-20 rounded-full object-cover bg-green-600 p-0.5"
-            src="https://images.unsplash.com/photo-1616952711364-45d545ad82ce?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
-            v-tooltip="'aldosupercoolman@gmail.com'"
+            :src="user.imageUrl"
+            v-tooltip="user.email"
         />
     </div>
 </template>
@@ -12,11 +12,7 @@
 <script>
 export default {
     name: "UserCardLobby",
-    data() {
-        return {
-            count: 12312931923,
-        };
-    },
+    props: ["user"],
 };
 </script>
 
