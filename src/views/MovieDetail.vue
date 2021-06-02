@@ -51,22 +51,74 @@
               </p>
               <ul class="list-inline p-0 mt-4 share-icons music-play-lists">
                 <li>
-                  <span><i class="ri-heart-fill"></i></span>
+                  <span
+                    @click="
+                      addToWishlist(
+                        'Favorite',
+                        movies.id,
+                        movies.poster_path,
+                        movies.title,
+                        movies.release_date
+                      )
+                    "
+                    ><i class="ri-heart-fill"></i
+                  ></span>
                 </li>
                 <li>
-                  <span><i class="bi bi-hand-thumbs-down-fill"></i></span>
+                  <span
+                    @click="
+                      addToWishlist(
+                        'Dislike',
+                        movies.id,
+                        movies.poster_path,
+                        movies.title,
+                        movies.release_date
+                      )
+                    "
+                    ><i class="bi bi-hand-thumbs-down-fill"></i
+                  ></span>
                 </li>
                 <li class="share">
                   <span><i class="ri-add-line"></i></span>
                   <div class="share-box">
                     <div class="d-flex align-items-center">
-                      <a href="#" class="share-ico"
+                      <a
+                        @click="
+                          addToWishlist(
+                            'Want To Watch',
+                            movies.id,
+                            movies.poster_path,
+                            movies.title,
+                            movies.release_date
+                          )
+                        "
+                        class="share-ico"
                         ><i class="bi bi-envelope-fill"></i
                       ></a>
-                      <a href="#" class="share-ico"
+                      <a
+                        @click="
+                          addToWishlist(
+                            'Watching',
+                            movies.id,
+                            movies.poster_path,
+                            movies.title,
+                            movies.release_date
+                          )
+                        "
+                        class="share-ico"
                         ><i class="bi bi-envelope-open-fill"></i
                       ></a>
-                      <a href="#" class="share-ico"
+                      <a
+                        @click="
+                          addToWishlist(
+                            'Already Watched',
+                            movies.id,
+                            movies.poster_path,
+                            movies.title,
+                            movies.release_date
+                          )
+                        "
+                        class="share-ico"
                         ><i class="bi bi-check-lg"></i
                       ></a>
                     </div>

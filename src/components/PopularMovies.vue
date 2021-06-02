@@ -37,7 +37,8 @@
               <div class="d-flex align-items-center">
                 <a
                   @click="
-                    addToWantToWatch(
+                    addToWishlist(
+                      'Want To Watch',
                       movies.id,
                       movies.poster_path,
                       movies.title,
@@ -51,6 +52,15 @@
                   ><i class="bi bi-envelope-fill"></i
                 ></a>
                 <a
+                  @click="
+                    addToWishlist(
+                      'Watching',
+                      movies.id,
+                      movies.poster_path,
+                      movies.title,
+                      movies.release_date
+                    )
+                  "
                   target="_blank"
                   rel="noopener noreferrer"
                   class="share-ico"
@@ -58,6 +68,15 @@
                   ><i class="bi bi-envelope-open-fill"></i
                 ></a>
                 <a
+                  @click="
+                    addToWishlist(
+                      'Already Watched',
+                      movies.id,
+                      movies.poster_path,
+                      movies.title,
+                      movies.release_date
+                    )
+                  "
                   data-link="https://iqonic.design/wp-themes/streamit_wp/movie/shadow/"
                   class="share-ico iq-copy-link"
                   tabindex="0"
@@ -67,10 +86,32 @@
             </div>
           </li>
           <li>
-            <span><i class="ri-heart-fill"></i></span>
+            <span
+              @click="
+                addToWishlist(
+                  'Favorite',
+                  movies.id,
+                  movies.poster_path,
+                  movies.title,
+                  movies.release_date
+                )
+              "
+              ><i class="ri-heart-fill"></i
+            ></span>
           </li>
           <li>
-            <span><i class="bi bi-hand-thumbs-down-fill"></i></span>
+            <span
+              @click="
+                addToWishlist(
+                  'Dislike',
+                  movies.id,
+                  movies.poster_path,
+                  movies.title,
+                  movies.release_date
+                )
+              "
+              ><i class="bi bi-hand-thumbs-down-fill"></i
+            ></span>
           </li>
         </ul>
       </div>
@@ -87,15 +128,16 @@ export default {
       // this.$store.dispatch("fetchMovieDetail", MovieId);
       this.$router.push(`/movies/detail/${MovieId}`);
     },
-    addToWantToWatch(MovieId, posterPath, title, releaseDate) {
+    addToWishlist(category, MovieId, posterPath, title, releaseDate) {
       let newWishlist = {
-        cateogory: "Want To Watch",
+        category,
         type: "Movies",
         MovieId,
         posterPath,
         title,
         releaseDate
       };
+      // console.log(newWishlist, "new wish list popularmovie.vue");
       this.$store.dispatch("addToWishlist", newWishlist);
     }
   }

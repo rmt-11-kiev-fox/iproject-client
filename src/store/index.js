@@ -10,7 +10,8 @@ export default new Vuex.Store({
     nowPlayingMovies: [],
     upcomingMovies: [],
     detailMovie: [],
-    similarMovies: []
+    similarMovies: [],
+    wishlist: []
   },
   mutations: {
     SET_POPULAR_MOVIES(state, movies) {
@@ -27,6 +28,9 @@ export default new Vuex.Store({
     },
     SET_SIMILAR_MOVIES(state, movies) {
       state.similarMovies = movies;
+    },
+    SET_WISHLIST(state, wishlist) {
+      state.wishlist = wishlist;
     }
   },
   actions: {
@@ -85,7 +89,7 @@ export default new Vuex.Store({
           commit("SET_DETAIL_MOVIES", data.data);
         })
         .catch(err => {
-          console.log(err, "err in fetch movies detail");
+          console.log(err, "err in fetch movies detail store index");
         });
     },
     fetchSimilarMovies({ commit }, MovieId) {
@@ -103,7 +107,61 @@ export default new Vuex.Store({
           console.log(err, "err in fetch movies detail");
         });
     },
-    addToWishlist(context, newWishlist) {}
+    addToWishlist(context, newWishlist) {
+      console.log(newWishlist, "new wish list add to wishlist store.vue");
+      axios({
+        url: `/watchWishlist`,
+        method: "POST",
+        headers: {
+          access_token: localStorage.access_token
+        },
+        data: { newWishlist }
+      })
+        .then(({ data }) => {
+          // console.log(data, "add wishlist data");
+          context.dispatch("fetchWishlist");
+        })
+        .catch(err => {
+          console.log(err, "err in add wishlist");
+        });
+    },
+    fetchWishlist({ commit }) {
+      axios({
+        url: `/watchWishlist`,
+        method: "GET",
+        headers: {
+          access_token: localStorage.access_token
+        }
+      })
+        .then(({ data }) => {
+          console.log(data, "fetch wishlist data");
+          commit("SET_WISHLIST", data);
+        })
+        .catch(err => {
+          console.log(err, "err in fetch wisthlist");
+        });
+    }
   },
-  modules: {}
+  modules: {},
+  getters: {
+    wantWishlist: state => {
+      return state.wishlist.filter(
+        wishlist => wishlist.category == "Want To Watch"
+      );
+    },
+    watchingWishlist: state => {
+      return state.wishlist.filter(wishlist => wishlist.category == "Watching");
+    },
+    doneWishlist: state => {
+      return state.wishlist.filter(
+        wishlist => wishlist.category == "Already Watched"
+      );
+    },
+    favoriteWishlist: state => {
+      return state.wishlist.filter(wishlist => wishlist.category == "Favorite");
+    },
+    dislikeWishlist: state => {
+      return state.wishlist.filter(wishlist => wishlist.category == "Dislike");
+    }
+  }
 });
