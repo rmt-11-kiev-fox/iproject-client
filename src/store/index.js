@@ -62,6 +62,7 @@ export default new Vuex.Store({
         })
     },
     fetchFavourites ({ commit }) {
+      console.log('favourite triggered')
       axios({
         url: '/favourites',
         method: 'get',
