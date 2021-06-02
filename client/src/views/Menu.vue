@@ -1,6 +1,7 @@
 <template>
   <div id="menu-page"
     style="background-image: url(../Picture/photo-1491960693564-421771d727d6.jpg); background-size: 2000px;">
+    <navBar/>
     <!-- slideshow -->
     <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" style="background-color: black;">
         <div class="carousel-indicators">
@@ -59,35 +60,33 @@
             </div>
         </div>
         <!-- The Menu -->
-        <div class="row" style="background-color: white;">
-            <div class="col-4" style="margin-bottom: 4rem; margin-top: 2rem;">
-                <button type="button" class="btn btn-primary" id="menu-button"
-                    style="color: #fc774c; background-color: transparent; border-color: black; font-size: 30px; margin-left: 25rem; margin-top: 1rem; padding-left: 3rem; padding-right: 3rem;">
-                    FOOD
-                </button>
+        <div class="row" :style="
+          { background: 'url(' + require('@/Picture/menubackground.jpg') + ')' }
+        "
+        style="opacity">
+            <div class="container">
+                <div class="row text-center">
+                <img src="../Picture/MENU.jpg" style="width: 50%; margin-left:30rem; margin-top: 5rem; margin-bottom:5rem" alt="">
             </div>
-            <div class="col-4">
-                <button type="button" class="btn btn-primary" id="menu-button"
-                    style="color: #fc774c; background-color: transparent; border-color: black; font-size: 30px; margin-left: 10rem; margin-top: 3rem; padding-left: 3rem; padding-right: 3rem;">
-                    BEVERAGES
-                </button>
             </div>
-            <div class="col-4">
-                <button type="button" class="btn btn-primary" id="menu-button"
-                    style="color: #fc774c; background-color: transparent; border-color: black; font-size: 30px; margin-top: 3rem; padding-left: 3rem; padding-right: 3rem;">
-                    SNACKS
-                </button>
-            </div>
-            <div class="row">
-                <img src="../Picture/menutemplate.jpg" alt="">
-            </div>
-            <div class="row">
-                <div class="bg-dark">
-                    <p class="my-5 text-center" style="color: blanchedalmond; font-family: serif; font-style: oblique;">
-                        © 2021 Makanology. All rights reserved.</p>
-                </div>
-            </div>
+            <Footer/>
         </div>
     </div>
 </div>
 </template>
+
+<script>
+import navBar from '../components/Navbar'
+import Footer from '../components/Footer'
+
+export default {
+  name: 'Menu',
+  components: {
+    navBar,
+    Footer
+  },
+  created () {
+    window.scrollTo(0, 0)
+  }
+}
+</script>
