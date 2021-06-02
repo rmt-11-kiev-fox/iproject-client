@@ -9,9 +9,13 @@ export default new Vuex.Store({
     state: {
         chats: [],
         currentUser: null,
-        currentQuestion: null,
-        isActiveServer: false,
-        timeLeft: 10
+        currentQuestion: {
+            category: '',
+            question: '',
+            answers: ['', '', '', '']
+        },
+        timeLeft: 10,
+        isActiveServer: false
     },
     mutations: {
         PUSH_CHATS(state, chat) {
@@ -28,11 +32,11 @@ export default new Vuex.Store({
             // console.log(question)
             state.currentQuestion = question
         },
-        SET_SERVER_STATUS(state, status) {
-            state.isActiveServer = status
-        },
         SET_TIME_LEFT(state, time) {
             state.timeLeft = time
+        },
+        SET_SERVER_STATUS(state, status) {
+            state.isActiveServer = status
         }
     },
     actions: {

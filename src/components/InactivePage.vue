@@ -41,6 +41,7 @@ export default {
     name: 'InactivePage',
     methods: {
         startTrivia() {
+            this.$socket.emit('getNewQuestion')
             this.$socket.emit('startTrivia')
             // this.$socket.emit('getNewQuestion')
             // this.$socket.emit('getServerStatus')

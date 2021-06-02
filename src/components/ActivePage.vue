@@ -21,9 +21,11 @@
                 "
             >
                 <div class="alert alert-warning">Time left: {{ timeLeft }}</div>
-                <div class="badge bg-dark">Category: {{}}</div>
+                <div class="badge bg-dark">
+                    Category: {{ question.category }}
+                </div>
                 <div class="alert alert-primary">Question:</div>
-                <div class="alert alert-info">{{}}</div>
+                <div class="alert alert-info">{{ question.question }}</div>
             </div>
         </div>
         <div class="row h-50">
@@ -39,10 +41,18 @@
             >
                 <div class="container h-100">
                     <div class="row h-100">
-                        <div class="col-6 border">A. {{}}</div>
-                        <div class="col-6 border">B. {{}}</div>
-                        <div class="col-6 border">C. {{}}</div>
-                        <div class="col-6 border">D. {{}}</div>
+                        <div class="col-6 btn btn-success">
+                            A. {{ question.answers[0] }}
+                        </div>
+                        <div class="col-6 btn btn-info">
+                            B. {{ question.answers[1] }}
+                        </div>
+                        <div class="col-6 btn btn-primary">
+                            C. {{ question.answers[2] }}
+                        </div>
+                        <div class="col-6 btn btn-secondary">
+                            D. {{ question.answers[3] }}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -54,24 +64,15 @@
 export default {
     name: 'ActivePage',
     computed: {
-        // question() {
-        //     // return this.$store.state.currentQuestion
-        // },
-        // isActiveServer() {
-        //     // return this.$store.state.isActiveServer
-        // }
+        question() {
+            return this.$store.state.currentQuestion
+        },
         timeLeft() {
             return this.$store.state.timeLeft
         }
-    },
-    sockets: {
-        // receiveQuestion(currentQuestion) {
-        //     // this.$store.commit('SET_CURRENT_QUESTION', currentQuestion)
+        // isActiveServer() {
+        //     // return this.$store.state.isActiveServer
         // }
-    },
-    created() {
-        // if (!this.isActiveServer) return this.$router.push('/inactive')
-        // this.$socket.emit('getCurrentQuestion')
     }
 }
 </script>
