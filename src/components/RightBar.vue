@@ -1,5 +1,5 @@
 <template>
-    <div class="col-10 right-bar mb-4">
+    <div class="col-10 right-bar mb-4" :class="{ right_bar: !isDark, right_bar_dark: isDark }">
       <div class="container-fluid row mb-4">
         <AnimalCard
           v-for="animal in animals"
@@ -18,6 +18,9 @@ export default {
     AnimalCard
   },
   computed: {
+    isDark () {
+      return this.$store.state.isDark
+    },
     animals () {
       return this.$store.getters.filteredByName({
         keyword: this.$store.state.keyword,
@@ -38,5 +41,8 @@ export default {
 <style>
 .right-bar {
   background-color: rgba(241, 241, 241, 0.692);
+}
+.right_bar_dark {
+  background-color: rgba(0, 0, 0, 0.849);
 }
 </style>

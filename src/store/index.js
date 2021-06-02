@@ -15,7 +15,9 @@ export default new Vuex.Store({
     favorites: [],
     types: [],
     keyword: '',
-    favoriteAnimals: []
+    favoriteAnimals: [],
+    nocturnals: [],
+    diurnals: []
   },
   mutations: {
     SET_ISLOGIN (state, payload) {
@@ -44,6 +46,12 @@ export default new Vuex.Store({
     },
     SET_FAVORITEANIMALS (state, payload) {
       state.favoriteAnimals = payload
+    },
+    SET_NOCTURNALS (state, payload) {
+      state.nocturnals = payload
+    },
+    SET_DIURNALS (state, payload) {
+      state.diurnals = payload
     }
   },
   actions: {
@@ -111,14 +119,23 @@ export default new Vuex.Store({
         headers: { access_token: localStorage.access_token }
       })
         .then(({ data }) => {
-          context.commit('SET_ANIMALS', data.animals)
+          const nocturnalTemp = []
+          const diurnalTemp = []
           let temp = []
           data.animals.forEach((element) => {
+            if (element.isNocturnal) {
+              nocturnalTemp.push(element)
+            }
+            if (element.isDiurnal) {
+              diurnalTemp.push(element)
+            }
             if (!temp.includes(element.type)) {
               temp.push(element.type)
             }
           })
           temp = temp.sort()
+          context.commit('SET_NOCTURNALS', nocturnalTemp)
+          context.commit('SET_DIURNALS', diurnalTemp)
           context.commit('SET_TYPES', temp)
         })
         .catch((err) => {
@@ -192,13 +209,23 @@ export default new Vuex.Store({
       if (payload === 'favorites') {
         return state.favoriteAnimals
       } else {
-        state.animals.forEach((element) => {
-          if (element.type.toLowerCase() === payload.toLowerCase()) {
-            temp.push(element)
-          } else if (payload === '') {
-            temp.push(element)
-          }
-        })
+        if (state.isDark) {
+          state.nocturnals.forEach((element) => {
+            if (element.type.toLowerCase() === payload.toLowerCase()) {
+              temp.push(element)
+            } else if (payload === '') {
+              temp.push(element)
+            }
+          })
+        } else if (!state.isDark) {
+          state.diurnals.forEach((element) => {
+            if (element.type.toLowerCase() === payload.toLowerCase()) {
+              temp.push(element)
+            } else if (payload === '') {
+              temp.push(element)
+            }
+          })
+        }
         return temp
       }
     },

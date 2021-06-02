@@ -51,12 +51,4 @@ nav {
   color: aliceblue;
   font-size: 25px;
 }
-.btn-dark {
-  background-image: url('https://i.pinimg.com/originals/6c/04/c6/6c04c6b013470efcb9474cf8e8f0456e.jpg');
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-  border-radius: 7%;
-  cursor: pointer;
-}
 </style>
