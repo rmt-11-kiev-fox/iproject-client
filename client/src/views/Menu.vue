@@ -84,6 +84,9 @@ export default {
   components: {
     navBar,
     Footer
+  },
+  created () {
+    window.scrollTo(0, 0)
   }
 }
 </script>
