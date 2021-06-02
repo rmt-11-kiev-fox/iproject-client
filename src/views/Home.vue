@@ -22,7 +22,11 @@
     </div>
     <div class="col-10 right-bar">
       <div class="container-fluid row">
-        <AnimalCard v-for="animal in animals" :key="animal.id"></AnimalCard>
+        <AnimalCard
+          v-for="animal in animals"
+          :key="animal.id"
+          :animal="animal"
+        ></AnimalCard>
       </div>
     </div>
   </section>
@@ -51,6 +55,6 @@ export default {
   background-color: rgba(0, 0, 0, 0.692);
 }
 .right-bar {
-  background-color: blue;
+  background-color: rgba(0, 0, 0, 0.692);
 }
 </style>
