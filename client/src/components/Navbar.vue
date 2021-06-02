@@ -22,7 +22,7 @@
                             <a class="nav-link" href="#" style="font-family: serif; font-style: oblique;">Location</a>
                         </li>
                         <li class="nav-item mx-5 col-lg-3">
-                            <a class="nav-link" href="#" style="font-family: serif; font-style: oblique;">Book Now</a>
+                            <router-link class="nav-link" href="#" style="font-family: serif; font-style: oblique;" to="/book">Book Now</router-link>
                         </li>
                     </ul>
                 </div>
