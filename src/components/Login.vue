@@ -5,7 +5,7 @@
         <div id='login' class="col-lg-4 mt-5 rounded-start shadow-lg bg-dark">
           <!-- IMAGE -->
         </div>
-        <div class="col-lg-4 mt-5 bg-light rounded-end" >
+        <div class="col-lg-4 mt-5 bg-light rounded-end border" >
           <h2 class="mt-3"><center>LOGIN</center></h2>
           <div class="container">
             <form @submit.prevent="login" class="mx-2">
@@ -52,5 +52,9 @@ export default {
 </script>
 
 <style>
+  #login {
+    background: url('../assets/recycle_coffee.jpg') no-repeat center;
+    background-size: 380px;
+  }
 
 </style>

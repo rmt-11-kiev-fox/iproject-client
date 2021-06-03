@@ -1,9 +1,9 @@
 <template>
   <div id="register">
-    <div class="container">
-      <h2 class="text-center">COLLECT FORM</h2>
+    <div class="container m-5">
+      <h2 class="text-center"><b>COLLECT FORM</b></h2>
       <div class="row">
-        <div class="col-6">
+        <div class="col-6 text-start">
           <form @submit.prevent="reqCollect" class="container">
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">Name of Your Business:</label>
@@ -21,7 +21,7 @@
               <label for="setup" class="form-label">Notes:</label>
               <textarea v-model="notes" class="form-control" name="" id="" cols="30" rows="5"></textarea>
             </div>
-            <button type="submit" class="btn-lg btn-success">COLLECT FOR ME</button>
+            <button type="submit" class="btn-lg btn-dark">COLLECT FOR ME</button>
           </form>
         </div>
         <div class="col-6">

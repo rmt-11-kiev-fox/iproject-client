@@ -1,10 +1,10 @@
 <template>
   <!-- REGISTER FORM -->
   <div id="register">
-    <div class="container">
-      <h2 class="text-center">Are You Interested?</h2>
-      <h2 class="text-center">Feel Free To Get In Touch To Find Out More</h2>
-      <p class="text-center">Complete The Form and We'll Be In Touch Soon</p>
+    <div class="container mb-5">
+      <h2 class="text-center" style="color: saddlebrown"><b>Are You Interested?</b></h2>
+      <h2 class="text-center" style="color: saddlebrown">Feel Free To Get In Touch To Find Out More</h2>
+      <p class="text-center" style="color: saddlebrown">Complete The Form and We'll Be In Touch Soon</p>
       <div class="text-start">
         <form @submit.prevent="register" class="container-fluid">
           <div class="mb-3">
@@ -36,7 +36,7 @@
             <label for="setup" class="form-label">Message:</label>
             <textarea v-model="message" class="form-control" name="" id="" cols="30" rows="5"></textarea>
           </div>
-          <button type="submit" class="btn-lg btn-success">Submit</button>
+          <button type="submit" class="btn-lg btn-dark">Submit</button>
         </form>
       </div>
     </div>

@@ -22,7 +22,7 @@
         </ul>
       </div>
       <div>
-        <button @click.prevent="$router.push({ path: '/collect' })" class="mx-3 btn btn-success">RECYCLE FOR ME</button>
+        <button @click.prevent="$router.push({ path: '/collect' })" class="mx-3 btn btn-warning">RECYCLE FOR ME</button>
       </div>
     </div>
   </nav>
