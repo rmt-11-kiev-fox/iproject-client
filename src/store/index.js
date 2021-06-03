@@ -166,6 +166,21 @@ export default new Vuex.Store({
         .catch(err => {
           console.log(err, "err in fetch popular movies");
         });
+    },
+    deleteWishlist(context, wishlistId) {
+      axios({
+        url: `/watchWishlist/${wishlistId}`,
+        method: "DELETE",
+        headers: {
+          access_token: localStorage.access_token
+        }
+      })
+        .then(({ data }) => {
+          context.dispatch("fetchWishlist");
+        })
+        .catch(err => {
+          console.log(err, "err in fetch wisthlist");
+        });
     }
   },
   modules: {},
