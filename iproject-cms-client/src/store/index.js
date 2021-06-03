@@ -93,7 +93,8 @@ export default new Vuex.Store({
           image_url:payload.image_url,
           status: payload.status,
           startBid: payload.startBid,
-          endBid: payload.endBid
+          endBid: payload.endBid,
+          startPrice: payload.startPrice
         }
       })
       .then(({data}) => {

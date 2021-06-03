@@ -43,6 +43,10 @@
     <label for="exampleInputPassword1" class="form-label">End Bid</label>
     <input v-model="value.endBid" type="datetime-local" class="form-control" id="exampleInputPassword1">
   </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Start Price</label>
+    <input v-model="value.startPrice" type="number" class="form-control" id="exampleInputPassword1">
+  </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 </div>
@@ -61,7 +65,8 @@ export default {
         image_url: '',
         status: '',
         startBid: '',
-        endBid: ''
+        endBid: '',
+        startPrice: ''
       }
     }
   },
