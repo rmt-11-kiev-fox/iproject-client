@@ -5,6 +5,7 @@
         <!-- <Navbar /> -->
         <MainSection />
         <BottomSection />
+        <HFooter></HFooter>
     </div>
 </template>
 
@@ -14,10 +15,11 @@
 
 import MainSection from "../components/MainSection";
 import BottomSection from "../components/BottomSection";
+import HFooter from "vue-hacktiv8-footer";
 
 export default {
     name: "Home",
-    components: { BottomSection, MainSection },
+    components: { BottomSection, MainSection, HFooter },
 };
 </script>
 
@@ -39,5 +41,8 @@ export default {
 }
 .text-header {
     @apply text-center font-semibold text-4xl mt-3 text-ch-peach;
+}
+.social-links {
+    display: flex;
 }
 </style>
