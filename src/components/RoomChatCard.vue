@@ -22,7 +22,7 @@
 
 <script>
 export default {
-    name: "LobbyChatCard",
+    name: "RoomChatCard",
     props: ["message"],
     computed: {
         user() {

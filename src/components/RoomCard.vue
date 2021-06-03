@@ -62,7 +62,6 @@ export default {
     props: ["room"],
     methods: {
         joinRoom() {
-            // console.log("masuk joinroom");
             let user = this.$store.state.user;
             const payload = this.room;
             payload.users.push(user);

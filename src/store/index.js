@@ -62,7 +62,21 @@ export default new Vuex.Store({
                 }
             });
         },
+        searchLyrics(context, payload) {
+            return axios({
+                method: "post",
+                url: "/lyrics",
+                data: {
+                    artist: payload.artist,
+                    title: payload.title,
+                },
+            });
+        },
     },
     modules: {},
-    getters: {},
+    getters: {
+        getEmail(state) {
+            return state.user.email;
+        },
+    },
 });
