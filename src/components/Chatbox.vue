@@ -2,24 +2,7 @@
     <div class="col-3 h-100">
         <!-- <div class="border h-90 w-100 overflow-scroll"> -->
         <div class="h-90 w-100 d-flex flex-column-reverse overflow-scroll">
-            <div
-                class="w-100 text-wrap text-break"
-                v-for="(chat, i) in chats"
-                :key="i"
-            >
-                <span class="text-info">{{
-                    chat.User ? chat.User.username : 'TriviaBot'
-                }}</span>
-                <span class="text-light bg-success">: {{ chat.message }}</span>
-
-                <!-- <div>
-                    <span class="text-primary">{{ chat.username }}</span
-                    >:
-                </div>
-                <div>
-                    {{ chat.message }}
-                </div> -->
-            </div>
+            <ChatIndividual v-for="(chat, i) in chats" :key="i" :chat="chat" />
         </div>
         <div class="h-10">
             <form
@@ -39,8 +22,13 @@
 </template>
 
 <script>
+import ChatIndividual from './ChatIndividual'
+
 export default {
     name: 'Chatbox',
+    components: {
+        ChatIndividual
+    },
     data() {
         return {
             chatMessage: ''
@@ -72,9 +60,6 @@ export default {
         receiveChat() {
             this.$store.dispatch('fetchChats')
         }
-        // receiveQuestion(question) {
-        //     console.log(question)
-        // }
     },
     created() {
         this.$store.dispatch('fetchChats')

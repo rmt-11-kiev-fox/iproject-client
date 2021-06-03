@@ -1,10 +1,10 @@
 <template>
-    <div class="container-fluid h-100">
+    <div id="home" class="container-fluid h-100">
         <div class="row h-100">
             <!-- chat -->
-            <Chatbox style="background-color: #18181b" />
+            <Chatbox />
             <!-- main -->
-            <div class="col-6 h-100">
+            <div id="main-container" class="col-6 h-100">
                 <router-view />
             </div>
             <!-- leaderboard -->
