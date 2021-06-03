@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import { instanceAxios } from '@/api'
-// import router from '../router'
+import router from '../router'
+import Swal from 'sweetalert2'
+
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -19,6 +21,8 @@ export default new Vuex.Store({
     auctionData: [],
     city: [],
     ongkir: [],
+    winners: {},
+    history: [],
     isLogged: localStorage.user_data_bidding
       ? JSON.parse(localStorage.user_data_bidding).accessToken
       : false,
@@ -96,28 +100,47 @@ export default new Vuex.Store({
     },
     GET_ONGKIR_DATA(state, payload) {
       state.ongkir = payload
+    },
+    GET_HISTORY(state, payload) {
+      state.history = payload
     }
   },
   actions: {
     async registerHandler({ commit }, payload) {
+      commit('REGISTER_ERROR_HANDLER', {})
+
       try {
         await instanceAxios({
           url: '/register',
           method: 'POST',
           data: payload
         })
-
-        commit('REGISTER_MODAL_HANDLER')
-        commit('LOGIN_MODAL_HANDLER', true)
+        Swal.fire({
+          title: 'Yeay!',
+          text: 'Berhasil Register',
+          icon: 'success',
+          confirmButtonText: 'Confirm'
+        }).then(() => {
+          commit('REGISTER_MODAL_HANDLER')
+          commit('LOGIN_MODAL_HANDLER', true)
+          commit('IS_LOADING')
+        })
       } catch (err) {
+        commit('IS_LOADING')
+
         const errors = {}
 
-        err.response.data.errors.message.forEach(item => {
-          if (item.includes('Email')) errors.email = true
-          if (item.includes('Password')) errors.password = true
-          if (item.includes('Role')) errors.role = true
-          if (item.includes('Location')) errors.location = true
-        })
+        if (err.response.data.errors.message === 'Username not avalaible') {
+          errors.username = true
+        } else {
+          err.response.data.errors.message.forEach(item => {
+            if (item.includes('Email')) errors.email = true
+            if (item.includes('Password')) errors.password = true
+            if (item.includes('Role')) errors.role = true
+            if (item.includes('Location')) errors.location = true
+            if (item.includes('Username')) errors.username = true
+          })
+        }
 
         commit('REGISTER_ERROR_HANDLER', errors)
       }
@@ -130,11 +153,27 @@ export default new Vuex.Store({
           data: payload
         })
 
-        localStorage.setItem('user_data_bidding', JSON.stringify(data))
-        commit('LOGIN_MODAL_HANDLER')
-        commit('SET_ISLOGGED')
+        Swal.fire({
+          title: 'Yeay!',
+          text: 'Berhasil Login',
+          icon: 'success',
+          confirmButtonText: 'Ok'
+        }).then(() => {
+          localStorage.setItem('user_data_bidding', JSON.stringify(data))
+          commit('IS_LOADING')
+          commit('LOGIN_MODAL_HANDLER')
+          commit('SET_ISLOGGED')
+          router.push('/')
+        })
       } catch (err) {
-        console.log(err)
+        Swal.fire({
+          title: 'Opps!',
+          text: 'Invalid Username or Password',
+          icon: 'error',
+          confirmButtonText: 'Confirm'
+        }).then(() => {
+          commit('IS_LOADING')
+        })
       }
     },
     async addProductHandler({ dispatch, commit }, payload) {
@@ -147,13 +186,30 @@ export default new Vuex.Store({
             access_token: JSON.parse(localStorage.user_data_bidding).accessToken
           }
         })
-        dispatch('getDataHandler')
-        commit('PRODUCT_MODAL_HANDLER')
+
+        commit('IS_LOADING')
+
+        Swal.fire({
+          title: 'Yeay!',
+          text: 'Berhasil Nambah Produk',
+          icon: 'success',
+          confirmButtonText: 'Ok'
+        }).then(() => {
+          dispatch('getDataHandler')
+          commit('PRODUCT_MODAL_HANDLER')
+        })
       } catch (error) {
-        console.log(error)
+        Swal.fire({
+          title: 'Oops!',
+          text: 'Fieldnya Gaboleh ada yg kosong',
+          icon: 'error',
+          confirmButtonText: 'Ok'
+        }).then(() => {
+          commit('IS_LOADING')
+        })
       }
     },
-    async deleteProductHandler({ dispatch }, payload) {
+    async deleteProductHandler({ dispatch, commit }, payload) {
       try {
         await instanceAxios({
           url: `/products/${payload.productId}`,
@@ -162,12 +218,28 @@ export default new Vuex.Store({
             access_token: JSON.parse(localStorage.user_data_bidding).accessToken
           }
         })
-        dispatch('getDataHandler')
+
+        Swal.fire({
+          title: 'Yeay!',
+          text: 'Berhasil Menghapus Produk',
+          icon: 'success',
+          confirmButtonText: 'Ok'
+        }).then(() => {
+          dispatch('getDataHandler')
+        })
       } catch (error) {
-        console.log(error)
+        Swal.fire({
+          title: 'Oops!',
+          text: 'Gagal Menghapus Produk',
+          icon: 'error',
+          confirmButtonText: 'Ok'
+        })
+        commit('IS_LOADING')
       }
     },
     async getDataHandler({ commit }) {
+      commit('IS_LOADING', true)
+
       try {
         const getData = await instanceAxios({
           url: '/products',
@@ -177,8 +249,9 @@ export default new Vuex.Store({
           }
         })
         commit('GET_DATA_PRODUCT', getData.data)
+        commit('IS_LOADING')
       } catch (error) {
-        console.log(error)
+        commit('IS_LOADING')
       }
     },
     async getDetailProduct({ commit }, payload) {
@@ -205,10 +278,23 @@ export default new Vuex.Store({
             access_token: JSON.parse(localStorage.user_data_bidding).accessToken
           }
         })
-        dispatch('getDataHandler')
-        commit('PRODUCT_EDIT_MODAL_HANDLER')
+
+        Swal.fire({
+          title: 'Yeay!',
+          text: 'Berhasil Edit Produk',
+          icon: 'success',
+          confirmButtonText: 'Ok'
+        }).then(() => {
+          dispatch('getDataHandler')
+          commit('PRODUCT_EDIT_MODAL_HANDLER')
+        })
       } catch (error) {
-        console.log(error)
+        Swal.fire({
+          title: 'Oops!',
+          text: 'Fieldnya Gaboleh ada yg kosong',
+          icon: 'error',
+          confirmButtonText: 'Ok'
+        })
       }
     },
     async getAllDataHandler({ commit }, payload) {
@@ -250,7 +336,7 @@ export default new Vuex.Store({
     async getAuctionHandler({ commit }, payload) {
       try {
         const getData = await instanceAxios({
-          url: `/auctions/${payload.ProductId}`,
+          url: `/auctions/${payload.ProductId}?size=3`,
           method: 'GET',
           headers: {
             access_token: JSON.parse(localStorage.user_data_bidding).accessToken
@@ -290,6 +376,67 @@ export default new Vuex.Store({
       } catch (error) {
         console.log(error)
         commit('IS_LOADING', false)
+      }
+    },
+    async auctionEndedHandler({ dispatch }, payload) {
+      try {
+        await instanceAxios({
+          url: `/products/${payload}`,
+          method: 'patch',
+          data: { status: false },
+          headers: {
+            access_token: JSON.parse(localStorage.user_data_bidding).accessToken
+          }
+        })
+        dispatch('getDetailProduct', { productId: payload })
+      } catch (error) {
+        console.log(error)
+      }
+    },
+    async addHistoryHandler({ dispatch }, payload) {
+      try {
+        await instanceAxios({
+          url: '/history',
+          method: 'post',
+          data: payload,
+          headers: {
+            access_token: JSON.parse(localStorage.user_data_bidding).accessToken
+          }
+        })
+
+        Swal.fire({
+          title: 'Yeay!',
+          text: 'Berhasil Konfirmasi',
+          icon: 'success',
+          confirmButtonText: 'Ok'
+        }).then(() => {
+          router.push('/history')
+        })
+      } catch (error) {
+        Swal.fire({
+          title: 'Yahh!',
+          text: 'Server Lagi Error',
+          icon: 'error',
+          confirmButtonText: 'Ok'
+        })
+      }
+    },
+    async getHistoryHandler({ state, commit }) {
+      try {
+        commit('IS_LOADING', true)
+        const { data } = await instanceAxios({
+          url: `/history?role=${state.userRole}`,
+          method: 'get',
+          headers: {
+            access_token: JSON.parse(localStorage.user_data_bidding).accessToken
+          }
+        })
+        commit('IS_LOADING')
+
+        commit('GET_HISTORY', data)
+      } catch (error) {
+        console.log(error)
+        commit('IS_LOADING')
       }
     }
   },

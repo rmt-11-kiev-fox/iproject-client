@@ -45,9 +45,9 @@ export default {
         },
         // { title: 'On Going', icon: 'fa-eye', value: '/on-going',status: getRoleHandler === 'buyer' },
         {
-          title: 'Transaction',
+          title: 'History',
           icon: 'fa-shopping-cart',
-          value: '/transaction',
+          value: '/history',
           status: this.$store.state.userRole
         },
         {

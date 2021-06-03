@@ -93,7 +93,13 @@
     }
   }
 
-  .card-container__live-bid {
+  .winner {
+    font-size: 16px;
+    color: #426696;
+  }
+
+  .card-container__live-bid,
+  .winner {
     position: absolute;
     bottom: 16px;
     display: flex;

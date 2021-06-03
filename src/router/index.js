@@ -27,6 +27,18 @@ const routes = [
     name: 'ListProduct',
     component: () =>
       import(/* webpackChunkName: "about" */ '../views/product/index')
+  },
+  {
+    path: '/history',
+    name: 'History',
+    component: () =>
+      import(/* webpackChunkName: "about" */ '../views/history/index')
+  },
+  {
+    path: '/not-found',
+    name: 'NotFound',
+    component: () =>
+      import(/* webpackChunkName: "about" */ '../views/notfound/index')
   }
 ]
 
@@ -37,14 +49,11 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  const userRole = localStorage.user_data_bidding
-    ? JSON.parse(localStorage.user_data_bidding).role
+  const isLogged = localStorage.user_data_bidding
+    ? JSON.parse(localStorage.user_data_bidding).accessToken
     : false
-  if (userRole === 'buyer' && to.name === 'ListProduct') next({ name: 'Home' })
-  if (userRole === 'seller' && to.name === 'Home') {
-    next({
-      name: '/ListProduct'
-    })
+  if (!isLogged && to.name !== 'NotFound') {
+    next({ name: 'NotFound' })
   } else next()
 })
 

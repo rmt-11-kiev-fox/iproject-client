@@ -6,6 +6,17 @@
   position: relative;
   overflow: scroll;
 
+  .loader-wrapping {
+    position: relative;
+    width: 100%;
+    text-align: center;
+
+    .lds-ring {
+      width: 30px;
+      height: 30px;
+    }
+  }
+
   .login-copy {
     font-size: 14px;
     text-align: center;

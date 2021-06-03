@@ -48,6 +48,7 @@ export default {
     onCountdownEnd() {
       this.counting = false
       this.timeToggle = true
+      this.$store.dispatch('auctionEndedHandler', this.data.id)
     },
     ongkirHandler() {
       this.ongkirToggle = !this.ongkirToggle

@@ -36,7 +36,6 @@
 </template>
 
 <script>
-// import Loader from '../components/loader/index'
 import ListMenu from './components/listMenu/index'
 import HeaderDashboard from './components/headerListMenu/index'
 import OverlayModal from './components/modal/index'

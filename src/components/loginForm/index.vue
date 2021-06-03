@@ -16,7 +16,10 @@
         v-model="passwordInput"
       />
 
-      <button>Submit</button>
+      <button v-if="!loadingHandler">Submit</button>
+      <button v-if="loadingHandler" class="loader-wrapping ">
+        <LoaderV2 />
+      </button>
     </form>
 
     <div class="register-copy">Doesn't Have Any Account?</div>
@@ -27,6 +30,8 @@
 </template>
 
 <script>
+import LoaderV2 from '@/components/loaderV2/index'
+
 export default {
   props: ['toggleLoginHandler', 'toggleRegisterHandler'],
   name: 'Login',
@@ -42,10 +47,18 @@ export default {
         password: this.passwordInput,
         username: this.usernameInput
       }
+      this.$store.commit('IS_LOADING', true)
       this.$store.dispatch('loginHandler', payload)
     }
   },
-  computed: {}
+  computed: {
+    loadingHandler() {
+      return this.$store.state.isLoading
+    }
+  },
+  components: {
+    LoaderV2
+  }
 }
 </script>
 

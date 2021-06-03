@@ -133,15 +133,28 @@
           24 Jam
         </div>
       </div>
-      <button class="button-submit">Submit</button>
+      <button v-if="!loadingHandler" class="button-submit">Submit</button>
+      <button v-if="loadingHandler" class="loader-wrapping button-submit">
+        <LoaderV2 />
+      </button>
     </form>
   </div>
 </template>
 
 <script>
+import LoaderV2 from '@/components/loaderV2/index'
+
 export default {
   props: ['toggleAddProductHandler'],
   name: 'addProduct',
+  components: {
+    LoaderV2
+  },
+  computed: {
+    loadingHandler() {
+      return this.$store.state.isLoading
+    }
+  },
   methods: {
     changeBidHandler(val) {
       this.bidInput = val
@@ -172,7 +185,7 @@ export default {
         name: nameInput,
         category: categoryInput
       }
-
+      this.$store.commit('IS_LOADING', true)
       this.$store.dispatch('addProductHandler', obj)
     },
     openUploadModal() {

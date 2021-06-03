@@ -19,7 +19,11 @@
         type="text"
         placeholder="Masukan Username"
         v-model="usernameInput"
+        :class="errorHandler.username && 'error-box'"
       />
+      <div class="error" v-if="errorHandler.username">
+        Username is Required or doesnt exist
+      </div>
 
       <label>Password</label>
       <input
@@ -40,7 +44,7 @@
           {{ item.type + ' ' + item.city_name }}</option
         >
       </select>
-      <div class="error" v-if="errorHandler.password">Location Required</div>
+      <div class="error" v-if="errorHandler.location">Location Required</div>
 
       <label>Add Image</label>
       <div class="flex">
@@ -82,7 +86,10 @@
       </div>
       <div class="error" v-if="errorHandler.role">Role Required</div>
 
-      <button class="button-submit">Submit</button>
+      <button v-if="!loadingHandler" class="button-submit">Submit</button>
+      <button v-if="loadingHandler" class="loader-wrapping button-submit">
+        <LoaderV2 />
+      </button>
     </form>
     <div class="login-copy">Have Any Account?</div>
     <div class="login-copy link" @click="toggleLoginHandler">Login</div>
@@ -90,9 +97,14 @@
 </template>
 
 <script>
+import LoaderV2 from '@/components/loaderV2/index'
+
 export default {
   props: ['toggleLoginHandler', 'toggleRegisterHandler'],
   name: 'Register',
+  components: {
+    LoaderV2
+  },
   methods: {
     changeRoleHandler(val) {
       this.role = val
@@ -115,7 +127,7 @@ export default {
         username: usernameInput,
         location: Number(locationInput)
       }
-
+      this.$store.commit('IS_LOADING', true)
       this.$store.dispatch('registerHandler', obj)
     },
     openUploadModal() {
@@ -140,7 +152,8 @@ export default {
       imageInput: '',
       emailInput: '',
       passwordInput: '',
-      usernameInput: ''
+      usernameInput: '',
+      locationInput: null
     }
   },
   computed: {
@@ -149,6 +162,9 @@ export default {
     },
     getCityHandler() {
       return this.$store.state.city
+    },
+    loadingHandler() {
+      return this.$store.state.isLoading
     }
   },
   created() {
