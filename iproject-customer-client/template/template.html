@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">  
+  <title>Document</title>
+</head>
+<body>
+  <!-- Login -->
+  <section id="login-section">
+    <div class="container">
+      <div class="row px-3">
+        <div class="col-lg-10 col-xl-9 card flex-row mx-auto px-0">
+          <div class="img-left d-none d-md-flex"></div>
+
+          <div class="card-body">
+            <h4 class="title text-center mt-4">LOGIN</h4>
+            <form class="form-box px3">
+              <div class="form-input">
+                <span><i class="fa fa-envelope-o"></i></span>
+                <input type="email" name="" placeholder="Your Email" tabindex="10" required>
+              </div>
+              <div class="form-input">
+                <span><i class="fa fa-key"></i></span>
+                <input type="password" name="" placeholder="Your Password" required>
+              </div>
+              <div class="mb-3 warp-btn-login">
+                <button type="submit" class="btn btn-block text-uppercase">
+                  Login
+                </button>
+              </div>
+              <hr class="my-4">
+              <div class="text-center mb-2">
+                Don't have an account?
+              </div>
+              <a href="#" class="register-link">
+                Register here
+              </a>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Register -->
+  <section id="register-section">
+    <div class="container">
+      <div class="row px-3">
+        <div class="col-lg-10 col-xl-9 card flex-row mx-auto px-0">
+          <div class="img-left-register d-none d-md-flex"></div>
+
+          <div class="card-body">
+            <h4 class="title text-center mt-4">REGISTER</h4>
+            <form class="form-box px3">
+              <div class="input-group ">
+                <span class="input-group-text" style="font-size: small !important;">First and Last Name</span>
+                <input type="text" aria-label="First name" class="form-control" tabindex="10">
+                <input type="text" aria-label="Last name" class="form-control">
+              </div>
+              <div class="form-input">
+                <span><i class="fa fa-calendar-plus-o" aria-hidden="true"></i></i></span>
+                <input type="date" name="" placeholder="Birth Date" tabindex="10" required>
+              </div>
+              <div class="form-input">
+                <span><i class="fa fa-phone" aria-hidden="true"></i></i></span>
+                <input type="text" name="" placeholder="Phone Number" required>
+              </div>
+              <div class="form-input">
+                <span><i class="fa fa-envelope-o"></i></span>
+                <input type="email" name="" placeholder="Email" tabindex="10" required>
+              </div>
+              <div class="form-input">
+                <span><i class="fa fa-key"></i></span>
+                <input type="password" name="" placeholder="Password" required>
+              </div>
+              <div class="input-group">
+                <span class="input-group-text"><i class="fa fa-venus-mars" aria-hidden="true"></i></span>
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+                <label class="btn btn-outline-dark" for="btnradio1">Male</label>
+              
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+                <label class="btn btn-outline-dark" for="btnradio2">Female</label>
+              </div>
+              <div class="form-input">
+                <span><i class="fa fa-map-marker" aria-hidden="true"></i></i></span>
+                <input type="text" name="" placeholder="Address" required>
+              </div>
+              <div class="mb-3 warp-btn-login">
+                <button type="submit" class="btn btn-block text-uppercase">
+                  Success
+                </button>
+              </div>
+              <div class="mb-3 warp-btn-login">
+                <button type="button" class="btn btn-block text-uppercase">
+                  Cancel
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Homepage -->
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <img src="./assets/icon1.jpg" alt="" style="width: 80px; background: transparent; outline: none; border-radius: 50px;">
+      <a class="navbar-brand" href="#">Urban</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"><i class="fa fa-bars" aria-hidden="true"></i></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarScroll">
+        <ul class="navbar-nav m-auto my-2 my-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Sneakers</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Casuals</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              Sandals
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Sports</a>
+          </li>
+        </ul>
+        <form class="d-flex">
+          <input disabled class="px-2 search" type="search" value="0" aria-label="Search">
+          <button class="btn0" type="button"><span><i class="fa fa-cart-plus" aria-hidden="true"></i></span></button>
+        </form>
+      </div>
+    </div>
+  </nav>
+  <!-- End of Navbar -->
+  <!-- Banner -->
+  <section class="main">
+    <div class="container py-5">
+      <div class="row py-5">
+        <div class="col-lg-7 pt-5 text-center">
+          <h1 class="pt-5">Your Dreams Footwears Start Here!</h1>
+          <button class="btn1 mt-3">Get Product</button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End of Banner -->
+
+    <!-- Whats Trend Content -->
+    <section class="trending">
+      <div class="container py-5">
+        <div class="row py-5">
+          <div class="col-lg-5 m-auto text-center">
+            <h1>What's Trending</h1>
+            <h6 style="color: lightcoral;">Feature Footwears</h6>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-3 text-center">
+            <div class="card-product border-0 bg-light mb-2">
+              <div class="card-body">
+                <img src="./assets/air-j-retro.jpeg" class="img-fluid" alt="">
+              </div>
+            </div>
+            <h6>Nike Air Jordan Retro</h6>
+            <p>Rp. 6.700.000</p>
+            <span><i class="fa fa-cart-plus" aria-hidden="true"></i></span>
+          </div>
+          <div class="col-lg-3 text-center">
+            <div class="card-product border-0 bg-light mb-2">
+              <div class="card-body">
+                <img src="./assets/air-j-retro.jpeg" class="img-fluid" alt="">
+              </div>
+            </div>
+            <h6>Nike Air Jordan Retro</h6>
+            <p>Rp. 6.700.000</p>
+          </div>
+          <div class="col-lg-3 text-center">
+            <div class="card-product border-0 bg-light mb-2">
+              <div class="card-body">
+                <img src="./assets/air-j-retro.jpeg" class="img-fluid" alt="">
+              </div>
+            </div>
+            <h6>Nike Air Jordan Retro</h6>
+            <p>Rp. 6.700.000</p>
+          </div>
+          <div class="col-lg-3 text-center">
+            <div class="card-product border-0 bg-light mb-2">
+              <div class="card-body">
+                <img src="./assets/air-j-retro.jpeg" class="img-fluid" alt="">
+              </div>
+            </div>
+            <h6>Nike Air Jordan Retro</h6>
+            <p>Rp. 6.700.000</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6 text-center m-auto">
+            <button class="btn1">Click For More</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Whats Trend Content -->
+
+    <!-- Store -->
+    <section class="shop">
+      <div class="container">
+        <div class="row py-5">
+          <div class="col-lg-5 m-auto text-center">
+            <h1>Explore Our Store</h1>
+            <h6 style="color: lightcoral;">Choose Your Footwears</h6>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-3 text-center">
+            <div class="card-product border-0 bg-light mb-2">
+              <div class="card-body">
+                <img src="./assets/air-j-retro.jpeg" class="img-fluid" alt="">
+              </div>
+            </div>
+            <h6>Nike Air Jordan Retro</h6>
+            <p>Rp. 6.700.000</p>
+          </div>
+          <div class="col-lg-3 text-center">
+            <div class="card-product border-0 bg-light mb-2">
+              <div class="card-body">
+                <img src="./assets/air-j-retro.jpeg" class="img-fluid" alt="">
+              </div>
+            </div>
+            <h6>Nike Air Jordan Retro</h6>
+            <p>Rp. 6.700.000</p>
+          </div>
+          <div class="col-lg-3 text-center">
+            <div class="card-product border-0 bg-light mb-2">
+              <div class="card-body">
+                <img src="./assets/air-j-retro.jpeg" class="img-fluid" alt="">
+              </div>
+            </div>
+            <h6>Nike Air Jordan Retro</h6>
+            <p>Rp. 6.700.000</p>
+          </div>
+          <div class="col-lg-3 text-center">
+            <div class="card-product border-0 bg-light mb-2">
+              <div class="card-body">
+                <img src="./assets/air-j-retro.jpeg" class="img-fluid" alt="">
+              </div>
+            </div>
+            <h6>Nike Air Jordan Retro</h6>
+            <p>Rp. 6.700.000</p>
+          </div>
+
+          <div class="col-lg-3 text-center">
+            <div class="card-product border-0 bg-light mb-2">
+              <div class="card-body">
+                <img src="./assets/air-j-retro.jpeg" class="img-fluid" alt="">
+              </div>
+            </div>
+            <h6>Nike Air Jordan Retro</h6>
+            <p>Rp. 6.700.000</p>
+          </div>
+
+          <div class="col-lg-3 text-center">
+            <div class="card-product border-0 bg-light mb-2">
+              <div class="card-body">
+                <img src="./assets/air-j-retro.jpeg" class="img-fluid" alt="">
+              </div>
+            </div>
+            <h6>Nike Air Jordan Retro</h6>
+            <p>Rp. 6.700.000</p>
+          </div>
+
+          <div class="col-lg-3 text-center">
+            <div class="card-product border-0 bg-light mb-2">
+              <div class="card-body">
+                <img src="./assets/air-j-retro.jpeg" class="img-fluid" alt="">
+              </div>
+            </div>
+            <h6>Nike Air Jordan Retro</h6>
+            <p>Rp. 6.700.000</p>
+          </div>
+
+          <div class="col-lg-3 text-center">
+            <div class="card-product border-0 bg-light mb-2">
+              <div class="card-body">
+                <img src="./assets/air-j-retro.jpeg" class="img-fluid" alt="">
+              </div>
+            </div>
+            <h6>Nike Air Jordan Retro</h6>
+            <p>Rp. 6.700.000</p>
+          </div>
+
+          <div class="col-lg-3 text-center">
+            <div class="card-product border-0 bg-light mb-2">
+              <div class="card-body">
+                <img src="./assets/air-j-retro.jpeg" class="img-fluid" alt="">
+              </div>
+            </div>
+            <h6>Nike Air Jordan Retro</h6>
+            <p>Rp. 6.700.000</p>
+          </div>
+
+          <div class="col-lg-3 text-center">
+            <div class="card-product border-0 bg-light mb-2">
+              <div class="card-body">
+                <img src="./assets/air-j-retro.jpeg" class="img-fluid" alt="">
+              </div>
+            </div>
+            <h6>Nike Air Jordan Retro</h6>
+            <p>Rp. 6.700.000</p>
+          </div>
+
+          <div class="col-lg-3 text-center">
+            <div class="card-product border-0 bg-light mb-2">
+              <div class="card-body">
+                <img src="./assets/air-j-retro.jpeg" class="img-fluid" alt="">
+              </div>
+            </div>
+            <h6>Nike Air Jordan Retro</h6>
+            <p>Rp. 6.700.000</p>
+          </div>
+
+          <div class="col-lg-3 text-center">
+            <div class="card-product border-0 bg-light mb-2">
+              <div class="card-body">
+                <img src="./assets/air-j-retro.jpeg" class="img-fluid" alt="">
+              </div>
+            </div>
+            <h6>Nike Air Jordan Retro</h6>
+            <p>Rp. 6.700.000</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Store -->
+    <!-- Footer -->
+    <section class="footer py-5">
+      <div class="container py-5">
+        <div class="row">
+          <div class="col-lg-9 m-auto text-center">
+            <h1>More Information</h1>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-11">
+            <div class="row" style="padding-top: 32px;">
+              <div class="col-lg-3 py-3">
+                <h5 class="pb-3">Customer Care</h5>
+                <p>Regular</p>
+                <p>On Time</p>
+                <p>Always Care</p>
+              </div>
+              <div class="col-lg-3 py-3">
+                <h5 class="pb-3">Customer Care</h5>
+                <p>Regular</p>
+                <p>On Time</p>
+                <p>Always Care</p>
+              </div>
+              <div class="col-lg-3 py-3">
+                <h5 class="pb-3">Customer Care</h5>
+                <p>Regular</p>
+                <p>On Time</p>
+                <p>Always Care</p>
+              </div>
+              <div class="col-lg-3 py-3">
+                <h5 class="pb-3">Customer Care</h5>
+                <p>Regular</p>
+                <p>On Time</p>
+                <p>Always Care</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Footer -->
+  <!-- End of HomePage -->
+
+  <!-- Cart -->
+    <div class="container-fluid" id="cart-section">
+      <div class="row">
+        <div class="col-md-10 col-11 mx-auto">
+          <div class="row mt-5 gx-3">
+            <!-- left Side -->
+            <div class="col-md-12 col-lg-8 col-11 mx-auto main-cart mb-lg-0 mb-5 shadow">
+              <div class=" p-4">
+                <h2 class="py-4 font-weight-bold">Cart (2 items)</h2>
+                <div class="row">
+                  <!-- Cart image -->
+                  <div class="col-md-5 col-11 mx-auto bg-light d-flex justify-content-center align-items-center shadow product-cart">
+                    <img src="./assets/air-j-retro.jpeg" class="img-fluid" alt="">
+                  </div>
+                    <!-- cart product detail -->
+                    <div class="col-md-7 col-11 mx-auto px-4 mt-2">
+                      <div class="row">
+                        <!-- prod name -->
+                        <div class="col-6 card-title">
+                          <h1 class="mb-4 product-name">Nike Air Jordan Retro</h1>
+                          <p class="mb-2">Lorem, ipsum.</p>
+                          <p class="mb-2">Lorem, ipsum.</p>
+                          <p class="mb-3">Lorem, ipsum.</p>
+                        </div>
+                        
+                        <!-- quantitiy -->
+                        <div class="col-6">
+                          <ul class="pagination justify-content-end set-qty-cart">
+                            <li class="page-item">
+                              <button class="page-link">-</button>
+                            </li>
+                            <li class="page-item">
+                              <input type="text" class="page-link" name="" value="1" id="textbox">
+                            </li>
+                            <li class="page-item">
+                              <button class="page-link">+</button>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+
+                      <!-- Remove move n price -->
+                      <div class="row">
+                        <div class="col-8 d-flex justify-content-between remove-wish">
+                          <p><span><i class="fa fa-trash" aria-hidden="true"></i></span>Remove Item</p>
+                          <p><span><i class="fa fa-heart" aria-hidden="true"></i></span>Move To Wishlist</p>
+                        </div>
+                        <div class="col-4 justify-content-end price-cart">
+                          <h6>Rp. 6.700.000</h6>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+              </div>
+              <hr/>
+              <!-- 2nd Cart -->
+              <div class=" p-4">
+                <div class="row">
+                  <!-- Cart image -->
+                  <div class="col-md-5 col-11 mx-auto bg-light d-flex justify-content-center align-items-center shadow product-cart">
+                    <img src="./assets/air-j-retro.jpeg" class="img-fluid" alt="">
+                  </div>
+                    <!-- cart product detail -->
+                    <div class="col-md-7 col-11 mx-auto px-4 mt-2">
+                      <div class="row">
+                        <!-- prod name -->
+                        <div class="col-6 card-title">
+                          <h1 class="mb-4 product-name">Nike Air Jordan Retro</h1>
+                          <p class="mb-2">Lorem, ipsum.</p>
+                          <p class="mb-2">Lorem, ipsum.</p>
+                          <p class="mb-3">Lorem, ipsum.</p>
+                        </div>
+                        
+                        <!-- quantitiy -->
+                        <div class="col-6">
+                          <ul class="pagination justify-content-end set-qty-cart">
+                            <li class="page-item">
+                              <button class="page-link">-</button>
+                            </li>
+                            <li class="page-item">
+                              <input type="text" class="page-link" name="" value="1" id="textbox2">
+                            </li>
+                            <li class="page-item">
+                              <button class="page-link">+</button>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+
+                      <!-- Remove move n price -->
+                      <div class="row">
+                        <div class="col-8 d-flex justify-content-between remove-wish">
+                          <p><span><i class="fa fa-trash" aria-hidden="true"></i></span>Remove Item</p>
+                          <p><span><i class="fa fa-heart" aria-hidden="true"></i></span>Move to Wishlist</p>
+                        </div>
+                        <div class="col-4 justify-content-end price-cart">
+                          <h6>Rp. 6.700.000</h6>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <!-- right side -->
+            <div class="col-md-12 col-lg-4 col-11 mx-auto mt-lg-0 mt-md-5">
+              <div class="right-side p-3 shadow bg-white"><h2>Total Amount</h2>
+                <div class="price-indiv d-flex justify-content-between">
+                  <p>Product amount</p>
+                  <p>Rp.<span>6.700.000</span></p>
+                </div>
+                <div class="price-indiv d-flex justify-content-between">
+                  <p>Shipping Charge</p>
+                  <p>Rp.6.700.000</p>
+                </div>
+                <hr/>
+                 <div class="total-amount d-flex justify-content-between font-weight-bold">
+                   <p>The total amount</p>
+                   <p>Rp. <span id="total-cart-amt">6.700.000</span></p>
+                 </div>
+                 <button class="btn1">CHECKOUT</button>               
+              </div>
+              <!-- Expect date delivery -->
+
+              <div class="mt-3 shadow p-3 bg-white">
+                <div class="pt-4">
+                  <h5 class="mb-4">Expected Delivery Date</h5>
+                  <p>July 27th 2021 - July 29th 2021</p>
+                </div>
+              </div>              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <!-- Cart -->
+
+<!-- BOOTSTRAP SCRIPT -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+  <!-- FONT AWESOME -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" />
+</body>
+</html>
