@@ -438,6 +438,21 @@ export default new Vuex.Store({
         console.log(error)
         commit('IS_LOADING')
       }
+    },
+    async getAllDataFilteredHandler({ commit }, payload) {
+      try {
+        const getData = await instanceAxios({
+          url: `/all-product-filter?size=9999&page=${payload.page}&text=${payload.input}&status=${payload.status}&category=${payload.category}`,
+          method: 'GET',
+          headers: {
+            access_token: JSON.parse(localStorage.user_data_bidding).accessToken
+          }
+        })
+        commit('GET_ALL_DATA_PRODUCT', getData.data.cards)
+        commit('GET_COUNT_DATA_PRODUCT', getData.data.count)
+      } catch (error) {
+        console.log(error)
+      }
     }
   },
   modules: {}

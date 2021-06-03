@@ -45,6 +45,11 @@
   "bugs": {
     "url": "https://github.com/azrifathul/iproject-client/issues"
   },
+  "prettier": {
+    "singleQuote": true,
+    "semi": false,
+    "trailingComma": "none"
+  },
   "homepage": "https://github.com/azrifathul/iproject-client#readme",
   "keywords": [],
   "license": "ISC",

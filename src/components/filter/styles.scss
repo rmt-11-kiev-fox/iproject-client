@@ -7,6 +7,7 @@
   box-sizing: border-box;
   display: flex;
   flex-wrap: wrap;
+  flex-direction: column;
 
   .item-container {
     margin: 0 24px 24px 0;
@@ -35,8 +36,25 @@
       border-radius: 16px;
     }
   }
+
+  .active {
+    background: #f15c60;
+    color: white;
+    border: none !important;
+  }
 }
 
+.button-filter {
+  background: #f15c60;
+  width: 100px;
+  height: 30px;
+  border-radius: 16px;
+  color: white;
+  font-size: 16px;
+  position: absolute;
+  right: 16px;
+  bottom: 12px;
+}
 .filter-icon {
   color: #e13b3b;
   position: absolute;
