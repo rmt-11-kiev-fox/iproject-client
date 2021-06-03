@@ -47,7 +47,6 @@ export default new Vuex.Store({
 				data: { lat, lng },
 			})
 				.then(({ data }) => {
-					console.log(data.result);
 					commit("SET_SUGGESTS", data.result);
 				})
 				.catch((err) => {
