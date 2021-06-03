@@ -20,7 +20,7 @@ export default new Vuex.Store({
   actions: {
     getSearchReddit ({commit}, query) {
       axios({
-        url: `http://www.reddit.com/search.json?sort=hot&limit=20&q=${query}`,
+        url: `http://www.reddit.com/search.json?sort=hot&limit=30&q=${query}`,
         method: 'GET',
       }) 
         .then(({data}) => {
@@ -45,7 +45,23 @@ export default new Vuex.Store({
         .catch((err) => {
           console.log(err)
         })
-    }
+    },
+
+    getSearchByVoice ({commit}, voiceInput) {
+      axios({
+        url: `http://www.reddit.com/search.json?sort=hot&limit=30&q=${voiceInput}`,
+        method: 'GET',
+      }) 
+        .then(({data}) => {
+          let results = data.data.children.map(data => data.data)
+          let dataResult = [...results]
+          console.log(dataResult, "ini data Reddit");
+          commit('SET_DATA_REDDIT', dataResult)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    },
   },
   modules: {
   }

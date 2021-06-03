@@ -3,14 +3,19 @@
     <div>
         <NavBar
         ></NavBar>
-        <div class="justify-center item-center my-9 grid grid-cols gap-6 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
+        <div class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5">
 
-        <RedditCard
-          v-for="(result, i) in $store.state.redditResults" :key="i" :result="result"
-        />
-        <TwitterCard
-          v-for="(result, i) in $store.state.twitterResults" :key="i" :result="result"
-        />
+            <RedditCard
+              v-for="(result, i) in $store.state.redditResults" :key="i" :result="result"
+            />
+            
+        </div>
+        <div class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5">
+
+            <TwitterCard
+              v-for="(result, i) in $store.state.twitterResults" :key="i" :result="result"
+            />
+
         </div>
     </div>
   </div>
