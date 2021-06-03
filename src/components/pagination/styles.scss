@@ -1,0 +1,37 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  height: 50px;
+  align-items: center;
+
+  .next {
+    transform: rotate(180deg);
+  }
+
+  .content {
+    display: flex;
+
+    div {
+      padding: 0 14px;
+      color: black;
+      margin: 4px;
+      cursor: pointer;
+    }
+  }
+
+  .button {
+    padding: 0 14px;
+    color: black;
+    cursor: pointer;
+    font-size: 18px;
+  }
+}
+
+.active-pagination {
+  color: #e63013 !important;
+  font-weight: 700;
+}
