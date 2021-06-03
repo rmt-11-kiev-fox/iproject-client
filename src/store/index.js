@@ -71,7 +71,8 @@ export default new Vuex.Store({
         method: "GET"
       })
         .then(({ data }) => {
-          commit("SET_NOWPLAYING_MOVIES", data);
+          // console.log(data, "data of fetch now playing movies");
+          commit("SET_NOWPLAYING_MOVIES", data.results);
         })
         .catch(err => {
           console.log(err, "err in fetch now playing movies");
@@ -83,7 +84,8 @@ export default new Vuex.Store({
         method: "GET"
       })
         .then(({ data }) => {
-          commit("SET_UPCOMING_MOVIES", data);
+          console.log(data, "data of fetch upcoming movies");
+          commit("SET_UPCOMING_MOVIES", data.results);
         })
         .catch(err => {
           console.log(err, "err in fetch upcoming movies");
@@ -111,7 +113,7 @@ export default new Vuex.Store({
         data: { MovieId }
       })
         .then(({ data }) => {
-          console.log(data.results, "similar movie data");
+          // console.log(data.results, "similar movie data");
           commit("SET_SIMILAR_MOVIES", data.results);
         })
         .catch(err => {
@@ -119,7 +121,7 @@ export default new Vuex.Store({
         });
     },
     addToWishlist(context, newWishlist) {
-      console.log(newWishlist, "new wish list add to wishlist store.vue");
+      // console.log(newWishlist, "new wish list add to wishlist store.vue");
       axios({
         url: `/watchWishlist`,
         method: "POST",
@@ -158,7 +160,7 @@ export default new Vuex.Store({
         method: "GET"
       })
         .then(({ data }) => {
-          console.log(data.data.value, "fetch movie news data in store");
+          // console.log(data.data.value, "fetch movie news data in store");
           commit("SET_NEWS_MOVIES", data.data.value);
         })
         .catch(err => {

@@ -13,36 +13,24 @@ const routes = [
   {
     path: "/login",
     name: "Login",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/Login.vue")
   },
   {
     path: "/movies/detail/:movieId",
     name: "MovieDetail",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/MovieDetail.vue")
   },
   {
     path: "/movies/wishlist",
     name: "MovieWishlist",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/Wishlist.vue")
   },
   {
     path: "/register",
     name: "Register",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/Register.vue")
   }
@@ -52,6 +40,28 @@ const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
   routes
+});
+
+router.beforeEach((to, from, next) => {
+  if (!localStorage.access_token) {
+    if (to.name === "Login") {
+      next();
+    } else if (to.name === "Register") {
+      next();
+    } else if (to.name === "Home") {
+      next();
+    } else {
+      next({ name: "Login" });
+    }
+  } else {
+    if (to.name === "Login") {
+      next({ name: "Home" });
+    } else if (to.name === "Register") {
+      next({ name: "Home" });
+    } else {
+      next();
+    }
+  }
 });
 
 export default router;

@@ -38,7 +38,10 @@
                         >My Wishlist</router-link
                       >
                     </li>
-                    <li class="menu-item">
+                    <li v-if="!isLogin" class="menu-item">
+                      <router-link to="/login">Login</router-link>
+                    </li>
+                    <li v-if="isLogin" class="menu-item">
                       <a @click="logout">Logout</a>
                     </li>
                   </ul>
@@ -82,10 +85,20 @@
 
 <script>
 export default {
+  data() {
+    return {
+      isLogin: false
+    };
+  },
   methods: {
     logout() {
       localStorage.clear();
       this.$router.push("/login");
+    }
+  },
+  created() {
+    if (localStorage.getItem("access_token")) {
+      this.isLogin = true;
     }
   }
 };
