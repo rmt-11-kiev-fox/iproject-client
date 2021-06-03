@@ -35,33 +35,67 @@ export default {
             this.$store.commit('SET_TIME_LEFT', time)
         },
         correctAnswer(payload) {
-            // console.log('CORRECT ANSWER |', currentCorrectAnswer) // SWAL
-            Swal.fire({
-                title: 'Correct answer!',
-                text: `You got ${payload.increment} points. Your points now: ${payload.newPoint}`,
-                icon: 'success',
-                confirmButtonText: 'Nice'
-            })
+            this.$store
+                .dispatch('fetchLeaderboard')
+                .then((data) => {
+                    const foundUser = data.find(
+                        (elem) => elem.id === this.$store.state.currentUser.id
+                    )
+                    this.$store.commit('SET_CURRENT_USER', foundUser)
+                    return
+                })
+                .then(() => {
+                    Swal.fire({
+                        title: 'Correct answer!',
+                        text: `You got ${payload.increment} points. Your points now: ${this.$store.state.currentUser.point}`,
+                        icon: 'success',
+                        confirmButtonText: 'Nice'
+                    }).then(() => {
+                        this.$store.dispatch('fetchChats')
+                    })
+                })
+                .catch((err) => {
+                    console.log(err)
+                })
         },
         wrongAnswer(payload) {
-            // console.log('WRONG ANSWER |', currentCorrectAnswer) // SWAL
-            Swal.fire({
-                title: 'Wrong answer!',
-                text: `You got ${payload.decrement} points. Your points now: ${payload.newPoint}`,
-                icon: 'error',
-                confirmButtonText: 'Oh no'
-            })
+            this.$store
+                .dispatch('fetchLeaderboard')
+                .then((data) => {
+                    const foundUser = data.find(
+                        (elem) => elem.id === this.$store.state.currentUser.id
+                    )
+                    this.$store.commit('SET_CURRENT_USER', foundUser)
+                    return
+                })
+                .then(() => {
+                    Swal.fire({
+                        title: 'Wrong answer!',
+                        text: `You got ${payload.decrement} points. Your points now: ${this.$store.state.currentUser.point}`,
+                        icon: 'error',
+                        confirmButtonText: 'Oh no'
+                    }).then(() => {
+                        this.$store.dispatch('fetchChats')
+                    })
+                })
+                .catch((err) => {
+                    console.log(err)
+                })
         },
         receiveCorrectAnswer(correctAnswer) {
             console.log('Correct answer:', correctAnswer)
         },
         receiveServerStatus(status) {
-            if (!status) {
-                this.$router.push('/inactive')
-            } else {
+            if (status) {
                 this.$store.commit('SET_SERVER_STATUS', status)
                 this.$router.push('/')
             }
+            // if (!status) {
+            //     this.$router.push('/inactive')
+            // } else {
+            //     this.$store.commit('SET_SERVER_STATUS', status)
+            //     this.$router.push('/')
+            // }
         },
         startTrivia() {
             this.$router.push('/')
