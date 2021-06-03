@@ -337,8 +337,8 @@
                   <u>Pondok Indah</u>
                 </h4>
                 <p style="color: white">
-                  Jl. hahaha No.6 <br />
-                  Jakarta 11111
+                  {{this.$store.state.PIMLoc.address}} <br />
+                  Jakarta {{this.$store.state.PIMLoc.postal}}
                 </p>
                 <h4
                   style="
@@ -378,8 +378,8 @@
                   <u>Senayan</u>
                 </h4>
                 <p style="color: white">
-                  Jl. hahaha No.6 <br />
-                  Jakarta 11111
+                  {{this.$store.state.PSLoc.address}} <br />
+                  Jakarta {{this.$store.state.PSLoc.postal}}
                 </p>
                 <h4
                   style="
@@ -419,8 +419,8 @@
                   <u>Menteng</u>
                 </h4>
                 <p style="color: white">
-                  Jl. hahaha No.6 <br />
-                  Jakarta 11111
+                 {{this.$store.state.MtgLoc.address}} <br />
+                  Jakarta {{this.$store.state.MtgLoc.postal}}
                 </p>
                 <h4
                   style="
@@ -478,7 +478,11 @@ export default {
       router.push('/location')
     },
     created () {
+      // console.log(this.$store.state)
       window.scrollTo(0, 0)
+      this.$store.dispatch('PIMLoc')
+      this.$store.dispatch('PSLoc')
+      this.$store.dispatch('MtgLoc')
     }
   }
 }

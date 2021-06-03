@@ -227,7 +227,7 @@ export default {
   components: { Footer, navBar },
   name: 'Location',
   created () {
-    console.log(this.$store.state)
+    // console.log(this.$store.state)
     window.scrollTo(0, 0)
     this.$store.dispatch('PIMLoc')
     this.$store.dispatch('PSLoc')
