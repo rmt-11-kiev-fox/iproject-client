@@ -19,37 +19,14 @@
       <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav me-auto">
           <li class="nav-item">
-            <a class="nav-link" href="#"
-              >Home
-              <span class="visually-hidden">(current)</span>
-            </a>
+            <router-link to="/">
+              <a class="nav-link">Home</a>
+            </router-link>
           </li>
           <li class="nav-item">
             <router-link to="/category">
               <a class="nav-link">Category</a>
             </router-link>
-          </li>
-
-          <li v-if="logged" class="nav-item dropdown">
-            <a
-              class="nav-link dropdown-toggle"
-              data-bs-toggle="dropdown"
-              href="#"
-              role="button"
-              aria-haspopup="true"
-              aria-expanded="false"
-              >My Account</a
-            >
-            <div class="dropdown-menu">
-              <router-link to="/profile/data">
-                <a class="dropdown-item">My Profile</a>
-              </router-link>
-              <!-- <a class="dropdown-item" href="#">My Profile</a> -->
-              <a class="dropdown-item" href="#">My Donation</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Separated link</a>
-            </div>
           </li>
         </ul>
         <ul class="navbar-nav ms-auto">
@@ -63,6 +40,25 @@
                 placeholder="Search"
               />
             </form>
+          </li>
+          <li v-if="logged" class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              data-bs-toggle="dropdown"
+              href="#"
+              role="button"
+              aria-haspopup="true"
+              aria-expanded="false"
+              >My Account</a
+            >
+            <div class="dropdown-menu">
+              <router-link to="/profile">
+                <a class="dropdown-item">My Profile</a>
+              </router-link>
+              <router-link to="/donation">
+                <a class="dropdown-item">My Donation</a>
+              </router-link>
+            </div>
           </li>
           <li class="nav-item ms-2 me-2">
             <router-link to="/">
@@ -99,6 +95,7 @@ export default {
   methods: {
     logout() {
       localStorage.clear();
+      this.$router.push("/login");
     },
     onSubmit: function (e) {
       if (e.keyCode === 13) {
@@ -107,7 +104,7 @@ export default {
     },
     searchHandler(keyword) {
       this.$store.dispatch("findOrganizations", keyword);
-      this.$router.push("/organization/keyword").catch(() => {});
+      this.$router.push(`/organization?q=${keyword}`).catch(() => {});
     },
   },
   // watch: {
@@ -122,4 +119,22 @@ export default {
 </script>
 
 <style>
+/* .bg-glass {
+background: rgba( 197, 203, 196, 0.50 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 1.5px );
+-webkit-backdrop-filter: blur( 1.5px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 )
+} */
+
+/* .bg-class {
+  background: rgba(197, 203, 196, 0);
+  /* box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); */
+/* backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  font-weight: bolder;
+} */
 </style>

@@ -3,10 +3,19 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Category from '../views/Category/Category.vue'
 import Profile from '../views/Profile/Profile.vue'
-import EditProfile from '../views/Profile/EditProfile.vue'
-import ProfileData from '../views/Profile/ProfileData.vue'
+
 import CategoryData from '../views/Category/CategoryData.vue'
-import OrganizationByKeyword from '../views/OrganizationByKeyword'
+import CategorySample from '../views/CategorySample.vue'
+
+import OrganizationByKeyword from '../views/OrganizationByKeyword.vue'
+import OrganizationDetails from '../views/OrganizationDetails.vue'
+
+import Checkout from '../views/Checkout.vue'
+import CheckoutSuccess from '../views/CheckoutSuccess.vue'
+import Donation from '../views/Donation.vue'
+import About from '../views/About.vue'
+
+
 
 Vue.use(VueRouter)
 
@@ -17,9 +26,36 @@ const routes = [
     component: Home,
     children: [
       {
-        path: '/organization/keyword',
+        path: '/donation',
+        name: 'Donation',
+        component: Donation
+      },
+  
+      {
+        path: '/categorysample/:id',
+        name: 'CategorySample',
+        component: CategorySample
+      },
+
+      {
+        path: '/checkout',
+        name: 'Checkout',
+        component: Checkout
+      },
+      {
+        path: '/checkout/success',
+        name: 'CheckoutSuccess',
+        component: CheckoutSuccess
+      },
+      {
+        path: '/organization',
         name: 'OrganizationByKeyword',
         component: OrganizationByKeyword
+      },
+      {
+        path: '/organization/:id',
+        name: 'OrganizationDetails',
+        component: OrganizationDetails
       },
       {
         path: '/login',
@@ -49,33 +85,16 @@ const routes = [
         path: '/profile',
         name: 'Profile',
         component: Profile,
-        props: true,
-        children: [
-          {
-            path: '/profile/edit',
-            name: 'EditProfile',
-            props: true,
-            component: EditProfile
-          },
-          {
-            path: '/profile/data',
-            name: 'ProfileData',
-            props: true,
-            component: ProfileData
-          }
-        ]
+  
       }
-    ]
+    ],
+    
   },
-
   {
     path: '/about',
     name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
+    component: About
+  },
 ]
 
 const router = new VueRouter({
@@ -84,4 +103,9 @@ const router = new VueRouter({
   routes
 })
 
+
+router.beforeEach((to, from, next) => {
+  if (to.name !== 'Login' && !localStorage.access_token) next({ name: 'Login' })
+  else next()
+})
 export default router

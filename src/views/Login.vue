@@ -32,7 +32,7 @@
               </div>
             </fieldset>
           </form>
-
+          
           <div class="text-center">
             <p>
               Don't have an account?
@@ -51,6 +51,8 @@
 import instanceAxios from "../helpers/api";
 import Swal from "sweetalert2";
 import { Toast } from "../helpers/alert";
+import GoogleLogin from "vue-google-login";
+
 export default {
   name: "Login",
   data() {
@@ -59,7 +61,11 @@ export default {
         username: "",
         password: "",
       },
+
     };
+  },
+  components: {
+    GoogleLogin,
   },
   methods: {
     async login() {
@@ -69,7 +75,6 @@ export default {
           method: "POST",
           data: this.input,
         });
-        console.log(header,"ini headeer ><>><><><><><><><><><><>");
         localStorage.setItem("access_token", header.data.access_token);
         Toast.fire({
           icon: "success",
@@ -85,9 +90,11 @@ export default {
         });
       }
     },
+
   },
 };
 </script>
 
 <style>
 </style>
+

@@ -1,42 +1,32 @@
 <template>
-  <div class="container mt-2 p-2 overflow-auto">
+  <div class="container mt-2 p-2 overflow-auto" style="height: 74vh">
     <div class="pb-4">
-      <table v-if="organizations.length" style="width: 1100px" class="shadow">
+      <table v-if="donations.length" class="table-sm" style="width: 1000px">
         <thead>
           <tr id="thead">
             <th>No</th>
-            <th>Ein</th>
+            <th>Date</th>
             <th>Name</th>
-            <th>City</th>
-            <th>website</th>
-            <th>Category</th>
+            <th>Amount</th>
+            <th>Type</th>
             <th colspan="2">Action</th>
           </tr>
         </thead>
-        <tbody v-for="(item, i) in organizations" :key="i">
+        <tbody v-for="(item, i) in donations" :key="i">
           <tr
             v-if="i >= offset * pageLimit && i < offset * pageLimit + pageLimit"
           >
             <td>{{ i + 1 }}</td>
             <td>
-              {{ item.ein }}
+              {{ item.createdAt.split("T")[0] }}
             </td>
-
+            <td>{{ item.organizationName }}</td>
+            <td>{{ item.amount }}</td>
+            <td>{{ item.paymentType }}</td>
             <td>
               <a
                 type="btn"
-                @click="$router.push(`/organization/${item.ein}`)"
-                >{{ item.charityName }}</a
-              >
-            </td>
-            <td>{{ item.city }}</td>
-            <td v-if="item.url"><a :href="item.url">link</a></td>
-
-            <td>{{ item.category }}</td>
-            <td>
-              <a
-                type="btn"
-                @click="$router.push(`/checkout?id=${item.charityName}`)"
+                @click="$router.push(`/checkout?id=${item.organizationName}`)"
                 ><i class="fas fa-donate"></i>Donate</a
               >
             </td>
@@ -74,17 +64,17 @@
 
 <script>
 export default {
-  name: "OrganizationByKeyword",
+  name: "Donation",
   data() {
     return {
       offset: 0,
     };
   },
+  methods: {},
   computed: {
-    organizations() {
-      return this.$store.state.organizations;
+    donations() {
+      return this.$store.state.donations;
     },
-
     totalPage() {
       return this.$store.state.totalPage;
     },
@@ -92,7 +82,9 @@ export default {
       return this.$store.state.pageLimit;
     },
   },
-  created() {},
+  created() {
+    this.$store.dispatch("fetchDonation");
+  },
 };
 </script>
 
@@ -105,6 +97,7 @@ export default {
   justify-content: center;
   list-style: none;
 }
+
 
 table,
 td,
@@ -121,13 +114,14 @@ table {
   border-collapse: collapse;
   width: 100%;
   margin: auto;
+
 }
-td {
+td{
   background-color: white;
 }
 
 #thead {
-  background-color: #b2b8a3;
+  background-color: #bfc2b8
 }
 /* thead th:first-child {
   border-radius: 10px 0 0 10px;
@@ -136,7 +130,4 @@ thead th:last-child {
   border-radius: 0 10px 10px 0;
 } */
 
-.pagination {
-  color: black;
-}
 </style>

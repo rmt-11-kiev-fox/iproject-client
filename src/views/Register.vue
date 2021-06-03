@@ -5,7 +5,7 @@
         <div class="col bg-light rounded text-dark">
           <form @submit.prevent="register">
             <fieldset>
-              <h1 class="text-center mt-2 mb-4">Register</h1>
+              <h1 class="text-center mt-2 mb-4 overflow-hidden">Register</h1>
               <hr />
               <div class="input-group mt-4 mb-4">
                 <input
@@ -40,7 +40,7 @@
               </div>
               <div class="input-group mt-4 mb-4">
                 <input
-                  v-model="input.fName"
+                  v-model="input.firstName"
                   type="text"
                   class="form-control"
                   placeholder="first name"
@@ -50,7 +50,7 @@
               </div>
               <div class="input-group mt-4 mb-4">
                 <input
-                  v-model="input.lName"
+                  v-model="input.lastName"
                   type="text"
                   class="form-control"
                   placeholder="last name"
@@ -108,8 +108,8 @@ export default {
       input: {
         email: "",
         password: "",
-        fName: "",
-        lName: "",
+        firstName: "",
+        lastName: "",
         username: "",
         phoneNumber: "",
         address: "",
@@ -118,18 +118,20 @@ export default {
   },
   methods: {
     async register() {
-      console.log(this.input,"<<<<<<<, ni init");
       try {
         const newUser = await instanceAxios({
           url: "/register",
           method: "POST",
           data: this.input,
         });
-        console.log(newUser);
-        await this.$store.dispatch("storeProfile", newUser);
         this.$router.push("/login");
-      } catch (err) {
-        console.log(err);
+      }catch ({ response }) {
+        const message = response.data.message;
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: message,
+        });
       }
     },
   },
