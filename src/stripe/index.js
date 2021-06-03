@@ -1,2 +1,0 @@
-const PK = process.env.STRIPE_PUBLISHABLE_KEY
-export const stripe = Stripe('pk_test_51IuIpUH0W4B3BRPuRtNFCrE23OZb7MC7fvNplE97Cqk59sv5nDdYERqoAIankwnLHFTcC6KhoN3iHE4JR9VnXHYS00jutjDytK')
