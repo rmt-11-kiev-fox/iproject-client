@@ -10,8 +10,12 @@ export default new Vuex.Store({
   state: {
     categories: [],
     organizations: [],
+    organizationData: {},
     profile: {},
-    productId: ""
+    productId: "",
+    donations: [],
+    totalPage: 0,
+    pageLimit: 5
   },
   mutations: {
     GET_CATEGORIES(state, categories) {
@@ -26,11 +30,102 @@ export default new Vuex.Store({
     },
     SET_PRODUCT_ID(state, productId) {
       state.productId = productId
+    },
+    GET_DONATIONS(state, donations) {
+      state.donations = donations
+    },
+    SET_TOTAL_PAGE(state, totalPage) {
+      state.totalPage = totalPage
+    },
+    GET_ORGANIZATION_DATA(state, organizationData) {
+      state.organizationData = organizationData
     }
   },
   actions: {
-    async storeProfile({ commit }, profile) {
-      await commit('SET_PROFILE', profile)
+
+    async fetchOrganizationById({ commit }, id) {
+      try {
+        const organization = await instanceAxios({
+          url: `/organization/${id}`,
+          method: 'GET',
+        })
+        commit('GET_ORGANIZATION_DATA', organization.data)
+      } catch ({ response }) {
+        const message = response.data.message
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: message
+        })
+      }
+
+    },
+    async fetchDonation({ commit }) {
+      try {
+        const donations = await instanceAxios({
+          url: '/donation',
+          method: 'GET',
+          headers: {
+            access_token: localStorage.access_token
+          }
+        })
+        commit('GET_DONATIONS', donations.data)
+        const totalPage = await Math.ceil(this.state.donations.length / this.state.pageLimit)
+        await commit('SET_TOTAL_PAGE', totalPage)
+      } catch ({ response }) {
+        const message = response.data.message
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: message
+        })
+      }
+    },
+
+    async fetchProfile({ commit }) {
+
+      try {
+        const profile = await instanceAxios({
+          url: '/profile',
+          method: 'GET',
+          headers: {
+            access_token: localStorage.access_token
+          }
+        })
+        await commit('SET_PROFILE', profile.data)
+      } catch ({ response }) {
+        const message = response.data.message
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: message
+        })
+      }
+    },
+
+    async editProfile({ commit }, profileData) {
+      try {
+        const profile = await instanceAxios({
+          url: '/profile/edit',
+          method: 'PUT',
+          data:profileData,
+          headers: {
+            access_token: localStorage.access_token
+          }
+        })
+        await commit('SET_PROFILE', profile.data)
+        Swal.fire({
+          icon: 'success',
+          text: "Profile updated"
+        })
+      } catch ({ response }) {
+        const message = response.data.message
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: message
+        })
+      }
     },
     async fetchCategories({ commit }) {
       try {
@@ -41,8 +136,13 @@ export default new Vuex.Store({
         const categoryData = categories.data.data
         commit('GET_CATEGORIES', categoryData)
 
-      } catch (err) {
-        console.log(err);
+      } catch ({ response }) {
+        const message = response.data.message
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: message
+        })
       }
     },
 
@@ -54,8 +154,13 @@ export default new Vuex.Store({
         })
         const organizationData = organizations.data.data
         commit('GET_ORGANIZATIONS', organizationData)
-      } catch (err) {
-        console.log(err);
+      } catch ({ response }) {
+        const message = response.data.message
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: message
+        })
       }
     },
 
@@ -66,8 +171,17 @@ export default new Vuex.Store({
           method: 'GET'
         })
         commit('GET_ORGANIZATIONS', organizations.data)
+
+        const totalPage = await Math.ceil(this.state.organizations.length / this.state.pageLimit)
+        await commit('SET_TOTAL_PAGE', totalPage)
+
       } catch ({ response }) {
-        console.log(response);
+        const message = response.data.message
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: message
+        })
       }
     },
 
@@ -85,8 +199,13 @@ export default new Vuex.Store({
         })
         const donation = newProduct.data
         await dispatch('checkout', donation)
-      } catch (err) {
-        console.log(err);
+      } catch ({ response }) {
+        const message = response.data.message
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: message
+        })
       }
     },
 
@@ -101,8 +220,13 @@ export default new Vuex.Store({
           }
         })
         const success = stripe.redirectToCheckout({ sessionId: session.data.id })
-      } catch (err) {
-        console.log(err);
+      } catch ({ response }) {
+        const message = response.data.message
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: message
+        })
       }
     },
 
@@ -116,8 +240,13 @@ export default new Vuex.Store({
           }
         })
         await dispatch('fetchProduct', lineItems.data)
-      } catch (err) {
-        console.log(err);
+      } catch ({ response }) {
+        const message = response.data.message
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: message
+        })
       }
     },
 
@@ -131,21 +260,29 @@ export default new Vuex.Store({
             access_token: localStorage.access_token
           }
         })
-        console.log(lineItems);
+        let paymentType = 'One-Time'
+        if (lineItems.price.recurring) {
+          paymentType = lineItems.price.recurring.interval
+        }
         const donation = {
           organizationName: product.data.name,
           donationAmount: lineItems.amount_total,
+          paymentType
         }
         await dispatch('createDonation', donation)
-        console.info(product.data);
-      } catch (err) {
-        console.log(err);
+      } catch ({ response }) {
+        const message = response.data.message
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: message
+        })
       }
     },
 
-    async createDonation({ commit }, donation) {
+    async createDonation({ dispatch }, donation) {
       try {
-        const createdonation = await instanceAxios({
+        const createdDonation = await instanceAxios({
           url: '/donation',
           method: "POST",
           data: donation,
@@ -153,8 +290,14 @@ export default new Vuex.Store({
             access_token: localStorage.access_token
           }
         })
-      } catch (err) {
-        console.log(err);
+        dispatch('fetchDonation')
+      } catch ({ response }) {
+        const message = response.data.message
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: message
+        })
       }
     }
 

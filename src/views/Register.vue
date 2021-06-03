@@ -5,7 +5,7 @@
         <div class="col bg-light rounded text-dark">
           <form @submit.prevent="register">
             <fieldset>
-              <h1 class="text-center mt-2 mb-4">Register</h1>
+              <h1 class="text-center mt-2 mb-4 overflow-hidden">Register</h1>
               <hr />
               <div class="input-group mt-4 mb-4">
                 <input
@@ -124,10 +124,14 @@ export default {
           method: "POST",
           data: this.input,
         });
-        await this.$store.dispatch("storeProfile", newUser);
         this.$router.push("/login");
-      } catch (err) {
-        console.log(err);
+      }catch ({ response }) {
+        const message = response.data.message;
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: message,
+        });
       }
     },
   },

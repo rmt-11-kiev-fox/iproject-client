@@ -1,43 +1,55 @@
 <template>
-  <div class="container">
-    <!-- <form @submit.prevent="checkoutHandler">
-      NAME
-      <input type="text" :value="input.name" readonly />
-      <br />
-      Donation Amount
-      <input v-model="input.amount" type="number" step="1" min="1" />
-      <br />
-      <button type="submit" class="btn btn-warning">Submit</button>
-    </form> -->
-
-    <form @submit.prevent="checkoutHandler">
-      <fieldset>
-        <h1 class="text-center mt-2 mb-4">Donate</h1>
-        <hr />
-
-        <div class="form-group row">
-          <label for="staticEmail" class="col-sm-2 col-form-label"
-            >Organization Name</label
-          >
-          <div class="col-sm-6">
-            <input type="text" :value="input.name" readonly />
+  <div class="container" style="height: 74vh">
+    <div class="container w-75 text-align-center border p-4">
+      <form @submit.prevent="checkoutHandler">
+        <fieldset>
+          <h1 class="text-center mt-2 mb-4">{{ input.name }}</h1>
+          <hr />
+          <div class="form-group row">
+            <div class="col-6">
+              <label for="staticEmail" class="col-form-label"
+                >Donation Amount</label
+              >
+            </div>
+            <div class="col-6 d-flex">
+              <div class="me-2">
+                <input v-model="input.amount" type="number" step="1" min="10" />
+              </div>
+              <div class="form-check">
+                <input
+                  v-model="input.subscription"
+                  class="form-check-input position-static"
+                  type="checkbox"
+                  :true-value="true"
+                  :false-value="false"
+                />
+                Subscription
+              </div>
+            </div>
           </div>
-        </div>
 
-        <div class="form-group row">
-          <label for="staticEmail" class="col-sm-2 col-form-label"
-            >Donation Amount</label
-          >
-          <div class="col-sm-6">
-            <input v-model="input.amount" type="number" step="1" min="10" />
+          <div v-if="input.subscription" class="form-group row">
+            <div class="col-6">
+              <label for="staticEmail" class="col-form-label">Frequency</label>
+            </div>
+            <div class="col-6">
+              <select
+                v-model="input.interval"
+                class="form-control"
+                id="exampleFormControlSelect1"
+              >
+                <option value="month">Monthly</option>
+                <option value="year">Annual</option>
+              </select>
+            </div>
           </div>
-        </div>
 
-        <div class="text-center mb-3">
-          <button type="submit" class="btn btn-warning">Submit</button>
-        </div>
-      </fieldset>
-    </form>
+          <div class="text-center mb-3 mt-4">
+            <button type="submit" class="btn btn-warning">Submit</button>
+          </div>
+        </fieldset>
+      </form>
+    </div>
   </div>
 </template>
 
@@ -49,6 +61,8 @@ export default {
       input: {
         amount: "",
         name: "",
+        interval: "",
+        subscription: false,
       },
     };
   },

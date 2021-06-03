@@ -11,15 +11,7 @@ export default {
     checkoutSession() {
       const checkoutSession = this.$route.query.id;
       this.$store.dispatch("fetchLineItems", checkoutSession);
-      // try {
-      //   const session = await stripe.checkout.sessions.retrieve(req.query.id, {
-      //     expand: ["line_items"],
-      //   });
-      //   console.log("masuk sini");
-      //   console.log(session);
-      // } catch (err) {
-      //   console.log(err);
-      // }
+
     },
   },
 
