@@ -34,6 +34,7 @@
           </form>
           
           <div class="text-center">
+            
             <p>
               Don't have an account?
               <router-link to="/register">
