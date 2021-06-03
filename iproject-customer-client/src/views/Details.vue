@@ -47,7 +47,6 @@
                  <button v-if="verify === false" @click="$router.push('/login')" class="btn1">Login</button>
               </div>
               <!-- Expect date delivery -->
-
               <div v-if="verify === true" class="mt-3 shadow p-3 bg-white">
                 <div class="pt-4">
                   <h5 class="mb-4">Input your offer</h5>
@@ -89,10 +88,10 @@ export default {
     },
     addBid(){
       let payload = {
-        product_id : this.selectedArtWork,
+        product_id : this.selectedArtWork.id,
         money_offer : this.currPrice
       }
-      this.$store.dispatch('addBid')
+      this.$store.dispatch('addBid', payload)
     }
   },
 
@@ -100,20 +99,23 @@ export default {
     selected: {
       get: function () {
         console.log(this)
+        // return this.selectedArtWork
+        this.selectedArtWork = this.$store.state.selectedArtWorks
         return this.selectedArtWork
       },
-      set: function (newVal) {
+      set: function (newVal) { console.log('seter jalan');
         this.selectedArtWork = newVal
+        return this.selectedArtWork
       }
     },
     category(){
-      return this.selected?.Category?.name
+      return this.selectedArtWork?.Category?.name
     }
   },
   created(){
   console.log(this.$route.params, 'params');
     this.$store.dispatch('getProductDetails', this.$route.params.id)
-    this.selected = this.$store.state.selectedArtWorks
+    // this.selectedArtWork = this.$store.state.selectedArtWorks
   },
   mounted(){
     if(localStorage.getItem('access_token')){
@@ -123,7 +125,7 @@ export default {
       console.log(socket.id, 'skct.id', this.selectedArtWork.id) // x8WIv7-mJelg7on_ALbx
         if (this.selectedArtWork.id) {
           socket.on(`addBid-${this.selectedArtWork.id}`, (data) => {
-            this.selected = data
+            this.$store.commit('SET_SELECTED_ARTWORKS', data)
             console.log('socket', data)
           })
         }
