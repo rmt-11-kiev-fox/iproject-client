@@ -90,12 +90,6 @@ export default {
                 this.$store.commit('SET_SERVER_STATUS', status)
                 this.$router.push('/')
             }
-            // if (!status) {
-            //     this.$router.push('/inactive')
-            // } else {
-            //     this.$store.commit('SET_SERVER_STATUS', status)
-            //     this.$router.push('/')
-            // }
         },
         startTrivia() {
             this.$router.push('/')

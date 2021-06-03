@@ -11,9 +11,7 @@
             "
             v-html="`${letter}. ${answer}`"
             @click="submitAnswer"
-        >
-            <!-- {{ letter }}. {{ answer }} -->
-        </div>
+        ></div>
     </div>
 </template>
 
