@@ -4,6 +4,10 @@ Checklist.txt
 node_modules
 /dist
 
+.firebase
+.firebaserc
+firebase.json
+
 
 # local env files
 .env.local
