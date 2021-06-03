@@ -7,6 +7,7 @@ import VueGeolocation from "vue-browser-geolocation";
 import VueHorizontal from "vue-horizontal";
 import VueTilt from "vue-tilt.js";
 import * as VueGoogleMaps from "vue2-google-maps";
+import VuePageTitle from "vue-page-title";
 
 Vue.use(VueGeolocation);
 Vue.use(VueHorizontal);
@@ -18,6 +19,7 @@ Vue.use(VueGoogleMaps, {
 	},
 	installComponents: true,
 });
+Vue.use(VuePageTitle, { router });
 
 Vue.config.productionTip = false;
 
