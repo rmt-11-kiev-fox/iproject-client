@@ -74,7 +74,7 @@ export default new Vuex.Store({
         headers: { access_token: localStorage.getItem('access_token') }
       })
         .then(({ data }) => {
-          // router.push({ path: '/history' })
+          router.push({ path: '/history' })
           context.dispatch('showHistory')
           context.dispatch('location')
         })
