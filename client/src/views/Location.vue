@@ -95,8 +95,8 @@
               <div class="card-body">
                 <h5 class="card-title"><u>Pondok Indah</u></h5>
                 <p class="card-text" style="color: black">
-                  Jl. hahaha No.6 <br />
-                  Jakarta 11111
+                  {{this.$store.state.PIMLoc.address}} <br />
+                  Jakarta {{this.$store.state.PIMLoc.postal}}
                 </p>
                 <h4
                   style="
@@ -110,8 +110,7 @@
                 </h4>
                 <p style="color: black">09.00 - 22.00 <br /></p>
                 <p style="color: black">
-                  Lunch Temperature: {{this.$store.state.PIMweather.lunch}}<br />
-                  Dinner Temperature: {{}}
+                  Today's weather: {{this.$store.state.PIMweather}}
                 </p>
                 <h4
                   style="
@@ -137,8 +136,8 @@
               <div class="card-body">
                 <h5 class="card-title"><u>Senayan</u></h5>
                 <p class="card-text" style="color: black">
-                  Jl. hahaha No.6 <br />
-                  Jakarta 11111
+                  {{this.$store.state.PSLoc.address}} <br />
+                  Jakarta {{this.$store.state.PSLoc.postal}}
                 </p>
                 <h4
                   style="
@@ -151,6 +150,9 @@
                   <u>Operational Hours</u>
                 </h4>
                 <p style="color: black">09.00 - 22.00 <br /></p>
+                <p style="color: black">
+                  Today's weather: {{this.$store.state.PSWeather}}
+                </p>
                 <h4
                   style="
                     color: black;
@@ -175,8 +177,8 @@
               <div class="card-body">
                 <h5 class="card-title"><u>Menteng</u></h5>
                 <p class="card-text" style="color: black">
-                  Jl. hahaha No.6 <br />
-                  Jakarta 11111
+                  {{this.$store.state.MtgLoc.address}} <br />
+                  Jakarta {{this.$store.state.MtgLoc.postal}}
                 </p>
                 <h4
                   style="
@@ -189,6 +191,9 @@
                   <u>Operational Hours</u>
                 </h4>
                 <p style="color: black">09.00 - 22.00 <br /></p>
+                <p style="color: black">
+                  Today's weather: {{this.$store.state.MtgWeather}}
+                </p>
                 <h4
                   style="
                     color: black;
@@ -222,7 +227,7 @@ export default {
   components: { Footer, navBar },
   name: 'Location',
   created () {
-    // console.log(this.$store.state)
+    console.log(this.$store.state)
     window.scrollTo(0, 0)
     this.$store.dispatch('PIMLoc')
     this.$store.dispatch('PSLoc')
