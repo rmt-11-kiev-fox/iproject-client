@@ -9,7 +9,10 @@ import PickTopic from '../views/game/Topic.vue'
 import GameStart from '../views/game/GameStart.vue'
 import QuestionPage from '../views/game/QuestionPage.vue'
 import GameEnd from '../views/game/GameEnd.vue'
-import Profile from '../views/profile/profile.vue'
+import Profile from '../views/profile/Profile.vue'
+import Leaderboard from '../views/profile/Leaderboard.vue'
+import MostPlayed from '../views/profile/MostPlayed.vue'
+import UserHistory from '../views/profile/UserHistory.vue'
 
 Vue.use(VueRouter)
 
@@ -28,7 +31,27 @@ const routes = [
       {
         path: '/profile/user',
         name: 'ProfileUser',
-        component: Profile
+        component: Profile,
+        children: [
+          {
+            path: '/profile/user/leaderboard',
+            name: 'LeaderboardPage',
+            component: Leaderboard,
+            props: true
+          },
+          {
+            path: '/profile/user/mostPlayed',
+            name: 'MostPlayed',
+            component: MostPlayed,
+            props: true
+          },
+          {
+            path: '/profile/user/userHistory',
+            name: 'UserHistory',
+            component: UserHistory,
+            props: true
+          }
+        ]
       }
     ]
   },

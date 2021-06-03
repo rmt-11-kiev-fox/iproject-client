@@ -18,27 +18,25 @@
                       <p class="text-muted m-t-15">Game Played: {{gamesHistory.length}}</p>
                       <hr>
                   </div>
+                  <a class="btn btn-primary mx-auto" @click.prevent="goToShowHistory">Show game history</a>
               </div>
           </div>
-          <div class="col-md-4">
-            <Graphs1/>
-          </div>
-          <div class="col-md-4">
-            <Graphs2/>
+          <div class="col-md-8">
+            <div>
+              <a class="btn btn-white" @click.prevent='goToLeaderboard'>Leaderboard</a>
+              <a class="btn btn-white ml-4" @click.prevent='goToMostPlayed'>Most Played</a>
+            </div>
+            <router-view/>
           </div>
     </div>
   </div>
 </template>
 
 <script>
-import Graphs1 from '../../components/Graphs1'
-import Graphs2 from '../../components/Graphs2'
 
 export default {
   name: 'ProfilePage',
   components: {
-    Graphs1,
-    Graphs2
   },
   data () {
     return {
@@ -53,6 +51,17 @@ export default {
       layout: {
         title: 'My graph'
       }
+    }
+  },
+  methods: {
+    goToLeaderboard () {
+      this.$router.push('/profile/user/leaderboard')
+    },
+    goToMostPlayed () {
+      this.$router.push('/profile/user/mostPlayed')
+    },
+    goToShowHistory () {
+      this.$router.push('/profile/user/userHistory')
     }
   },
   created () {
@@ -72,7 +81,7 @@ export default {
             accuracy += this.gamesHistory[i]
           }
         }
-        this.userAccuracy = accuracy / this.gamesHistory.length
+        this.userAccuracy = Math.round(accuracy / this.gamesHistory.length)
       })
       .catch((err) => {
         console.log(err)

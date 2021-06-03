@@ -10,12 +10,12 @@ export default {
   data () {
     return {
       data: [{
-        x: [1, 2, 3, 4],
+        x: ['sam', 'faz', 'bund', 'gor'],
         y: [10, 15, 13, 17],
         type: 'bar'
       }],
       layout: {
-        title: 'Leaderboards'
+        title: ''
       }
     }
   },
@@ -23,7 +23,17 @@ export default {
     Plotly
   },
   created () {
-    this.$store.dispatch('fetchLeaderboards')
+    this.$store.dispatch('fetchLeaderboard')
+      .then((data) => {
+        const names = []
+        const mostAccuracy = []
+        data.data.forEach((el) => {
+          names.push(el.name)
+          mostAccuracy.push(el.finalResult)
+        })
+        this.data[0].x = names
+        this.data[0].y = mostAccuracy
+      })
   }
 }
 </script>

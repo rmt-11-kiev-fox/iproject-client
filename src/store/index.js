@@ -156,6 +156,42 @@ export default new Vuex.Store({
         console.log(err)
       }
     },
+    async fetchQuote (context) {
+      try {
+        return axios({
+          url: '/quote/getQuote',
+          headers: {
+            access_token: localStorage.getItem('access_token')
+          }
+        })
+      } catch (err) {
+        console.log(err)
+      }
+    },
+    async fetchMostPlayed (context) {
+      try {
+        return axios({
+          url: '/stats/mostPlayed',
+          headers: {
+            access_token: localStorage.getItem('access_token')
+          }
+        })
+      } catch (err) {
+        console.log(err)
+      }
+    },
+    async fetchLeaderboard (context) {
+      try {
+        return axios({
+          url: '/stats/leaderboard',
+          headers: {
+            access_token: localStorage.getItem('access_token')
+          }
+        })
+      } catch (err) {
+        console.log(err)
+      }
+    },
     async calculateScore (context, GameId) {
       try {
         axios({

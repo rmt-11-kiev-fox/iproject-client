@@ -5,7 +5,7 @@
             <div class="card">
                 <form @submit.prevent="login" class="box">
                     <h1>Login</h1>
-                    <p class="text-muted"> Please enter your login and password!</p>
+                    <p class="text-muted"> Please enter your email and password!</p>
                     <input type="text" v-model="email" name="" placeholder="Email">
                     <input type="password" v-model="password" name="" placeholder="Password">
                     <a @click.prevent="goToRegister"  class="forgot text-muted" href="#">Click here to register</a>
