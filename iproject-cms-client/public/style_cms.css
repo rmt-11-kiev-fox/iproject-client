@@ -1,0 +1,238 @@
+:root{
+  --main-bg-color: #394D66;
+  --main-text-color: #394D66;
+  --second-text-color: #C7E2FF;
+  --second-bg-color: #c1efde;
+}
+
+.primary-text{
+  color: var(--main-text-color);
+}
+
+.second-text{
+  color: var(--second-text-color);
+}
+
+.primary-bg{
+  background-color: bar(--main-bg-color);
+}
+
+.secondary-bg{
+  background-color: var(--second-bg-color);
+}
+
+.rounded-full{
+  border-radius: 100%;
+}
+
+#wrapper{
+  overflow-x: hidden;
+  background-image: linear-gradient(
+    to right,
+    #355480,
+    #4e73a0,
+    #6e8eb4,
+    #8CB7F0,
+    #C7E2FF
+  );
+}
+
+#sidebar-wrapper{
+  min-height: 100vh;
+  margin-left: -15rem;
+  transition: margin 0.25s ease-out;
+}
+
+#sidebar-wrapper .sidebar-head{
+  padding: 0.875rem 1.25rem;
+  font-size: 1.2rem;
+}
+
+#sidebar-wrapper .list-group{
+  width: 15rem;
+}
+
+#page-content-wrapper{
+  min-width: 100vw;
+}
+
+#wrapper.toggled #sidebar-wrapper{
+  margin-left: 0;
+}
+
+#menu-toggle{
+  cursor: pointer;
+}
+
+.list-group-item{
+  border: none;
+  padding: 20px 30px;
+}
+
+.list-group-item.active{
+  background-color: transparent;
+  color: var(--main-text-color);
+  font-weight: bold;
+  border: none;
+}
+
+@media (min-width: 768px){
+  #sidebar-wrapper{
+    margin-left: 0;
+
+  }
+
+  #page-content-wrapper{
+    min-width: 0;
+    width: 100%;
+  }
+
+  #wrapper.toggled #sidebar-wrapper{
+    margin-left: -15rem;
+  }
+}
+
+/* LOGIN SECTION */
+
+#login-section{
+  height: 100vh;
+  background: #ff9b86 !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.card{
+  overflow: hidden;
+  border: 0 !important;
+  border-radius: 20px !important;
+  box-shadow: 0 0.5rem 1rem 0 rgba(0,0,0.1);
+}
+
+.img-left{
+  width: 40%;
+  background: url('./assets/ray-mallick-5J1bHRX1fNw-unsplash.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  box-shadow: -4px -1px 39px 28px rgba(22,115,161,0.56);
+-webkit-box-shadow: -4px -1px 39px 28px rgba(22,115,161,0.56);
+-moz-box-shadow: -4px -1px 39px 28px rgba(22,115,161,0.56);
+}
+
+.card-body{
+  padding: 2rem;
+}
+
+.form-input{
+  position: relative;
+}
+
+.form-input input{
+  width: 100%;
+  height: 45px;
+  padding-left: 40px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  box-shadow: none;
+  border: 1px solid #00000020;
+  border-radius: 50px;
+  outline: none;
+  background: transparent;
+}
+
+.form-input span{
+  position: absolute;
+  top: 10px;
+  padding-left: 15px;
+  color: #3f3d56;
+}
+
+.form-input input::placeholder{
+  color: black;
+  padding-left: 0px;
+}
+
+.form-input input:focus .form-input input:valid{
+  border: 2px solid #575572
+
+}
+
+.form-input input:focus::placeholder{
+  color: #454b69;
+}
+
+.form-box button[type="submit"]{
+  margin-top: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 50px;
+  background: #3f3d56;
+  color: #fff;
+  font-size: 90%;
+  font-weight: bold;
+  letter-spacing: .1rem;
+  transition: 0.5s;
+  padding: 12px;
+}
+
+.form-box button[type="submit"]:hover{
+  background: #545170;
+}
+
+.warp-btn-login{
+  display: flex;
+  flex-direction: column;
+}
+.form-box button[type="button"]{
+  margin-top: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 50px;
+  background: #a9621d;
+  color: #fff;
+  font-size: 90%;
+  font-weight: bold;
+  letter-spacing: .1rem;
+  transition: 0.5s;
+  padding: 12px;
+}
+.form-box button[type="button"]:hover{
+  background: #e29242;
+}
+
+.input-group{
+  position: relative;
+}
+
+.input-group input{
+  width: 100%;
+  height: 45px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  box-shadow: none;
+  border: 1px solid #00000020;
+  border-radius: 50px;
+  outline: none;
+  background: transparent;
+}
+
+.input-group-text{
+  height: 45px;
+  box-sizing: border-box;
+  box-shadow: none;
+  border: 1px solid #00000020;
+  border-radius: 50px;
+  background: transparent
+}
+
+.btn-outline-dark{
+
+  height: 45px;
+  box-sizing: border-box;
+  box-shadow: none;
+  border: 1px solid #00000020;
+  border-radius: 50px;
+  background: transparent;
+  margin-bottom: 20px;
+}
