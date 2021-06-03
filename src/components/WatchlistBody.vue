@@ -6,7 +6,7 @@
                 <img :src="watchList.imageUrl" alt="" width="150px"></td>
             <td>{{watchList.title}}</td>
             <td width="140px">
-                <a @click.prevent="deleteWatchList()" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Delete</a>
+                <a @click.prevent="deleteWatchList(watchList.id)" class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i> Delete</a>
             </td>
         </tr>
     </tbody>
@@ -15,7 +15,12 @@
 <script>
 export default {
     name: 'WatchlictBody',
-    props: [ 'watchLists' ]
+    props: [ 'watchLists' ],
+    methods: {
+        deleteWatchList(id) {
+            this.$store.dispatch('deleteWatchList', id)
+        }
+    }
 
 }
 </script>

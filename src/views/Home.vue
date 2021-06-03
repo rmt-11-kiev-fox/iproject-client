@@ -4,7 +4,7 @@
     <Navbar/>
 
     <!-- Username -->
-    <h4 class="d-flex text-light mt-4 mx-3">Welcome, {{userGreeting}}</h4>
+    <h4 class="d-flex text-success mt-4 mx-3">Welcome, {{userGreeting}}</h4>
 
     <!-- carousel -->
     <Carousel

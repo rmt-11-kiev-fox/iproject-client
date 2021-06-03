@@ -1,16 +1,16 @@
 <template>
     <div class="card-body col-md-3">
-        <div class="card mb-3 m-3" style="width: 20vmax;">
-            <h3 class="card-header">Now Playing</h3>
+        <div class="card text-success mb-3 m-3" style="width: 20vmax;">
+            <h3 class="card-header"><i class="fas fa-play"></i> Now Playing</h3>
             <img :src="nowPlaying.img" alt="" srcset="">
             <div class="card-body">
                 <p class="card-text text-danger">{{nowPlaying.title}}</p>
             </div>
             <div class="card-body">
                 <a :href="nowPlaying.url" class="card-link">Show Schedule</a>
-                <a @click="watchList(nowPlaying.title)" class="card-link">Add Watch List</a>
+                <a @click.prevent="watchList(nowPlaying.title)" href="" class="card-link hover">Add Watch List</a>
             </div>
-            <div class="card-footer text-muted">
+            <div class="card-footer text-success">
                 Now Playing
             </div>
         </div>

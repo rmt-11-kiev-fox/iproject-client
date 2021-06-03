@@ -4,8 +4,8 @@
     <Navbar/>
     
     <!-- table -->
-    <div class="col-sm-12 pt-5">
-        <table class="table table-secondary table-bordered">
+    <div class="container col-sm-12 pt-5">
+        <table class="table table-hover table-dark table-bordered">
             <thead>
                 <tr>
                     <th scope="col">#</th>

@@ -1,6 +1,6 @@
 <template>
     <!-- navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top shadow">
         <div class="container-fluid">
             <a class="navbar-brand text-danger"><i class="fas fa-film"></i> Ted's Cinema</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
@@ -22,7 +22,7 @@
                     <input class="form-control me-sm-2" type="text" placeholder="Search">
                     <button class="btn btn-secondary my-2 my-sm-0" type="submit"><i class="fas fa-search"></i>Search</button>
                 </form> -->
-                <button @click="$router.push('/watchLists').catch(() => {})" class="btn btn-outline-warning mx-2" type="submit"><i class="fas fa-sign-out-alt"></i> Watch List</button>
+                <button @click="$router.push('/watchLists').catch(() => {})" class="btn btn-outline-warning mx-2" type="submit"><i class="fas fa-heart"></i> Watch List</button>
                 <button @click="clickLogout()" class="btn btn-outline-danger mx-2" type="submit"><i class="fas fa-sign-out-alt"></i> Logout</button>
             </div>
         </div>

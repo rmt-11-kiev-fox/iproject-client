@@ -179,6 +179,24 @@ export default new Vuex.Store({
         .catch(err => {
           console.log(err);
         })
+    },
+    deleteWatchList(context, id) {
+      axios({
+        url: '/watchLists',
+        method: 'DELETE',
+        headers: {
+          access_token: localStorage.access_token
+        },
+        data: {
+          WatchlistId: id
+        }
+      })
+        .then(() => {
+          context.dispatch('fetchDataWatchlist')
+        })
+        .catch(err => {
+          console.log(err);
+        })
     }
   },
   modules: {
