@@ -1,15 +1,15 @@
 <template>
     <div class="container h-100">
-        <div class="row">
+        <div class="row mt-5">
             <div class="col-4 mx-auto">
-                <h3>Login</h3>
+                <h3 class="text-light">Login</h3>
             </div>
         </div>
         <div class="row">
             <div class="col-4 mx-auto">
                 <form @submit.prevent="login">
                     <div class="mb-3">
-                        <label>Username</label>
+                        <label class="text-light">Username</label>
                         <input
                             type="text"
                             class="form-control"
@@ -17,7 +17,7 @@
                         />
                     </div>
                     <div class="mb-3">
-                        <label>Password</label>
+                        <label class="text-light">Password</label>
                         <input
                             type="password"
                             class="form-control"
