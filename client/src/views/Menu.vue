@@ -62,11 +62,10 @@
         <!-- The Menu -->
         <div class="row" :style="
           { background: 'url(' + require('@/Picture/menubackground.jpg') + ')' }
-        "
-        style="opacity">
+        ">
             <div class="container">
                 <div class="row text-center">
-                <img src="../Picture/MENU.jpg" style="width: 50%; margin-left:30rem; margin-top: 5rem; margin-bottom:5rem" alt="">
+                <img src="../Picture/MENU.jpg" style="width: 50%; margin-left:30rem; margin-top: 5rem; margin-bottom:5rem" alt="" data-aos="zoom-in">
             </div>
             </div>
             <Footer/>

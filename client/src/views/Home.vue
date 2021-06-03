@@ -100,8 +100,8 @@
       <div class="row" style="background-color: white">
         <div class="col-12">
           <div class="text-center my-5 mx-5">
-            <h1>ABOUT US</h1>
-            <div class="mx-5 px-5">
+            <h1 data-aos="slide-right">ABOUT US</h1>
+            <div class="mx-5 px-5" data-aos="zoom-in">
               <div class="mx-5 px-5">
                 <p class="my-5 mx-5 px-5" style="font-weight: 500">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -171,10 +171,11 @@
         </div>
       </div>
       <!-- Our Menu -->
-      <div class="row">
+      <div class="row" data-aos="zoom-in">
         <div class="col-6">
           <div class="bg-dark my-3 rounded" style="opacity: 0.8">
             <h1
+             data-aos="zoom-in"
               style="
                 color: white;
                 margin-left: 5rem;
@@ -194,6 +195,7 @@
               "
             />
             <p
+            data-aos="fade-in"
               style="
                 color: white;
                 margin-left: 5rem;
@@ -214,6 +216,7 @@
               nulla incidunt architecto?
             </p>
             <p
+            data-aos="fade-in"
               style="
                 color: white;
                 margin-left: 5rem;
@@ -239,7 +242,7 @@
             </p>
           </div>
         </div>
-        <div class="col-6">
+        <div class="col-6" >
           <button
             @click="goToMenu"
             type="button"
@@ -282,9 +285,10 @@
             LEARN MORE
           </button>
         </div>
-        <div class="col-6">
+        <div class="col-6" data-aos="slide-down">
           <div class="bg-dark my-3 rounded" style="opacity: 0.8">
             <h1
+            data-aos="slide-down"
               style="
                 color: white;
                 padding-top: 4rem;
@@ -295,6 +299,7 @@
               WHERE TO FIND US
             </h1>
             <h6
+             data-aos="slide-down"
               style="
                 color: white;
                 padding-bottom: 1rem;
@@ -322,6 +327,7 @@
             />
 
             <div
+             data-aos="slide-up"
               class="row pb-5"
               style="font-family: Georgia, 'Times New Roman', Times, serif"
             >

@@ -90,7 +90,7 @@
       <div class="container">
         <div class="row my-5 mx-5">
           <div class="col-4">
-            <div class="card shadow" style="width: 25rem; margin-left: 10rem">
+            <div class="card shadow" style="width: 25rem; margin-left: 10rem" data-aos="zoom-in">
               <img class="card-img-top" src="../Picture/frontresto.jpg" alt="Card image cap" style="height: 270px" />
               <div class="card-body">
                 <h5 class="card-title"><u>Pondok Indah</u></h5>
@@ -131,7 +131,7 @@
             </div>
           </div>
           <div class="col-4">
-            <div class="card shadow" style="width: 25rem; margin-left: 6rem">
+            <div class="card shadow" style="width: 25rem; margin-left: 6rem" data-aos="zoom-in">
               <img class="card-img-top" src="../Picture/restofront2.jpg" alt="Card image cap" style="height: 270px" />
               <div class="card-body">
                 <h5 class="card-title"><u>Senayan</u></h5>
@@ -172,7 +172,7 @@
             </div>
           </div>
           <div class="col-4">
-            <div class="card shadow" style="width: 25rem; margin-left: 1rem">
+            <div class="card shadow" style="width: 25rem; margin-left: 1rem" data-aos="zoom-in">
               <img class="card-img-top" src="../Picture/restofront3.jpg" alt="Card image cap" style="height: 270px" />
               <div class="card-body">
                 <h5 class="card-title"><u>Menteng</u></h5>
