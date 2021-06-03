@@ -1,6 +1,6 @@
 <template>
   <li>
-      <a @click.prevent="favActive(favourite)" href="#">{{favourite.teamName}}</a>
+    <a @click.prevent="favActive(favourite)" href="#">{{favourite.teamName}}</a>  <button @click="deleteFav(favourite.id)" class="del-button btn btn-sm btn-danger rounded m-2">x</button>
   </li>
 </template>
 
@@ -30,11 +30,27 @@ export default {
         .catch((err) => {
           console.log(err)
         })
+    },
+    deleteFav (favId) {
+      this.$store.dispatch('deleteFav', favId)
+        .then(({ data }) => {
+          console.log(data)
+          this.$store.dispatch('fetchFavourites')
+        })
+        .catch((err) => {
+          console.log(err)
+        })
     }
   }
 }
 </script>
 
 <style>
+.del-button {
+    display: none;
+}
 
+a:hover + .del-button, .del-button:hover {
+    display: inline-block;
+}
 </style>
