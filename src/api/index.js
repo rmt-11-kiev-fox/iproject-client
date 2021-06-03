@@ -1,7 +1,7 @@
 const axios = require('axios')
 
 const instanceAxios = axios.create({
-  baseURL: 'https://lelangaja.herokuapp.com/'
+  baseURL: 'http://lelangaja.herokuapp.com/'
 })
 
 module.exports = { instanceAxios }
