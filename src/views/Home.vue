@@ -3,9 +3,19 @@
     <Navbar></Navbar>
     <Content v-if="$route.name === 'Home'"></Content>
     <Register v-if="$route.name === 'Home'"></Register>
-    <Login v-if="$route.name === 'Login'"></Login>
-    <Collect v-if="$route.name === 'Collect'"></Collect>
-    <HFooter></HFooter>
+    <Login v-else-if="$route.name === 'Login'"></Login>
+    <Collect
+      v-else-if="$route.name === 'Collect'"
+      v-for="(loc, index) in location"
+      :key="index"
+      :loc="loc"
+    ></Collect>
+    <History
+      v-else-if="$route.name === 'History'"
+    ></History>
+    <HFooter
+      class="sticky-bottom"
+    ></HFooter>
   </div>
 </template>
 
@@ -15,6 +25,7 @@ import Login from '../components/Login'
 import Collect from '../components/Collect'
 import Register from '../components/Register'
 import Content from '../components/Content'
+import History from '../components/History'
 import HFooter from 'vue-hacktiv8-footer'
 
 export default {
@@ -25,7 +36,13 @@ export default {
     Collect,
     Register,
     Content,
+    History,
     HFooter
+  },
+  computed: {
+    location () {
+      return this.$store.state.location
+    }
   }
 }
 </script>

@@ -30,8 +30,24 @@
 
 <script>
 export default {
-  name: 'Login'
-
+  name: 'Login',
+  data () {
+    return {
+      email: '',
+      password: ''
+    }
+  },
+  methods: {
+    login () {
+      const payload = {
+        email: this.email,
+        password: this.password
+      }
+      this.$store.dispatch('login', payload)
+      this.email = ''
+      this.password = ''
+    }
+  }
 }
 </script>
 
