@@ -9,9 +9,9 @@
           <a>{{ movies.title }}</a>
         </h6>
         <div class="hover-buttons">
-          <span class="btn btn-hover"
+          <span @click="deleteWishlist(movies.id)" class="btn btn-hover"
             ><i class="fa fa-play mr-1" aria-hidden="true"></i>
-            Detail
+            Delete
           </span>
         </div>
       </div>
@@ -21,7 +21,12 @@
 
 <script>
 export default {
-  props: ["movies"]
+  props: ["movies"],
+  methods: {
+    deleteWishlist(wishlistId) {
+      this.$store.dispatch("deleteWishlist", wishlistId);
+    }
+  }
 };
 </script>
 
