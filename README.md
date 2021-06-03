@@ -1,4 +1,9 @@
-# iproject-client
+# IProject-Client
+
+## Hosting URL
+```
+https://geehive.web.app/
+```
 
 ## Project setup
 ```
