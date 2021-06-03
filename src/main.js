@@ -10,6 +10,18 @@ import VueYouTubeEmbed from "vue-youtube-embed";
 // If you don't need the styles, do not connect
 Vue.use(VueYouTubeEmbed);
 Vue.use(VTooltip);
+// Vue.use(
+//     new VueSocketIO({
+//         debug: true,
+//         connection: "https://perfectpeach-server.herokuapp.com",
+//         vuex: {
+//             store,
+//             actionPrefix: "SOCKET_",
+//             mutationPrefix: "SOCKET_",
+//         },
+//     })
+// );
+
 Vue.use(
     new VueSocketIO({
         debug: true,

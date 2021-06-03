@@ -1,6 +1,13 @@
 <template>
     <div class="my-auto">
         <!-- <Navbar /> -->
+        <button
+            v-if="adminCheck"
+            class="absolute top-8 right-10 h-10 bg-white rounded-md px-2"
+            @click.prevent="deleteRoom"
+        >
+            Delete Room
+        </button>
         <div>
             <template v-if="room">
                 <h1 class="text-header">{{ room.roomName }}</h1>
@@ -256,6 +263,9 @@ export default {
             }
             this.roomMessage = "";
         },
+        deleteRoom() {
+            this.$socket.emit("deleteRoom", this.room);
+        },
     },
     components: { RoomChatCard, RoomCardSong },
     computed: {
@@ -265,8 +275,19 @@ export default {
             );
             return this.$store.state.rooms[roomIndex];
         },
+        adminCheck() {
+            if (this.room.roomCreator.email === this.$store.getters.getEmail) {
+                return true;
+            }
+            return false;
+        },
     },
     created() {
+        if (!this.room) {
+            this.$router.push("/");
+        }
+    },
+    updated() {
         if (!this.room) {
             this.$router.push("/");
         }

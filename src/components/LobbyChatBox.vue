@@ -4,7 +4,7 @@
         <div class="flex flex-col h-full m-2">
             <div
                 id="chatlobby-container"
-                class="bg-white h-3/4 mb-1 rounded-lg overflow-scroll flex flex-col"
+                class="bg-white h-3/4 mb-1 rounded-lg overflow-auto flex flex-col"
             >
                 <LobbyChatCard
                     v-for="(message, i) in lobbyChat"
