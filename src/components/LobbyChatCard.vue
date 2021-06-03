@@ -1,5 +1,8 @@
 <template>
-    <div v-if="message.user.email !== user.email" class="user-others">
+    <div
+        v-if="message.user.email !== user.email"
+        class="user-others overflow-y-auto"
+    >
         <img
             class="h-12 w-12 rounded-full object-cover mr-4"
             :src="message.user.imageUrl"
@@ -9,7 +12,7 @@
         <p class="user-text-others">{{ message.message }}</p>
     </div>
 
-    <div v-else class="user-self">
+    <div v-else class="user-self overflow-y-auto">
         <p class="user-text-self">{{ message.message }}</p>
         <img
             class="h-12 w-12 rounded-full object-cover ml-4"

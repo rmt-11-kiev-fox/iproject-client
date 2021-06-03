@@ -2,7 +2,9 @@
     <div class="my-auto">
         <!-- <Navbar /> -->
         <div>
-            <h1 class="text-header">{{ room.roomName }}</h1>
+            <template v-if="room">
+                <h1 class="text-header">{{ room.roomName }}</h1>
+            </template>
             <h5 class="font-light text-lg text-center">
                 {{ room.roomCreator.email }}'s room
             </h5>
@@ -11,7 +13,10 @@
         <!-- "https://www.youtube.com/embed/TUVcZfQe-Kw?autoplay=1&origin=http://localhost:8080&controls=0&fs=0&iv_load_policy=3&modestbranding=1"  SUPER LINK-->
         <!-- src="https://www.youtube.com/embed/TUVcZfQe-Kw?autoplay=1&origin=http://localhost:8080&controls=0&fs=0&iv_load_policy=3&modestbranding=1" -->
         <div class="grid grid-cols-2">
-            <div v-if="room.songQueue.length > 0" class="grid grid-rows-2">
+            <div
+                v-if="room.songQueue.length > 0"
+                class="grid grid-rows-3 h-200"
+            >
                 <!-- , controls: 0 -->
                 <youtube
                     id="ytplayer"
@@ -20,25 +25,39 @@
                     :video-id="room.songQueue[0].id"
                     @ended="nextSong"
                 ></youtube>
+
                 <!-- Lyrics Bar Broken -->
-                <!-- <div class="">
-                    <form class="" @submit.prevent="searchLyrics">
-                        <input
-                            v-model="lyricsQuery.artist"
-                            type="text"
-                            placeholder="Artist Name"
-                        />
-                        <input
-                            v-model="lyricsQuery.title"
-                            type="text"
-                            placeholder="Song Name"
-                        />
-                        <button type="submit">Search</button>
-                    </form>
-                    <div class="bg-white">
+                <div
+                    class="row-start-3 flex justify-start items-start h-full bg-white flex-col mx-10 rounded-md"
+                >
+                    <div class="flex flex-row justify-between w-full">
+                        <h1 class="font-light text-lg ml-3">Lyrics Finder</h1>
+                        <form class="ml-auto" @submit.prevent="searchLyrics">
+                            <input
+                                v-model="lyricsQuery.artist"
+                                type="text"
+                                placeholder="Artist Name"
+                                class="bg-gray-100 px-2 border-2 border-ch-peach rounded-md mr-1"
+                            />
+                            <input
+                                v-model="lyricsQuery.title"
+                                type="text"
+                                placeholder="Song Name"
+                                class="bg-gray-100 px-2 border-2 border-ch-peach rounded-md mr-1"
+                            />
+                            <button
+                                type="submit"
+                                class="bg-white hover:bg-ch-peach hover:text-white px-2 border-2 rounded-md"
+                            >
+                                Search
+                            </button>
+                        </form>
+                    </div>
+
+                    <div class="flex-grow overflow-auto p-2">
                         {{ lyrics }}
                     </div>
-                </div> -->
+                </div>
             </div>
 
             <div v-else class="mx-auto my-36 font-light text-3xl">
@@ -175,7 +194,7 @@ export default {
             }
         },
         nextSong() {
-            console.log("masuk nextsong");
+            // console.log("masuk nextsong");
             if (this.room.roomCreator.email === this.$store.getters.getEmail) {
                 setTimeout(() => {
                     this.room.songQueue.splice(0, 1);
@@ -185,7 +204,7 @@ export default {
             }
         },
         searchLyrics() {
-            console.log(this.lyricsQuery, "masuk search lyrics");
+            // console.log(this.lyricsQuery, "masuk search lyrics");
             let user = this.$store.state.user;
             if (user.email) {
                 this.$store
@@ -225,11 +244,13 @@ export default {
             return this.$store.state.rooms[roomIndex];
         },
     },
+    created() {
+        if (!this.room) {
+            this.$router.push("/");
+        }
+    },
 };
 </script>
 
 <style>
-#ytplayer {
-    height: 100px !important;
-}
 </style>
