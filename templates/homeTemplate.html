@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@800&family=Righteous&family=Varela+Round&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <title>Home Template</title>
+  </head>
+  <body>
+    <div style="height: 1980px">
+      <!--------------------------------------------- NAVBAR --------------------------------------------->
+      <div class="h-25" style="background-image: url('../resources/background.jpg');background-size:auto;">
+        <div class="container">
+          <div class="row d-flex justify-content-between">
+            <img class="col-3" src="../resources/logo3.png" alt="" />
+            <nav class="col-7 navbar navbar-expand-lg navbar-light flex-grow-1 p-0">
+              <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                  <ul class="navbar-nav col-12 lh-base" style="font-family: 'Raleway', sans-serif;">
+                    <li class="nav-item bg-warning col-3 text-center">
+                      <a class="nav-link active fs-4" aria-current="page" href="#home">HOME</a>
+                    </li>
+                    <li class="nav-item bg-light col-3 text-center">
+                      <a class="nav-link active fs-4" aria-current="page" href="#about">ABOUT</a>
+                    </li>
+                    <li class="nav-item bg-light col-3 text-center">
+                      <a class="nav-link active fs-4" aria-current="page" href="#search">SEARCH</a>
+                    </li>
+                    <li class="nav-item bg-light col-3 text-center">
+                      <a class="nav-link active fs-4" aria-current="page" href="#">CONTACT</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </nav>
+          </div>
+          <div class="fw-lighter ms-5 mt-5" style="color: white; font-family: 'Varela Round', sans-serif;">
+            <h1 class="fs-1" style="font-family: 'Righteous', cursive;">Find gift ideas in seconds!</h1>
+            <h3>Find great product to celebrate you special moment</h3>
+          </div>
+        </div>
+      </div>
+      <!--------------------------------------------- NAVBAR --------------------------------------------->
+      <div class="h-75 bg-light">
+        <div class="h-75 bg-light border-bottom" style="background-image: url('../resources/home-bg.jpg');background-size: 100%;">
+          <!--------------------------------------------- ABOUT --------------------------------------------->
+          <div id="about" class="container h-40 text-center">
+            <h2 class="fs-1 pt-4" style="font-family: 'Righteous', cursive;">About</h2>
+            <h3 class="fs-3 text" style="font-family: 'Righteous', cursive; color: grey;">What is GeeHive?</h3>
+            <div class="d-flex mt-5 ms-5 me-5 ps-5 pe-5 ">
+              <img class="col-3" src="../resources/search.jpg" alt="" />
+              <h5 class="text-start p-5 mt-3" style="color: black; font-family: Varela Round;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ducimus, nostrum, porro tempora perferendis maiores ad nesciunt, consequatur dolorum accusamus nulla earum. Vel soluta atque neque eligendi asperiores quis illum necessitatibus.</h5>
+            </div>
+          </div>
+          <!--------------------------------------------- ABOUT --------------------------------------------->
+          <!--------------------------------------------- SEARCH --------------------------------------------->
+          <div id="search" class="container h-60 text-center">
+            <h2 class="fs-1 pt-4" style="font-family: 'Righteous', cursive;">Search</h2>
+            <h3 class="fs-3 text" style="font-family: 'Righteous', cursive; color: grey;">Let's try!</h3>
+            
+            <!-- SEARCH CONTAINER -->
+            <div class="container-sm bg-warning mt-5 p-5 form-group shadow-lg">
+              <form>
+                <div class="row mb-3 p-3">
+                  <label for="age-group" class="col-sm-2 col-form-label" style="font-family: 'Righteous', cursive;">Age Group</label>
+                  <div class="col-sm-8">
+                    <select id="age-group" class="form-select" aria-label="Default select example" style="color: black; font-family: Varela Round;">
+                      <option disabled selected>Select age group</option>
+                      <option value="Baby">Baby</option>
+                      <option value="Kid">Kid</option>
+                      <option value="Young Adult">Young Adult</option>
+                      <option value="Adult">Adult</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="row mb-3 p-3">
+                  <label for="gender" class="col-sm-2 col-form-label" style="font-family: 'Righteous', cursive;">Gender</label>
+                  <div class="col-sm-8">
+                    <select id="gender" class="form-select" aria-label="Default select example" style="color: black; font-family: Varela Round;">
+                      <option disabled selected>Select gender</option>
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="row mb-3 p-3">
+                  <label for="interest" class="col-sm-2 col-form-label" style="font-family: 'Righteous', cursive;">Interest</label>
+                  <div class="col-sm-8">
+                    <select id="interest" class="form-select" aria-label="Default select example" style="color: black; font-family: Varela Round;">
+                      <option disabled selected>Select interest</option>
+                      <option value="1">One</option>
+                      <option value="2">Two</option>
+                      <option value="3">Three</option>
+                    </select>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-dark" style="font-family: 'Righteous', cursive;">Show me some good products!</button>
+              </form>
+            </div>
+
+          </div>
+          <!--------------------------------------------- SEARCH --------------------------------------------->
+          
+        </div>
+        <!--------------------------------------------- FOOTER --------------------------------------------->
+        <div class="container-fluid h-25 bg-dark">
+          <div class="container d-flex justify-content-between border-bottom">
+            <img class="col-1 " src="../resources/logo3.png" alt="" />
+            <div class="d-flex justify-content-evenly">
+              <nav class="mt-3">             
+                <div id="footer-link" class="d-flex flex-grow-1 justify-content-lg-evenly fs-5" >
+                  <a class="nav-link active" aria-current="page" href="#">Home</a>
+                  <a class="nav-link" href="#">About</a>
+                  <a class="nav-link" href="#">Search</a>
+                  <a class="nav-link" href="#">Contact</a>
+                </div>
+              </nav>
+            </div>
+            <div class="d-flex justify-content-evenly">
+              <nav class="mt-3">
+                <div id="footer-icon" class="d-flex justify-content-center">
+                  <a class="nav-link" href="#"><i class="bi bi-instagram"></i></a>
+                  <a class="nav-link" href="#"><i class="bi bi-facebook"></i></a>
+                  <a class="nav-link" href="#"><i class="bi bi-linkedin"></i></a>
+                </div>
+              </nav>
+            </div>
+          </div>
+          <div class="container">
+            <div class="d-flex justify-content-evenly">
+              <nav class="mt-5 mb-5">             
+                <div id="footer-link" class="d-flex flex-grow-1 justify-content-lg-evenly" >
+                  <div class="input-group mb-3 mt-3">
+                    <label class="p-2 me-5 fs-5" style="color: white;font-family: Righteous;">Subscribe Now</label>
+                    <input style="border-top-left-radius: 10px;border-bottom-left-radius: 10px;font-family: Righteous; background-color: rgb(201, 201, 201);" type="text" class="form-control p-2" placeholder="Your Email" aria-describedby="button-addon2">
+                    <button style="border-top-right-radius: 10px;border-bottom-right-radius: 10px" class="btn btn-warning" type="button" id="button-addon2"><i class="bi bi-arrow-right-short"></i></button>
+                  </div>
+                </div>
+              </nav>
+            </div>
+            <footer class="mt-5" style="color: rgb(173, 173, 173); text-align: center; font-weight: bold;">
+              &copy; Copyright 2021, Muhammad Dwiky Cahyo</small>
+            </footer> 
+          </div>
+        </div>
+        <!--------------------------------------------- FOOTER --------------------------------------------->
+        <!--------------------------------------------- RESULT --------------------------------------------->
+        <div id="search" class="container text-center" style="height: 800px">
+          <h2 class="fs-1 pt-4" style="font-family: 'Righteous', cursive;">Result</h2>
+          <h3 class="fs-3 text" style="font-family: 'Righteous', cursive; color: grey;">Here we go!</h3>
+          <!-- Product Container -->
+          <div class="row row-cols-md-4 mt-5 mb-5">
+
+            <!-- CARD PRODUCT -->
+
+            <div class="col">
+              <div class="card m-2" style="width:20rem; height:37rem;">
+                <div class="p-4 text-start">
+                  <img src="https://images-na.ssl-images-amazon.com/images/I/61oXaUtvr3L._.jpg" class="card-img-top img-product mb-3" alt="product image from amazon">
+                  <h5 class="card-title">"Product Name"</h5>
+                  <h6 class="card-subtitle mb-2 text-muted fs-6">By "Product Brand"</h6>
+                  <h6 class="card-subtitle mb-2 fs-5" style="color: rgb(255, 133, 2);">$ 99.99</h6>
+                  <h6 class="card-subtitle mb-2 text-muted">Rp. 1.000.000,-</h6>
+                  <p>Data Exchange Today: <br><i>$1 = Rp.14.000 by xxxAPI.com</i></p>
+                  <div class="d-flex" id="review-star">
+                    <div class="me-1">
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star"></span>
+                      <span class="fa fa-star"></span>
+                    </div>
+                    <p class="align-canter">123</p>
+                  </div>
+                  <div class="d-grid">
+                    <button type="button" class="btn btn-warning">Check on Amazon.com <i class="fa fa-amazon" aria-hidden="true"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="card m-2" style="width:20rem;  height:37rem;">
+                <div class="p-4 text-start">
+                  <img src="https://images-na.ssl-images-amazon.com/images/I/41oZoRe12WL._.jpg" class="card-img-top img-product mb-3" alt="product image from amazon">
+                  <h5 class="card-title">"Product Name"</h5>
+                  <h6 class="card-subtitle mb-2 text-muted fs-6">By "Product Brand"</h6>
+                  <h6 class="card-subtitle mb-2 fs-5" style="color: rgb(255, 133, 2);">$ 99.99</h6>
+                  <h6 class="card-subtitle mb-2 text-muted">Rp. 1.000.000,-</h6>
+                  <p>Data Exchange Today: <br><i>$1 = Rp.14.000 by xxxAPI.com</i></p>
+                  <div class="d-flex" id="review-star">
+                    <div class="me-1">
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star"></span>
+                      <span class="fa fa-star"></span>
+                    </div>
+                    <p class="align-canter">123</p>
+                  </div>
+                  <div class="d-grid">
+                    <button type="button" class="btn btn-warning">Check on Amazon.com <i class="fa fa-amazon" aria-hidden="true"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="card m-2" style="width:20rem;  height:37rem;">
+                <div class="p-4 text-start">
+                  <img src="https://images-na.ssl-images-amazon.com/images/I/4152zONyQiL._.jpg" class="card-img-top img-product mb-3" alt="product image from amazon">
+                  <h5 class="card-title">"Product Name"</h5>
+                  <h6 class="card-subtitle mb-2 text-muted fs-6">By "Product Brand"</h6>
+                  <h6 class="card-subtitle mb-2 fs-5" style="color: rgb(255, 133, 2);">$ 99.99</h6>
+                  <h6 class="card-subtitle mb-2 text-muted">Rp. 1.000.000,-</h6>
+                  <p>Data Exchange Today: <br><i>$1 = Rp.14.000 by xxxAPI.com</i></p>
+                  <div class="d-flex" id="review-star">
+                    <div class="me-1">
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star"></span>
+                      <span class="fa fa-star"></span>
+                    </div>
+                    <p class="align-canter">123</p>
+                  </div>
+                  <div class="d-grid">
+                    <button type="button" class="btn btn-warning">Check on Amazon.com <i class="fa fa-amazon" aria-hidden="true"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="card m-2" style="width:20rem;  height:37rem;">
+                <div class="p-4 text-start">
+                  <img src="https://images-na.ssl-images-amazon.com/images/I/412zFjqnfTL._.jpg" class="card-img-top img-product mb-3" alt="product image from amazon">
+                  <h5 class="card-title">"Product Name"</h5>
+                  <h6 class="card-subtitle mb-2 text-muted fs-6">By "Product Brand"</h6>
+                  <h6 class="card-subtitle mb-2 fs-5" style="color: rgb(255, 133, 2);">$ 99.99</h6>
+                  <h6 class="card-subtitle mb-2 text-muted">Rp. 1.000.000,-</h6>
+                  <p>Data Exchange Today: <br><i>$1 = Rp.14.000 by xxxAPI.com</i></p>
+                  <div class="d-flex" id="review-star">
+                    <div class="me-1">
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star"></span>
+                      <span class="fa fa-star"></span>
+                    </div>
+                    <p class="align-canter">123</p>
+                  </div>
+                  <div class="d-grid">
+                    <button type="button" class="btn btn-warning">Check on Amazon.com <i class="fa fa-amazon" aria-hidden="true"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="card m-2" style="width:20rem;  height:37rem;">
+                <div class="p-4 text-start">
+                  <img src="https://images-na.ssl-images-amazon.com/images/I/417hyKyh9SL._.jpg" class="card-img-top img-product mb-3" alt="product image from amazon">
+                  <h5 class="card-title">"Product Name"</h5>
+                  <h6 class="card-subtitle mb-2 text-muted fs-6">By "Product Brand"</h6>
+                  <h6 class="card-subtitle mb-2 fs-5" style="color: rgb(255, 133, 2);">$ 99.99</h6>
+                  <h6 class="card-subtitle mb-2 text-muted">Rp. 1.000.000,-</h6>
+                  <p>Data Exchange Today: <br><i>$1 = Rp.14.000 by xxxAPI.com</i></p>
+                  <div class="d-flex" id="review-star">
+                    <div class="me-1">
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star"></span>
+                      <span class="fa fa-star"></span>
+                    </div>
+                    <p class="align-canter">123</p>
+                  </div>
+                  <div class="d-grid">
+                    <button type="button" class="btn btn-warning">Check on Amazon.com <i class="fa fa-amazon" aria-hidden="true"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="card m-2" style="width:20rem;  height:37rem;">
+                <div class="p-4 text-start">
+                  <img src="https://images-na.ssl-images-amazon.com/images/I/51Sw3HemV0L._.jpg" class="card-img-top img-product mb-3" alt="product image from amazon">
+                  <h5 class="card-title">"Product Name"</h5>
+                  <h6 class="card-subtitle mb-2 text-muted fs-6">By "Product Brand"</h6>
+                  <h6 class="card-subtitle mb-2 fs-5" style="color: rgb(255, 133, 2);">$ 99.99</h6>
+                  <h6 class="card-subtitle mb-2 text-muted">Rp. 1.000.000,-</h6>
+                  <p>Data Exchange Today: <br><i>$1 = Rp.14.000 by xxxAPI.com</i></p>
+                  <div class="d-flex" id="review-star">
+                    <div class="me-1">
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star"></span>
+                      <span class="fa fa-star"></span>
+                    </div>
+                    <p class="align-canter">123</p>
+                  </div>
+                  <div class="d-grid">
+                    <button type="button" class="btn btn-warning">Check on Amazon.com <i class="fa fa-amazon" aria-hidden="true"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="card m-2" style="width:20rem;  height:37rem;">
+                <div class="p-4 text-start">
+                  <img src="https://images-na.ssl-images-amazon.com/images/I/41QnI0A8HNL._.jpg" class="card-img-top img-product mb-3" alt="product image from amazon">
+                  <h5 class="card-title">"Product Name"</h5>
+                  <h6 class="card-subtitle mb-2 text-muted fs-6">By "Product Brand"</h6>
+                  <h6 class="card-subtitle mb-2 fs-5" style="color: rgb(255, 133, 2);">$ 99.99</h6>
+                  <h6 class="card-subtitle mb-2 text-muted">Rp. 1.000.000,-</h6>
+                  <p>Data Exchange Today: <br><i>$1 = Rp.14.000 by xxxAPI.com</i></p>
+                  <div class="d-flex" id="review-star">
+                    <div class="me-1">
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star"></span>
+                      <span class="fa fa-star"></span>
+                    </div>
+                    <p class="align-canter">123</p>
+                  </div>
+                  <div class="d-grid">
+                    <button type="button" class="btn btn-warning">Check on Amazon.com <i class="fa fa-amazon" aria-hidden="true"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+        </div>
+        <!-- SEARCH AGAIN -->
+        <div id="search" class="container h-60 text-center" style="height: 600px">
+          <h3 class="fs-3 text" style="font-family: 'Righteous', cursive; color: grey;">Search again?</h3>
+          <!-- SEARCH CONTAINER -->
+          <div class="container-sm bg-warning mt-5 mb-3 p-5 form-group shadow-lg">
+            <form>
+              <div class="row mb-3 p-3">
+                <label for="age-group" class="col-sm-2 col-form-label" style="font-family: 'Righteous', cursive;">Age Group</label>
+                <div class="col-sm-8">
+                  <select id="age-group" class="form-select" aria-label="Default select example" style="color: black; font-family: Varela Round;">
+                    <option disabled selected>Select age group</option>
+                    <option value="Baby">Baby</option>
+                    <option value="Kid">Kid</option>
+                    <option value="Young Adult">Young Adult</option>
+                    <option value="Adult">Adult</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row mb-3 p-3">
+                <label for="gender" class="col-sm-2 col-form-label" style="font-family: 'Righteous', cursive;">Gender</label>
+                <div class="col-sm-8">
+                  <select id="gender" class="form-select" aria-label="Default select example" style="color: black; font-family: Varela Round;">
+                    <option disabled selected>Select gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row mb-3 p-3">
+                <label for="interest" class="col-sm-2 col-form-label" style="font-family: 'Righteous', cursive;">Interest</label>
+                <div class="col-sm-8">
+                  <select id="interest" class="form-select" aria-label="Default select example" style="color: black; font-family: Varela Round;">
+                    <option disabled selected>Select interest</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-dark" style="font-family: 'Righteous', cursive;">Show me some good products!</button>
+            </form>
+          </div>
+        </div>
+        <!--------------------------------------------- RESULT --------------------------------------------->
+        <!--------------------------------------------- CONTACT PAGE --------------------------------------------->
+        <div id="search" class="container h-60 text-center" style="height: 600px">
+          <div class="d-flex">
+            <div class="container-sm">
+              <h2 class="fs-1 pt-2 text-contact" style="font-family: 'Righteous', cursive; color: black;">My Contact</h2>
+              <h5 class="fs-5 mt-3" style="color: black; font-family: Varela Round; text-align: left;">Let me know your opinion about this site!</h5>
+              <form>
+                <div class="mb-3 row pt-2">
+                  <label for="full-name" class="col-sm-2 col-form-label" style="font-family: 'Righteous', cursive;">Full name</label>
+                  <div class="col-sm-10">
+                    <input id="full-name" style="color: black; font-family: Varela Round;" type="text" class="form-control" placeholder="Full name">
+                  </div>
+                </div>
+                <div class="mb-3 row">
+                  <label for="email" class="col-sm-2 col-form-label" style="font-family: 'Righteous', cursive;">Your email</label>
+                  <div class="col-sm-10">
+                    <input id="email" style="color: black; font-family: Varela Round;" type="text" class="form-control" placeholder="Your email">
+                  </div>
+                </div>
+                <div class="mb-3 row">
+                  <label for="message" class="col-sm-2 col-form-label" style="font-family: 'Righteous', cursive;">Message</label>
+                  <div class="col-sm-10">
+                    <textarea id="message" style="color: black; font-family: Varela Round;" class="form-control" rows="5" placeholder="Nice work!"></textarea>
+                  </div>
+                </div>
+                <div class="d-grid">
+                  <button type="button" class="btn btn-warning" style="font-family: 'Righteous', cursive;">SUBMIT</button>
+                </div>
+              </form>
+            </div>
+            <img class="col-3" src="../resources/map.jpg" alt="" style="width: 50%;"/>
+          </div>
+          <div class="d-flex justify-content-between mt-4 border-top border-dark border-3">
+
+            <div class="d-flex">
+              <div class="me-3">
+                <i class="bi bi-geo-alt" style="font-size: 3rem;"></i>
+              </div>
+              <div class="text-start mt-2">
+                <h5 class="fs-4" style="font-family: 'Righteous', cursive; color: black;">Location:</h5>
+                <h6 class="fs-5" style="color: black; font-family: Varela Round; text-align: left;">Medan, Indonesia.</h6>
+              </div>
+            </div>
+
+            <div class="d-flex">
+              <div class="me-3">
+                <i class="bi bi-envelope" style="font-size: 3rem;"></i>
+              </div>
+              <div class="text-start mt-2">
+                <h5 class="fs-4" style="font-family: 'Righteous', cursive; color: black;">Email:</h5>
+                <h6 class="fs-5" style="color: black; font-family: Varela Round; text-align: left;">mdwikycahyo@gmail.com</h6>
+              </div>
+            </div>
+
+            <div class="d-flex">
+              <div class="me-3">
+                <i class="bi bi-telephone" style="font-size: 3rem;"></i>
+              </div>
+              <div class="text-start mt-2">
+                <h5 class="fs-4" style="font-family: 'Righteous', cursive; color: black;">Phone:</h5>
+                <h6 class="fs-5" style="color: black; font-family: Varela Round; text-align: left;">+62 821 6495 7664</h6>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- xxxx -->
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
