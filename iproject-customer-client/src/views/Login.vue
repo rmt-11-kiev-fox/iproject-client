@@ -21,7 +21,7 @@
                   Login
                 </button>
               </div>
-              <GoogleLogin/>
+              <!-- <GoogleLogin/> -->
               <hr class="my-4">
               <div class="text-center mb-2">
                 Don't have an account?
@@ -44,19 +44,19 @@ export default {
     return {
       email: '',
       password: '',
-        params: {
-                  client_id: "112994410071-72i01vqr9sb818cqa79ht08anp4d9e7n.apps.googleusercontent.com"
-                },
-                // only needed if you want to render the button with the google ui
-                renderParams: {
-                  width: 250,
-                  height: 50,
-                  longtitle: true
-                }
+        // params: {
+        //           client_id: "112994410071-72i01vqr9sb818cqa79ht08anp4d9e7n.apps.googleusercontent.com"
+        //         },
+        //         // only needed if you want to render the button with the google ui
+        //         renderParams: {
+        //           width: 250,
+        //           height: 50,
+        //           longtitle: true
+        //         }
     }
   },
   components: {
-    GoogleLogin
+    // GoogleLogin
   },
   methods: {
     submitLogin(){
