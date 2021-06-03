@@ -12,19 +12,19 @@
                 <div class="mb-3 row pt-2">
                   <label for="full-name" class="col-sm-2 col-form-label" style="font-family: 'Righteous', cursive;">Full name</label>
                   <div class="col-sm-10">
-                    <input v-model="fullname" id="full-name" style="color: black; font-family: Varela Round;" type="text" class="form-control" placeholder="Full name" required>
+                    <input v-model="fullname" id="full-name" style="color: black; font-family: Varela Round;" type="text" class="form-control" placeholder="Full name" required oninvalid="this.setCustomValidity('Please enter your full name')" oninput="this.setCustomValidity('')">
                   </div>
                 </div>
                 <div class="mb-3 row pt-2">
                   <label for="email" class="col-sm-2 col-form-label" style="font-family: 'Righteous', cursive;">Your email</label>
                   <div class="col-sm-10">
-                    <input v-model="email" id="email" style="color: black; font-family: Varela Round;" type="email" class="form-control" placeholder="Your email" required>
+                    <input v-model="email" id="email" style="color: black; font-family: Varela Round;" type="email" class="form-control" placeholder="Your email" required oninvalid="this.setCustomValidity('Please enter your valid email')" oninput="this.setCustomValidity('')">
                   </div>
                 </div>
                 <div class="mb-3 row pt-2">
                   <label for="message" class="col-sm-2 col-form-label" style="font-family: 'Righteous', cursive;">Message</label>
                   <div class="col-sm-10">
-                    <textarea v-model="message" id="message" style="color: black; font-family: Varela Round;" class="form-control" rows="6" placeholder="Nice work!" required></textarea>
+                    <textarea v-model="message" id="message" style="color: black; font-family: Varela Round;" class="form-control" rows="6" placeholder="Nice work!" required oninvalid="this.setCustomValidity('Say something! :)')" oninput="this.setCustomValidity('')"></textarea>
                   </div>
                 </div>
                 <div class="d-grid pt-2">

@@ -69,7 +69,11 @@ export default new Vuex.Store({
           context.commit('USD_TO_ID', response.data.USD_IDR)
         })
         .catch(err => {
-          console.log(err.response)
+          Swal.fire({
+            icon: 'error',
+            title: 'Can\'t generate exchange rate',
+            text: `${err.response.data}`
+          })
         })
     },
     sendEmail (context, payload) {

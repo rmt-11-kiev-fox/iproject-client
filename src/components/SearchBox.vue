@@ -17,7 +17,7 @@
       <div class="row mb-3 p-3">
         <label for="gender" class="col-sm-2 col-form-label" style="font-family: 'Righteous', cursive;">Gender</label>
         <div class="col-sm-8">
-          <select id="gender" v-model="gender" :value=gender class="form-select" aria-label="Default select example" style="color: black; font-family: Varela Round;">
+          <select id="gender" v-model="gender" :value=gender class="form-select" aria-label="Default select example" style="color: black; font-family: Varela Round;" required>
             <option disabled selected>Select gender</option>
             <option value="Male">Male</option>
             <option value="Female">Female</option>
@@ -27,7 +27,7 @@
       <div class="row mb-3 p-3">
         <label for="interest" class="col-sm-2 col-form-label" style="font-family: 'Righteous', cursive;">Interest</label>
         <div class="col-sm-8">
-          <select id="interest" v-model="interest" :value=interest class="form-select" aria-label="Default select example" style="color: black; font-family: Varela Round;">
+          <select id="interest" v-model="interest" :value=interest class="form-select" aria-label="Default select example" style="color: black; font-family: Varela Round;" required>
             <option disabled selected>Select interest</option>
             <option value="Art">Art</option>
             <option value="Automotive">Automotive</option>

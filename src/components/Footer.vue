@@ -29,7 +29,7 @@
             <form @submit.prevent="subscriber">
               <div class="input-group mb-3 mt-3">
                 <label class="p-2 me-5 fs-5" style="color: white;font-family: Righteous;">Subscribe Now</label>
-                <input v-model="subscriberEmail" style="border-top-left-radius: 10px;border-bottom-left-radius: 10px;font-family: Righteous; background-color: rgb(201, 201, 201);" type="email" class="form-control p-2" placeholder="Your Email" aria-describedby="button-addon2">
+                <input v-model="subscriberEmail" style="border-top-left-radius: 10px;border-bottom-left-radius: 10px;font-family: Righteous; background-color: rgb(201, 201, 201);" type="email" class="form-control p-2" placeholder="Your Email" aria-describedby="button-addon2" oninvalid="this.setCustomValidity('Enter your email here')" oninput="this.setCustomValidity('')">
                 <button style="border-top-right-radius: 10px;border-bottom-right-radius: 10px" class="btn btn-warning" type="submit" id="button-addon2"><i class="bi bi-arrow-right-short"></i></button>
               </div>
             </form>
