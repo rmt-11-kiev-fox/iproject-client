@@ -1,7 +1,7 @@
 <template>
     <section class="container col-6 mt-4">
         <div class="row">
-        <h1 class="text-center mb-4">Zoolorium Registration</h1>
+        <h1 class="text-center mb-4">MINI ZOO REGRISTRATION</h1>
         <div class="login-cont container row">
             <div class="col-7 my-4">
                 <img class="img-fluid" src="../assets/login.jpg" alt="">

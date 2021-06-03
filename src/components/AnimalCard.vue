@@ -1,5 +1,5 @@
 <template>
-    <div class="card col-auto mx-3 my-4 rounded animal-card mb-4" style="width: 18rem;">
+    <div class="card col-auto mx-3 my-4 rounded mb-4" :class="{ 'animal-card': !isDark, 'animal-card-dark': isDark }" style="width: 18rem;">
         <div class="card-body">
             <p>
               <a
@@ -20,15 +20,16 @@
             <h5 class="card-title my-4">{{ animal.name }}</h5>
             <p>
               Type:
-              <a class="desc" :href="'https://en.wikipedia.org/wiki/' + animal.type">
+              <a :class="{ 'animal-card': !isDark, 'animal-card-dark': isDark }" :href="'https://en.wikipedia.org/wiki/' + animal.type">
               {{ animal.type }}</a>
             </p>
             <p>
               Habitat:
-              <a class="desc" :href="'https://en.wikipedia.org/wiki/' + animal.habitat">
+              <a :class="{ 'animal-card': !isDark, 'animal-card-dark': isDark }" :href="'https://en.wikipedia.org/wiki/' + animal.habitat">
               {{ animal.habitat }}</a>
             </p>
-            <a @click.prevent="openDesc" class="desc">See Details</a>
+            <a href="#" v-if="!desc_open" @click.prevent="openDesc" :class="{ 'animal-card': !isDark, 'animal-card-dark': isDark }">See Details</a>
+            <a href="#" v-else @click.prevent="closeDesc" :class="{ 'animal-card': !isDark, 'animal-card-dark': isDark }">Close Details</a>
             <p class="card-text" v-if="desc_open">{{ animal.description }}</p>
             <audio controls v-if="animal.sound && desc_open" style="width:200px;">
               <source :src="sound" type="audio/wav">
@@ -49,11 +50,10 @@ export default {
   },
   methods: {
     openDesc () {
-      if (this.desc_open === true) {
-        this.desc_open = false
-      } else {
-        this.desc_open = true
-      }
+      this.desc_open = true
+    },
+    closeDesc () {
+      this.desc_open = false
     },
     addToFavorite () {
       this.$store.dispatch('addToFavorite', this.animal.id)
@@ -77,6 +77,9 @@ export default {
     }
   },
   computed: {
+    isDark () {
+      return this.$store.state.isDark
+    },
     isFavorite () {
       let flag = false
       this.$store.state.favorites.forEach((element) => {
@@ -102,13 +105,13 @@ export default {
 <style>
 .desc {
   cursor: pointer;
-  color: aliceblue;
 }
-.animal-card {
+.animal-card-dark {
   background-color: rgb(0, 114, 25);
   color: aliceblue;
 }
-.desc {
-  color: aliceblue;
+.animal-card {
+  background-color: rgb(22, 219, 65);
+  color: rgb(2, 28, 51);
 }
 </style>

@@ -1,8 +1,20 @@
 <template>
-  <div class="col-2 mb-4" :class="{ left_bar: !isDark, left_bar_dark: isDark }">
+  <div class="col-2 mb-4 left_bar_dark">
+    <div class="row">
+      <form class="mt-4">
+        <input
+          class="form-control"
+          type="search"
+          placeholder="Animal Name"
+          v-model="keyword"
+          @keydown.enter.prevent=""
+        >
+      </form>
+    </div>
+    <hr>
     <div class="row mx-4 mt-4">
-      <clock :color="clockColor" v-if="!skippedTime"></clock>
-      <clock :color="clockColor" :time="skippedTime" v-else></clock>
+      <clock :color="'white'" v-if="!skippedTime"></clock>
+      <clock :color="'white'" :time="skippedTime" v-else></clock>
     </div>
     <div class="row">
       <form class="my-4 col-6">
@@ -16,62 +28,15 @@
       </form>
       <button class="btn btn-success h-75 my-4 col-5" @click.prevent="skipTime">Skip Time</button>
     </div>
-    <div class="row" :class="{ 'text-light': isDark }">
+    <div class="row text-light">
       <button v-if="skippedTime" class="btn btn-success h-75 w-75 ms-3 mb-4 col-5" @click.prevent="backToNormal">Back to Normal Time</button>
       <p>{{ err_time }}</p>
     </div>
-    <div class="row" :class="{ 'text-light': isDark }">
+    <div class="row text-light">
       <p>Notes:</p>
       <p>- After 6 PM Nocturnal Animals Will Appear and Diurnal Animals Will Disappear</p>
       <p>- After 6 AM Diurnal Animals Will Appear and Nocturnal Animals Will Disappear</p>
       <p>- Some Animals Is Always Appear</p>
-    </div>
-    <div class="row">
-      <form class="mt-4">
-        <input
-          class="form-control"
-          type="search"
-          placeholder="Animal Name"
-          v-model="keyword"
-          @keydown.enter.prevent=""
-        >
-      </form>
-    </div>
-    <div class="row my-4">
-      <router-link
-        :to="'/home/favorites'"
-        :class="{
-          type_opt: $route.params.type !== 'favorites',
-          type_choosed: $route.params.type === 'favorites'
-        }"
-      >
-        <h4>
-          My Favorite Animals
-        </h4>
-      </router-link>
-    </div>
-    <div class="row my-4 w-75">
-      <h4 class="type_opt">Type:</h4>
-      <router-link
-        to="/home"
-        :class="{
-          type_opt: $route.params.type,
-          type_choosed: !$route.params.type
-        }"
-        class="ms-4"
-        >All
-      </router-link>
-      <router-link
-        :to="'/home/' + type"
-        v-for="(type, i) in types"
-        :key="i"
-        :class="{
-          type_opt: $route.params.type !== type,
-          type_choosed: $route.params.type === type
-        }"
-        class="ms-4"
-        >{{ type }}
-      </router-link>
     </div>
   </div>
 </template>
@@ -91,13 +56,6 @@ export default {
     }
   },
   computed: {
-    clockColor () {
-      if (!this.isDark) {
-        return 'black'
-      } else {
-        return 'white'
-      }
-    },
     isDark () {
       return this.$store.state.isDark
     },
@@ -153,13 +111,5 @@ export default {
 }
 .left_bar_dark {
   background-color: rgba(0, 0, 0, 0.74);
-}
-.type_opt {
-  cursor: pointer;
-  color: aliceblue;
-}
-.type_choosed {
-  cursor: pointer;
-  color: rgb(107, 109, 0);
 }
 </style>

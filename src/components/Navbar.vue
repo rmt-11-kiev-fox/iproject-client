@@ -3,10 +3,9 @@
     <div class="container-fluid col-12">
       <div class="col-2">
         <router-link to="/" class="navbar-brand nav-btn ms-4">
-          Z
+          MINI Z
           <img src="../assets/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
           <img src="../assets/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
-          LORIUM
         </router-link>
       </div>
       <div class="col-3">

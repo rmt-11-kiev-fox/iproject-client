@@ -70,7 +70,7 @@ export default new Vuex.Store({
       })
         .then(({ data }) => {
           Vue.swal({
-            title: 'Welcome to Zoolorium, ' + data.username,
+            title: 'Welcome to Mini Zoo, ' + data.username,
             imageUrl: state.catGif,
             background: 'rgba(0, 175, 58, 0.733)'
           })
