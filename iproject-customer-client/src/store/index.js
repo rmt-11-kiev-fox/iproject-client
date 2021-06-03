@@ -18,6 +18,7 @@ export default new Vuex.Store({
     },
     SET_SELECTED_ARTWORKS(state, payload){
       state.selectedArtWorks = payload
+      console.log(state.selectedArtWorks, 'mutation')
     },
     SET_LIKED(state, payload){
       state.liked = payload
@@ -89,7 +90,7 @@ export default new Vuex.Store({
         method: 'GET',
       })
       .then(({data}) => {
-        console.log(data.product, 'masuk');
+        // console.log(data.product, 'masuk');
         context.commit('SET_ARTWORKS', data)
       })
       .catch(err => {
@@ -102,7 +103,7 @@ export default new Vuex.Store({
         method: 'GET',
       })
       .then(({data}) => {
-        console.log(data, 'details');
+        // console.log(data, 'details');
         context.commit('SET_SELECTED_ARTWORKS', data)
       })
       .catch(err => {
@@ -118,7 +119,7 @@ export default new Vuex.Store({
         }
       })
       .then(({data}) => {
-        console.log(data, 'getlike');
+        // console.log(data, 'getlike');
         context.commit('SET_LIKED', data)
       })
     },
@@ -134,7 +135,7 @@ export default new Vuex.Store({
         }
       })
       .then(({data}) => {
-        console.log(data, 'dapet nih');
+        // console.log(data, 'dapet nih');
         context.dispatch('getLike')
         router.push('/like')
       })
@@ -160,7 +161,25 @@ export default new Vuex.Store({
       .catch(err => {
         console.log(err);
       })
-    }
+    },
+    googleSubmit(context, token_id){
+      // console.log(token_id)
+      axios({
+        method: 'POST',
+        url: '/googleLogin',
+        data:{
+          token: token_id
+        }
+      })
+      .then(({data}) =>{
+        console.log(data, 'masuk')
+        localStorage.setItem('access_token', data.access_token)
+        router.push('/')
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+      }
   },
   modules: {
   }

@@ -21,7 +21,7 @@
                   Login
                 </button>
               </div>
-              <!-- <GoogleLogin/> -->
+              <GoogleLogin :params="params" :renderParams="renderParams" :onSuccess="onSuccess" style="margin: auto; border-radius: 5px;"></GoogleLogin>
               <hr class="my-4">
               <div class="text-center mb-2">
                 Don't have an account?
@@ -44,19 +44,19 @@ export default {
     return {
       email: '',
       password: '',
-        // params: {
-        //           client_id: "112994410071-72i01vqr9sb818cqa79ht08anp4d9e7n.apps.googleusercontent.com"
-        //         },
-        //         // only needed if you want to render the button with the google ui
-        //         renderParams: {
-        //           width: 250,
-        //           height: 50,
-        //           longtitle: true
-        //         }
+        params: {
+                  client_id: "368190331850-dvbu8q3ecoc05i0f4qtgn782vasqjrpp.apps.googleusercontent.com"
+                },
+                // only needed if you want to render the button with the google ui
+                renderParams: {
+                  width: 250,
+                  height: 50,
+                  longtitle: true
+                }
     }
   },
   components: {
-    // GoogleLogin
+    GoogleLogin
   },
   methods: {
     submitLogin(){
@@ -68,6 +68,11 @@ export default {
     },
     toRegist(){
       this.$router.push('/register')
+    },
+    onSuccess(googleLogin){
+      let token_id = googleLogin.qc.id_token
+      // console.log(token_id)
+      this.$store.dispatch('googleSubmit', token_id)
     }
   },
 }

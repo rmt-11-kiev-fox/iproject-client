@@ -16,7 +16,7 @@
           <input disabled class="px-0 search" type="search" value="" aria-label="Search">
           <button class="btn0" type="button"><span><i class="fa fa-heart" aria-hidden="true"></i></span></button>
           <button v-if="!verify" @click="$router.push('/login')" class="btn0">Login</button>
-          <button v-else @click="logout" class="btn0">Logout</button>
+           <GoogleLogin v-else :params="params" :onSuccess='logout' :logoutButton=true class="btn btn-danger">Logout</GoogleLogin>
         </div>
       </div>
     </div>
@@ -24,10 +24,17 @@
 </template>
 
 <script>
+import GoogleLogin from 'vue-google-login'
 export default {
   name: 'Navbar',
+  components: {
+    GoogleLogin
+  },
   data() {
     return {
+       params: {
+                  client_id: "368190331850-dvbu8q3ecoc05i0f4qtgn782vasqjrpp.apps.googleusercontent.com"
+                }
     }
   },
   methods:{
