@@ -41,9 +41,6 @@ export default {
             return this.$store.state.onlineUsers;
         },
     },
-    updated() {
-        console.log("masuk chatbox");
-    },
 };
 </script>
 

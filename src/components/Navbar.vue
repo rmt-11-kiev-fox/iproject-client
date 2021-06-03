@@ -67,6 +67,7 @@
 <script>
 import GoogleLogin from "vue-google-login";
 import CreateRoomModal from "./CreateRoomModal";
+import Swal from "sweetalert2";
 
 export default {
     name: "Navbar",
@@ -102,16 +103,48 @@ export default {
                     this.$store.commit("SET_USER", payload);
                     this.$socket.emit("onLogin", payload);
                     this.$socket.emit("guestHandler", false);
+
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: "top-end",
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener(
+                                "mouseenter",
+                                Swal.stopTimer
+                            );
+                            toast.addEventListener(
+                                "mouseleave",
+                                Swal.resumeTimer
+                            );
+                        },
+                    });
+
+                    Toast.fire({
+                        icon: "success",
+                        title: "Signed in successfully",
+                    });
                 })
                 .catch((err) => {
-                    console.log(err, err.response, "ini di onsuccess");
+                    // console.log(err, err.response, "ini di onsuccess");
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: err.response,
+                    });
                 });
         },
         onFailure(error) {
             console.log(error, "ini error di google auth");
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: error,
+            });
         },
         logout() {
-            console.log("logging out sir.");
             let user = this.$store.state.user;
             this.$socket.emit("userLogout", user);
             this.$store.commit("SET_USER", {});

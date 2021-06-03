@@ -145,6 +145,8 @@
 <script>
 import RoomChatCard from "../components/RoomChatCard.vue";
 import RoomCardSong from "../components/RoomCardSong";
+import Swal from "sweetalert2";
+
 export default {
     name: "Room",
     data() {
@@ -173,7 +175,11 @@ export default {
                     });
                 this.songQuery = "";
             } else {
-                console.log("LOGIN FIRST PLS");
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Please login first.",
+                });
             }
         },
         addSong(payload) {
@@ -190,7 +196,11 @@ export default {
                 this.$socket.emit("joinRoom", this.room);
                 this.searchResults = [];
             } else {
-                console.log("LOGIN FIRST PLS");
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Please login first.",
+                });
             }
         },
         nextSong() {
@@ -210,14 +220,22 @@ export default {
                 this.$store
                     .dispatch("searchLyrics", this.lyricsQuery)
                     .then(({ data }) => {
-                        console.log(data);
                         this.lyrics = data.lyrics;
                     })
                     .catch((err) => {
-                        console.log(err);
+                        // console.log(err);
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops...",
+                            text: err.response,
+                        });
                     });
             } else {
-                console.log("PLEASE LOGIN TO CHAT.");
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Please login first.",
+                });
             }
         },
         sendRoomMessage() {
@@ -230,7 +248,11 @@ export default {
                 this.room.roomChat.push(payload);
                 this.$socket.emit("joinRoom", this.room);
             } else {
-                console.log("PLEASE LOGIN TO CHAT.");
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Please login first.",
+                });
             }
             this.roomMessage = "";
         },

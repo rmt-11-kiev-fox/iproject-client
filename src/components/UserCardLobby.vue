@@ -2,7 +2,7 @@
     <div class="m-2">
         <!-- <div class="h-15 w-15 bg-green-500 rounded-full"></div> -->
         <img
-            class="h-20 w-20 rounded-full object-cover bg-green-600 p-0.5"
+            class="h-20 w-20 rounded-full object-cover bg-green-600 p-1"
             :src="user.imageUrl"
             v-tooltip="user.email"
         />

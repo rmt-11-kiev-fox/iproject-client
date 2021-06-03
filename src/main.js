@@ -7,6 +7,7 @@ import VTooltip from "v-tooltip";
 import VueSocketIO from "vue-socket.io";
 import VueYouTubeEmbed from "vue-youtube-embed";
 
+// If you don't need the styles, do not connect
 Vue.use(VueYouTubeEmbed);
 Vue.use(VTooltip);
 Vue.use(

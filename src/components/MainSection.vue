@@ -59,12 +59,6 @@ export default {
             modal.classList.add("scale-100");
         },
     },
-    updated() {
-        // console.log("masuk updatedddddddd");
-        // const myEl = document.getElementById("vueSlickCarousel");
-        // console.log(myEl);
-        // myEl.destroy();
-    },
 };
 </script>
 

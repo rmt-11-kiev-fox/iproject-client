@@ -2,8 +2,6 @@
     <div class="m-5 bg-black rounded-lg h-90">
         <h1 class="badge-custom">Lobby Chat</h1>
         <div class="flex flex-col h-full m-2">
-            <!-- <LobbyChatCard hidden /> -->
-
             <div
                 id="chatlobby-container"
                 class="bg-white h-3/4 mb-1 rounded-lg overflow-scroll flex flex-col"
@@ -28,6 +26,7 @@
 
 <script>
 import LobbyChatCard from "./LobbyChatCard";
+import Swal from "sweetalert2";
 
 export default {
     name: "LobbyChatBox",
@@ -52,7 +51,11 @@ export default {
                 this.$store.commit("SET_LOBBY_CHAT", payload);
                 this.$socket.emit("sendMessageLobby", payload);
             } else {
-                console.log("PLEASE LOGIN TO CHAT.");
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Please login first.",
+                });
             }
             this.lobbyMessage = "";
         },
