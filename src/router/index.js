@@ -48,9 +48,11 @@ router.beforeEach((to, from, next) => {
     next()
   } else if (to.name !== 'Login'  && !localStorage.access_token) {
     next({ name: 'Login' })
-  } else {
+  } else if (localStorage.access_token) {
     next()
     store.commit('SET_IS_LOGGED_IN', true)
+  } else {
+    next()
   }
 })
 
