@@ -8,7 +8,7 @@ Vue.config.productionTip = false
 Vue.use(
   new VueSocketIO({
     debug: true,
-    connection: 'http://api.rajaongkir.com/starter',
+    connection: 'http://lelangaja.herokuapp.com/',
     vuex: {
       store,
       actionPrefix: 'SOCKET_',
