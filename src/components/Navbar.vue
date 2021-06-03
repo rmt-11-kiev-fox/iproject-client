@@ -1,5 +1,5 @@
 <template>
-    <nav class="navbar navbar-dark bg-dark navbar-expand-lg h-100">
+    <nav class="navbar navbar navbar-dark bg-dark navbar-expand-lg h-100">
         <div class="container-fluid">
             <div class="navbar-brand">TriviaSiks</div>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">

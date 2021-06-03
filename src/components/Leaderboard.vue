@@ -1,22 +1,22 @@
 <template>
     <div class="col-3">
-        <div class="h-100 w-100 container mt-2">
-            <div class="row text-center"><h5>=== LEADERBOARD ===</h5></div>
-            <div class="w-100 text-wrap text-break row">
-                <div class="col-2"></div>
-                <div class="col-6">
-                    <span>Username</span>
-                </div>
+        <div class="h-100 w-100 container">
+            <div class="row text-center text-primary my-3">
+                <h5>-- LEADERBOARD --</h5>
+            </div>
+            <div class="w-100 text-wrap text-break row text-danger text-center">
+                <div class="col-3">Rank</div>
+                <div class="col-5">Username</div>
                 <div class="col-4">Points</div>
             </div>
             <div
-                class="w-100 text-wrap text-break row"
+                class="w-100 text-wrap text-break text-light text-center row"
                 v-for="(user, i) in users"
                 :key="i"
             >
-                <div class="col-2">{{ i + 1 }}.</div>
-                <div class="col-6">
-                    <span class="text-primary"> {{ user.username }}</span>
+                <div class="col-3">{{ i + 1 }}</div>
+                <div class="col-5">
+                    {{ user.username }}
                 </div>
                 <div class="col-4">{{ user.point }}</div>
             </div>

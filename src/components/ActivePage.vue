@@ -20,7 +20,9 @@
                     justify-content-center
                 "
             >
-                <div class="alert alert-warning">Time left: {{ timeLeft }}</div>
+                <div class="alert alert-danger w-50 mx-auto">
+                    Time left: {{ timeLeft }}
+                </div>
                 <div class="badge bg-dark">
                     Category: {{ question.category }}
                 </div>
