@@ -9,7 +9,13 @@ export default new Vuex.Store({
   state: {
     booking: {},
     bookings: [],
-    bookTemp: {}
+    bookTemp: {},
+    PIMLoc: {},
+    PSLoc: {},
+    MtgLoc: {},
+    PIMweather: {},
+    PSWeather: {},
+    MtgWeather: {}
   },
   mutations: {
     SET_BOOKINGS (state, payload) {
@@ -20,6 +26,24 @@ export default new Vuex.Store({
     },
     SET_BOOKINGTEMP (state, payload) {
       state.bookTemp = payload
+    },
+    SET_PIM (state, payload) {
+      state.PIMLoc = payload
+    },
+    SET_PS (state, payload) {
+      state.PSLoc = payload
+    },
+    SET_MTG (state, payload) {
+      state.MtgLoc = payload
+    },
+    SET_PIMW (state, payload) {
+      state.PIMweather = payload
+    },
+    SET_PSW (state, payload) {
+      state.PSWeather = payload
+    },
+    SET_MTGW (state, payload) {
+      state.MtgWeather = payload
     }
   },
   actions: {
@@ -95,6 +119,83 @@ export default new Vuex.Store({
           console.log(result)
           dispatch('fetchBookings')
           router.push('/admin')
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
+    PIMLoc ({ commit }) {
+      axios({
+        method: 'GET',
+        url: 'http://localhost:3000/locationPIM'
+      })
+        .then(result => {
+          // console.log(result.data)
+          commit('SET_PIM', result.data.coordinatePIM)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
+    PSLoc ({ commit }) {
+      axios({
+        method: 'GET',
+        url: 'http://localhost:3000/locationPS'
+      })
+        .then(result => {
+          // console.log(result.data)
+          commit('SET_PS', result.data.coordinatePS)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
+    MtgLoc ({ commit }) {
+      axios({
+        method: 'GET',
+        url: 'http://localhost:3000/locationMtg'
+      })
+        .then(result => {
+          // console.log(result.data)
+          commit('SET_MTG', result.data.coordinateMtg)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
+    PIMWeather ({ commit }) {
+      axios({
+        method: 'GET',
+        url: 'http://localhost:3000/weatherPIM'
+      })
+        .then(result => {
+          commit('SET_PIMW', result.data.weather)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
+    PSWeather ({ commit }) {
+      axios({
+        method: 'GET',
+        url: 'http://localhost:3000/weatherPS'
+      })
+        .then(result => {
+          // console.log(result.data)
+          commit('SET_PSW', result.data.weather)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
+    MTGWeather ({ commit }) {
+      axios({
+        method: 'GET',
+        url: 'http://localhost:3000/weatherMtg'
+      })
+        .then(result => {
+          // console.log(result.data)
+          commit('SET_MTGW', result.data.weather)
         })
         .catch(err => {
           console.log(err)

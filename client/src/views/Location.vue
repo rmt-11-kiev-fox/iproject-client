@@ -109,6 +109,10 @@
                   <u>Operational Hours</u>
                 </h4>
                 <p style="color: black">09.00 - 22.00 <br /></p>
+                <p style="color: black">
+                  Lunch Temperature: {{this.$store.state.PIMweather.lunch}}<br />
+                  Dinner Temperature: {{}}
+                </p>
                 <h4
                   style="
                     color: black;
@@ -123,6 +127,7 @@
                   +628123456 <br />
                   makan.pim@makanology.com
                 </p>
+                <div class="mapouter"><div class="gmap_canvas"><iframe width="361" height="272" id="gmap_canvas" :src="`https://maps.google.com/maps?q=${this.$store.state.PIMLoc.lat},${this.$store.state.PIMLoc.lng}&t=&z=13&ie=UTF8&iwloc=&output=embed`" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://2piratebay.org"></a><br></div></div>
               </div>
             </div>
           </div>
@@ -160,6 +165,7 @@
                   +628123456 <br />
                   makan.senayan@makanology.com
                 </p>
+                <div class="mapouter"><div class="gmap_canvas"><iframe width="361" height="272" id="gmap_canvas" :src="`https://maps.google.com/maps?q=${this.$store.state.PSLoc.lat},${this.$store.state.PSLoc.lng}&t=&z=13&ie=UTF8&iwloc=&output=embed`" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://2piratebay.org"></a><br></div></div>
               </div>
             </div>
           </div>
@@ -197,6 +203,7 @@
                   +628123456 <br />
                   makan.menteng@makanology.com
                 </p>
+               <div class="mapouter"><div class="gmap_canvas"><iframe width="361" height="272" id="gmap_canvas" :src="`https://maps.google.com/maps?q=${this.$store.state.MtgLoc.lat},${this.$store.state.MtgLoc.lng}&t=&z=13&ie=UTF8&iwloc=&output=embed`" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://2piratebay.org"></a><br></div></div>
               </div>
             </div>
           </div>
@@ -215,10 +222,19 @@ export default {
   components: { Footer, navBar },
   name: 'Location',
   created () {
+    // console.log(this.$store.state)
     window.scrollTo(0, 0)
+    this.$store.dispatch('PIMLoc')
+    this.$store.dispatch('PSLoc')
+    this.$store.dispatch('MtgLoc')
+    this.$store.dispatch('PIMWeather')
+    this.$store.dispatch('PSWeather')
+    this.$store.dispatch('MTGWeather')
   }
 }
 </script>
 
 <style>
+.mapouter{position:relative;text-align:right;height:272px;width:361px;}
+.gmap_canvas {overflow:hidden;background:none!important;height:272px;width:361px;}
 </style>
