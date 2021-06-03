@@ -6,4 +6,3 @@ import axios from 'axios'
 export default axios.create({
   baseURL: 'https://warkopcycle.herokuapp.com'
 })
-
