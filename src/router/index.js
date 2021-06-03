@@ -4,26 +4,40 @@ import Home from "../views/Home.vue";
 
 Vue.use(VueRouter);
 
+const suffix = "MANIS - ";
+
 const routes = [
 	{
 		path: "/",
 		name: "Home",
 		component: Home,
+		meta: {
+			title: `${suffix}Home Page`, // Title must be a string.
+		},
 	},
 	{
 		path: "/detail",
 		name: "Detail",
 		component: () => import("../views/Detail.vue"),
+		meta: {
+			title: `${suffix}Details`, // Title must be a string.
+		},
 	},
 	{
 		path: "/login",
 		name: "Login",
 		component: () => import("../views/Login.vue"),
+		meta: {
+			title: `${suffix}Login`, // Title must be a string.
+		},
 	},
 	{
 		path: "/register",
 		name: "Register",
 		component: () => import("../views/Register.vue"),
+		meta: {
+			title: `${suffix}Register`, // Title must be a string.
+		},
 	},
 ];
 
