@@ -1,0 +1,44 @@
+.live-bid-container {
+  position: relative;
+  overflow: hidden;
+
+  .winner-overlay__container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.8);
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+
+    img {
+      width: 370px;
+      object-fit: cover;
+      margin-top: -50px;
+    }
+
+    .text {
+      position: absolute;
+      bottom: 18px;
+      font-size: 22px;
+      background: #f15c60;
+      padding: 8px 32px;
+      border-radius: 24px;
+      color: white;
+      cursor: pointer;
+    }
+  }
+}
+
+.loader-wrapping {
+  position: relative;
+  width: 100%;
+  text-align: center;
+
+  .lds-ring {
+    width: 30px;
+    height: 30px;
+  }
+}

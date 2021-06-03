@@ -1,0 +1,123 @@
+.add-container {
+  background: rgb(255, 255, 255);
+  width: 370px;
+  border-radius: 16px;
+  padding: 16px;
+  position: relative;
+  overflow: scroll;
+
+  .login-copy {
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .link {
+    color: #3989b9;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .icon-close {
+    font-size: 20px;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    color: #f15c60;
+    cursor: pointer;
+  }
+
+  .title {
+    font-size: 24px;
+    font-weight: 500;
+    color: #426696;
+    text-align: center;
+    margin-top: 24px;
+  }
+
+  .price-container {
+    margin-right: 16px;
+    .price {
+      width: 100% !important;
+      margin-top: 8px;
+    }
+
+    .price::placeholder {
+      font-size: 12px;
+    }
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    padding: 12px 16px;
+
+    label {
+      font-size: 16px;
+      color: #426696;
+      margin-bottom: 8px;
+    }
+
+    input {
+      height: 36px;
+      font-size: 16px;
+      border-radius: 16px;
+      border: 1px solid grey;
+      padding: 0 16px;
+      box-sizing: border-box;
+      margin-bottom: 16px;
+      outline: none;
+      color: #426696;
+    }
+
+    .select {
+      display: flex;
+      margin-bottom: 16px;
+      overflow: scroll;
+
+      .item {
+        margin-right: 8px;
+        padding: 4px 16px;
+        border-radius: 16px;
+        color: #7b7e80;
+        font-size: 14px;
+        background: #d4d4d4;
+        cursor: pointer;
+      }
+
+      .selected {
+        background: #18ab8a;
+        color: white;
+        border: none;
+      }
+    }
+
+    .button-submit {
+      height: 36px;
+      font-size: 16px;
+      color: white;
+      border-radius: 16px;
+      background: #f15c60;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+  }
+
+  .error {
+    color: red;
+    font-size: 12px;
+    padding-left: 6px;
+    margin-top: -12px;
+    position: relative;
+    margin-bottom: 8px;
+  }
+
+  .error-box {
+    border: 1px solid red !important;
+  }
+}

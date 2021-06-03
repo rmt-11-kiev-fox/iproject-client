@@ -1,0 +1,33 @@
+.user-menu__container-item {
+  color: #426696;
+  font-size: 16px;
+  padding-left: 34px;
+  position: relative;
+  padding: 12px 0 8px 34px;
+  margin-bottom: 12px;
+
+  cursor: pointer;
+
+  .icon {
+    margin-right: 32px;
+    font-size: 18px;
+  }
+}
+
+.active-tab {
+  background: #65dfc9;
+  color: white !important;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.logout {
+  font-size: 16px;
+  color: #f15c60;
+  position: absolute;
+  bottom: 24px;
+  left: 140px;
+  cursor: pointer;
+}
