@@ -25,9 +25,9 @@
                     </div>
                     <div class="row">
                         <p>Don't have an account? <router-link to="/register" >Register Here</router-link></p>
-                        <p>or</p>
+                        <!-- <p>or</p> -->
                     </div>
-                    <div class="row d-flex justify-content-center">
+                    <!-- <div class="row d-flex justify-content-center">
                         <div class="col-4">
                             <g-signin-button
                                 :params="googleSignInParams"
@@ -36,7 +36,7 @@
                                 Sign in with Google
                             </g-signin-button>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -65,6 +65,7 @@ export default {
         .then(({ data }) => {
           console.log(data)
           localStorage.setItem('access_token', data.access_token)
+          localStorage.setItem('username', data.username)
           this.$store.dispatch('fetchCountries')
           this.$store.dispatch('fetchFavourites')
           this.$router.push('/')

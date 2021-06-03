@@ -19,12 +19,12 @@ const routes = [
         path: '/players',
         name: 'Players',
         component: () => import('../views/Players.vue')
+      },
+      {
+        path: '/news',
+        name: 'News',
+        component: () => import('../views/News.vue')
       }
-      // {
-      //   path: '/news',
-      //   name: 'News',
-      //   component: () => import('../views/News.vue')
-      // }
     ]
   },
   {

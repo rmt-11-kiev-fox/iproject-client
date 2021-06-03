@@ -9,7 +9,8 @@ export default new Vuex.Store({
     favourites: [],
     countries: [],
     favourite: null,
-    standings: []
+    standings: [],
+    news: []
   },
   mutations: {
     SET_countries (state, payload) {
@@ -23,6 +24,9 @@ export default new Vuex.Store({
     },
     SET_standings (state, payload) {
       state.standings = payload
+    },
+    SET_news (state, payload) {
+      state.news = payload
     }
   },
   actions: {
@@ -112,6 +116,15 @@ export default new Vuex.Store({
     getStandings (content, leagueKey) {
       return axios({
         url: '/standings/' + leagueKey,
+        method: 'get',
+        headers: {
+          access_token: localStorage.getItem('access_token')
+        }
+      })
+    },
+    getNews (context, teamName) {
+      return axios({
+        url: `/news/?teamName=${teamName}`,
         method: 'get',
         headers: {
           access_token: localStorage.getItem('access_token')

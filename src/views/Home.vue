@@ -12,9 +12,9 @@
           <div>
             <router-link to="/players">PLAYERS</router-link>
           </div>
-          <!-- <div>
-            <router-link to="/standings">NEWS</router-link>
-          </div> -->
+          <div>
+            <router-link to="/news">NEWS</router-link>
+          </div>
         </div>
         <div class="route-view-display">
           <router-view/>
@@ -35,14 +35,6 @@ export default {
     LeftBar
   },
   methods: {
-    logout () {
-      localStorage.clear()
-      // const auth2 = gapi.auth2.getAuthInstance()
-      // auth2.signOut().then(function () {
-      //   console.log('User signed out.')
-      // })
-      this.$router.push('/login')
-    }
   }
 }
 </script>
