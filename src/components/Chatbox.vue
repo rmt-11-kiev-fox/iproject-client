@@ -7,11 +7,11 @@
                 v-for="(chat, i) in chats"
                 :key="i"
             >
-                <span class="text-primary">{{
+                <span class="text-info">{{
                     chat.User ? chat.User.username : 'TriviaBot'
-                }}</span
-                >:
-                {{ chat.message }}
+                }}</span>
+                <span class="text-light bg-success">: {{ chat.message }}</span>
+
                 <!-- <div>
                     <span class="text-primary">{{ chat.username }}</span
                     >:
@@ -50,10 +50,6 @@ export default {
         chats() {
             return this.$store.state.chats
         }
-        // username() {
-        //     if (this.chat.User.username) return chat.User.username
-        //     else return 'TriviaBOT'
-        // }
     },
     methods: {
         submitChat() {

@@ -2,9 +2,9 @@
     <div class="container-fluid h-100">
         <div class="row h-100">
             <!-- chat -->
-            <Chatbox />
+            <Chatbox style="background-color: #18181b" />
             <!-- main -->
-            <div class="col-6 border h-100">
+            <div class="col-6 h-100">
                 <router-view />
             </div>
             <!-- leaderboard -->

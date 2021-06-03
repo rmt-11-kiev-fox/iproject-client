@@ -1,3 +1,7 @@
+body {
+    background-image: url('../images/black-linen.png');
+}
+
 .h-10 {
     height: 10%;
 }
