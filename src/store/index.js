@@ -29,6 +29,9 @@ export default new Vuex.Store({
             // console.log(username)
             state.currentUser = username
         },
+        // SET_CURRENT_USER_POINT(state, value) {
+        //     state.currentUser.point = value
+        // },
         SET_CURRENT_QUESTION(state, question) {
             // console.log(question)
             state.currentQuestion = question
@@ -99,6 +102,7 @@ export default new Vuex.Store({
             })
                 .then(({ data }) => {
                     context.commit('SET_CURRENT_LEADERBOARD', data)
+                    return data
                 })
                 .catch((err) => {
                     console.log(err)

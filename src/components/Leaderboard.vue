@@ -6,7 +6,8 @@
                 v-for="(user, i) in users"
                 :key="i"
             >
-                <span class="text-primary">{{ user.username }}</span
+                <span class="text-primary"
+                    >{{ i + 1 }}.) {{ user.username }}</span
                 >, points:
                 {{ user.point }}
             </div>
