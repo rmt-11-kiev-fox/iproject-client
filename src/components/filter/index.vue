@@ -4,42 +4,98 @@
     <div class="item-container">
       <label>Status :</label>
       <div class="item-flex">
-        <div class="item">All</div>
-        <div class="item">On Going</div>
-        <div class="item">Sold Out</div>
+        <div
+          class="item"
+          :class="statusInput === 'all' && 'active'"
+          @click="changeStatus('all')"
+        >
+          All
+        </div>
+        <div
+          class="item"
+          :class="statusInput === 'going' && 'active'"
+          @click="changeStatus('going')"
+        >
+          On Going
+        </div>
+        <div
+          class="item"
+          :class="statusInput === 'sold' && 'active'"
+          @click="changeStatus('sold')"
+        >
+          Sold Out
+        </div>
       </div>
     </div>
     <div class="item-container">
-      <label>Urutkan :</label>
+      <label>Category :</label>
       <div class="item-flex">
-        <div class="item">Terbaru</div>
-        <div class="item">Termurah</div>
-        <div class="item">Termahal</div>
+        <div
+          class="item"
+          :class="categoryInput === 'all' && 'active'"
+          @click="changeCategory('all')"
+        >
+          All
+        </div>
+        <div
+          class="item"
+          :class="categoryInput === 'pakaian' && 'active'"
+          @click="changeCategory('pakaian')"
+        >
+          Pakaian
+        </div>
+        <div
+          class="item"
+          :class="categoryInput === 'game' && 'active'"
+          @click="changeCategory('game')"
+        >
+          Game
+        </div>
+        <div
+          class="item"
+          :class="categoryInput === 'electronic' && 'active'"
+          @click="changeCategory('electronic')"
+        >
+          Electronic
+        </div>
+        <div
+          class="item"
+          :class="categoryInput === 'other' && 'active'"
+          @click="changeCategory('other')"
+        >
+          Dll
+        </div>
       </div>
-    </div>
-    <div class="item-container">
-      <label>OB :</label>
-      <div class="item-flex">
-        <input placeholder="masukan minimal bid" />
-        <input placeholder="masukan maxinaml bid" />
-      </div>
+      <button class="button-filter" @click="applyFilter">Cari</button>
     </div>
   </div>
 </template>
 
 <script>
-// import DatePick from "vue-date-pick";
-// import "vue-date-pick/dist/vueDatePick.css";
-
 export default {
   props: ['filterToggleHandler'],
   name: 'FilterSearch',
-  components: {
-    // DatePick,
-  },
+  components: {},
   data() {
     return {
-      date: '2019-01-01'
+      statusInput: 'all',
+      categoryInput: 'all'
+    }
+  },
+  methods: {
+    changeCategory(val) {
+      this.categoryInput = val
+    },
+    changeStatus(val) {
+      this.statusInput = val
+    },
+    applyFilter() {
+      this.$store.dispatch('getAllDataFilteredHandler', {
+        input: '',
+        status: this.statusInput,
+        category: this.categoryInput,
+        page: 0
+      })
     }
   }
 }
