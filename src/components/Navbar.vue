@@ -1,7 +1,7 @@
 <template>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light h-100">
+    <nav class="navbar navbar-dark bg-dark navbar-expand-lg h-100">
         <div class="container-fluid">
-            <div class="navbar-brand">Trivia App &#039;asd&#039;</div>
+            <div class="navbar-brand">TriviaSiks</div>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul
                     class="navbar-nav me-auto mb-2 mb-lg-0"

@@ -1,5 +1,5 @@
 <template>
-    <div class="col-6 h-50 w-50 border d-flex align-items-center">
+    <div class="col-6 h-50 w-50 d-flex align-items-center">
         <div
             class="
                 btn btn-dark
