@@ -17,8 +17,14 @@ export default {
         style() {
             if (!this.chat.User) {
                 return {
-                    // background: 'bg-light',
-                    username: 'text-warning',
+                    background: `${
+                        this.isCorrectAnswerBroadcast ? 'bg-light' : ''
+                    }`,
+                    username: `${
+                        this.isCorrectAnswerBroadcast
+                            ? 'text-danger'
+                            : 'text-warning'
+                    }`,
                     message: `${
                         this.isCorrectAnswer ? 'text-success' : 'text-danger'
                     }`
@@ -38,6 +44,12 @@ export default {
             } else {
                 return true
             }
+        },
+        isCorrectAnswerBroadcast() {
+            const splitted = this.chat.message.split(' ')
+            if (splitted[0] === 'Correct' && splitted[1] === 'answer:')
+                return true
+            return false
         }
     }
 }

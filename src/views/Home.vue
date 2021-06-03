@@ -83,7 +83,8 @@ export default {
                 })
         },
         receiveCorrectAnswer(correctAnswer) {
-            console.log('Correct answer:', correctAnswer)
+            // console.log('Correct answer:', correctAnswer)
+            this.$socket.emit('createCorrectAnswerMessage', correctAnswer)
         },
         receiveServerStatus(status) {
             if (status) {
@@ -94,11 +95,14 @@ export default {
         startTrivia() {
             this.$router.push('/')
             this.$socket.emit('getServerStatus')
+        },
+        fetchChats() {
+            this.$store.dispatch('fetchChats')
         }
     },
     created() {
-        this.$socket.emit('getServerStatus')
         this.$socket.emit('getCurrentQuestion')
+        this.$socket.emit('getServerStatus')
     }
 }
 </script>

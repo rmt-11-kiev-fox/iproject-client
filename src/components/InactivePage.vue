@@ -18,7 +18,6 @@
                     d-flex
                     flex-column
                     justify-content-end
-                    border
                 "
             >
                 <div class="alert alert-primary">trivia bot is sleeping</div>
@@ -26,14 +25,7 @@
         </div>
         <div class="row h-25">
             <div
-                class="
-                    col-8
-                    mx-auto
-                    d-flex
-                    flex-column
-                    justify-content-center
-                    border
-                "
+                class="col-8 mx-auto d-flex flex-column justify-content-center"
             >
                 <button class="btn btn-primary" @click="startTrivia">
                     click to wake him up!
