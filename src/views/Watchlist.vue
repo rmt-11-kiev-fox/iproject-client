@@ -1,0 +1,50 @@
+<template>
+<div>
+    <!-- navbar -->
+    <Navbar/>
+    
+    <!-- table -->
+    <div class="col-sm-12 pt-5">
+        <table class="table table-secondary table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+                <WatchlistBody
+                :watchLists="watchLists"
+                />
+            <!-- <tbody>
+            </tbody> -->
+        </table>
+    </div>
+</div>
+</template>
+
+<script>
+import WatchlistBody from '../components/WatchlistBody.vue'
+import Navbar from '../components/Navbar.vue'
+export default {
+    name: 'Watchlist',
+    components: {
+        WatchlistBody,
+        Navbar
+    },
+    created() {
+        this.$store.dispatch('fetchDataWatchlist')
+    },
+    computed: {
+        watchLists() {
+            return this.$store.state.watchLists
+        }
+    }
+
+}
+</script>
+
+<style>
+
+</style>

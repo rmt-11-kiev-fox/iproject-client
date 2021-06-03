@@ -8,10 +8,10 @@
             </div>
             <div class="card-body">
                 <a :href="nowPlaying.url" class="card-link">Show Schedule</a>
-                <a href="#" class="card-link">Watch List</a>
+                <a @click="watchList(nowPlaying.title)" class="card-link">Add Watch List</a>
             </div>
             <div class="card-footer text-muted">
-                2 days ago
+                Now Playing
             </div>
         </div>
     </div>
@@ -20,7 +20,13 @@
 <script>
 export default {
     name: 'Card',
-    props: [ 'nowPlaying' ]
+    props: [ 'nowPlaying' ],
+    methods: {
+        watchList(title) {
+            console.log(title, '<<<<<<< ini add cart');
+            this.$store.dispatch('addToWatchlist', title)
+        }
+    }
 
 }
 </script>

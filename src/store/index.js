@@ -9,7 +9,9 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     nowPlayings: [],
-    comingSoons: []
+    comingSoons: [],
+    cinemas: [],
+    watchLists: []
   },
   mutations: {
     SET_NOWPLAYING(state, payload) {
@@ -17,6 +19,12 @@ export default new Vuex.Store({
     },
     SET_COMINGSOON(state, payload) {
       state.comingSoons = payload
+    },
+    SET_CINEMA(state, payload) {
+      state.cinemas = payload
+    },
+    SET_WATCHLIST(state, payload) {
+      state.watchLists = payload
     }
   },
   actions: {
@@ -118,6 +126,55 @@ export default new Vuex.Store({
       })
         .then(({ data }) => {
           context.commit('SET_COMINGSOON', data)
+        })
+        .catch(err => {
+          console.log(err);
+        })
+    },
+    fetchDataCinema(context, payload) {
+      axios({
+        url: '/cinemas',
+        method: 'GET',
+        headers: {
+          access_token: localStorage.access_token
+        }
+      })
+        .then(({ data }) => {
+          context.commit('SET_CINEMA', data)
+        })
+        .catch(err => {
+          console.log(err);
+        })
+    },
+    fetchDataWatchlist(context, payload) {
+      axios({
+        url: '/watchLists',
+        method: 'GET',
+        headers: {
+          access_token: localStorage.access_token
+        }
+      })
+        .then(({ data }) => {
+          console.log(data);
+          context.commit('SET_WATCHLIST', data)
+        })
+        .catch(err => {
+          console.log(err);
+        })
+    },
+    addToWatchlist(context, title) {
+      axios({
+        url: '/watchLists',
+        method: 'POST',
+        data: {
+          title
+        },
+        headers: {
+          access_token: localStorage.access_token
+        }
+      })
+        .then(({ data }) => {
+          context.dispatch('fetchDataWatchlist')
         })
         .catch(err => {
           console.log(err);

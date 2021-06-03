@@ -15,16 +15,14 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fas fa-hourglass-start"></i> Coming Soon</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fas fa-video"></i> Cinema</a>
+                        <a class="nav-link" @click="$router.push('/cinemas').catch(() => {})"><i class="fas fa-video"></i> Cinema</a>
                     </li>
                 </ul>
-                <form class="d-flex">
+                <!-- <form class="d-flex">
                     <input class="form-control me-sm-2" type="text" placeholder="Search">
                     <button class="btn btn-secondary my-2 my-sm-0" type="submit"><i class="fas fa-search"></i>Search</button>
-                </form>
+                </form> -->
+                <button @click="$router.push('/watchLists').catch(() => {})" class="btn btn-outline-warning mx-2" type="submit"><i class="fas fa-sign-out-alt"></i> Watch List</button>
                 <button @click="clickLogout()" class="btn btn-outline-danger mx-2" type="submit"><i class="fas fa-sign-out-alt"></i> Logout</button>
             </div>
         </div>

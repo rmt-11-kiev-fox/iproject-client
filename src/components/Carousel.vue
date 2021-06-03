@@ -1,6 +1,6 @@
 <template>
 <div class="container-fluid">
-    <h4 class="text-danger pb-3">Coming Soon Movie</h4>
+    <h4><a @click="$router.push('/comingSoons').catch(() => {})" class="text-danger">Coming Soon Movie</a></h4>
     <!-- <button @click="$refs.myVueperSlides[`${autoPlaying ? 'pause' : 'resume'}Autoplay`]();autoPlaying = !autoPlaying">
         {{ autoPlaying ? 'Pause' : 'Resume' }}
     </button>
