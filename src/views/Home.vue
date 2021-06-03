@@ -6,9 +6,6 @@
     <Login v-else-if="$route.name === 'Login'"></Login>
     <Collect
       v-else-if="$route.name === 'Collect'"
-      v-for="(loc, index) in location"
-      :key="index"
-      :loc="loc"
     ></Collect>
     <History
       v-else-if="$route.name === 'History'"
@@ -39,10 +36,8 @@ export default {
     History,
     HFooter
   },
-  computed: {
-    location () {
-      return this.$store.state.location
-    }
+  created () {
+    this.$store.dispatch('location')
   }
 }
 </script>

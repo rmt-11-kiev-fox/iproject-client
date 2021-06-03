@@ -26,7 +26,7 @@
         </div>
         <div class="col-6">
           <GmapMap
-            :center="{lat:loc.lat, lng:loc.long}"
+            :center="{lat: +location.lat, lng: +location.long}"
             :zoom="15"
             map-type-id="terrain"
             style="width: 500px; height: 300px"
@@ -49,7 +49,6 @@
 <script>
 export default {
   name: 'Collect',
-  props: ['loc'],
   data () {
     return {
       name: '',
@@ -68,8 +67,12 @@ export default {
       }
       this.$store.dispatch('reqCollect', payload)
     }
+  },
+  computed: {
+    location () {
+      return this.$store.state.location
+    }
   }
-
 }
 </script>
 

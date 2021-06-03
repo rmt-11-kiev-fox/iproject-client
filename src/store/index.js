@@ -76,6 +76,7 @@ export default new Vuex.Store({
         .then(({ data }) => {
           // router.push({ path: '/history' })
           context.dispatch('showHistory')
+          context.dispatch('location')
         })
         .catch(err => {
           console.log(err)
@@ -97,7 +98,8 @@ export default new Vuex.Store({
     location (context, payload) {
       axios({
         method: 'GET',
-        url: '/location'
+        url: '/location',
+        headers: { access_token: localStorage.getItem('access_token') }
       })
         .then(({ data }) => {
           context.commit('SET_Location', data)

@@ -11,17 +11,17 @@ const routes = [
     component: Home,
     children: [
       {
-        path: '/login',
+        path: 'login',
         name: 'Login',
         component: () => import('../components/Login.vue')
       },
       {
-        path: '/collect',
+        path: 'collect',
         name: 'Collect',
         component: () => import('../components/Collect.vue')
       },
       {
-        path: '/history',
+        path: 'history',
         name: 'History',
         component: () => import('../components/History.vue')
       }
