@@ -2,14 +2,17 @@
   <div id="app">
     <Navbar/>
     <router-view/>
+
   </div>
 </template>
 <script>
+import HFooter from 'vue-hacktiv8-footer'
 import Navbar from './components/Navbar'
 export default {
   name:"App",
   components:{
-    Navbar
+    Navbar,
+    HFooter
   }
 }
 </script>
