@@ -22,15 +22,20 @@
             <!-- right side -->
             <div class="col-md-12 col-lg-4 col-11 mx-auto mt-lg-0 mt-md-5">
               <div class="right-side p-3 shadow bg-white"><h2>{{selectedArtWork.status}}</h2>
-                <div v-if="selectedArtWork.status !== 'available'" class="price-indiv d-flex justify-content-between">
+                <div v-if="selectedArtWork.status === 'unavailable'" class="price-indiv d-flex justify-content-between">
                   <p>Start Bid</p>
                   <p>{{formatTime(selectedArtWork.startBid)}}</p>
+
+                </div>
+                <div v-else-if="selectedArtWork.status === 'closed'" class="price-indiv d-flex justify-content-between">
+
 
                 </div>
                 <div v-else class="price-indiv d-flex justify-content-between">
                   <p>Current Time</p>
                   <!-- <p>{{formatTime(selectedArtWork.startBid)}}</p> -->
                   <CountDown
+                  :id="selectedArtWork.id"
                   :time="formatTime(selectedArtWork.endBid)"
                   />
 
@@ -92,13 +97,16 @@ export default {
         money_offer : this.currPrice
       }
       this.$store.dispatch('addBid', payload)
+    },
+    updateStatusClosed(){
+      this.$store.dispatch('updateStatus', this.selectedArtWork.id)
     }
   },
 
   computed: {
     selected: {
       get: function () {
-        console.log(this)
+        // console.log(this)
         // return this.selectedArtWork
         this.selectedArtWork = this.$store.state.selectedArtWorks
         return this.selectedArtWork
@@ -113,7 +121,7 @@ export default {
     }
   },
   created(){
-  console.log(this.$route.params, 'params');
+  // console.log(this.$route.params, 'params');
     this.$store.dispatch('getProductDetails', this.$route.params.id)
     // this.selectedArtWork = this.$store.state.selectedArtWorks
   },
@@ -122,17 +130,29 @@ export default {
       this.verify = true
     }
     socket.on('connect', () => {
-      console.log(socket.id, 'skct.id', this.selectedArtWork.id) // x8WIv7-mJelg7on_ALbx
+      // console.log(socket.id, 'skct.id', this.selectedArtWork.id) // x8WIv7-mJelg7on_ALbx
         if (this.selectedArtWork.id) {
           socket.on(`addBid-${this.selectedArtWork.id}`, (data) => {
             this.$store.commit('SET_SELECTED_ARTWORKS', data)
-            console.log('socket', data)
+            // console.log('socket', data)
+          })
+          socket.on(`endBid-${this.selectedArtWork.id}`, (data) => {
+            const payload = {...this.selectedArtWork, status: data.status}
+            this.$store.commit('SET_SELECTED_ARTWORKS', payload)
+            console.log(socket, 'socket endBid')
+            console.log(data, 'sckt endbid data');
+          })
+          socket.on(`openBid-${this.selectedArtWork.id}`, (data) => {
+            const payload = {...this.selectedArtWork, status: data.status}
+            this.$store.commit('SET_SELECTED_ARTWORKS', payload)
+            console.log(socket, 'socket openBid')
+            console.log(data, 'sckt openbid data');
           })
         }
     })
 
 
-    console.log(this.selected, 'details munted')
+    // console.log(this.selected, 'details munted')
   }
 }
 </script>
