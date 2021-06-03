@@ -17,7 +17,7 @@ import BottomSection from "../components/BottomSection";
 
 export default {
     name: "Home",
-    components: { BottomSection, MainSection }, //,Navbar
+    components: { BottomSection, MainSection },
 };
 </script>
 

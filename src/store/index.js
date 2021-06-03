@@ -10,6 +10,7 @@ export default new Vuex.Store({
         onlineUsers: [],
         guests: 0,
         lobbyChat: [],
+        rooms: [],
     },
     mutations: {
         SET_USER(state, payload) {
@@ -18,16 +19,10 @@ export default new Vuex.Store({
         SET_LOBBY_CHAT(state, payload) {
             state.lobbyChat.push(payload);
         },
-        // SOCKET_onlineUsers(state, payload) {
-        //     // console.log("masuk socket onlineusers", payload);
-        //     state.onlineUsers = payload;
-        // },
-        // SOCKET_guestsNumber(state, payload) {
-        //     state.guests = payload;
-        // },
         SOCKET_updateData(state, payload) {
             state.onlineUsers = payload.onlineUsers;
             state.guests = payload.guestsNumber;
+            state.rooms = payload.rooms;
         },
         SOCKET_newLobbyMessage(state, payload) {
             state.lobbyChat.push(payload);
@@ -40,6 +35,18 @@ export default new Vuex.Store({
                 url: "/login",
                 data: {
                     googleToken: payload.qc.id_token,
+                },
+            });
+        },
+        findSongs(context, payload) {
+            return axios({
+                method: "post",
+                url: "/search",
+                data: {
+                    searchDetails: payload,
+                },
+                headers: {
+                    access_token: localStorage.access_token,
                 },
             });
         },
@@ -58,6 +65,24 @@ export default new Vuex.Store({
                 }
             });
         },
+        searchLyrics(context, payload) {
+            return axios({
+                method: "post",
+                url: "/lyrics",
+                data: {
+                    artist: payload.artist,
+                    title: payload.title,
+                },
+                headers: {
+                    access_token: localStorage.access_token,
+                },
+            });
+        },
     },
     modules: {},
+    getters: {
+        getEmail(state) {
+            return state.user.email;
+        },
+    },
 });

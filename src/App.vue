@@ -16,7 +16,6 @@ export default {
             this.$store
                 .dispatch("checkLogin")
                 .then((payload) => {
-                    // console.log(payload, "ini di promise");
                     this.$socket.emit("onLogin", payload);
                 })
                 .catch(() => {

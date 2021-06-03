@@ -5,7 +5,9 @@ import store from "./store";
 import "./assets/tailwind.css";
 import VTooltip from "v-tooltip";
 import VueSocketIO from "vue-socket.io";
+import VueYouTubeEmbed from "vue-youtube-embed";
 
+Vue.use(VueYouTubeEmbed);
 Vue.use(VTooltip);
 Vue.use(
     new VueSocketIO({
