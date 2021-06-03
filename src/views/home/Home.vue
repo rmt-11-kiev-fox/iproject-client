@@ -2,20 +2,17 @@
   <div class="home">
     <Navbar/>
     <router-view/>
-    <HFooter></HFooter>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import Navbar from '../../components/Navbar'
-import HFooter from 'vue-hacktiv8-footer'
 
 export default {
   name: 'Home',
   components: {
-    Navbar,
-    HFooter
+    Navbar
   },
   methods: {
     startGame () {
