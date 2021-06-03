@@ -54,7 +54,10 @@
                 >
             </div>
         </div>
-        <div class="h-24 self-center flex items-center justify-self-center">
+        <div
+            class="h-24 self-center flex items-center justify-self-center cursor-pointer"
+            @click.prevent="goHome"
+        >
             <img src="../assets/logo.png" class="h-3/4 object-cover" alt="" />
         </div>
         <CreateRoomModal />
@@ -113,6 +116,9 @@ export default {
             this.$socket.emit("userLogout", user);
             this.$store.commit("SET_USER", {});
             localStorage.clear();
+        },
+        goHome() {
+            this.$router.push("/");
         },
     },
     components: { GoogleLogin, CreateRoomModal },

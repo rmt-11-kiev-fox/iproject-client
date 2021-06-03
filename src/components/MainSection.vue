@@ -11,34 +11,10 @@
             <RoomCard v-for="room in rooms" :key="room.roomId" :room="room" />
         </VueSlickCarousel>
 
-        <div v-else>
-            <VueSlickCarousel
-                v-bind="settings"
-                class="mx-10"
-                id="vueSlickCarousel"
-            >
-                <div class="h-96 p-5 min-w-max">
-                    <div
-                        class="bg-white border-2 hover:bg-gray-100 rounded-xl h-full w-72 flex justify-center items-center group"
-                        @click.prevent="createRoom"
-                    >
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-10 w-10 transform group-hover:scale-150"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                        >
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-                            />
-                        </svg>
-                    </div>
-                </div>
-            </VueSlickCarousel>
+        <div v-else class="flex items-center justify-center mt-24">
+            <h1 class="font-light text-2xl">
+                It's wayyyy too quiet here! Create a new room now!
+            </h1>
         </div>
     </main>
 </template>

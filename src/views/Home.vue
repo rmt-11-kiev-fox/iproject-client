@@ -17,7 +17,12 @@ import BottomSection from "../components/BottomSection";
 
 export default {
     name: "Home",
-    components: { BottomSection, MainSection }, //,Navbar
+    components: { BottomSection, MainSection },
+    watch: {
+        currentRoute() {
+            console.log(this.$route.name, "ini watch current route");
+        },
+    },
 };
 </script>
 

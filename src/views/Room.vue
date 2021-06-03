@@ -16,7 +16,7 @@
                 <youtube
                     id="ytplayer"
                     class="p-4 pt-2 mt-1 mx-auto block"
-                    :player-vars="{ autoplay: 1 }"
+                    :player-vars="{ autoplay: 1, controls: 0 }"
                     :video-id="room.songQueue[0].id"
                     @ended="nextSong"
                 ></youtube>
@@ -142,27 +142,37 @@ export default {
     },
     methods: {
         findSongs() {
-            this.$store
-                .dispatch("findSongs", this.songQuery)
-                .then(({ data }) => {
-                    this.searchResults = data.results;
-                })
-                .catch((err) => {
-                    console.log(err);
-                });
-            this.songQuery = "";
+            let user = this.$store.state.user;
+            if (user.email) {
+                this.$store
+                    .dispatch("findSongs", this.songQuery)
+                    .then(({ data }) => {
+                        this.searchResults = data.results;
+                    })
+                    .catch((err) => {
+                        console.log(err.response);
+                    });
+                this.songQuery = "";
+            } else {
+                console.log("LOGIN FIRST PLS");
+            }
         },
         addSong(payload) {
             // console.log(payload, "ini id song");
-            let song = {
-                channelTitle: payload.channelTitle,
-                title: payload.title,
-                imageUrl: payload.thumbnails.default.url,
-                id: payload.id,
-            };
-            this.room.songQueue.push(song);
-            this.$socket.emit("joinRoom", this.room);
-            this.searchResults = [];
+            let user = this.$store.state.user;
+            if (user.email) {
+                let song = {
+                    channelTitle: payload.channelTitle,
+                    title: payload.title,
+                    imageUrl: payload.thumbnails.default.url,
+                    id: payload.id,
+                };
+                this.room.songQueue.push(song);
+                this.$socket.emit("joinRoom", this.room);
+                this.searchResults = [];
+            } else {
+                console.log("LOGIN FIRST PLS");
+            }
         },
         nextSong() {
             console.log("masuk nextsong");
@@ -176,18 +186,22 @@ export default {
         },
         searchLyrics() {
             console.log(this.lyricsQuery, "masuk search lyrics");
-            this.$store
-                .dispatch("searchLyrics", this.lyricsQuery)
-                .then(({ data }) => {
-                    console.log(data);
-                    this.lyrics = data.lyrics;
-                })
-                .catch((err) => {
-                    console.log(err);
-                });
+            let user = this.$store.state.user;
+            if (user.email) {
+                this.$store
+                    .dispatch("searchLyrics", this.lyricsQuery)
+                    .then(({ data }) => {
+                        console.log(data);
+                        this.lyrics = data.lyrics;
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                    });
+            } else {
+                console.log("PLEASE LOGIN TO CHAT.");
+            }
         },
         sendRoomMessage() {
-            // this.room.roomChat.push();
             let user = this.$store.state.user;
             if (user.email) {
                 const payload = {
@@ -202,7 +216,7 @@ export default {
             this.roomMessage = "";
         },
     },
-    components: { RoomChatCard, RoomCardSong }, //Navbar
+    components: { RoomChatCard, RoomCardSong },
     computed: {
         room() {
             let roomIndex = this.$store.state.rooms.findIndex(
@@ -211,7 +225,6 @@ export default {
             return this.$store.state.rooms[roomIndex];
         },
     },
-    created() {},
 };
 </script>
 

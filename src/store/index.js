@@ -45,6 +45,9 @@ export default new Vuex.Store({
                 data: {
                     searchDetails: payload,
                 },
+                headers: {
+                    access_token: localStorage.access_token,
+                },
             });
         },
         checkLogin(context) {
@@ -69,6 +72,9 @@ export default new Vuex.Store({
                 data: {
                     artist: payload.artist,
                     title: payload.title,
+                },
+                headers: {
+                    access_token: localStorage.access_token,
                 },
             });
         },

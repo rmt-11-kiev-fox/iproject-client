@@ -65,12 +65,16 @@ export default {
         },
         createRoom() {
             const user = this.$store.state.user;
-            const payload = {
-                roomName: this.roomName,
-                user,
-            };
-            this.$socket.emit("createRoom", payload);
-            this.closeModal();
+            if (user.email) {
+                const payload = {
+                    roomName: this.roomName,
+                    user,
+                };
+                this.$socket.emit("createRoom", payload);
+                this.closeModal();
+            } else {
+                console.log("PLEASE LOG IN");
+            }
         },
     },
 };
