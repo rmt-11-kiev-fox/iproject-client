@@ -32,7 +32,11 @@ export default {
   },
   methods: {
     register () {
-      console.log(this.username, this.password)
+      const payload = {
+        username: this.username,
+        password: this.password
+      }
+      this.$store.dispatch('register', payload)
     },
     loginPage () {
       this.$router.push('/login')
