@@ -130,6 +130,15 @@ export default new Vuex.Store({
           access_token: localStorage.getItem('access_token')
         }
       })
+    },
+    deleteFav (context, favId) {
+      return axios({
+        url: '/favourites/' + favId,
+        method: 'delete',
+        headers: {
+          access_token: localStorage.getItem('access_token')
+        }
+      })
     }
   },
   modules: {

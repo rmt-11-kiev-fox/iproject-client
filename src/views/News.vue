@@ -1,5 +1,5 @@
 <template>
-  <div class="containter">
+  <div class="containter overflow-auto">
       <NewsCard
         v-for="singleNews in news" :key="singleNews.id"
         :singleNews="singleNews"
@@ -22,6 +22,10 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+.container {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    max-height: 750px;
+}
 </style>

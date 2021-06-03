@@ -1,5 +1,5 @@
 <template>
-    <nav class="navbar shadow navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar shadow navbar-expand-lg navbar-dark bg-dark">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -27,15 +27,16 @@ export default {
       //   auth2.signOut().then(function () {
       //     console.log('User signed out.')
       //   })
+      this.$store.dispatch('SET_favourites', [])
+      this.$store.dispatch('SET_standings', [])
+      this.$store.dispatch('SET_news', [])
+      this.$store.dispatch('SET_favourite', null)
       this.$router.push('/login')
     }
   },
   computed: {
     username: function () {
       return localStorage.getItem('username')
-    },
-    teamBadge: function () {
-      return this.$store.state.favourite.team_badge
     }
   }
 }

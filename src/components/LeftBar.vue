@@ -1,7 +1,7 @@
 <template>
-    <div id="leftBar" class="col-3 col">
+    <div id="leftBar" class="col-3 col p-4">
         <h4>Favourites :</h4>
-        <ul>
+        <ul style="list-style: none;">
             <FavouritesList
               v-for="favourite in favourites" :key="favourite.id"
               :favourite="favourite"
@@ -14,6 +14,7 @@
             v-if="formIsActive"
             @hideFormFavourite="closeForm"
         />
+        <div></div>
     </div>
 </template>
 
@@ -33,7 +34,7 @@ export default {
   },
   methods: {
     formActive () {
-      this.formIsActive = true
+      this.formIsActive = !this.formIsActive
     },
     closeForm () {
       this.formIsActive = false
@@ -42,6 +43,9 @@ export default {
   computed: {
     favourites: function () {
       return this.$store.state.favourites
+    },
+    teamBadge: function () {
+      return this.$store.state.favourite.team_badge
     }
   }
 }
