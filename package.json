@@ -1,0 +1,61 @@
+{
+  "name": "iproject-client",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Individual Portfolio",
+  "author": "",
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "@chenfengyuan/vue-countdown": "^1.1.5",
+    "axios": "^0.21.1",
+    "core-js": "^3.6.5",
+    "sweetalert2": "^11.0.16",
+    "vue": "^2.6.12",
+    "vue-hacktiv8-footer": "0.0.7",
+    "vue-pagination-2": "^3.0.9",
+    "vue-router": "^3.2.0",
+    "vue-socket.io": "^3.0.10",
+    "vuex": "^3.4.0"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-plugin-router": "~4.5.0",
+    "@vue/cli-plugin-vuex": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "@vue/eslint-config-standard": "^5.1.2",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "eslint-plugin-vue": "^6.2.2",
+    "node-sass": "^4.12.0",
+    "sass-loader": "^8.0.2",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "_id": "iproject-client@1.0.0",
+  "bugs": {
+    "url": "https://github.com/azrifathul/iproject-client/issues"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "semi": false,
+    "trailingComma": "none"
+  },
+  "homepage": "https://github.com/azrifathul/iproject-client#readme",
+  "keywords": [],
+  "license": "ISC",
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/azrifathul/iproject-client.git"
+  }
+}

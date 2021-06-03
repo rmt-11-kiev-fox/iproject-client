@@ -1,0 +1,27 @@
+.chat-input-container {
+  height: 60px;
+  position: sticky;
+  border-bottom-left-radius: 24px;
+  border-bottom-right-radius: 24px;
+  display: flex;
+  align-items: center;
+  padding: 8px 24px;
+
+  .icon-chat {
+    position: absolute;
+    right: 34px;
+    font-size: 20px;
+    color: #426696;
+  }
+
+  input {
+    height: 35px;
+    border: 1px solid #426696;
+    border-radius: 16px;
+    width: 100%;
+    color: #426696;
+    outline: none;
+    font-size: 18px;
+    padding-left: 24px;
+  }
+}

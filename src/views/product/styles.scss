@@ -1,0 +1,16 @@
+.list-container {
+  background: white;
+  border-radius: 24px;
+  padding: 24px 12px;
+  display: flex;
+  flex-wrap: wrap;
+  //   justify-content: center;
+  height: 560px;
+  box-sizing: border-box;
+  overflow: scroll;
+  position: relative;
+}
+
+.list-container-wrapper {
+  margin-top: -24px;
+}

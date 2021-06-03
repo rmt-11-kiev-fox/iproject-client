@@ -1,0 +1,75 @@
+.ongkir-container {
+  width: 300px;
+  //   height: 50vh;
+  background: white;
+  border-radius: 20px;
+  position: relative;
+  padding: 24px 20px;
+  box-sizing: border-box;
+
+  .icon-close {
+    position: absolute;
+    font-size: 16px;
+    right: 16px;
+    top: 16px;
+    cursor: pointer;
+  }
+
+  .title {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  select {
+    height: 30px;
+    font-size: 16px;
+    border-radius: 16px;
+    outline: none;
+    margin: 8px 0 16px;
+    width: 100%;
+    padding-left: 16px;
+  }
+
+  button {
+    height: 36px;
+    font-size: 16px;
+    color: white;
+    border-radius: 16px;
+    background: #f15c60;
+    margin-top: 8px;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  .loader-wrapping {
+    position: relative;
+    width: 100%;
+    text-align: center;
+
+    .lds-ring {
+      width: 30px;
+      height: 30px;
+    }
+  }
+
+  .result-container {
+    margin-top: 24px;
+
+    .result-title {
+      font-weight: 500;
+      margin-bottom: 16px;
+    }
+    .item {
+      margin-bottom: 16px;
+      border: 1px solid grey;
+      border-radius: 12px;
+      padding: 8px;
+
+      .text {
+        font-size: 14px;
+        color: #626c69;
+      }
+    }
+  }
+}
