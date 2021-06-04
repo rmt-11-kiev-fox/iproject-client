@@ -5,15 +5,16 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul v-if="loggedIn" class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <router-link class="nav-link" to="/income"> +Add </router-link>
+      <ul class="navbar-nav mr-auto">
+        <li v-if="loggedIn" class="nav-item">
           <router-link class="nav-link" to="/reports"> Show Reports </router-link>
+        </li>
+        <li v-if="!loggedIn" class="nav-item">
           <router-link class="nav-link" to="/login"> Login </router-link>
         </li>
       </ul>
       <form class="form-inline my-2 my-lg-0" @submit.prevent="logout">
-        <button v-if="loggedIn" class="btn btn-danger my-2 my-sm-0" type="submit"> Logout </button>
+        <button v-if="loggedIn" @click.prevent="logout" class="btn btn-danger my-2 my-sm-0" type="submit"> Logout </button>
       </form>
     </div>
   </nav>
@@ -21,7 +22,25 @@
 
 <script>
 export default {
-  name: 'Navbar'
+  name: 'Navbar',
+  data () {
+    return {
+      month: ''
+    }
+  },
+  methods: {
+    logout () {
+      localStorage.clear()
+      this.$store.commit('SET_LOGIN', false)
+      this.$router.push({ path: '/login' })
+    }
+  },
+  computed: {
+    loggedIn () {
+      console.log(this.$store.state.isLogin)
+      return this.$store.state.isLogin
+    }
+  }
 }
 </script>
 
