@@ -18,121 +18,14 @@
             </div>
             <div class="modal-body">
               <ul class="chat-list">
-                <li class="in">
-                  <div class="chat-img">
-                    <img alt="avatar" src="https://thumbs.dreamstime.com/b/female-doctor-portrait-smiling-woman-her-arms-crossed-34896061.jpg">
-                  </div>
-                  <div class="chat-body">
-                    <div class="chat-message">
-                      <h5>Jimmy Willams</h5>
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, at. Repellat dignissimos suscipit temporibus nesciunt voluptatibus asperiores laboriosam, eveniet illo accusantium aperiam unde animi quasi.</p>
-                    </div>
-                  </div>
-                </li>
-                <li class="out">
-                  <div class="chat-img">
-                    <img alt="avatar" src="https://thumbs.dreamstime.com/b/female-doctor-portrait-smiling-woman-her-arms-crossed-34896061.jpg">
-                  </div>
-                  <div class="chat-body">
-                    <div class="chat-message">
-                      <h5>Jimmy Willams</h5>
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, at. Repellat dignissimos suscipit temporibus nesciunt voluptatibus asperiores laboriosam, eveniet illo accusantium aperiam unde animi quasi.</p>
-                    </div>
-                  </div>
-                </li>
-                <li class="in">
-                  <div class="chat-img">
-                    <img alt="avatar" src="https://thumbs.dreamstime.com/b/female-doctor-portrait-smiling-woman-her-arms-crossed-34896061.jpg">
-                  </div>
-                  <div class="chat-body">
-                    <div class="chat-message">
-                      <h5>Jimmy Willams</h5>
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, at. Repellat dignissimos suscipit temporibus nesciunt voluptatibus asperiores laboriosam, eveniet illo accusantium aperiam unde animi quasi.</p>
-                    </div>
-                  </div>
-                </li>
-                <li class="out">
-                  <div class="chat-img">
-                    <img alt="avatar" src="https://thumbs.dreamstime.com/b/female-doctor-portrait-smiling-woman-her-arms-crossed-34896061.jpg">
-                  </div>
-                  <div class="chat-body">
-                    <div class="chat-message">
-                      <h5>Jimmy Willams</h5>
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, at. Repellat dignissimos suscipit temporibus nesciunt voluptatibus asperiores laboriosam, eveniet illo accusantium aperiam unde animi quasi.</p>
-                    </div>
-                  </div>
-                </li>
-                <li class="in">
-                  <div class="chat-img">
-                    <img alt="avatar" src="https://thumbs.dreamstime.com/b/female-doctor-portrait-smiling-woman-her-arms-crossed-34896061.jpg">
-                  </div>
-                  <div class="chat-body">
-                    <div class="chat-message">
-                      <h5>Jimmy Willams</h5>
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, at. Repellat dignissimos suscipit temporibus nesciunt voluptatibus asperiores laboriosam, eveniet illo accusantium aperiam unde animi quasi.</p>
-                    </div>
-                  </div>
-                </li>
-                <li class="out">
-                  <div class="chat-img">
-                    <img alt="avatar" src="https://thumbs.dreamstime.com/b/female-doctor-portrait-smiling-woman-her-arms-crossed-34896061.jpg">
-                  </div>
-                  <div class="chat-body">
-                    <div class="chat-message">
-                      <h5>Jimmy Willams</h5>
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, at. Repellat dignissimos suscipit temporibus nesciunt voluptatibus asperiores laboriosam, eveniet illo accusantium aperiam unde animi quasi.</p>
-                    </div>
-                  </div>
-                </li>
-                <li class="in">
-                  <div class="chat-img">
-                    <img alt="avatar" src="https://thumbs.dreamstime.com/b/female-doctor-portrait-smiling-woman-her-arms-crossed-34896061.jpg">
-                  </div>
-                  <div class="chat-body">
-                    <div class="chat-message">
-                      <h5>Jimmy Willams</h5>
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, at. Repellat dignissimos suscipit temporibus nesciunt voluptatibus asperiores laboriosam, eveniet illo accusantium aperiam unde animi quasi.</p>
-                    </div>
-                  </div>
-                </li>
-                <li class="out">
-                  <div class="chat-img">
-                    <img alt="avatar" src="https://thumbs.dreamstime.com/b/female-doctor-portrait-smiling-woman-her-arms-crossed-34896061.jpg">
-                  </div>
-                  <div class="chat-body">
-                    <div class="chat-message">
-                      <h5>Jimmy Willams</h5>
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, at. Repellat dignissimos suscipit temporibus nesciunt voluptatibus asperiores laboriosam, eveniet illo accusantium aperiam unde animi quasi.</p>
-                    </div>
-                  </div>
-                </li>
-                <li class="in">
-                  <div class="chat-img">
-                    <img alt="avatar" src="https://thumbs.dreamstime.com/b/female-doctor-portrait-smiling-woman-her-arms-crossed-34896061.jpg">
-                  </div>
-                  <div class="chat-body">
-                    <div class="chat-message">
-                      <h5>Jimmy Willams</h5>
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, at. Repellat dignissimos suscipit temporibus nesciunt voluptatibus asperiores laboriosam, eveniet illo accusantium aperiam unde animi quasi.</p>
-                    </div>
-                  </div>
-                </li>
-                <li class="out">
-                  <div class="chat-img">
-                    <img alt="avatar" src="https://thumbs.dreamstime.com/b/female-doctor-portrait-smiling-woman-her-arms-crossed-34896061.jpg">
-                  </div>
-                  <div class="chat-body">
-                    <div class="chat-message">
-                      <h5>Jimmy Willams</h5>
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, at. Repellat dignissimos suscipit temporibus nesciunt voluptatibus asperiores laboriosam, eveniet illo accusantium aperiam unde animi quasi.</p>
-                    </div>
-                  </div>
-                </li>
+                <Message v-for="(message, i) in messages" :key="i" :message="message" :currentUser="username"/>
               </ul>
             </div>
             <div class="mx-3 mb-3">
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-              <button class="btn btn-success mt-2">send</button>
+              <form @submit.prevent="sendMessage">
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" v-model="message"></textarea>
+                <button class="btn btn-success mt-2" type="submit">send</button>
+              </form>
             </div>
         </div>
     </div>
@@ -140,8 +33,35 @@
 </template>
 
 <script>
-export default {
+import Message from '../components/Message'
 
+export default {
+  name: 'Chatbox',
+  data () {
+      return {
+          username: '',
+          message: ''
+      }
+  },
+  computed: {
+    messages () {
+        return this.$store.state.messages
+    }
+  },
+  created () {
+      this.username = localStorage.getItem('username')
+      this.$store.dispatch('rundomAvatar')
+  },
+  methods: {
+      sendMessage () {
+          //this.$store.commit('SEND_MESSAGE', {username: this.username, message: this.message})
+          this.$socket.emit('onSendMessage', {username: this.username, message: this.message})
+          this.message = ''
+      }
+  },
+  components: {
+      Message
+  }
 }
 </script>
 

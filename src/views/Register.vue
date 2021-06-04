@@ -29,7 +29,19 @@
 
 <script>
 export default {
-
+  name: 'Register',
+  data () {
+    return {
+        email: '',
+        username: '',
+        password: ''
+    }
+  },
+  methods: {
+    register () {
+        this.$store.dispatch('register', {email: this.email, username: this.username, password: this.password, role: 'Patient'})
+    }
+  }
 }
 </script>
 

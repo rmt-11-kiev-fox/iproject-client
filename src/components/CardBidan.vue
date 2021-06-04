@@ -9,15 +9,25 @@
         <ul class="list-unstyled mt-3 mb-4">
             <li>Lokasi: {{bidan.location}}</li>
         </ul>
-        <button type="button" class="w-100 btn btn-lg btn-outline-primary" disabled>Tidak Tersedia</button>
+        <button type="button" class="w-100 btn btn-lg btn-outline-primary" @click="showChat">Join Room Chat</button>
         </div>
     </div>
   </div>
 </template>
 
 <script>
+import swal from 'sweetalert'
 export default {
-  props: ['bidan']
+  props: ['bidan'],
+  methods: {
+      showChat () {
+          if(localStorage.username){
+            $('#form-chat').modal('show')
+          }else{
+            swal("","silahkan login terlebih dahulu", "warning");
+          }
+      }
+  }
 }
 </script>
 
