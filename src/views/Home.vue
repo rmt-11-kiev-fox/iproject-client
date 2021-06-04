@@ -20,6 +20,12 @@ export default {
   created () {
     this.$store.dispatch('fetchAnimals')
     this.$store.dispatch('fetchFavorite')
+    const currentTime = new Date().getHours()
+    if (currentTime >= 18 || currentTime < 6) {
+      this.$store.commit('SET_ISDARK', true)
+    } else {
+      this.$store.commit('SET_ISDARK', false)
+    }
   }
 }
 </script>

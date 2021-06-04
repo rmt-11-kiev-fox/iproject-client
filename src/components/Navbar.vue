@@ -41,10 +41,12 @@ export default {
 nav {
   background-color: rgba(0, 175, 58, 0.733);
 }
+
 .nav-btn {
   color: rgb(70, 29, 0);
   text-decoration: none;
 }
+
 .btn-logout {
   cursor: pointer;
   color: aliceblue;

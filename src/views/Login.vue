@@ -39,17 +39,10 @@ export default {
   },
   methods: {
     login () {
-      this.$store.dispatch('catpi')
-        .then(({ data }) => {
-          this.$store.commit('SET_CATGIF', data.message)
-          this.$store.dispatch('login', {
-            identity: this.identity,
-            password: this.password
-          })
-        })
-        .catch((err) => {
-          console.log(err)
-        })
+      this.$store.dispatch('login', {
+        identity: this.identity,
+        password: this.password
+      })
     }
   },
   computed: {
@@ -59,6 +52,13 @@ export default {
   },
   created () {
     this.$store.commit('SET_ERRORLOGIN', false)
+    this.$store.dispatch('catpi')
+      .then(({ data }) => {
+        this.$store.commit('SET_CATGIF', data.message)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   }
 }
 </script>
@@ -68,9 +68,11 @@ export default {
   background-color: rgba(0, 100, 0, 0.479);
   border-radius: 10%;
 }
+
 .to-register {
   color: rgb(0, 53, 13);
 }
+
 .btn-login {
   background-color: darkgreen;
   color: aliceblue;
