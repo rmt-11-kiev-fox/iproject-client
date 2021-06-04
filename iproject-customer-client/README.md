@@ -1,4 +1,4 @@
-# iproject-client
+# ecommerce-cms-client
 
 ## Project setup
 ```
