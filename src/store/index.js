@@ -38,7 +38,6 @@ export default new Vuex.Store({
           password: payload.password
         }
       }).then(response => {
-        console.log(response.data)
         router.push({ path: '/login' })
       }).catch(error => {
         console.log(error)
@@ -54,7 +53,6 @@ export default new Vuex.Store({
           password: payload.password
         }
       }).then(response => {
-        console.log(response.data)
         localStorage.setItem('access_token', response.data.access_token)
         context.commit('SET_LOGIN', true)
         router.push({ path: '/' })
@@ -71,7 +69,6 @@ export default new Vuex.Store({
           access_token: localStorage.getItem('access_token')
         }
       }).then(response => {
-        console.log(response.data)
         context.commit('SET_REPORTS', response.data)
       }).catch(error => {
         console.log(error)
@@ -86,7 +83,6 @@ export default new Vuex.Store({
           access_token: localStorage.getItem('access_token')
         }
       }).then(response => {
-        console.log(response.data)
         context.commit('SET_IE_REPORTS', response.data)
       }).catch(error => {
         console.log(error)
@@ -101,8 +97,47 @@ export default new Vuex.Store({
           access_token: localStorage.getItem('access_token')
         }
       }).then(response => {
-        console.log(response.data)
         context.commit('SET_IE_REPORTS', response.data)
+      }).catch(error => {
+        console.log(error)
+      })
+    },
+
+    addNewExp (context, payload) {
+      axios({
+        method: 'POST',
+        url: `${baseURL}/expenses`,
+        headers: {
+          access_token: localStorage.getItem('access_token')
+        },
+        data: {
+          category: payload.category,
+          description: payload.description,
+          amount: payload.amount,
+          period: payload.period
+        }
+      }).then(response => {
+        router.push({ path: '/tracker' })
+      }).catch(error => {
+        console.log(error)
+      })
+    },
+
+    addNewInc (context, payload) {
+      axios({
+        method: 'POST',
+        url: `${baseURL}/incomes`,
+        headers: {
+          access_token: localStorage.getItem('access_token')
+        },
+        data: {
+          category: payload.category,
+          description: payload.description,
+          amount: payload.amount,
+          period: payload.period
+        }
+      }).then(response => {
+        router.push({ path: '/tracker' })
       }).catch(error => {
         console.log(error)
       })

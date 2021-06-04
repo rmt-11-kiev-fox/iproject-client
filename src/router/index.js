@@ -40,6 +40,16 @@ const routes = [
     path: '/expenses',
     name: 'Expense',
     component: () => import('../views/Expense.vue')
+  },
+  {
+    path: '/add-expenses',
+    name: 'AddExp',
+    component: () => import('../views/AddExp.vue')
+  },
+  {
+    path: '/add-income',
+    name: 'AddInc',
+    component: () => import('../views/AddInc.vue')
   }
 ]
 

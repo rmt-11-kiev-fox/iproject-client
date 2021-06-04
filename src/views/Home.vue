@@ -9,14 +9,13 @@
           <th scope="col">Short Name</th>
           <th scope="col">Long Name</th>
           <th scope="col">Score</th>
-          <!-- <th scope="col">Action</th> -->
         </tr>
       </thead>
       <Table v-for="(data, index) in tableDatas" :key="index" :data="data" />
     </table>
     <div class="container mt-3">
       <div class="row justify-content-center">
-        <Card v-for="data in newsData" :key="data.uuid" :data="data" />        
+        <Card v-for="data in newsData" :key="data.uuid" :data="data" />
       </div>
     </div>
   </div>
