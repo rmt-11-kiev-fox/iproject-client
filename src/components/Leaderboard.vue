@@ -1,24 +1,35 @@
 <template>
-    <div class="col-3">
-        <div class="h-100 w-100 container">
-            <div class="row text-center text-primary my-3">
+    <div class="col-3 h-100">
+        <div class="h-100 w-100 container overflow-scroll border">
+            <div class="text-center text-primary my-3">
                 <h5>-- LEADERBOARD --</h5>
             </div>
-            <div class="w-100 text-wrap text-break row text-danger text-center">
-                <div class="col-3">Rank</div>
-                <div class="col-5">Username</div>
-                <div class="col-4">Points</div>
+            <div
+                class="
+                    w-100
+                    text-wrap text-break text-danger text-center
+                    d-flex
+                "
+            >
+                <div class="w-20">Rank</div>
+                <div class="w-40">Username</div>
+                <div class="w-40">Points</div>
             </div>
             <div
-                class="w-100 text-wrap text-break text-light text-center row"
+                class="
+                    w-100
+                    text-wrap text-break text-light text-center
+                    d-flex
+                    my-1
+                "
                 v-for="(user, i) in users"
                 :key="i"
             >
-                <div class="col-3">{{ i + 1 }}</div>
-                <div class="col-5">
+                <div class="w-20 mx-1">{{ i + 1 }}</div>
+                <div class="w-40 mx-1">
                     {{ user.username }}
                 </div>
-                <div class="col-4">{{ user.point }}</div>
+                <div class="w-40 mx-1">{{ user.point }}</div>
             </div>
         </div>
         <!-- <div class="h-100 w-100 d-flex flex-column overflow-scroll">
