@@ -1,2 +1,0 @@
-# iProject-client
-Individual Portfolio
