@@ -124,17 +124,12 @@ export default {
   // console.log(this.$route.params, 'params');
     this.$store.dispatch('getProductDetails', this.$route.params.id)
     // this.selectedArtWork = this.$store.state.selectedArtWorks
-  },
-  mounted(){
-    if(localStorage.getItem('access_token')){
-      this.verify = true
-    }
-    socket.on('connect', () => {
+    socket.on('connect', () => { console.log('connect');
       // console.log(socket.id, 'skct.id', this.selectedArtWork.id) // x8WIv7-mJelg7on_ALbx
         if (this.selectedArtWork.id) {
           socket.on(`addBid-${this.selectedArtWork.id}`, (data) => {
+            // console.log('addBid', data)
             this.$store.commit('SET_SELECTED_ARTWORKS', data)
-            // console.log('socket', data)
           })
           socket.on(`endBid-${this.selectedArtWork.id}`, (data) => {
             const payload = {...this.selectedArtWork, status: data.status}
@@ -150,6 +145,14 @@ export default {
           })
         }
     })
+  },
+  mounted(){
+    console.log('mounteddd');
+    if(localStorage.getItem('access_token')){
+      this.verify = true
+    }
+    console.log(localStorage, 'ls');
+
 
 
     // console.log(this.selected, 'details munted')
