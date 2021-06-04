@@ -1,16 +1,15 @@
 <template>
-<div>
+<div class="mb-5">
     <!-- navbar -->
     <Navbar/>
     
     <!-- table -->
-    <div class="container col-sm-12 pt-5">
+    <div class="container col-sm-12 py-5">
         <table class="table table-hover table-dark table-bordered">
             <thead>
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Image</th>
-                    <th scope="col">Title</th>
                     <th scope="col">Action</th>
                 </tr>
             </thead>
@@ -45,6 +44,6 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 </style>

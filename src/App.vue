@@ -5,9 +5,19 @@
       <router-link to="/about">About</router-link> -->
     </div>
     <router-view/>
+    <HFooter class="fixed-bottom"/>
   </div>
 </template>
 
+<script>
+import HFooter from 'vue-hacktiv8-footer'
+
+export default {
+  components: {
+    HFooter
+  }
+}
+</script>
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -21,12 +31,12 @@
   padding: 30px;
 } */
 
-#nav a {
+/* #nav a {
   font-weight: bold;
   color: #2c3e50;
 }
 
 #nav a.router-link-exact-active {
   color: #42b983;
-}
+} */
 </style>

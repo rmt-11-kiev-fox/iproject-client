@@ -1,6 +1,6 @@
 <template>
     <div class="card-body col-md-3">
-        <div class="card mb-3 m-3" style="width: 20vmax;">
+        <div class="card text-danger mb-3 m-3" style="width: 20vmax;">
             <h3 class="card-header">Coming Soon</h3>
             <img :src="comingSoon.img" alt="" srcset="">
             <div class="card-body">
@@ -10,7 +10,7 @@
                 <a :href="comingSoon.url" class="card-link">Show Schedule</a>
                 <a href="#" class="card-link">Watch List</a>
             </div>
-            <div class="card-footer text-muted">
+            <div class="card-footer text-danger">
                 Coming Soon
             </div>
         </div>

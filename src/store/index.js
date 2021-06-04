@@ -100,6 +100,41 @@ export default new Vuex.Store({
           })
         })
     },
+    googleLogin(context, idToken) {
+      axios({
+        url: '/googleLogin',
+        method: 'POST',
+        data: {
+            idToken
+        }
+    })
+        .then(({ data }) => {
+          console.log(data, 'ini di client google login');
+            localStorage.setItem('access_token', data.access_token)
+            localStorage.setItem('username', data.username)
+            router.push('/')
+            this.currentPage = 'Home'
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 1500,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+
+            Toast.fire({
+                icon: 'success',
+                title: 'Logged in with google account successfully'
+            })
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    },
     fetchDataNowPlaying(context, payload) {
       axios({
         url: '/nowPlayings',
@@ -175,27 +210,77 @@ export default new Vuex.Store({
       })
         .then(({ data }) => {
           context.dispatch('fetchDataWatchlist')
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 1500,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+
+        Toast.fire({
+            icon: 'success',
+            title: 'Success add to your watchlist'
+        })
         })
         .catch(err => {
           console.log(err);
         })
     },
     deleteWatchList(context, id) {
-      axios({
-        url: '/watchLists',
-        method: 'DELETE',
-        headers: {
-          access_token: localStorage.access_token
-        },
-        data: {
-          WatchlistId: id
-        }
-      })
-        .then(() => {
-          context.dispatch('fetchDataWatchlist')
-        })
-        .catch(err => {
-          console.log(err);
+      Swal.fire({
+        title: 'Are you sure to delete it?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+    })
+        .then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire(
+                'Deleted!',
+                'Your watchlist deleted successfully.',
+                'success'
+                )
+                axios({
+                    method: 'DELETE',
+                    url: '/watchLists',
+                    headers: {
+                        access_token: localStorage.access_token
+                    },
+                    data: {
+                      WatchlistId: id
+                    }
+                })
+                    .then(() => {
+                      context.dispatch('fetchDataWatchlist')
+                      const Toast = Swal.mixin({
+                          toast: true,
+                          position: 'top-end',
+                          showConfirmButton: false,
+                          timer: 2000,
+                          timerProgressBar: true,
+                          didOpen: (toast) => {
+                              toast.addEventListener('mouseenter', Swal.stopTimer)
+                              toast.addEventListener('mouseleave', Swal.resumeTimer)
+                          }
+                      })
+
+                      Toast.fire({
+                          icon: 'success',
+                          title: 'Your watchlist deleted successfully'
+                      })
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    })
+            }
         })
     }
   },
