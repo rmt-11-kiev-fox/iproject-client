@@ -37,11 +37,6 @@ const routes = [
     component: () => import('../views/Income.vue')
   },
   {
-    path: '/expenses',
-    name: 'Expense',
-    component: () => import('../views/Expense.vue')
-  },
-  {
     path: '/add-expenses',
     name: 'AddExp',
     component: () => import('../views/AddExp.vue')
@@ -50,6 +45,31 @@ const routes = [
     path: '/add-income',
     name: 'AddInc',
     component: () => import('../views/AddInc.vue')
+  },
+  {
+    path: '/expenses',
+    name: 'Expense',
+    component: () => import('../views/Expense.vue')
+  },
+  {
+    path: '/edit-expenses',
+    name: 'EditExp',
+    component: () => import('../views/EditExp.vue')
+  },
+  {
+    path: '/edit-income',
+    name: 'EditInc',
+    component: () => import('../views/EditInc.vue')
+  },
+  {
+    path: '/update-expenses',
+    name: 'UpdateExp',
+    component: () => import('../views/UpdateExp.vue')
+  },
+  {
+    path: '/update-income',
+    name: 'UpdateInc',
+    component: () => import('../views/UpdateInc.vue')
   }
 ]
 

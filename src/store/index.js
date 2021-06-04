@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 import router from '../router'
 import axios from 'axios'
 
-const baseURL = 'http://localhost:3000'
+const baseURL = 'https://iproject-pea-hanun.herokuapp.com/'
 
 Vue.use(Vuex)
 
@@ -12,7 +12,9 @@ export default new Vuex.Store({
     isLogin: false,
     homeData: {},
     reports: {},
-    ieReports: []
+    ieReports: [],
+    getExp: {},
+    getInc: {}
   },
   mutations: {
     SET_LOGIN (state, data) {
@@ -26,6 +28,12 @@ export default new Vuex.Store({
     },
     SET_IE_REPORTS (state, data) {
       state.ieReports = data
+    },
+    SET_EXP (state, data) {
+      state.getExp = data
+    },
+    SET_INC (state, data) {
+      state.getInc = data
     }
   },
   actions: {
@@ -78,7 +86,7 @@ export default new Vuex.Store({
     showMyIncome (context, period) {
       axios({
         method: 'GET',
-        url: `${baseURL}/incomes/${period}`,
+        url: `${baseURL}/show-incomes/${period}`,
         headers: {
           access_token: localStorage.getItem('access_token')
         }
@@ -92,7 +100,7 @@ export default new Vuex.Store({
     showMyExpenses (context, period) {
       axios({
         method: 'GET',
-        url: `${baseURL}/expenses/${period}`,
+        url: `${baseURL}/show-expenses/${period}`,
         headers: {
           access_token: localStorage.getItem('access_token')
         }
@@ -123,6 +131,71 @@ export default new Vuex.Store({
       })
     },
 
+    findExp (context, id) {
+      axios({
+        method: 'GET',
+        url: `${baseURL}/expenses/${id}`,
+        headers: {
+          access_token: localStorage.getItem('access_token')
+        }
+      }).then(response => {
+        // console.log(response.data)
+        context.commit('SET_EXP', response.data)
+      }).catch(error => {
+        console.log(error)
+      })
+    },
+
+    editExp (context, payload) {
+      axios({
+        method: 'PUT',
+        url: `${baseURL}/expenses/${payload.id}`,
+        headers: {
+          access_token: localStorage.getItem('access_token')
+        },
+        data: {
+          category: payload.category,
+          description: payload.description
+        }
+      }).then(response => {
+        console.log(response.data)
+        router.push({ path: '/tracker' })
+      }).catch(error => {
+        console.log(error)
+      })
+    },
+
+    updateExp (context, payload) {
+      axios({
+        method: 'PATCH',
+        url: `${baseURL}/expenses/${payload.id}`,
+        headers: {
+          access_token: localStorage.getItem('access_token')
+        },
+        data: {
+          amount: payload.amount
+        }
+      }).then(response => {
+        router.push({ path: '/tracker' })
+      }).catch(error => {
+        console.log(error)
+      })
+    },
+
+    delExp (context, id) {
+      axios({
+        method: 'DELETE',
+        url: `${baseURL}/expenses/${id}`,
+        headers: {
+          access_token: localStorage.getItem('access_token')
+        }
+      }).then(response => {
+        router.push({ path: '/tracker' })
+      }).catch(error => {
+        console.log(error)
+      })
+    },
+
     addNewInc (context, payload) {
       axios({
         method: 'POST',
@@ -135,6 +208,69 @@ export default new Vuex.Store({
           description: payload.description,
           amount: payload.amount,
           period: payload.period
+        }
+      }).then(response => {
+        router.push({ path: '/tracker' })
+      }).catch(error => {
+        console.log(error)
+      })
+    },
+
+    findInc (context, id) {
+      axios({
+        method: 'GET',
+        url: `${baseURL}/incomes/${id}`,
+        headers: {
+          access_token: localStorage.getItem('access_token')
+        }
+      }).then(response => {
+        context.commit('SET_INC', response.data)
+      }).catch(error => {
+        console.log(error)
+      })
+    },
+
+    editInc (context, payload) {
+      axios({
+        method: 'PUT',
+        url: `${baseURL}/incomes/${payload.id}`,
+        headers: {
+          access_token: localStorage.getItem('access_token')
+        },
+        data: {
+          category: payload.category,
+          description: payload.description
+        }
+      }).then(response => {
+        router.push({ path: '/tracker' })
+      }).catch(error => {
+        console.log(error)
+      })
+    },
+
+    updateInc (context, payload) {
+      axios({
+        method: 'PATCH',
+        url: `${baseURL}/incomes/${payload.id}`,
+        headers: {
+          access_token: localStorage.getItem('access_token')
+        },
+        data: {
+          amount: payload.amount
+        }
+      }).then(response => {
+        router.push({ path: '/tracker' })
+      }).catch(error => {
+        console.log(error)
+      })
+    },
+
+    delInc (context, id) {
+      axios({
+        method: 'DELETE',
+        url: `${baseURL}/incomes/${id}`,
+        headers: {
+          access_token: localStorage.getItem('access_token')
         }
       }).then(response => {
         router.push({ path: '/tracker' })
