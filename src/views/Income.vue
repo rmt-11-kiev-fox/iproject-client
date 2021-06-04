@@ -9,6 +9,7 @@
           <th scope="col">Amount</th>
           <th scope="col">Period</th>
           <th scope="col">Date</th>
+          <th scope="col">Action</th>
         </tr>
       </thead>
       <IncomeTable v-for="data in fetchIncome" :key="data.id" :data="data" />
