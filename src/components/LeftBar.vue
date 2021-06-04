@@ -106,9 +106,6 @@ export default {
 </script>
 
 <style>
-.left_bar {
-  background-color: rgba(134, 134, 134, 0.692);
-}
 .left_bar_dark {
   background-color: rgba(0, 0, 0, 0.74);
 }
