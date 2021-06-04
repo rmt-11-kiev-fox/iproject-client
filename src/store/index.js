@@ -10,7 +10,9 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     isLogin: false,
-    homeData: []
+    homeData: {},
+    reports: {},
+    ieReports: []
   },
   mutations: {
     SET_LOGIN (state, data) {
@@ -18,6 +20,12 @@ export default new Vuex.Store({
     },
     SET_HOME (state, data) {
       state.homeData = data
+    },
+    SET_REPORTS (state, data) {
+      state.reports = data
+    },
+    SET_IE_REPORTS (state, data) {
+      state.ieReports = data
     }
   },
   actions: {
@@ -55,18 +63,46 @@ export default new Vuex.Store({
       })
     },
 
-    showReport (context, data) {
+    showMyReport (context, period) {
       axios({
         method: 'GET',
-        url: `${baseURL}/reports`,
+        url: `${baseURL}/reports/${period}`,
         headers: {
           access_token: localStorage.getItem('access_token')
-        },
-        data: {
-          period: data
         }
       }).then(response => {
         console.log(response.data)
+        context.commit('SET_REPORTS', response.data)
+      }).catch(error => {
+        console.log(error)
+      })
+    },
+
+    showMyIncome (context, period) {
+      axios({
+        method: 'GET',
+        url: `${baseURL}/incomes/${period}`,
+        headers: {
+          access_token: localStorage.getItem('access_token')
+        }
+      }).then(response => {
+        console.log(response.data)
+        context.commit('SET_IE_REPORTS', response.data)
+      }).catch(error => {
+        console.log(error)
+      })
+    },
+
+    showMyExpenses (context, period) {
+      axios({
+        method: 'GET',
+        url: `${baseURL}/expenses/${period}`,
+        headers: {
+          access_token: localStorage.getItem('access_token')
+        }
+      }).then(response => {
+        console.log(response.data)
+        context.commit('SET_IE_REPORTS', response.data)
       }).catch(error => {
         console.log(error)
       })
@@ -77,7 +113,6 @@ export default new Vuex.Store({
         method: 'GET',
         url: `${baseURL}/`
       }).then(response => {
-        console.log(response.data)
         context.commit('SET_HOME', response.data)
       }).catch(error => {
         console.log(error)

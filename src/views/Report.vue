@@ -1,42 +1,39 @@
 <template>
   <div class="container">
-    <b-form-select class="my-3" v-model="selected" :options="options"></b-form-select>
-    <!-- <b-form-select v-model="selected" :options="options" size="sm" class="mt-3"></b-form-select> -->
-    <div class="mt-3">
-        Selected:
-        <strong>{{ selected }}</strong><br>
-        <button @click.prevent="showReport" class="btn btn-default btn-primary" >Show Reports</button>
-    </div>
+    <table class="table table-striped text-center">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Total Income</th>
+          <th scope="col">Total Expenses</th>
+          <th scope="col">Balance</th>
+          <th scope="col">Period</th>
+        </tr>
+      </thead>
+      <tbody class="table-secondary">
+        <tr>
+        <th scope="row">{{ fetchReport.UserId }}</th>
+        <td> Rp {{ moneyFormatted(fetchReport.total_income) }},- </td>
+        <td> Rp {{ moneyFormatted(fetchReport.total_expenses) }},- </td>
+        <td> Rp {{ moneyFormatted(fetchReport.balance) }},- </td>
+        <td> {{ fetchReport.period }} </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
 <script>
 export default {
   name: 'Report',
-  data () {
-    return {
-      selected: null,
-      options: [
-        { value: null, text: 'Please select month' },
-        { value: 'JAN', text: 'January' },
-        { value: 'FEB', text: 'February' },
-        { value: 'MAR', text: 'March' },
-        { value: 'APR', text: 'April' },
-        { value: 'MAY', text: 'May' },
-        { value: 'JUN', text: 'June' },
-        { value: 'JUL', text: 'July' },
-        { value: 'AUG', text: 'August' },
-        { value: 'SEP', text: 'September' },
-        { value: 'OCT', text: 'October' },
-        { value: 'NOV', text: 'November' },
-        { value: 'DEC', text: 'December' }
-      ]
+  methods: {
+    moneyFormatted (number) {
+      return number.toLocaleString('id-ID')
     }
   },
-  methods: {
-    showReport () {
-      const period = this.selected
-      this.$store.dispatch('showReport', period)
+  computed: {
+    fetchReport () {
+      return this.$store.state.reports
     }
   }
 }
