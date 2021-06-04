@@ -11,6 +11,11 @@ export default {
   name: 'App',
   components: {
     Navbar
+  },
+  created () {
+    if (localStorage.getItem('access_token')) {
+      this.$store.commit('SET_LOGIN', true)
+    }
   }
 }
 </script>

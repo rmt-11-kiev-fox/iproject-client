@@ -7,7 +7,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li v-if="loggedIn" class="nav-item">
-          <router-link class="nav-link" to="/reports"> Show Reports </router-link>
+          <router-link class="nav-link" to="/tracker"> Tracker </router-link>
         </li>
         <li v-if="!loggedIn" class="nav-item">
           <router-link class="nav-link" to="/login"> Login </router-link>
