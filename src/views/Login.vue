@@ -8,8 +8,8 @@
                 <h1>Please Login first</h1>
                 <form @submit.prevent="login">
                     <div class="mb-3">
-                        <label for="email" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" v-model="email"/>
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="username" aria-describedby="usernameHelp" v-model="username"/>
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
@@ -25,7 +25,18 @@
 
 <script>
 export default {
-
+  name: 'Login',
+  data () {
+    return {
+      username: '',
+      password: ''
+    }
+  },
+  methods: {
+    login () {
+      this.$store.dispatch('login', { username: this.username, password: this.password })
+    }
+  }
 }
 </script>
 
