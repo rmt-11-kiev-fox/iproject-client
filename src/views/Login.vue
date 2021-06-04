@@ -17,7 +17,7 @@
                     <button type="submit" class="btn btn-info text-white mt-2">Login</button>
                 </form>
             </div>
-        </section>    
+        </section>
     </div>
 </template>
 
