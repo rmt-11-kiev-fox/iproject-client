@@ -9,7 +9,8 @@ export default new Vuex.Store({
   state: {
     isLogin: false,
     location: [],
-    collect: []
+    collect: [],
+    image: ''
   },
   mutations: {
     SET_Login (state, payload) {
@@ -20,6 +21,9 @@ export default new Vuex.Store({
     },
     SET_Collect (state, payload) {
       state.collect = payload
+    },
+    SET_Image (state, payload) {
+      state.image = payload
     }
   },
   actions: {
@@ -54,7 +58,7 @@ export default new Vuex.Store({
       })
         .then(({ data }) => {
           localStorage.setItem('access_token', data.access_token)
-          context.commit('SET_login', true)
+          context.commit('SET_Login', true)
           router.push('/')
         })
         .catch(err => {
@@ -103,6 +107,19 @@ export default new Vuex.Store({
       })
         .then(({ data }) => {
           context.commit('SET_Location', data)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
+    image (context, payload) {
+      axios({
+        method: 'GET',
+        url: '/image',
+        headers: { access_token: localStorage.getItem('access_token') }
+      })
+        .then(({ data }) => {
+          context.commit('SET_Image', data)
         })
         .catch(err => {
           console.log(err)

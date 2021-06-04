@@ -24,8 +24,19 @@
             <button type="submit" class="btn-lg btn-dark">COLLECT FOR ME</button>
           </form>
         </div>
-        <div class="col-6">
-          <GmapMap
+        <div class="col-6 mt-3">
+          <div class="mapouter">
+            <div class="gmap_canvas">
+              <iframe width="600" height="400" id="gmap_canvas"
+              :src="`https://maps.google.com/maps?q=${location.lat},${location.long}&t=&z=13&ie=UTF8&iwloc=&output=embed`"
+              frameborder="0"
+              scrolling="no"
+              marginheight="0"
+              marginwidth="0"
+              ></iframe>
+            </div>
+          </div>
+          <!-- <GmapMap
             :center="{lat: +location.lat, lng: +location.long}"
             :zoom="15"
             map-type-id="terrain"
@@ -39,7 +50,7 @@
               :draggable="true"
               @click="center=m.position"
             />
-          </GmapMap>
+          </GmapMap> -->
         </div>
       </div>
     </div>
@@ -72,10 +83,19 @@ export default {
     location () {
       return this.$store.state.location
     }
+  },
+  created () {
+    this.$store.dispatch('location')
   }
 }
 </script>
 
 <style>
-
+  .mapouter {
+    position:relative;text-align:right;height:500px;width:600px;
+  }
+  .gmap_canvas {
+    overflow:hidden;background:none!important;height:500px;width:600px;
+  }
+  iframe {width:100%;height:100%;}
 </style>

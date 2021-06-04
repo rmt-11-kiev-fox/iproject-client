@@ -37,6 +37,7 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   if (to.name === 'Collect' && !localStorage.getItem('access_token')) next({ name: 'Login' })
+  if (to.name === 'History' && !localStorage.getItem('access_token')) next({ name: 'Login' })
   else next()
 })
 

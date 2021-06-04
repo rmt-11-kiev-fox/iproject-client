@@ -17,7 +17,7 @@
       </div>
       <div class="row row-cols-1 row-cols-md-3 g-4" style="margin-top: 5px;">
           <div class="col">
-            <div class="card h-100" style="background-color: bisque">
+            <div class="card h-100 rounded-3" style="background-color: bisque">
               <img src="../assets/step 1.jpg" class="card-img-top" style="background-size: 5000px">
               <div class="card-body">
                 <h3 class="card-title">STEP 1</h3>
@@ -27,7 +27,7 @@
             </div>
           </div>
           <div class="col">
-            <div class="card h-100" style="background-color: bisque">
+            <div class="card h-100 rounded-3" style="background-color: bisque">
               <img src="../assets/step 2 (1).jpg" class="card-img-top mb-4" style="background-size: 1000px">
               <div class="card-body">
                 <h3 class="card-title">STEP 2</h3>
@@ -37,7 +37,7 @@
             </div>
           </div>
           <div class="col">
-            <div class="card h-100" style="background-color: bisque">
+            <div class="card h-100  rounded-3" style="background-color: bisque">
               <img src="../assets/step 3.jpg" class="card-img-top" style="background-size: 5000px">
               <div class="card-body">
                 <h3 class="card-title">STEP 3</h3>

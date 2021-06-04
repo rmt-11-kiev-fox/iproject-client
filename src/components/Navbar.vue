@@ -35,6 +35,7 @@ export default {
     logout () {
       localStorage.clear()
       this.$router.push({ path: '/' })
+      this.$store.state('SET_Login', false)
     }
   }
 }

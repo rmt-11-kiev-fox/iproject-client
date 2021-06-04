@@ -1,6 +1,6 @@
 <template>
   <tr>
-    <th scope="row">{{index}}</th>
+    <th scope="row">{{index + 1}}</th>
     <td>{{col.name}}</td>
     <td>{{col.address}}</td>
     <td>{{col.date}}</td>

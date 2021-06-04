@@ -2,7 +2,9 @@
   <div class="home">
     <Navbar></Navbar>
     <Content v-if="$route.name === 'Home'"></Content>
-    <Register v-if="$route.name === 'Home'"></Register>
+    <Register
+      v-if="$route.name === 'Home' && $store.state.isLogin === false"
+    ></Register>
     <Login v-else-if="$route.name === 'Login'"></Login>
     <Collect
       v-else-if="$route.name === 'Collect'"
@@ -37,7 +39,13 @@ export default {
     HFooter
   },
   created () {
+    this.$store.dispatch('image')
     this.$store.dispatch('location')
+    if (localStorage.getItem('access_token')) {
+      this.$store.commit('SET_Login', true)
+    } else {
+      this.$store.commit('SET_Login', false)
+    }
   }
 }
 </script>
