@@ -38,10 +38,18 @@
 <script>
 export default {
     name: 'InactivePage',
+    data() {
+        return {
+            isClicked: false
+        }
+    },
     methods: {
         startTrivia() {
-            this.$socket.emit('getNewQuestion')
-            this.$socket.emit('startTrivia')
+            if (!this.isClicked) {
+                this.isClicked = true
+                this.$socket.emit('getNewQuestion')
+                this.$socket.emit('startTrivia')
+            }
             // this.$router.push('/')
             // this.$socket.emit('getNewQuestion')
             // this.$socket.emit('getServerStatus')
