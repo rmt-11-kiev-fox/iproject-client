@@ -24,6 +24,25 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    deleteTodayFood (context, id) {
+      axios({
+        url: '/fitness/food/' + id,
+        method: 'delete',
+        headers: {
+          access_token: localStorage.access_token
+        },
+      })
+      .then(({ data }) => {
+        console.log('--------------------------------', data,` ini di action` ,'------------------------------------------');
+  
+        context.dispatch('fetchTodayData')
+        
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+
+    },
     fetchQuote ({ commit }) {
       axios({
         url: '/fetchQuotes',

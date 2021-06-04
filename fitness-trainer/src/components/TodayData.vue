@@ -122,7 +122,7 @@ export default {
       console.log('--------------------------------', id, `delete exercise` ,'------------------------------------------');
     },
     deleteFood (id) {
-      console.log('--------------------------------', id, `delete food` ,'------------------------------------------');
+      this.$store.dispatch('deleteTodayFood', id)
     }
   }
 }
